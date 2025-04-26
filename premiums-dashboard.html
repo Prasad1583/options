@@ -82,7 +82,7 @@
           .then(response => response.json())
           .then(data => {
             this.chartData = data;
-            this.$nextTick(() => {   // <<== Wait for DOM update
+            this.$nextTick(() => {
               this.drawCharts();
             });
           });
