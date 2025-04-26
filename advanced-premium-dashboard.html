@@ -403,7 +403,7 @@
                                             callback: (value, index) => {
                                                 const fiiValue = monthData.fiiData[index];
                                                 if (fiiValue !== undefined) {
-                                                    return 'FII: ' + (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                                    return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
                                                 }
                                                 return '';
                                             },
