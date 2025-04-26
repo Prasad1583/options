@@ -393,6 +393,25 @@
                                             minRotation: 45
                                         }
                                     },
+                                    x2: { // NEW TOP AXIS
+                                        position: 'top',
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            color: '#FFC107', // You can choose another color
+                                            callback: (value, index) => {
+                                                const fiiValue = monthData.fiiData[index];
+                                                if (fiiValue !== undefined) {
+                                                    return 'FII: ' + (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                                }
+                                                return '';
+                                            },
+                                            font: {
+                                                size: 10
+                                            }
+                                        }
+                                    },
                                     y: {
                                         grid: {
                                             color: 'rgba(255, 255, 255, 0.05)',
