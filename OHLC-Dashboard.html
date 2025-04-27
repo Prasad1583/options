@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options Premium Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0E23;
+            --bg-card: #131B3A;
+            --primary: #00E5FF;
+            --primary-light: rgba(0, 229, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0BEC5;
+            --success: #00E676;
+            --danger: #FF4081;
+            --warning: #FFC107;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-filter {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .dashboard-title {
+            margin: 24px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 24px;
+            flex-grow: 1;
+        }
+
+        .chart-box {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .chart-box:hover {
+            transform: translateY(-4px);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .chart-title {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: var(--text-secondary);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        canvas {
+            flex-grow: 1;
+            width: 100% !important;
+            height: 400px !important;
+        }
+
+        footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .time-filter {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 8px;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <header>
+            <div class="logo">
+                <span class="logo-icon">$</span>
+                <span>Options Premium</span>
+            </div>
+        </header> -->
+
+        <div class="grid">
+            <div class="chart-box" v-for="(item, index) in chartData.titles" :key="index">
+                <div class="chart-header">
+                    <div class="chart-title">{{ item }}</div>
+                    <div class="chart-actions">
+                        <button class="action-btn" title="Download" @click="downloadChart(index)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                        <button class="action-btn" title="Fullscreen" @click="fullscreenChart(index)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <canvas :id="'chart-' + index"></canvas>
+            </div>
+        </div>
+
+        <footer>
+            <p>Data updated: {{ new Date().toLocaleString() }} | © 2025 Options Premium Dashboard</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    chartData: {},
+                    activeFilter: '1D'
+                };
+            },
+            mounted() {
+                fetch('https://helpful-croquembouche-367780.netlify.app/ohlc-premium-data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.chartData = data;
+                        this.$nextTick(() => {
+                            this.drawCharts();
+                        });
+                    });
+            },
+            methods: {
+                setFilter(filter) {
+                    this.activeFilter = filter;
+                    // In a real app, you would filter data here
+                },
+                drawCharts() {
+                    const datasetsList = [this.chartData.janData, this.chartData.febData, this.chartData.marData, this.chartData.aprilData, this.chartData.mayData, this.chartData.mayLowData];
+
+                    // Register plugins
+                    Chart.register({
+                        id: 'customBackground',
+                        beforeDraw: (chart) => {
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.globalCompositeOperation = 'destination-over';
+                            ctx.fillStyle = '#131B3A';
+                            ctx.fillRect(0, 0, chart.width, chart.height);
+                            ctx.restore();
+                        }
+                    });
+
+                    datasetsList.forEach((monthData, index) => {
+                        const ctx = document.getElementById('chart-' + index).getContext('2d');
+                        new Chart(ctx, {
+                            type: 'line',
+                            plugins: ['customBackground', ChartZoom],
+                            data: {
+                                labels: monthData.labels,
+                                datasets: monthData.datasets.map(dataset => ({
+                                    ...dataset,
+                                    borderWidth: 2,
+                                    pointRadius: 3,
+                                    pointHoverRadius: 5,
+                                    pointBackgroundColor: '#FFFFFF',
+                                    pointHoverBorderWidth: 2,
+                                    pointBorderColor: dataset.borderColor,
+                                    pointHoverBackgroundColor: dataset.borderColor,
+                                    backgroundColor: this.addAlpha(dataset.borderColor, 0.1),
+                                    fill: true
+                                }))
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            color: '#FAFAFA',
+                                            padding: 20,
+                                            usePointStyle: true,
+                                            pointStyle: 'circle',
+                                            font: {
+                                                size: 11
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(19, 27, 58, 0.9)',
+                                        titleColor: '#FFFFFF',
+                                        bodyColor: '#B0BEC5',
+                                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                                        borderWidth: 1,
+                                        padding: 12,
+                                        usePointStyle: true,
+                                        callbacks: {
+                                            label: function (context) {
+                                                let label = context.dataset.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                if (context.parsed.y !== null) {
+                                                    label += new Intl.NumberFormat('en-IN', {
+                                                        style: 'currency',
+                                                        currency: 'INR',
+                                                        maximumFractionDigits: 0
+                                                    }).format(context.parsed.y);
+                                                }
+                                                return label;
+                                            }
+                                        }
+                                    },
+                                    zoom: {
+                                        zoom: {
+                                            wheel: {
+                                                enabled: false,
+                                            },
+                                            pinch: {
+                                                enabled: false
+                                            },
+                                            mode: 'xy',
+                                        },
+                                        pan: {
+                                            enabled: false,
+                                            mode: 'xy',
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.05)',
+                                            borderColor: 'rgba(255, 255, 255, 0.05)'
+                                        },
+                                        ticks: {
+                                            color: '#B0BEC5',
+                                            maxRotation: 45,
+                                            minRotation: 45
+                                        }
+                                    },
+                                    x2: { // NEW TOP AXIS
+                                        position: 'top',
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            color: (context) => {
+                                                const index = context.index;
+                                                const fiiValue = monthData.fiiData[index];
+                                                if (fiiValue !== undefined) {
+                                                    return fiiValue >= 0 ? '#00E676' : '#FF4081'; // green for inflow, pink/red for outflow
+                                                }
+                                                return '#B0BEC5'; // fallback light color
+                                            },
+                                            callback: (value, index) => {
+                                                const fiiValue = monthData.fiiData[index];
+                                                if (fiiValue !== undefined) {
+                                                    return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                                }
+                                                return '';
+                                            },
+                                            font: {
+                                                size: 10
+                                            }
+                                        }
+                                    },
+                                    y: {
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.05)',
+                                            borderColor: 'rgba(255, 255, 255, 0.05)'
+                                        },
+                                        ticks: {
+                                            color: '#B0BEC5',
+                                            callback: function (value) {
+                                                return '₹' + value.toLocaleString('en-IN');
+                                            }
+                                        }
+                                    }
+                                },
+                                animation: {
+                                    duration: 1000,
+                                    easing: 'easeOutQuart'
+                                },
+                                elements: {
+                                    line: {
+                                        tension: 0.4
+                                    }
+                                }
+                            }
+                        });
+                    });
+                },
+                addAlpha(color, opacity) {
+                    // Helper function to add opacity to hex colors
+                    const _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
+                    return color + _opacity.toString(16).toUpperCase();
+                },
+                downloadChart(index) {
+                    const canvas = document.getElementById('chart-' + index);
+                    const a = document.createElement('a');
+                    a.href = canvas.toDataURL('image/png');
+                    a.download = `OptionsPremium-${index}.png`;
+                    a.click();
+                },
+                fullscreenChart(index) {
+                    const canvas = document.getElementById('chart-' + index);
+                    if (canvas.requestFullscreen) {
+                        canvas.requestFullscreen();
+                    } else if (canvas.webkitRequestFullscreen) {
+                        canvas.webkitRequestFullscreen();
+                    } else if (canvas.msRequestFullscreen) {
+                        canvas.msRequestFullscreen();
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
