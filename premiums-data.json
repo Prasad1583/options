@@ -278,7 +278,7 @@
             131442.0,
             95616.0
           ],
-          "borderColor": "#FF4081",
+          "borderColor": "#00FFB3",
           "tension": 0.4
         },
         {
@@ -301,7 +301,7 @@
             79404.0,
             55116.0
           ],
-          "borderColor": "#FF6699",
+          "borderColor": "#00FFFF",
           "tension": 0.4
         },
         {
@@ -439,7 +439,7 @@
             -207840.0,
             -187164.0
           ],
-          "borderColor": "#00FFB3",
+          "borderColor": "#FF4081",
           "tension": 0.4
         },
         {
@@ -462,7 +462,7 @@
             -277152.0,
             -246534.0
           ],
-          "borderColor": "#00FFFF",
+          "borderColor": "#FF6699",
           "tension": 0.4
         },
         {
@@ -485,7 +485,7 @@
             -400506.0,
             -354948.0
           ],
-          "borderColor": "#00E676",
+          "borderColor": "#FF3388",
           "tension": 0.4
         }
       ],
