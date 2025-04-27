@@ -294,7 +294,7 @@
                             const ctx = chart.ctx;
                             ctx.save();
                             ctx.globalCompositeOperation = 'destination-over';
-                            ctx.fillStyle = '';
+                            ctx.fillStyle = '#131B3A';
                             ctx.fillRect(0, 0, chart.width, chart.height);
                             ctx.restore();
                         }
@@ -317,7 +317,7 @@
                                     pointBorderColor: dataset.borderColor,
                                     pointHoverBackgroundColor: dataset.borderColor,
                                     backgroundColor: this.addAlpha(dataset.borderColor, 0.1),
-                                    fill: true
+                                    fill: false
                                 }))
                             },
                             options: {
