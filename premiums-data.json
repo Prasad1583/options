@@ -5,7 +5,7 @@
       "Mar 2025 - Multi Call & Put Premiums",
       "Apr 2025 - Multi Call & Put Premiums",
       "May 2025 - Multi Call & Put Premiums",
-      "May 2025 - Multi Call & Put Low Premiums"
+      "May 2025 - Multi Call & Put Premiums"
     ],
     "janData": {
       "labels": [
@@ -513,7 +513,7 @@
       ],
       "datasets": [
         {
-          "label": "Call 49000 Low",
+          "label": "Call 49000",
           "data": [
             2650.4,
             2793.85,
@@ -536,7 +536,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 50000 Low",
+          "label": "Call 50000",
           "data": [
             1901.3,
             1961.7,
@@ -559,7 +559,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 51000 Low",
+          "label": "Call 51000",
           "data": [
             1288.95,
             1350.8,
@@ -582,7 +582,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 52000 Low",
+          "label": "Call 52000",
           "data": [
             796.0,
             835.4,
@@ -605,7 +605,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 53000 Low",
+          "label": "Call 53000",
           "data": [
             432.6,
             461.75,
@@ -628,7 +628,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 54000 Low",
+          "label": "Call 54000",
           "data": [
             232.3,
             243.95,
@@ -651,7 +651,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 55000 Low",
+          "label": "Call 55000",
           "data": [
             120.8,
             119.45,
@@ -674,7 +674,7 @@
           "tension": 0.4
         },
         {
-          "label": "Call 56000 Low",
+          "label": "Call 56000",
           "data": [
             70.15,
             65.15,
@@ -697,7 +697,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 49000 Low",
+          "label": "Put 49000",
           "data": [
             279.0,
             333.3,
@@ -720,7 +720,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 50000 Low",
+          "label": "Put 50000",
           "data": [
             455.0,
             525.0,
@@ -743,7 +743,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 51000 Low",
+          "label": "Put 51000",
           "data": [
             724.35,
             815.45,
@@ -766,7 +766,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 52000 Low",
+          "label": "Put 52000",
           "data": [
             1113.6,
             1241.35,
@@ -789,7 +789,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 53000 Low",
+          "label": "Put 53000",
           "data": [
             1628.15,
             1798.0,
@@ -812,7 +812,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 54000 Low",
+          "label": "Put 54000",
           "data": [
             2358.65,
             2523.7,
@@ -835,7 +835,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 55000 Low",
+          "label": "Put 55000",
           "data": [
             3200.0,
             3450.0,
@@ -858,7 +858,7 @@
           "tension": 0.4
         },
         {
-          "label": "Put 56000 Low",
+          "label": "Put 56000",
           "data": [
             4800.0,
             4463.35,
