@@ -278,32 +278,33 @@
               </div>
               <canvas :id="'index-chart-' + index"></canvas>
             </div>
-          </div>
-          <div class="full-grid">
             <div class="chart-box" v-for="(item, index) in stocksChartData.titles" :key="'index-' + index">
-              <div class="chart-header">
-                <div class="chart-title">{{ item }}</div>
-                <div class="chart-actions">
-                  <button class="action-btn" title="Download" @click="downloadIndexChart(index)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                      <polyline points="7 10 12 15 17 10"></polyline>
-                      <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                  </button>
-                  <button class="action-btn" title="Fullscreen" @click="fullscreenIndexChart(index)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
-                      </path>
-                    </svg>
-                  </button>
+                <div class="chart-header">
+                  <div class="chart-title">{{ item }}</div>
+                  <div class="chart-actions">
+                    <button class="action-btn" title="Download" @click="downloadIndexChart(index)">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                    </button>
+                    <button class="action-btn" title="Fullscreen" @click="fullscreenIndexChart(index)">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                        </path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
+                <canvas :id="'stocks-chart-' + index"></canvas>
               </div>
-              <canvas :id="'stocks-chart-' + index"></canvas>
-            </div>
           </div>
+          <!-- <div class="full-grid">
+            
+          </div> -->
         <footer>
             <p>Data updated: {{ new Date().toLocaleString() }} | © 2025 Options Premium Dashboard</p>
         </footer>
