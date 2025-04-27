@@ -356,11 +356,7 @@
                                                     label += ': ';
                                                 }
                                                 if (context.parsed.y !== null) {
-                                                    label += new Intl.NumberFormat('en-IN', {
-                                                        style: 'currency',
-                                                        currency: 'INR',
-                                                        maximumFractionDigits: 0
-                                                    }).format(context.parsed.y);
+                                                    label += new Intl.NumberFormat('en-IN').format(context.parsed.y);
                                                 }
                                                 return label;
                                             }
@@ -428,7 +424,7 @@
                                         ticks: {
                                             color: '#B0BEC5',
                                             callback: function (value) {
-                                                return '₹' + value.toLocaleString('en-IN');
+                                                return value.toLocaleString('en-IN');
                                             }
                                         }
                                     }
