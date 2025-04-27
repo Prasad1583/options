@@ -285,7 +285,8 @@
                     // In a real app, you would filter data here
                 },
                 drawCharts() {
-                    const datasetsList = [this.chartData.mayOpenData, this.chartData.mayHighData, this.chartData.mayLowData, this.chartData.mayCloseData];
+                    const datasetsList = [this.chartData.niftybankMayOpenData, this.chartData.niftybankMayHighData, this.chartData.niftybankMayLowData, this.chartData.niftybankMayCloseData,
+                                          this.chartData.niftyMayOpenData, this.chartData.niftyMayHighData, this.chartData.niftyMayLowData, this.chartData.niftyMayCloseData];
 
                     // Register plugins
                     Chart.register({
