@@ -248,7 +248,31 @@
                 <canvas :id="'chart-' + index"></canvas>
             </div>
         </div>
-
+        <div class="grid">
+            <div class="chart-box" v-for="(item, index) in indexChartData.titles" :key="'index-' + index">
+              <div class="chart-header">
+                <div class="chart-title">{{ item }}</div>
+                <div class="chart-actions">
+                  <button class="action-btn" title="Download" @click="downloadIndexChart(index)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                  </button>
+                  <button class="action-btn" title="Fullscreen" @click="fullscreenIndexChart(index)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <canvas :id="'index-chart-' + index"></canvas>
+            </div>
+          </div>
         <footer>
             <p>Data updated: {{ new Date().toLocaleString() }} | © 2025 Options Premium Dashboard</p>
         </footer>
@@ -266,6 +290,7 @@
             data() {
                 return {
                     chartData: {},
+                    indexChartData: {},
                     activeFilter: '1D'
                 };
             },
@@ -278,11 +303,180 @@
                             this.drawCharts();
                         });
                     });
+                    fetch('https://helpful-croquembouche-367780.netlify.app/nifty-index.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.indexChartData = data;
+                        this.$nextTick(() => {
+                            this.drawIndexCharts();
+                        });
+                    });
             },
             methods: {
                 setFilter(filter) {
                     this.activeFilter = filter;
                     // In a real app, you would filter data here
+                },
+                drawIndexCharts() {
+                    const datasetsList = [this.indexChartData.Data];
+
+                    // Register plugins
+                    Chart.register({
+                        id: 'customBackground',
+                        beforeDraw: (chart) => {
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.globalCompositeOperation = 'destination-over';
+                            ctx.fillStyle = '#131B3A';
+                            ctx.fillRect(0, 0, chart.width, chart.height);
+                            ctx.restore();
+                        }
+                    });
+
+                    datasetsList.forEach((monthData, index) => {
+                        const ctx = document.getElementById('index-chart-' + index).getContext('2d');
+                        new Chart(ctx, {
+                            type: 'line',
+                            plugins: ['customBackground', ChartZoom],
+                            data: {
+                                labels: monthData.labels,
+                                datasets: monthData.datasets.map(dataset => ({
+                                    ...dataset,
+                                    borderWidth: 2,
+                                    pointRadius: 3,
+                                    pointHoverRadius: 5,
+                                    pointBackgroundColor: '#FFFFFF',
+                                    pointHoverBorderWidth: 2,
+                                    pointBorderColor: dataset.borderColor,
+                                    pointHoverBackgroundColor: dataset.borderColor,
+                                    backgroundColor: this.addAlpha(dataset.borderColor, 0.1),
+                                    fill: true
+                                }))
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            color: '#FAFAFA',
+                                            padding: 20,
+                                            usePointStyle: true,
+                                            pointStyle: 'circle',
+                                            font: {
+                                                size: 11
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(19, 27, 58, 0.9)',
+                                        titleColor: '#FFFFFF',
+                                        bodyColor: '#B0BEC5',
+                                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                                        borderWidth: 1,
+                                        padding: 12,
+                                        usePointStyle: true,
+                                        callbacks: {
+                                            label: function (context) {
+                                                let label = context.dataset.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                if (context.parsed.y !== null) {
+                                                    label += new Intl.NumberFormat('en-IN', {
+                                                        style: 'currency',
+                                                        currency: 'INR',
+                                                        maximumFractionDigits: 0
+                                                    }).format(context.parsed.y);
+                                                }
+                                                return label;
+                                            }
+                                        }
+                                    },
+                                    zoom: {
+                                        zoom: {
+                                            wheel: {
+                                                enabled: true,
+                                            },
+                                            pinch: {
+                                                enabled: true
+                                            },
+                                            mode: 'xy',
+                                        },
+                                        pan: {
+                                            enabled: true,
+                                            mode: 'xy',
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.05)',
+                                            borderColor: 'rgba(255, 255, 255, 0.05)'
+                                        },
+                                        ticks: {
+                                            color: '#B0BEC5',
+                                            maxRotation: 45,
+                                            minRotation: 45
+                                        }
+                                    },
+                                    x2: { // NEW TOP AXIS
+                                        position: 'top',
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            color: (context) => {
+                                                const index = context.index;
+                                                const fiiValue = monthData.fiiData[index];
+                                                if (fiiValue !== undefined) {
+                                                    return fiiValue >= 0 ? '#00E676' : '#FF4081'; // green for inflow, pink/red for outflow
+                                                }
+                                                return '#B0BEC5'; // fallback light color
+                                            },
+                                            callback: (value, index) => {
+                                                const fiiValue = monthData.fiiData[index];
+                                                if (fiiValue !== undefined) {
+                                                    return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                                }
+                                                return '';
+                                            },
+                                            font: {
+                                                size: 10
+                                            }
+                                        }
+                                    },
+                                    y: {
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.05)',
+                                            borderColor: 'rgba(255, 255, 255, 0.05)'
+                                        },
+                                        ticks: {
+                                            color: '#B0BEC5',
+                                            callback: function (value) {
+                                                return '₹' + value.toLocaleString('en-IN');
+                                            }
+                                        }
+                                    }
+                                },
+                                animation: {
+                                    duration: 1000,
+                                    easing: 'easeOutQuart'
+                                },
+                                elements: {
+                                    line: {
+                                        tension: 0.4
+                                    }
+                                }
+                            }
+                        });
+                    });
                 },
                 drawCharts() {
                     const datasetsList = [this.chartData.janData,this.chartData.febData,this.chartData.marData,this.chartData.aprilData];
