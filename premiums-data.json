@@ -142,7 +142,7 @@
             314814.0,
             413778.0
           ],
-          "borderColor": "#00FFFF",
+          "borderColor": "#00E676",
           "tension": 0.4
         },
         {
@@ -166,7 +166,7 @@
             288468.0,
             397326.0
           ],
-          "borderColor": "#00E676",
+          "borderColor": "#00FFB3",
           "tension": 0.4
         },
         {
@@ -190,7 +190,7 @@
             276570.0,
             381732.0
           ],
-          "borderColor": "#00FF99",
+          "borderColor": "#33FF99",
           "tension": 0.4
         },
         {
@@ -262,7 +262,7 @@
             138048.0,
             214356.0
           ],
-          "borderColor": "#2E8B57",
+          "borderColor": "#00FFFF",
           "tension": 0.4
         },
         {
@@ -286,7 +286,7 @@
             95616.0,
             154182.0
           ],
-          "borderColor": "#FF4081",
+          "borderColor": "#00BFFF",
           "tension": 0.4
         },
         {
@@ -310,7 +310,7 @@
             55116.0,
             95616.0
           ],
-          "borderColor": "#FF6699",
+          "borderColor": "#0099FF",
           "tension": 0.4
         },
         {
@@ -334,7 +334,7 @@
             -22182.0,
             -25266.0
           ],
-          "borderColor": "#FF3388",
+          "borderColor": "#FF4081",
           "tension": 0.4
         },
         {
@@ -358,7 +358,7 @@
             -47670.0,
             -52752.0
           ],
-          "borderColor": "#FF0066",
+          "borderColor": "#FF6699",
           "tension": 0.4
         },
         {
@@ -382,7 +382,7 @@
             -94950.0,
             -103410.0
           ],
-          "borderColor": "#FF3366",
+          "borderColor": "#FF3388",
           "tension": 0.4
         },
         {
@@ -406,7 +406,7 @@
             -109554.0,
             -123942.0
           ],
-          "borderColor": "#FF7F9F",
+          "borderColor": "#FF0066",
           "tension": 0.4
         },
         {
@@ -430,7 +430,7 @@
             -152124.0,
             -174948.0
           ],
-          "borderColor": "#FF1A75",
+          "borderColor": "#FF3366",
           "tension": 0.4
         },
         {
@@ -454,7 +454,7 @@
             -187164.0,
             -221616.0
           ],
-          "borderColor": "#00FFB3",
+          "borderColor": "#FF1A75",
           "tension": 0.4
         },
         {
@@ -478,7 +478,7 @@
             -246534.0,
             -296868.0
           ],
-          "borderColor": "#00FFFF",
+          "borderColor": "#FF007F",
           "tension": 0.4
         },
         {
@@ -502,7 +502,7 @@
             -354948.0,
             -426684.0
           ],
-          "borderColor": "#00E676",
+          "borderColor": "#FF1493",
           "tension": 0.4
         }
       ],
