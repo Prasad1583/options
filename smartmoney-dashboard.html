@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#0a0f1f] text-white">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Money Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#040509] via-[#0b0f1a] to-[#101626] p-4">
+  <h1 class="text-3xl text-cyan-400 font-bold text-center mb-6">📊 Smart Money Tracker</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+    <!-- FII/DII Daily Trend -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">FII/DII Daily Trend</h2>
+      <canvas id="fiiDiiTrend" height="200"></canvas>
+    </div>
+
+    <!-- PCR Trend -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">Put-Call Ratio (PCR) Trend</h2>
+      <canvas id="pcrTrend" height="200"></canvas>
+    </div>
+
+    <!-- Client-Wise OI Bar -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">Client-Wise Open Interest</h2>
+      <canvas id="clientOI" height="200"></canvas>
+    </div>
+
+    <!-- Long/Short Buildup Table -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow overflow-auto">
+      <h2 class="text-cyan-300 font-semibold mb-2">Long/Short Buildup Screener</h2>
+      <table class="w-full text-sm">
+        <thead class="text-cyan-300">
+          <tr>
+            <th class="text-left p-2">Symbol</th>
+            <th class="text-left p-2">Signal</th>
+            <th class="text-left p-2">OI Change</th>
+            <th class="text-left p-2">Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-[#1e263d]">
+            <td class="p-2">RELIANCE</td>
+            <td class="text-green-300 p-2">Long Buildup</td>
+            <td class="p-2">+12.4%</td>
+            <td class="p-2">15M</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Max Pain Card -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow text-center">
+      <h2 class="text-cyan-300 font-semibold mb-2">Max Pain Analysis</h2>
+      <p class="text-3xl text-yellow-400 font-bold">₹ 19,000 (NIFTY)</p>
+    </div>
+
+    <!-- VIX Tracker -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">India VIX Trend</h2>
+      <canvas id="vixTrend" height="200"></canvas>
+    </div>
+
+    <!-- Volume/OI Shockers -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">Volume/OI Shockers</h2>
+      <table class="w-full text-sm">
+        <thead class="text-cyan-300">
+          <tr>
+            <th class="text-left p-2">Symbol</th>
+            <th class="text-left p-2">Volume %</th>
+            <th class="text-left p-2">OI %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-[#1e263d]">
+            <td class="p-2">INFY</td>
+            <td class="p-2 text-pink-300">+300%</td>
+            <td class="p-2 text-green-300">+220%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Block/Bulk Deals -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow overflow-auto">
+      <h2 class="text-cyan-300 font-semibold mb-2">Block/Bulk Deals</h2>
+      <table class="w-full text-sm">
+        <thead class="text-cyan-300">
+          <tr>
+            <th class="text-left p-2">Symbol</th>
+            <th class="text-left p-2">Type</th>
+            <th class="text-left p-2">Value (₹ Cr)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-[#1e263d]">
+            <td class="p-2">TCS</td>
+            <td class="p-2 text-yellow-300">Block</td>
+            <td class="p-2">112.3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Full Width Panels -->
+  <div class="grid grid-cols-1 gap-6 mt-6 max-w-7xl mx-auto">
+    <!-- Option Chain Heatmap Placeholder -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow text-center">
+      <h2 class="text-cyan-300 font-semibold mb-2">Option Chain Heatmap (NIFTY)</h2>
+      <div class="text-pink-300">[Heatmap Table Placeholder]</div>
+    </div>
+
+    <!-- Sector Heatmap Grid -->
+    <div class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <h2 class="text-cyan-300 font-semibold mb-2">Sector Heatmap</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-green-600/60 text-center py-6 rounded">IT</div>
+        <div class="bg-red-600/60 text-center py-6 rounded">BANKING</div>
+        <div class="bg-yellow-400/60 text-center py-6 rounded">FMCG</div>
+        <div class="bg-cyan-500/60 text-center py-6 rounded">PHARMA</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById("fiiDiiTrend"), {
+      type: 'line',
+      data: {
+        labels: ['Day 1','Day 2','Day 3'],
+        datasets: [
+          { label: 'FII', data: [1000,1500,1300], borderColor: '#00f9ff' },
+          { label: 'DII', data: [800,1200,1100], borderColor: '#ff00d4' }
+        ]
+      },
+      options: {
+        scales: {
+          x: { ticks: { color: '#9effff' } },
+          y: { ticks: { color: '#9effff' } }
+        },
+        plugins: { legend: { labels: { color: '#9effff' } } }
+      }
+    });
+    new Chart(document.getElementById("pcrTrend"), {
+      type: 'line',
+      data: {
+        labels: ['Day 1','Day 2','Day 3'],
+        datasets: [{ label: 'PCR', data: [0.8, 1.2, 1.0], borderColor: '#34d399' }]
+      },
+      options: {
+        scales: {
+          x: { ticks: { color: '#9effff' } },
+          y: { ticks: { color: '#9effff' } }
+        },
+        plugins: { legend: { labels: { color: '#9effff' } } }
+      }
+    });
+    new Chart(document.getElementById("clientOI"), {
+      type: 'bar',
+      data: {
+        labels: ['FII', 'DII', 'PRO', 'RET'],
+        datasets: [{ label: 'Open Interest %', data: [35, 20, 30, 15], backgroundColor: ['#00f9ff','#ff00d4','#34d399','#facc15'] }]
+      },
+      options: {
+        scales: {
+          x: { ticks: { color: '#9effff' } },
+          y: { ticks: { color: '#9effff' } }
+        },
+        plugins: { legend: { labels: { color: '#9effff' } } }
+      }
+    });
+    new Chart(document.getElementById("vixTrend"), {
+      type: 'line',
+      data: {
+        labels: ['Day 1','Day 2','Day 3'],
+        datasets: [{ label: 'India VIX', data: [13.5, 14.2, 13.9], borderColor: '#f59e0b' }]
+      },
+      options: {
+        scales: {
+          x: { ticks: { color: '#9effff' } },
+          y: { ticks: { color: '#9effff' } }
+        },
+        plugins: { legend: { labels: { color: '#9effff' } } }
+      }
+    });
+  </script>
+</body>
+</html>
