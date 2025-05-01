@@ -14,9 +14,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
       <!-- Dynamic Chart Panels -->
-      <div v-for="(chart, index) in charts" :key="index" class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
+      <div v-for="(chart, index) in charts" :key="index" class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow" style="height: 350px;">
         <h2 class="text-cyan-300 font-semibold mb-2">{{ chart.title }}</h2>
-        <canvas :id="chart.id" height="200"></canvas>
+        <canvas :id="chart.id" class="w-full h-full"></canvas>
       </div>
 
       <!-- Dynamic Table Panels -->
@@ -954,27 +954,19 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: {
-                  padding: {
-                    top: 10,
-                    bottom: 10
-                  }
-                },
+                layout: { padding: { top: 10, bottom: 10 } },
                 plugins: {
                   legend: {
                     position: 'bottom',
                     labels: {
                       color: '#9effff',
-                      boxWidth: 12,
-                      padding: 8,
-                      font: {
-                        size: 10 // Smaller font on mobile
-                      }
+                      boxWidth: 10,
+                      font: { size: 10 }
                     }
                   }
                 },
                 scales: {
-                  x: { ticks: { color: '#9effff', maxRotation: 30 } },
+                  x: { ticks: { color: '#9effff' } },
                   y: { ticks: { color: '#9effff' } }
                 }
               }
