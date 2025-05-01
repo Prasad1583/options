@@ -14,7 +14,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
       <!-- Dynamic Chart Panels -->
-      <div v-for="(chart, index) in charts" :key="index" class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow" style="height: 350px;">
+      <div v-for="(chart, index) in charts" :key="index" class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow" :style="{ height: window.innerWidth < 640 ? '300px' : '450px' }">
         <h2 class="text-cyan-300 font-semibold mb-2">{{ chart.title }}</h2>
         <canvas :id="chart.id" class="w-full h-full"></canvas>
       </div>
