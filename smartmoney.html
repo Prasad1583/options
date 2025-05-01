@@ -952,12 +952,32 @@
             type: chart.type,
             data: chart.data,
             options: {
-              scales: {
-                x: { ticks: { color: '#9effff' } },
-                y: { ticks: { color: '#9effff' } }
-              },
-              plugins: { legend: { labels: { color: '#9effff' } } }
-            }
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    top: 10,
+                    bottom: 10
+                  }
+                },
+                plugins: {
+                  legend: {
+                    position: 'bottom',
+                    labels: {
+                      color: '#9effff',
+                      boxWidth: 12,
+                      padding: 8,
+                      font: {
+                        size: 10 // Smaller font on mobile
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  x: { ticks: { color: '#9effff', maxRotation: 30 } },
+                  y: { ticks: { color: '#9effff' } }
+                }
+              }
           });
         });
       }
