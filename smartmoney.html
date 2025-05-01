@@ -12,7 +12,7 @@
   <div id="app">
     <h1 class="text-3xl text-cyan-400 font-bold text-center mb-6">Smart Money Tracker</h1>
 
-    <div class="grid grid-cols-1 gap-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
       <!-- Dynamic Chart Panels -->
       <div v-for="(chart, index) in charts" :key="index" class="bg-[#101626] p-4 rounded-lg border border-[#1e263d] shadow">
         <h2 class="text-cyan-300 font-semibold mb-2">{{ chart.title }}</h2>
