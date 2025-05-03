@@ -7,49 +7,194 @@
   <script src="https://unpkg.com/vue@3"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="min-h-screen p-4">
   <div id="app" class="max-w-7xl mx-auto">
-    <div class="md:flex md:space-x-6">
-      <div class="md:w-1/4 bg-gray-800 p-4 rounded-xl">
-        <h2 class="text-lg font-semibold mb-4">🔍 Filters</h2>
-        <label class="block mb-2">Financial Year</label>
-        <select v-model="selectedYear" class="w-full p-2 rounded bg-gray-700">
-          <option v-for="fy in financialYears" :key="fy" :value="fy">{{ fy }}</option>
-        </select>
-
-        <label class="block mt-4 mb-2">Minimum Return %</label>
-        <input type="range" min="-100" max="200" v-model="minReturn" class="w-full">
-        <div class="text-right text-sm">{{ minReturn }}%</div>
+    <!-- Loading state -->
+    <div v-if="!flatData.length" class="flex justify-center items-center h-screen">
+      <div class="text-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto mb-4"></div>
+        <p class="text-lg">Loading stock data...</p>
       </div>
+    </div>
 
-      <div class="md:w-3/4 mt-6 md:mt-0">
-        <h1 class="text-2xl font-bold mb-4">📊 10-Year Stock Investment Summary</h1>
-        <p class="text-sm mb-2">Filtered Results ({{ filteredData.length }} stocks)</p>
-
-        <div class="overflow-auto max-h-[400px] border rounded">
-            <table class="w-full text-sm text-left">
-                <thead class="bg-gray-700 sticky top-0">
-                  <tr>
-                    <th class="p-2">Symbol</th>
-                    <th v-for="col in ['start', 'high', 'low', 'close', 'return_pct']" :key="col" class="p-2">
-                      {{ selectedYear + '_' + col }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(row, i) in filteredData" :key="i" class="border-t border-gray-800">
-                    <td class="p-2 font-semibold">{{ row.symbol }}</td>
-                    <td v-for="col in ['start', 'high', 'low', 'close', 'return_pct']" :key="col" class="p-2">
-                      {{ row[selectedYear + '_' + col] ?? '-' }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>              
+    <div v-else class="md:flex md:space-x-6">
+      <!-- Sidebar Filters -->
+      <div class="md:w-1/4 bg-gray-800 p-6 rounded-xl shadow-lg">
+        <h2 class="text-xl font-semibold mb-6 flex items-center">
+          <i class="fas fa-sliders-h mr-2 text-blue-400"></i> Filters
+        </h2>
+        
+        <div class="mb-6">
+          <label class="block mb-2 text-sm font-medium text-gray-300">Financial Year</label>
+          <div class="relative">
+            <select v-model="selectedYear" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+              <option v-for="fy in financialYears" :key="fy" :value="fy">{{ fy }}</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <i class="fas fa-chevron-down text-gray-400"></i>
+            </div>
+          </div>
         </div>
 
-        <h2 class="text-xl font-semibold mt-8 mb-2">📈 Top 10 Performers in {{ selectedYear }}</h2>
-        <canvas id="topChart" class="w-full max-w-full"></canvas>
+        <div class="mb-6">
+          <div class="flex justify-between mb-2">
+            <label class="block text-sm font-medium text-gray-300">Minimum Return %</label>
+            <span class="text-sm font-semibold bg-blue-500/20 px-2 py-1 rounded">{{ minReturn }}%</span>
+          </div>
+          <input 
+            type="range" 
+            min="-100" 
+            max="200" 
+            v-model="minReturn" 
+            class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+          >
+          <div class="flex justify-between text-xs text-gray-400 mt-1">
+            <span>-100%</span>
+            <span>0%</span>
+            <span>100%</span>
+            <span>200%</span>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block mb-2 text-sm font-medium text-gray-300">Sort By</label>
+          <select v-model="sortBy" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500">
+            <option value="symbol">Symbol (A-Z)</option>
+            <option value="return_high">Highest Return</option>
+            <option value="return_low">Lowest Return</option>
+          </select>
+        </div>
+
+        <div class="p-4 bg-gray-700/50 rounded-lg">
+          <h3 class="text-sm font-semibold mb-2 text-gray-300">Summary</h3>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-400">Total Stocks:</span>
+              <span class="font-medium">{{ flatData.length }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">Filtered Stocks:</span>
+              <span class="font-medium">{{ filteredData.length }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">Avg Return:</span>
+              <span :class="{'text-green-400': avgReturn >= 0, 'text-red-400': avgReturn < 0}" class="font-medium">
+                {{ avgReturn.toFixed(1) }}%
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="md:w-3/4 mt-6 md:mt-0">
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div>
+              <h1 class="text-2xl font-bold flex items-center">
+                <i class="fas fa-chart-line text-blue-400 mr-2"></i> 10-Year Stock Investment Summary
+              </h1>
+              <p class="text-sm text-gray-400 mt-1">Analyze stock performance across financial years</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="inline-flex rounded-md shadow-sm" role="group">
+                <button 
+                  v-for="view in ['table', 'chart']" 
+                  :key="view"
+                  @click="currentView = view"
+                  :class="{'bg-blue-600': currentView === view, 'bg-gray-700 hover:bg-gray-600': currentView !== view}"
+                  class="px-4 py-2 text-sm font-medium first:rounded-l-lg last:rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <i :class="{'fas fa-table': view === 'table', 'fas fa-chart-bar': view === 'chart'}" class="mr-1"></i>
+                  {{ view.charAt(0).toUpperCase() + view.slice(1) }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table View -->
+          <div v-if="currentView === 'table'" class="overflow-auto border border-gray-700 rounded-lg">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-700 sticky top-0">
+                <tr>
+                  <th class="p-3 font-semibold text-left cursor-pointer" @click="sortBy = sortBy === 'symbol' ? 'symbol_desc' : 'symbol'">
+                    Symbol
+                    <i class="fas ml-1" :class="{'fa-sort': sortBy !== 'symbol' && sortBy !== 'symbol_desc', 'fa-sort-up': sortBy === 'symbol', 'fa-sort-down': sortBy === 'symbol_desc'}"></i>
+                  </th>
+                  <th v-for="col in ['start', 'high', 'low', 'close', 'return_pct']" 
+                      :key="col" 
+                      class="p-3 font-semibold text-left"
+                      @click="sortBy = selectedYear + '_' + col">
+                    {{ selectedYear + '_' + col }}
+                    <i class="fas ml-1" :class="{'fa-sort': !sortBy.includes(selectedYear + '_' + col), 'fa-sort-up': sortBy === selectedYear + '_' + col, 'fa-sort-down': sortBy === selectedYear + '_' + col + '_desc'}"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(row, i) in sortedData" 
+                    :key="i" 
+                    class="border-t border-gray-700 hover:bg-gray-700/50 transition-colors">
+                  <td class="p-3 font-semibold">{{ row.symbol }}</td>
+                  <td v-for="col in ['start', 'high', 'low', 'close']" 
+                      :key="col" 
+                      class="p-3">
+                    {{ formatNumber(row[selectedYear + '_' + col]) ?? '-' }}
+                  </td>
+                  <td class="p-3 font-medium" :class="getReturnColor(row[selectedYear + '_return_pct'])">
+                    {{ row[selectedYear + '_return_pct'] ? formatPercentage(row[selectedYear + '_return_pct']) : '-' }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div v-if="!filteredData.length" class="p-6 text-center text-gray-400">
+              <i class="fas fa-exclamation-circle mr-2"></i> No stocks match your current filters
+            </div>
+          </div>
+
+          <!-- Chart View -->
+          <div v-if="currentView === 'chart'">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-chart-bar text-blue-400 mr-2"></i> Top 10 Performers in {{ selectedYear }}
+            </h2>
+            <div class="bg-gray-700/30 p-4 rounded-lg">
+              <canvas id="topChart" class="w-full max-w-full"></canvas>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div class="bg-gray-700/30 p-4 rounded-lg">
+                <h3 class="text-lg font-semibold mb-3 flex items-center">
+                  <i class="fas fa-arrow-up text-green-400 mr-2"></i> Best Performers
+                </h3>
+                <div class="space-y-3">
+                  <div v-for="(stock, i) in topPerformers" :key="i" class="flex items-center justify-between p-2 hover:bg-gray-600/50 rounded">
+                    <div class="flex items-center">
+                      <span class="font-medium mr-3">{{ stock.symbol }}</span>
+                      <span class="text-xs bg-gray-600 px-2 py-1 rounded">{{ selectedYear }}</span>
+                    </div>
+                    <span class="text-green-400 font-medium">{{ formatPercentage(stock.return_pct) }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gray-700/30 p-4 rounded-lg">
+                <h3 class="text-lg font-semibold mb-3 flex items-center">
+                  <i class="fas fa-arrow-down text-red-400 mr-2"></i> Worst Performers
+                </h3>
+                <div class="space-y-3">
+                  <div v-for="(stock, i) in worstPerformers" :key="i" class="flex items-center justify-between p-2 hover:bg-gray-600/50 rounded">
+                    <div class="flex items-center">
+                      <span class="font-medium mr-3">{{ stock.symbol }}</span>
+                      <span class="text-xs bg-gray-600 px-2 py-1 rounded">{{ selectedYear }}</span>
+                    </div>
+                    <span class="text-red-400 font-medium">{{ formatPercentage(stock.return_pct) }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -64,7 +209,11 @@
           flatData: [],
           financialYears: [],
           selectedYear: '',
-          minReturn: 18
+          minReturn: 18,
+          sortBy: 'return_high',
+          currentView: 'table',
+          chart: null,
+          loading: true
         };
       },
       computed: {
@@ -74,6 +223,51 @@
             return val != null && val >= this.minReturn;
           });
         },
+        sortedData() {
+          const [sortField, sortDirection] = this.sortBy.includes('_desc') 
+            ? [this.sortBy.replace('_desc', ''), 'desc'] 
+            : [this.sortBy, 'asc'];
+          
+          return [...this.filteredData].sort((a, b) => {
+            const valA = a[sortField];
+            const valB = b[sortField];
+            
+            if (valA == null) return 1;
+            if (valB == null) return -1;
+            
+            return sortDirection === 'asc' 
+              ? valA - valB 
+              : valB - valA;
+          });
+        },
+        topPerformers() {
+          return [...this.flatData]
+            .filter(row => row[this.selectedYear + '_return_pct'] != null)
+            .sort((a, b) => b[this.selectedYear + '_return_pct'] - a[this.selectedYear + '_return_pct'])
+            .slice(0, 5)
+            .map(row => ({
+              symbol: row.symbol,
+              return_pct: row[this.selectedYear + '_return_pct']
+            }));
+        },
+        worstPerformers() {
+          return [...this.flatData]
+            .filter(row => row[this.selectedYear + '_return_pct'] != null)
+            .sort((a, b) => a[this.selectedYear + '_return_pct'] - b[this.selectedYear + '_return_pct'])
+            .slice(0, 5)
+            .map(row => ({
+              symbol: row.symbol,
+              return_pct: row[this.selectedYear + '_return_pct']
+            }));
+        },
+        avgReturn() {
+          const validReturns = this.filteredData
+            .map(row => row[this.selectedYear + '_return_pct'])
+            .filter(val => val != null);
+          
+          if (validReturns.length === 0) return 0;
+          return validReturns.reduce((sum, val) => sum + val, 0) / validReturns.length;
+        }
       },
       methods: {
         flattenData(data) {
@@ -92,6 +286,7 @@
           this.financialYears = [...years].sort();
           this.selectedYear = this.financialYears.at(-1);
           this.flatData = rows;
+          this.loading = false;
           this.$nextTick(this.updateChart);
         },
         updateChart() {
@@ -99,8 +294,11 @@
             .sort((a, b) => b[this.selectedYear + '_return_pct'] - a[this.selectedYear + '_return_pct'])
             .slice(0, 10);
 
-          const ctx = document.getElementById('topChart').getContext('2d');
+          const ctx = document.getElementById('topChart')?.getContext('2d');
+          if (!ctx) return;
+          
           if (this.chart) this.chart.destroy();
+          
           this.chart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -108,28 +306,85 @@
               datasets: [{
                 label: this.selectedYear + ' return %',
                 data: top10.map(d => d[this.selectedYear + '_return_pct']),
-                backgroundColor: '#38bdf8'
+                backgroundColor: '#3b82f6',
+                borderColor: '#2563eb',
+                borderWidth: 1,
+                borderRadius: 4
               }]
             },
             options: {
               responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false
+                },
+                tooltip: {
+                  callbacks: {
+                    label: (context) => {
+                      return `${context.dataset.label}: ${this.formatPercentage(context.raw)}`;
+                    }
+                  }
+                }
+              },
               scales: {
                 y: {
-                  beginAtZero: true
+                  beginAtZero: true,
+                  grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'
+                  },
+                  ticks: {
+                    callback: (value) => {
+                      return this.formatPercentage(value);
+                    }
+                  }
+                },
+                x: {
+                  grid: {
+                    display: false
+                  }
                 }
               }
             }
           });
+        },
+        formatNumber(value) {
+          if (value == null) return '-';
+          return new Intl.NumberFormat('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(value);
+        },
+        formatPercentage(value) {
+          if (value == null) return '-';
+          return new Intl.NumberFormat('en-US', {
+            style: 'percent',
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1
+          }).format(value / 100);
+        },
+        getReturnColor(value) {
+          if (value == null) return '';
+          return value >= 0 ? 'text-green-400' : 'text-red-400';
         }
       },
       watch: {
         selectedYear() { this.updateChart(); },
-        minReturn() { this.updateChart(); }
+        minReturn() { this.updateChart(); },
+        sortBy() { /* triggers sortedData recomputation */ },
+        currentView() { this.$nextTick(this.updateChart); }
       },
       mounted() {
-        fetch(dataUrl)
-          .then(res => res.json())
-          .then(this.flattenData);
+        // Simulate loading delay for demo purposes
+        setTimeout(() => {
+          fetch(dataUrl)
+            .then(res => res.json())
+            .then(this.flattenData)
+            .catch(err => {
+              console.error('Error loading data:', err);
+              this.loading = false;
+            });
+        }, 1000);
       }
     });
 
