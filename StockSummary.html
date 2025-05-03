@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 10-Year Stock Summary</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="min-h-screen p-4">
+  <div id="app" class="max-w-7xl mx-auto">
+    <div class="md:flex md:space-x-6">
+      <div class="md:w-1/4 bg-gray-800 p-4 rounded-xl">
+        <h2 class="text-lg font-semibold mb-4">🔍 Filters</h2>
+        <label class="block mb-2">Financial Year</label>
+        <select v-model="selectedYear" class="w-full p-2 rounded bg-gray-700">
+          <option v-for="fy in financialYears" :key="fy" :value="fy">{{ fy }}</option>
+        </select>
+
+        <label class="block mt-4 mb-2">Minimum Return %</label>
+        <input type="range" min="-100" max="200" v-model="minReturn" class="w-full">
+        <div class="text-right text-sm">{{ minReturn }}%</div>
+      </div>
+
+      <div class="md:w-3/4 mt-6 md:mt-0">
+        <h1 class="text-2xl font-bold mb-4">📊 10-Year Stock Investment Summary</h1>
+        <p class="text-sm mb-2">Filtered Results ({{ filteredData.length }} stocks)</p>
+
+        <div class="overflow-auto max-h-[400px] border rounded">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-gray-700 sticky top-0">
+                  <tr>
+                    <th class="p-2">Symbol</th>
+                    <th v-for="col in ['start', 'high', 'low', 'close', 'return_pct']" :key="col" class="p-2">
+                      {{ selectedYear + '_' + col }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(row, i) in filteredData" :key="i" class="border-t border-gray-800">
+                    <td class="p-2 font-semibold">{{ row.symbol }}</td>
+                    <td v-for="col in ['start', 'high', 'low', 'close', 'return_pct']" :key="col" class="p-2">
+                      {{ row[selectedYear + '_' + col] ?? '-' }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>              
+        </div>
+
+        <h2 class="text-xl font-semibold mt-8 mb-2">📈 Top 10 Performers in {{ selectedYear }}</h2>
+        <canvas id="topChart" class="w-full max-w-full"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dataUrl = 'stock_investment_data.json'; // replace with path to your JSON
+
+    const app = Vue.createApp({
+      data() {
+        return {
+          rawData: {},
+          flatData: [],
+          financialYears: [],
+          selectedYear: '',
+          minReturn: 0
+        };
+      },
+      computed: {
+        filteredData() {
+          return this.flatData.filter(row => {
+            const val = row[this.selectedYear + '_return_pct'];
+            return val != null && val >= this.minReturn;
+          });
+        },
+      },
+      methods: {
+        flattenData(data) {
+          const rows = [];
+          const years = new Set();
+          for (const [symbol, fyData] of Object.entries(data)) {
+            const row = { symbol };
+            for (const [fy, vals] of Object.entries(fyData)) {
+              years.add(fy);
+              for (const [k, v] of Object.entries(vals)) {
+                row[`${fy}_${k}`] = v;
+              }
+            }
+            rows.push(row);
+          }
+          this.financialYears = [...years].sort();
+          this.selectedYear = this.financialYears.at(-1);
+          this.flatData = rows;
+          this.$nextTick(this.updateChart);
+        },
+        updateChart() {
+          const top10 = this.filteredData
+            .sort((a, b) => b[this.selectedYear + '_return_pct'] - a[this.selectedYear + '_return_pct'])
+            .slice(0, 10);
+
+          const ctx = document.getElementById('topChart').getContext('2d');
+          if (this.chart) this.chart.destroy();
+          this.chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: top10.map(d => d.symbol),
+              datasets: [{
+                label: this.selectedYear + ' return %',
+                data: top10.map(d => d[this.selectedYear + '_return_pct']),
+                backgroundColor: '#38bdf8'
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+      },
+      watch: {
+        selectedYear() { this.updateChart(); },
+        minReturn() { this.updateChart(); }
+      },
+      mounted() {
+        fetch(dataUrl)
+          .then(res => res.json())
+          .then(this.flattenData);
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
