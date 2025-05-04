@@ -306,8 +306,8 @@
                             type: 'line',
                             plugins: ['customBackground', ChartZoom],
                             data: {
-                                labels: monthData.labels,
-                                datasets: monthData.datasets.map(dataset => ({
+                                labels: monthData?.labels,
+                                datasets: monthData?.datasets.map(dataset => ({
                                     ...dataset,
                                     borderWidth: 2,
                                     pointRadius: 3,
