@@ -446,7 +446,7 @@
             data() {
                 return {
                     data: [],
-                    selectedSymbol: "360ONE",
+                    selectedSymbol: "",
                     stockSearch: '360ONE',
                     dropdownOpen: false,
                     chartTypes: {}, // To track chart types (line/bar)
@@ -1137,7 +1137,6 @@
             mounted() {
                 this.$nextTick(() => {
                     if (this.currentStock) {
-                        this.created();
                         this.renderAll();
                     }
                 });
