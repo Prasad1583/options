@@ -301,7 +301,7 @@
                     });
 
                     datasetsList.forEach((monthData, index) => {
-                        const ctx = document.getElementById('chart-' + index).getContext('2d');
+                        const ctx = document.getElementById('chart-' + index)?.getContext('2d');
                         new Chart(ctx, {
                             type: 'line',
                             plugins: ['customBackground', ChartZoom],
