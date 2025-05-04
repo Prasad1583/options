@@ -337,7 +337,7 @@
             78726.0,
             71130.0
           ],
-          "borderColor": "#FF4081",
+          "borderColor": "#00FFFF" ,
           "tension": 0.4
         },
         {
@@ -472,7 +472,7 @@
             -162036.0,
             -165318.0
           ],
-          "borderColor": "#FF7F9F",
+          "borderColor": "#FF4081",
           "tension": 0.4
         },
         {
@@ -526,7 +526,7 @@
             -272640.0,
             -276678.0
           ],
-          "borderColor": "#00FFB3",
+          "borderColor": "#FF4081",
           "tension": 0.4
         },
         {
@@ -553,7 +553,7 @@
             -394170.0,
             -398136.0
           ],
-          "borderColor": "#00FFFF",
+          "borderColor": "#FF4081",
           "tension": 0.4
         }
       ],
