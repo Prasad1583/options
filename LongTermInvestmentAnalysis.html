@@ -446,8 +446,8 @@
             data() {
                 return {
                     data: [],
-                    selectedSymbol: "",
-                    stockSearch: 'HDFCBANK',
+                    selectedSymbol: "360ONE",
+                    stockSearch: '360ONE',
                     dropdownOpen: false,
                     chartTypes: {}, // To track chart types (line/bar)
                     simulator: {
@@ -1137,6 +1137,7 @@
             mounted() {
                 this.$nextTick(() => {
                     if (this.currentStock) {
+                        this.created();
                         this.renderAll();
                     }
                 });
