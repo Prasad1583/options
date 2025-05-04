@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-950 text-white">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📈 Investment Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.15/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <!-- Properly import the annotation plugin -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid #334155;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-6">
+    <div id="app" class="max-w-7xl mx-auto space-y-8">
+        <header class="text-center">
+            <h1 class="text-4xl font-bold gradient-text mb-2">📊 Long-Term Investment Dashboard</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Comprehensive analytics for long-term investors with 10 years of OHLCV data and technical indicators
+                <span class="tooltip">
+                    <i class="fas fa-info-circle ml-1 text-primary-400"></i>
+                    <span class="tooltip-text">
+                        This dashboard provides key metrics for long-term investing including CAGR, technical
+                        indicators,
+                        and performance metrics to help identify quality investments.
+                    </span>
+                </span>
+            </p>
+        </header>
+
+        <!-- Stock Selection and Summary -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Stock Selector -->
+            <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800">
+                <label class="block text-sm text-gray-400 mb-1">Select a stock</label>
+                <div class="relative">
+                    <select v-model="selectedSymbol"
+                        class="w-full bg-gray-800 text-white rounded-lg p-3 pr-8 appearance-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        <option v-for="stock in data" :key="stock.symbol" :value="stock.symbol">
+                            {{ stock.symbol }}
+                        </option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div v-if="currentStock" class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800 lg:col-span-2">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-gray-800 p-3 rounded-lg text-center">
+                        <p class="text-xs text-gray-400">10Y CAGR</p>
+                        <p class="text-xl font-bold" :class="getCAGRColor(currentStock.summary.cagr_10y)">
+                            {{ currentStock.summary.cagr_10y }}%
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-center">
+                        <p class="text-xs text-gray-400">5Y CAGR</p>
+                        <p class="text-xl font-bold" :class="getCAGRColor(currentStock.summary.cagr_5y)">
+                            {{ currentStock.summary.cagr_5y }}%
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-center">
+                        <p class="text-xs text-gray-400">3Y CAGR</p>
+                        <p class="text-xl font-bold" :class="getCAGRColor(currentStock.summary.cagr_3y)">
+                            {{ currentStock.summary.cagr_3y }}%
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg text-center">
+                        <p class="text-xs text-gray-400">Volatility</p>
+                        <p class="text-xl font-bold" :class="getVolatilityColor(currentStock.summary.volatility)">
+                            {{ currentStock.summary.volatility }}%
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="currentStock" class="fade-in">
+            <!-- Performance Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- CAGR Chart -->
+                <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800 lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-white">
+                            <i class="fas fa-chart-line text-primary-400 mr-2"></i>Financial Year-wise CAGR
+                        </h2>
+                        <div class="flex space-x-2">
+                            <button @click="toggleChartType('cagrChart')"
+                                class="bg-gray-800 hover:bg-gray-700 text-xs p-2 rounded">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas id="cagrChart" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800">
+                    <h2 class="text-xl font-semibold text-white mb-4">
+                        <i class="fas fa-tachometer-alt text-primary-400 mr-2"></i>Performance Metrics
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Best Year</span>
+                                <span class="font-medium">{{ currentStock.summary.best_year }} ({{
+                                    currentStock.summary.best_year_return }}%)</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full"
+                                    :style="`width: {Math.min(100, (currentStock.summary.best_year_return / 100) * 100)}%`">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Worst Year</span>
+                                <span class="font-medium">{{ currentStock.summary.worst_year }} ({{
+                                    currentStock.summary.worst_year_return }}%)</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-red-500 h-2 rounded-full"
+                                    :style="`width: {Math.min(100, Math.abs(currentStock.summary.worst_year_return) / 50 * 100)}%`">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Positive Years</span>
+                                <span class="font-medium">{{ currentStock.summary.positive_years }}/{{
+                                    currentStock.summary.total_years }}</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-primary-500 h-2 rounded-full"
+                                    :style="`width: {(currentStock.summary.positive_years / currentStock.summary.total_years) * 100}%`">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-gray-800">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Max Drawdown</span>
+                                <span class="font-medium">{{ currentStock.summary.max_drawdown }}%</span>
+                            </div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Sharpe Ratio</span>
+                                <span class="font-medium">{{ currentStock.summary.sharpe_ratio }}</span>
+                            </div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">Sortino Ratio</span>
+                                <span class="font-medium">{{ currentStock.summary.sortino_ratio }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAGR Table -->
+            <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800 mt-6">
+                <h2 class="text-xl font-semibold text-white mb-4">
+                    <i class="fas fa-table text-primary-400 mr-2"></i>Yearly Performance Data
+                </h2>
+                <div class="overflow-x-auto scrollbar-hide">
+                    <table class="w-full text-sm text-left">
+                        <thead>
+                            <tr class="border-b border-gray-700 text-gray-400">
+                                <th class="p-3">FY</th>
+                                <th class="p-3">Start</th>
+                                <th class="p-3">High</th>
+                                <th class="p-3">Low</th>
+                                <th class="p-3">Close</th>
+                                <th class="p-3">Return</th>
+                                <th class="p-3">CAGR</th>
+                                <th class="p-3">Vol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(val, fy) in currentStock.investment_data" :key="fy"
+                                class="border-b border-gray-800 hover:bg-gray-800 transition-colors">
+                                <td class="p-3 font-medium">{{ fy }}</td>
+                                <td class="p-3">{{ formatCurrency(val.start) }}</td>
+                                <td class="p-3">{{ formatCurrency(val.high) }}</td>
+                                <td class="p-3">{{ formatCurrency(val.low) }}</td>
+                                <td class="p-3">{{ formatCurrency(val.close) }}</td>
+                                <td class="p-3" :class="getReturnColor(val.return_pct)">{{ val.return_pct }}%</td>
+                                <td class="p-3" :class="getReturnColor(val.cagr_pct)">{{ val.cagr_pct }}%</td>
+                                <td class="p-3">{{ val.volatility }}%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Technical Indicators -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-bold text-white mb-6 gradient-text">
+                    <i class="fas fa-chart-bar mr-2"></i>Technical Indicators
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Price with Bollinger Bands -->
+                    <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold text-green-300">
+                                <i class="fas fa-chart-area mr-2"></i>Price & Bollinger Bands
+                            </h2>
+                            <div class="flex space-x-2">
+                                <button @click="toggleChartType('bollingerChart')"
+                                    class="bg-gray-800 hover:bg-gray-700 text-xs p-2 rounded">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <canvas id="bollingerChart" height="250"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            Bollinger Bands (20,2) - Shows volatility and potential overbought/oversold conditions
+                        </p>
+                    </div>
+
+                    <!-- MACD -->
+                    <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold text-pink-300">
+                                <i class="fas fa-wave-square mr-2"></i>MACD
+                            </h2>
+                            <div class="flex space-x-2">
+                                <button @click="toggleChartType('macdChart')"
+                                    class="bg-gray-800 hover:bg-gray-700 text-xs p-2 rounded">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <canvas id="macdChart" height="250"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            MACD (12,26,9) - Trend-following momentum indicator showing relationship between two moving
+                            averages
+                        </p>
+                    </div>
+
+                    <!-- RSI -->
+                    <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800 md:col-span-2">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold text-yellow-300">
+                                <i class="fas fa-weight-hanging mr-2"></i>Relative Strength Index (RSI)
+                            </h2>
+                            <div class="flex space-x-2">
+                                <button @click="toggleChartType('rsiChart')"
+                                    class="bg-gray-800 hover:bg-gray-700 text-xs p-2 rounded">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <canvas id="rsiChart" height="250"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            RSI (14) - Momentum oscillator measuring speed and change of price movements (30-70
+                            indicates typical range)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Simulator -->
+            <div class="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-800 mt-8">
+                <h2 class="text-2xl font-bold text-white mb-4 gradient-text">
+                    <i class="fas fa-calculator mr-2"></i>Investment Simulator
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Initial Investment</label>
+                            <input type="number" v-model.number="simulator.initial"
+                                class="w-full bg-gray-800 text-white rounded-lg p-3 focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Monthly Contribution</label>
+                            <input type="number" v-model.number="simulator.monthly"
+                                class="w-full bg-gray-800 text-white rounded-lg p-3 focus:ring-2 focus:ring-primary-500">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Investment Period (years)</label>
+                            <input type="number" v-model.number="simulator.years" min="1" max="50"
+                                class="w-full bg-gray-800 text-white rounded-lg p-3 focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Expected CAGR (%)</label>
+                            <input type="number" v-model.number="simulator.cagr"
+                                class="w-full bg-gray-800 text-white rounded-lg p-3 focus:ring-2 focus:ring-primary-500">
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 p-4 rounded-lg flex flex-col justify-center">
+                        <div class="text-center">
+                            <p class="text-gray-400 text-sm">Projected Value</p>
+                            <p class="text-3xl font-bold text-primary-400">{{ formatNumber(calculateProjection()) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <canvas id="projectionChart" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div v-else class="flex justify-center items-center h-64">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Register plugins globally
+        Chart.register(ChartZoom);
+        Chart.register(window['chartjs-plugin-annotation']);
+
+        // Set global chart defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#9ca3af';
+        Chart.defaults.borderColor = '#1f2937';
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    data: [],
+                    selectedSymbol: "",
+                    chartTypes: {}, // To track chart types (line/bar)
+                    simulator: {
+                        initial: 10000,
+                        monthly: 500,
+                        years: 10,
+                        cagr: 12
+                    }
+                };
+            },
+            computed: {
+                currentStock() {
+                    return this.data.find(d => d.symbol === this.selectedSymbol);
+                }
+            },
+            async created() {
+                try {
+                    // Load data asynchronously
+                    this.data = await fetch("LongTermInvestmentAnalysisData.json")
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        });
+
+                    if (this.data.length > 0) {
+                        this.selectedSymbol = this.data[0].symbol;
+                    }
+                } catch (error) {
+                    console.error("Error loading data:", error);
+                    // Provide sample data if API request fails
+                    this.data = [{
+
+
+                        symbol: 'SAMPLE',
+                        name: 'Sample Stock',
+                        summary: {
+                            cagr_10y: 12.5,
+                            cagr_5y: 10.2,
+                            cagr_3y: 8.7,
+                            volatility: 18.3,
+                            best_year: '2021',
+                            best_year_return: 32.4,
+                            worst_year: '2020',
+                            worst_year_return: -12.8,
+                            positive_years: 8,
+                            total_years: 10,
+                            max_drawdown: 24.6,
+                            sharpe_ratio: 0.65,
+                            sortino_ratio: 0.82
+                        },
+                        investment_data: {
+                            '2015': { start: 100, high: 120, low: 95, close: 115, return_pct: 15.0, cagr_pct: 15.0, volatility: 14.2 },
+                            '2016': { start: 115, high: 140, low: 110, close: 132, return_pct: 14.8, cagr_pct: 14.9, volatility: 15.1 },
+                            '2017': { start: 132, high: 165, low: 128, close: 158, return_pct: 19.7, cagr_pct: 16.5, volatility: 16.2 }
+                        },
+                        technical_indicators: {
+                            BollingerBands: [
+                                { date: '2023-01-01', close: 150, UpperBand: 165, LowerBand: 135 },
+                                { date: '2023-02-01', close: 155, UpperBand: 170, LowerBand: 140 },
+                                { date: '2023-03-01', close: 160, UpperBand: 175, LowerBand: 145 }
+                            ],
+                            MACD: [
+                                { date: '2023-01-01', MACD: 2.5, Signal: 1.8, Histogram: 0.7 },
+                                { date: '2023-02-01', MACD: 3.0, Signal: 2.2, Histogram: 0.8 },
+                                { date: '2023-03-01', MACD: 2.8, Signal: 2.5, Histogram: 0.3 }
+                            ],
+                            RSI: [
+                                { date: '2023-01-01', RSI: 55 },
+                                { date: '2023-02-01', RSI: 62 },
+                                { date: '2023-03-01', RSI: 58 }
+                            ]
+                        }
+                    }];
+                    this.selectedSymbol = this.data[0].symbol;
+                }
+            },
+            watch: {
+                selectedSymbol() {
+                    this.$nextTick(() => {
+                        this.renderAll();
+                    });
+                },
+                simulator: {
+                    handler() {
+                        if (this.currentStock) {
+                            this.$nextTick(() => {
+                                this.renderProjectionChart();
+                            });
+                        }
+                    },
+                    deep: true
+                }
+            },
+            methods: {
+                getCAGRColor(value) {
+                    if (value > 15) return 'text-green-400';
+                    if (value > 8) return 'text-primary-400';
+                    if (value > 0) return 'text-yellow-400';
+                    return 'text-red-400';
+                },
+                getVolatilityColor(value) {
+                    if (value < 20) return 'text-green-400';
+                    if (value < 35) return 'text-yellow-400';
+                    return 'text-red-400';
+                },
+                getReturnColor(value) {
+                    if (value > 0) return 'text-green-400';
+                    return 'text-red-400';
+                },
+                formatCurrency(value) {
+                    return new Intl.NumberFormat('en-US').format(value);
+                },
+                formatNumber(value) {
+                    return new Intl.NumberFormat('en-US').format(Math.round(value));
+                },
+                toggleChartType(chartId) {
+                    if (!this.chartTypes[chartId]) {
+                        this.chartTypes[chartId] = 'bar';
+                    } else {
+                        this.chartTypes[chartId] = this.chartTypes[chartId] === 'bar' ? 'line' : 'bar';
+                    }
+                    this.$nextTick(() => {
+                        this.renderAll();
+                    });
+                },
+                calculateProjection() {
+                    const { initial, monthly, years, cagr } = this.simulator;
+                    const monthlyRate = Math.pow(1 + cagr / 100, 1 / 12) - 1;
+                    let total = parseFloat(initial) || 0;
+                    let monthlyTotal = 0;
+                    const monthlyAmount = parseFloat(monthly) || 0;
+                    const numYears = parseInt(years) || 0;
+
+                    for (let i = 0; i < numYears * 12; i++) {
+                        total = total * (1 + monthlyRate) + monthlyAmount;
+                        monthlyTotal += monthlyAmount;
+                    }
+
+                    return total;
+                },
+                renderAll() {
+                    const s = this.currentStock;
+                    if (!s) return;
+
+                    // Destroy existing charts before creating new ones
+                    Chart.helpers.each(Chart.instances, (chart) => {
+                        chart.destroy();
+                    });
+
+                    // Initialize chart types if not set
+                    if (!this.chartTypes['cagrChart']) this.chartTypes['cagrChart'] = 'line';
+                    if (!this.chartTypes['bollingerChart']) this.chartTypes['bollingerChart'] = 'line';
+                    if (!this.chartTypes['macdChart']) this.chartTypes['macdChart'] = 'line';
+                    if (!this.chartTypes['rsiChart']) this.chartTypes['rsiChart'] = 'line';
+
+                    // CAGR Chart
+                    const years = Object.keys(s.investment_data);
+                    const cagr = years.map(y => s.investment_data[y].cagr_pct);
+                    const returns = years.map(y => s.investment_data[y].return_pct);
+
+                    const cagrChart = new Chart(document.getElementById("cagrChart"), {
+                        type: this.chartTypes['cagrChart'],
+                        data: {
+                            labels: years,
+                            datasets: [
+                                {
+                                    label: 'CAGR %',
+                                    data: cagr,
+                                    borderColor: '#06b6d4',
+                                    backgroundColor: this.chartTypes['cagrChart'] === 'bar' ? 'rgba(6, 182, 212, 0.7)' : 'transparent',
+                                    borderWidth: 2,
+                                    tension: 0.1,
+                                    yAxisID: 'y'
+                                },
+                                {
+                                    label: 'Annual Return %',
+                                    data: returns,
+                                    borderColor: '#a78bfa',
+                                    backgroundColor: this.chartTypes['cagrChart'] === 'bar' ? 'rgba(167, 139, 250, 0.7)' : 'transparent',
+                                    borderWidth: 2,
+                                    tension: 0.1,
+                                    hidden: true,
+                                    yAxisID: 'y'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    callbacks: {
+                                        label: function (context) {
+                                            return `${context.dataset.label}: ${context.raw}%`;
+                                        }
+                                    }
+                                },
+                                zoom: {
+                                    zoom: {
+                                        wheel: {
+                                            enabled: true,
+                                        },
+                                        pinch: {
+                                            enabled: true
+                                        },
+                                        mode: 'xy',
+                                    },
+                                    pan: {
+                                        enabled: true,
+                                        mode: 'xy',
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    grid: {
+                                        color: 'rgba(55, 65, 81, 0.5)'
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        display: false
+                                    }
+                                }
+                            },
+                            interaction: {
+                                mode: 'nearest',
+                                axis: 'x',
+                                intersect: false
+                            }
+                        }
+                    });
+
+                    // Bollinger Bands Chart
+                    if (s.technical_indicators && s.technical_indicators.BollingerBands) {
+                        const bbData = s.technical_indicators.BollingerBands;
+                        const dates = bbData.map(item => item.date);
+                        const prices = bbData.map(item => item.close);
+                        const upperBands = bbData.map(item => item.UpperBand);
+                        const lowerBands = bbData.map(item => item.LowerBand);
+
+                        const bollingerChart = new Chart(document.getElementById("bollingerChart"), {
+                            type: this.chartTypes['bollingerChart'],
+                            data: {
+                                labels: dates,
+                                datasets: [
+                                    {
+                                        label: 'Price',
+                                        data: prices,
+                                        borderColor: '#06b6d4',
+                                        backgroundColor: this.chartTypes['bollingerChart'] === 'bar' ? 'rgba(6, 182, 212, 0.7)' : 'transparent',
+                                        borderWidth: 2,
+                                        tension: 0.1,
+                                        yAxisID: 'y'
+                                    },
+                                    {
+                                        label: 'Upper Band',
+                                        data: upperBands,
+                                        borderColor: 'rgba(74, 222, 128, 0.8)',
+                                        backgroundColor: 'transparent',
+                                        borderWidth: 1,
+                                        tension: 0.1,
+                                        borderDash: [5, 5],
+                                        pointRadius: 0,
+                                        yAxisID: 'y',
+                                        type: 'line'
+                                    },
+                                    {
+                                        label: 'Lower Band',
+                                        data: lowerBands,
+                                        borderColor: 'rgba(74, 222, 128, 0.8)',
+                                        backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                                        borderWidth: 1,
+                                        tension: 0.1,
+                                        fill: '+1',
+                                        borderDash: [5, 5],
+                                        pointRadius: 0,
+                                        yAxisID: 'y',
+                                        type: 'line'
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    tooltip: {
+                                        mode: 'index',
+                                        intersect: false
+                                    },
+                                    zoom: {
+                                        zoom: {
+                                            wheel: {
+                                                enabled: true,
+                                            },
+                                            pinch: {
+                                                enabled: true
+                                            },
+                                            mode: 'x',
+                                        },
+                                        pan: {
+                                            enabled: true,
+                                            mode: 'x',
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        grid: {
+                                            color: 'rgba(55, 65, 81, 0.5)'
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        }
+                                    }
+                                },
+                                interaction: {
+                                    mode: 'nearest',
+                                    axis: 'x',
+                                    intersect: false
+                                }
+                            }
+                        });
+                    }
+
+                    // MACD Chart
+                    if (s.technical_indicators && s.technical_indicators.MACD) {
+                        const macdData = s.technical_indicators.MACD;
+                        const dates = macdData.map(item => item.date);
+                        const macd = macdData.map(item => item.MACD);
+                        const signal = macdData.map(item => item.Signal);
+                        const histogram = macdData.map(item => item.Histogram);
+
+                        const macdChart = new Chart(document.getElementById("macdChart"), {
+                            type: this.chartTypes['macdChart'],
+                            data: {
+                                labels: dates,
+                                datasets: [
+                                    {
+                                        label: 'MACD',
+                                        data: macd,
+                                        borderColor: '#ec4899',
+                                        backgroundColor: this.chartTypes['macdChart'] === 'bar' ? 'rgba(236, 72, 153, 0.7)' : 'transparent',
+                                        borderWidth: 2,
+                                        tension: 0.1,
+                                        yAxisID: 'y'
+                                    },
+                                    {
+                                        label: 'Signal',
+                                        data: signal,
+                                        borderColor: '#8b5cf6',
+                                        backgroundColor: this.chartTypes['macdChart'] === 'bar' ? 'rgba(139, 92, 246, 0.7)' : 'transparent',
+                                        borderWidth: 2,
+                                        tension: 0.1,
+                                        yAxisID: 'y'
+                                    },
+                                    {
+                                        label: 'Histogram',
+                                        data: histogram,
+                                        borderColor: '#10b981',
+                                        backgroundColor: 'rgba(16, 185, 129, 0.5)',
+                                        borderWidth: 1,
+                                        yAxisID: 'y2',
+                                        type: 'bar'
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    tooltip: {
+                                        mode: 'index',
+                                        intersect: false
+                                    },
+                                    zoom: {
+                                        zoom: {
+                                            wheel: {
+                                                enabled: true,
+                                            },
+                                            pinch: {
+                                                enabled: true
+                                            },
+                                            mode: 'x',
+                                        },
+                                        pan: {
+                                            enabled: true,
+                                            mode: 'x',
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        position: 'left',
+                                        grid: {
+                                            color: 'rgba(55, 65, 81, 0.5)'
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'MACD & Signal'
+                                        }
+                                    },
+                                    y2: {
+                                        position: 'right',
+                                        grid: {
+                                            display: false
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'Histogram'
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        }
+                                    }
+                                },
+                                interaction: {
+                                    mode: 'nearest',
+                                    axis: 'x',
+                                    intersect: false
+                                }
+                            }
+                        });
+                    }
+
+                    // RSI Chart
+                    if (s.technical_indicators && s.technical_indicators.RSI) {
+                        const rsiData = s.technical_indicators.RSI;
+                        const dates = rsiData.map(item => item.date);
+                        const rsi = rsiData.map(item => item.RSI);
+
+                        const rsiChart = new Chart(document.getElementById("rsiChart"), {
+                            type: this.chartTypes['rsiChart'],
+                            data: {
+                                labels: dates,
+                                datasets: [
+                                    {
+                                        label: 'RSI (14)',
+                                        data: rsi,
+                                        borderColor: '#eab308',
+                                        backgroundColor: this.chartTypes['rsiChart'] === 'bar' ? 'rgba(234, 179, 8, 0.7)' : 'transparent',
+                                        borderWidth: 2,
+                                        tension: 0.1
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    annotation: {
+                                        annotations: {
+                                            overboughtLine: {
+                                                type: 'line',
+                                                yMin: 70,
+                                                yMax: 70,
+                                                borderColor: 'rgba(239, 68, 68, 0.7)',
+                                                borderWidth: 1,
+                                                borderDash: [5, 5],
+                                                label: {
+                                                    content: 'Overbought (70)',
+                                                    display: true,
+                                                    position: 'end',
+                                                    backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                                                    font: { size: 11 }
+                                                }
+                                            },
+                                            oversoldLine: {
+                                                type: 'line',
+                                                yMin: 30,
+                                                yMax: 30,
+                                                borderColor: 'rgba(34, 197, 94, 0.7)',
+                                                borderWidth: 1,
+                                                borderDash: [5, 5],
+                                                label: {
+                                                    content: 'Oversold (30)',
+                                                    display: true,
+                                                    position: 'end',
+                                                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                                                    font: { size: 11 }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        mode: 'index',
+                                        intersect: false
+                                    },
+                                    zoom: {
+                                        zoom: {
+                                            wheel: {
+                                                enabled: true,
+                                            },
+                                            pinch: {
+                                                enabled: true
+                                            },
+                                            mode: 'x',
+                                        },
+                                        pan: {
+                                            enabled: true,
+                                            mode: 'x',
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        min: 0,
+                                        max: 100,
+                                        grid: {
+                                            color: 'rgba(55, 65, 81, 0.5)'
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        }
+                                    }
+                                },
+                                interaction: {
+                                    mode: 'nearest',
+                                    axis: 'x',
+                                    intersect: false
+                                }
+                            }
+                        });
+                    }
+
+                    // Projection Chart
+                    this.renderProjectionChart();
+                },
+
+                renderProjectionChart() {
+                    // Destroy existing projection chart if exists
+                    const existingChart = Chart.getChart("projectionChart");
+                    if (existingChart) {
+                        existingChart.destroy();
+                    }
+
+                    const { initial, monthly, years, cagr } = this.simulator;
+                    const monthlyRate = Math.pow(1 + cagr / 100, 1 / 12) - 1;
+
+                    const projectionData = [];
+                    let runningTotal = parseFloat(initial) || 0;
+                    let contributions = parseFloat(initial) || 0;
+                    let projectedMonths = Math.min(years * 12, 600); // Cap at 50 years
+
+                    for (let i = 0; i <= projectedMonths; i++) {
+                        if (i > 0) {
+                            runningTotal = runningTotal * (1 + monthlyRate) + monthly;
+                            contributions += monthly;
+                        }
+
+                        // Only add data points for every 12 months and at the start
+                        if (i % 12 === 0 || i === projectedMonths) {
+                            projectionData.push({
+                                month: i,
+                                value: runningTotal,
+                                contributions: contributions,
+                                growth: runningTotal - contributions
+                            });
+                        }
+                    }
+
+                    // Create year labels
+                    const labels = projectionData.map(d => Math.floor(d.month / 12) + " yrs");
+
+                    // Create chart
+                    const projectionChart = new Chart(document.getElementById("projectionChart"), {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Contributions',
+                                    data: projectionData.map(d => d.contributions),
+                                    backgroundColor: 'rgba(6, 182, 212, 0.7)',
+                                    borderColor: 'rgba(6, 182, 212, 1)',
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: 'Growth',
+                                    data: projectionData.map(d => d.growth),
+                                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                                    borderColor: 'rgba(16, 185, 129, 1)',
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    callbacks: {
+                                        title: function (context) {
+                                            return `Year ${context[0].label}`;
+                                        },
+                                        label: function (context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            label += new Intl.NumberFormat('en-US', {
+                                                style: 'currency',
+                                                currency: 'INR',
+                                                maximumFractionDigits: 0
+                                            }).format(context.raw);
+                                            return label;
+                                        },
+                                        footer: function (tooltipItems) {
+                                            let sum = 0;
+                                            tooltipItems.forEach(function (tooltipItem) {
+                                                sum += tooltipItem.parsed.y;
+                                            });
+                                            return 'Total: ' + new Intl.NumberFormat('en-US', {
+                                                style: 'currency',
+                                                currency: 'INR',
+                                                maximumFractionDigits: 0
+                                            }).format(sum);
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    position: 'top',
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    stacked: true,
+                                    grid: {
+                                        display: false
+                                    }
+                                },
+                                y: {
+                                    stacked: true,
+                                    grid: {
+                                        color: 'rgba(55, 65, 81, 0.5)'
+                                    },
+                                    ticks: {
+                                        callback: function (value) {
+                                            if (value >= 1000000) {
+                                                return (value / 1000000).toFixed(1) + 'M';
+                                            } else if (value >= 1000) {
+                                                return (value / 1000).toFixed(0) + 'K';
+                                            }
+                                            return value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            mounted() {
+                this.$nextTick(() => {
+                    if (this.currentStock) {
+                        this.renderAll();
+                    }
+                });
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
