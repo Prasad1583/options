@@ -1663,7 +1663,7 @@
       "2025-05-09"
     ],
     "datasets": [
-      {
+    {
       "label": "Call 49000",
       "data": [
         -57540.0,
@@ -1884,7 +1884,7 @@
         58530.0,
         30636.0
       ],
-      "borderColor": "#2E8B57",
+      "borderColor": "#32CD32",
       "tension": 0.4
     },
     {
@@ -1916,7 +1916,7 @@
         26370.0,
         10308.0
       ],
-      "borderColor": "#FF7F9F",
+      "borderColor": "#2E8B57",
       "tension": 0.4
     },
     {
@@ -1948,7 +1948,7 @@
         -16842.0,
         -14100.0
       ],
-      "borderColor": "#FF6699",
+      "borderColor": "#FFB6C1",
       "tension": 0.4
     },
     {
@@ -1980,7 +1980,7 @@
         -41376.0,
         -36900.0
       ],
-      "borderColor": "#FF4081",
+      "borderColor": "#FF7F9F",
       "tension": 0.4
     },
     {
@@ -2012,7 +2012,7 @@
         -87876.0,
         -80508.0
       ],
-      "borderColor": "#FF3388",
+      "borderColor": "#FF6699",
       "tension": 0.4
     },
     {
@@ -2044,7 +2044,7 @@
         -102060.0,
         -90090.0
       ],
-      "borderColor": "#FF3366",
+      "borderColor": "#FF4081",
       "tension": 0.4
     },
     {
@@ -2076,7 +2076,7 @@
         -143886.0,
         -125346.0
       ],
-      "borderColor": "#FF1A75",
+      "borderColor": "#FF3388",
       "tension": 0.4
     },
     {
@@ -2108,7 +2108,7 @@
         -176766.0,
         -148698.0
       ],
-      "borderColor": "#FF0066",
+      "borderColor": "#FF3366",
       "tension": 0.4
     },
     {
@@ -2140,7 +2140,7 @@
         -231078.0,
         -190134.0
       ],
-      "borderColor": "#00FFFF",
+      "borderColor": "#FF1A75",
       "tension": 0.4
     },
     {
@@ -2172,10 +2172,9 @@
         -336648.0,
         -282594.0
       ],
-      "borderColor": "#00FFDD",
+      "borderColor": "#FF0066",
       "tension": 0.4
-    }
-    ],
+    }],
     "fiiData": [
       -5902,
       -1539,
