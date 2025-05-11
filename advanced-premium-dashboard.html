@@ -40,20 +40,20 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 24px;
+            padding: 16px;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             padding-bottom: 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
@@ -73,18 +73,26 @@
 
         .time-filter {
             display: flex;
-            gap: 8px;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .time-filter::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         .filter-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .filter-btn:hover {
@@ -98,22 +106,22 @@
         }
 
         .dashboard-title {
-            margin: 24px 0;
-            font-size: 1.5rem;
+            margin: 16px 0;
+            font-size: 1.25rem;
             font-weight: 600;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 24px;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 16px;
             flex-grow: 1;
         }
 
         .chart-box {
             background-color: var(--bg-card);
             border-radius: var(--border-radius);
-            padding: 20px;
+            padding: 16px;
             box-shadow: var(--shadow);
             height: 100%;
             display: flex;
@@ -129,26 +137,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .chart-title {
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
         .chart-actions {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .action-btn {
             background: rgba(255, 255, 255, 0.05);
             border: none;
             color: var(--text-secondary);
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -165,30 +173,70 @@
         canvas {
             flex-grow: 1;
             width: 100% !important;
-            height: 400px !important;
+            height: 300px !important;
         }
 
         footer {
-            margin-top: 32px;
+            margin-top: 24px;
             padding-top: 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             text-align: center;
         }
 
-        @media (max-width: 768px) {
+        /* Tablet and larger */
+        @media (min-width: 768px) {
+            #app {
+                padding: 24px;
+            }
 
-            header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
 
             .time-filter {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 8px;
+                gap: 8px;
+                padding-bottom: 0;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.875rem;
+            }
+
+            .dashboard-title {
+                font-size: 1.5rem;
+                margin: 24px 0;
+            }
+
+            .chart-box {
+                padding: 20px;
+            }
+
+            .chart-title {
+                font-size: 1.1rem;
+            }
+
+            .chart-actions {
+                gap: 8px;
+            }
+
+            .action-btn {
+                width: 28px;
+                height: 28px;
+            }
+
+            canvas {
+                height: 350px !important;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            canvas {
+                height: 400px !important;
             }
         }
 
@@ -215,20 +263,13 @@
 
 <body>
     <div id="app">
-        <!-- <header>
-            <div class="logo">
-                <span class="logo-icon">$</span>
-                <span>Options Premium</span>
-            </div>
-        </header> -->
-
         <div class="grid">
             <div class="chart-box" v-for="(item, index) in chartData.titles" :key="index">
                 <div class="chart-header">
                     <div class="chart-title">{{ item }}</div>
                     <div class="chart-actions">
                         <button class="action-btn" title="Download" @click="downloadChart(index)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -236,7 +277,7 @@
                             </svg>
                         </button>
                         <button class="action-btn" title="Fullscreen" @click="fullscreenChart(index)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path
                                     d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
@@ -270,7 +311,7 @@
                 };
             },
             mounted() {
-                fetch('https://helpful-croquembouche-367780.netlify.app/premiums-data.json')
+                fetch('premiums-data.json')
                     .then(response => response.json())
                     .then(data => {
                         this.chartData = data;
@@ -302,6 +343,8 @@
 
                     datasetsList.forEach((monthData, index) => {
                         const ctx = document.getElementById('chart-' + index)?.getContext('2d');
+                        if (!ctx) return;
+                        
                         new Chart(ctx, {
                             type: 'line',
                             plugins: ['customBackground', ChartZoom],
@@ -310,8 +353,8 @@
                                 datasets: monthData?.datasets.map(dataset => ({
                                     ...dataset,
                                     borderWidth: 2,
-                                    pointRadius: 3,
-                                    pointHoverRadius: 5,
+                                    pointRadius: window.innerWidth < 768 ? 2 : 3,
+                                    pointHoverRadius: window.innerWidth < 768 ? 4 : 5,
                                     pointBackgroundColor: '#FFFFFF',
                                     pointHoverBorderWidth: 2,
                                     pointBorderColor: dataset.borderColor,
@@ -332,11 +375,11 @@
                                         position: 'bottom',
                                         labels: {
                                             color: '#FAFAFA',
-                                            padding: 20,
+                                            padding: window.innerWidth < 768 ? 10 : 20,
                                             usePointStyle: true,
                                             pointStyle: 'circle',
                                             font: {
-                                                size: 11
+                                                size: window.innerWidth < 768 ? 10 : 11
                                             }
                                         }
                                     },
@@ -346,8 +389,14 @@
                                         bodyColor: '#B0BEC5',
                                         borderColor: 'rgba(255, 255, 255, 0.1)',
                                         borderWidth: 1,
-                                        padding: 12,
+                                        padding: window.innerWidth < 768 ? 8 : 12,
                                         usePointStyle: true,
+                                        bodyFont: {
+                                            size: window.innerWidth < 768 ? 10 : 12
+                                        },
+                                        titleFont: {
+                                            size: window.innerWidth < 768 ? 12 : 14
+                                        },
                                         callbacks: {
                                             label: function (context) {
                                                 let label = context.dataset.label || '';
@@ -390,7 +439,10 @@
                                         ticks: {
                                             color: '#B0BEC5',
                                             maxRotation: 45,
-                                            minRotation: 45
+                                            minRotation: 45,
+                                            font: {
+                                                size: window.innerWidth < 768 ? 8 : 10
+                                            }
                                         }
                                     },
                                     x2: { // NEW TOP AXIS
@@ -415,7 +467,7 @@
                                                 return '';
                                             },
                                             font: {
-                                                size: 10
+                                                size: window.innerWidth < 768 ? 8 : 10
                                             }
                                         }
                                     },
@@ -426,6 +478,9 @@
                                         },
                                         ticks: {
                                             color: '#B0BEC5',
+                                            font: {
+                                                size: window.innerWidth < 768 ? 8 : 10
+                                            },
                                             callback: function (value) {
                                                 return '₹' + value.toLocaleString('en-IN');
                                             }
