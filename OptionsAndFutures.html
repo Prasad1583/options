@@ -416,13 +416,13 @@
         /* Responsive adjustments */
         @media (max-width: 1200px) {
             .grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                grid-template-columns: repeat(1, 1fr);
             }
         }
 
         @media (max-width: 992px) {
             .stats-container {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                grid-template-columns: repeat(1, 1fr);
             }
         }
 
@@ -702,19 +702,12 @@
                         // Show loading state
                         this.isLoading = true;
 
-                        // Load all data in parallel
-                        const [fiiDiiMonthly, fiiDii, indices, stocks] = await Promise.all([
-                            this.fetchData('fii-dii-monthly-data.json'),
-                            this.fetchData('fii-dii-data.json'),
-                            this.fetchData('nifty-indices.json'),
-                            this.fetchData('nifty-weightage-stocks.json')
-                        ]);
+                        const allData = await this.fetchData('combined-market-data.json');
 
-                        // Assign the data
-                        this.FiiDiiMonthlyChartData = fiiDiiMonthly;
-                        this.FiiDiiChartData = fiiDii;
-                        this.indexChartData = indices;
-                        this.stocksChartData = stocks;
+                        this.FiiDiiChartData = allData.fiiDiiDaily;
+                        this.FiiDiiMonthlyChartData = allData.fiiDiiMonthly;
+                        this.indexChartData = allData.niftyIndices;
+                        this.stocksChartData = allData.niftyStocks;
 
                         // Draw charts after data is loaded
                         this.$nextTick(() => {
