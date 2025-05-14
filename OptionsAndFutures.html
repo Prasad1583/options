@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options Premium Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0A0E23;
+            --bg-card: #131B3A;
+            --primary: #00E5FF;
+            --primary-light: rgba(0, 229, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0BEC5;
+            --success: #00E676;
+            --danger: #FF4081;
+            --warning: #FFC107;
+            --border-radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            height: 100%;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary) 0%, #0066FF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+        }
+
+        .logo-icon i {
+            font-size: 18px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .time-filter {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-light);
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 229, 255, 0.2);
+        }
+
+        .dashboard-title {
+            margin: 16px 0 24px;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary) 0%, #0066FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .grid-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .chart-box {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, #0066FF 100%);
+        }
+
+        .chart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 229, 255, 0.2);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .chart-title {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-title i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: var(--text-secondary);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        canvas {
+            flex-grow: 1;
+            width: 100% !important;
+            height: 300px !important;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-change {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .positive {
+            color: var(--success);
+        }
+
+        .negative {
+            color: var(--danger);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        /* Loading animation */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.05),
+                    transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .stat-card {
+                min-height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+
+        /* Better chart sizing for desktop */
+        @media (min-width: 992px) {
+            .chart-box {
+                min-height: 400px;
+            }
+
+            canvas {
+                height: 350px !important;
+            }
+        }
+
+        /* Improved number formatting */
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 8px 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* Better grid layout for desktop */
+        @media (min-width: 1400px) {
+            .grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        /* Fix for small value display */
+        .stat-change {
+            font-size: 0.9rem;
+        }
+
+        /* Ensure proper alignment of stat cards */
+        .stat-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        /* Add some breathing room between sections */
+        .grid-section {
+            margin-bottom: 32px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .stats-container {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .time-filter {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                scrollbar-width: none;
+            }
+
+            .time-filter::-webkit-scrollbar {
+                display: none;
+            }
+
+            .dashboard-title {
+                font-size: 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #app {
+                padding: 12px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-box {
+                padding: 16px;
+            }
+
+            canvas {
+                height: 250px !important;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Tooltip styles */
+        .chart-tooltip {
+            position: absolute;
+            padding: 8px 12px;
+            background: rgba(19, 27, 58, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            pointer-events: none;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        .tooltip-value {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 229, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="grid-container">
+            <!-- Monthly FII/DII Section -->
+            <div class="grid-section fade-in" style="animation-delay: 0.1s">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Monthly Trends</h2>
+                <div class="grid">
+                    <div class="chart-box" v-for="(item, index) in FiiDiiMonthlyChartData.titles"
+                        :key="'monthly-' + index">
+                        <div class="chart-header">
+                            <div class="chart-title"><i class="fas fa-chart-area"></i> {{ item }}</div>
+                            <div class="chart-actions">
+                                <button class="action-btn" title="Download"
+                                    @click="downloadChart('fiidiimonthly', index)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Fullscreen"
+                                    @click="fullscreenChart('fiidiimonthly', index)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas :id="'fiidiimonthly-chart-' + index"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily FII/DII Section -->
+            <div class="grid-section fade-in" style="animation-delay: 0.2s">
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> Daily Activity</h2>
+                <div class="grid">
+                    <div class="chart-box" v-for="(item, index) in FiiDiiChartData.titles" :key="'daily-' + index">
+                        <div class="chart-header">
+                            <div class="chart-title"><i class="fas fa-chart-bar"></i> {{ item }}</div>
+                            <div class="chart-actions">
+                                <button class="action-btn" title="Download" @click="downloadChart('fiidii', index)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Fullscreen" @click="fullscreenChart('fiidii', index)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas :id="'fiidii-chart-' + index"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Index Performance Section -->
+            <div class="grid-section fade-in" style="animation-delay: 0.3s">
+                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Index Performance</h2>
+                <div class="grid">
+                    <div class="chart-box" v-for="(item, index) in indexChartData.titles" :key="'index-' + index">
+                        <div class="chart-header">
+                            <div class="chart-title"><i class="fas fa-chart-pie"></i> {{ item }}</div>
+                            <div class="chart-actions">
+                                <button class="action-btn" title="Download" @click="downloadChart('index', index)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Fullscreen" @click="fullscreenChart('index', index)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas :id="'index-chart-' + index"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stocks Section -->
+            <div class="grid-section fade-in" style="animation-delay: 0.4s">
+                <h2 class="section-title"><i class="fas fa-coins"></i> Top Stocks</h2>
+                <div class="grid">
+                    <div class="chart-box" v-for="(item, index) in stocksChartData.titles" :key="'stocks-' + index">
+                        <div class="chart-header">
+                            <div class="chart-title"><i class="fas fa-chart-line"></i> {{ item }}</div>
+                            <div class="chart-actions">
+                                <button class="action-btn" title="Download" @click="downloadChart('stocks', index)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Fullscreen" @click="fullscreenChart('stocks', index)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas :id="'stocks-chart-' + index"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Data updated: {{ lastUpdated }} | © {{ new Date().getFullYear() }} FII/DII Analytics Dashboard</p>
+        </footer>
+
+        <!-- Custom tooltip element -->
+        <div class="chart-tooltip" id="chart-tooltip">
+            <div class="tooltip-title" id="tooltip-title"></div>
+            <div class="tooltip-value" id="tooltip-value"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-crosshair@1.2.0"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    chartData: {},
+                    FiiDiiChartData: {},
+                    FiiDiiMonthlyChartData: {},
+                    indexChartData: {},
+                    stocksChartData: {},
+                    lastUpdated: new Date().toLocaleString(),
+                    charts: {},
+                    tooltipTimeout: null
+                };
+            },
+            mounted() {
+                // Simulate loading data
+                this.loadData();
+
+                // Initialize tooltip
+                this.initTooltip();
+            },
+            methods: {
+                async loadData() {
+                    try {
+                        // Show loading state
+                        this.isLoading = true;
+
+                        // Load all data in parallel
+                        const [fiiDiiMonthly, fiiDii, indices, stocks] = await Promise.all([
+                            this.fetchData('fii-dii-monthly-data.json'),
+                            this.fetchData('fii-dii-data.json'),
+                            this.fetchData('nifty-indices.json'),
+                            this.fetchData('nifty-weightage-stocks.json')
+                        ]);
+
+                        // Assign the data
+                        this.FiiDiiMonthlyChartData = fiiDiiMonthly;
+                        this.FiiDiiChartData = fiiDii;
+                        this.indexChartData = indices;
+                        this.stocksChartData = stocks;
+
+                        // Draw charts after data is loaded
+                        this.$nextTick(() => {
+                            this.drawFiiDiiMonthlyCharts();
+                            this.drawFiiDiiCharts();
+                            this.drawIndexCharts();
+                            this.drawStocksCharts();
+                        });
+
+                        this.lastUpdated = new Date().toLocaleString();
+                    } catch (error) {
+                        console.error('Error loading data:', error);
+                        // You could show an error message to the user here
+                    } finally {
+                        this.isLoading = false;
+                    }
+                },
+                async fetchData(url) {
+                    try {
+                        const response = await fetch(url);
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        return await response.json();
+                    } catch (error) {
+                        console.error(`Error fetching ${url}:`, error);
+                        // Return mock data if the fetch fails
+                        return this.generateMockData();
+                    }
+                },
+                refreshData() {
+                    // Reload data
+                    this.loadData();
+                },
+                formatCurrency(value) {
+                    if (typeof value === 'string') return value;
+                    return new Intl.NumberFormat('en-IN', {
+                        style: 'currency',
+                        currency: 'INR',
+                        maximumFractionDigits: 0
+                    }).format(value).replace('₹', '₹ ');
+                },
+                initTooltip() {
+                    const tooltip = document.getElementById('chart-tooltip');
+
+                    // Add event listeners to all charts for mouse movement
+                    document.addEventListener('mousemove', (e) => {
+                        tooltip.style.left = (e.pageX + 10) + 'px';
+                        tooltip.style.top = (e.pageY + 10) + 'px';
+                    });
+                },
+                showTooltip(title, value) {
+                    const tooltip = document.getElementById('chart-tooltip');
+                    const tooltipTitle = document.getElementById('tooltip-title');
+                    const tooltipValue = document.getElementById('tooltip-value');
+
+                    tooltipTitle.textContent = title;
+                    tooltipValue.textContent = value;
+                    tooltip.style.opacity = '1';
+
+                    // Clear any existing timeout
+                    if (this.tooltipTimeout) {
+                        clearTimeout(this.tooltipTimeout);
+                    }
+                },
+                hideTooltip() {
+                    this.tooltipTimeout = setTimeout(() => {
+                        const tooltip = document.getElementById('chart-tooltip');
+                        tooltip.style.opacity = '0';
+                    }, 200);
+                },
+                drawFiiDiiMonthlyCharts() {
+                    if (!this.FiiDiiMonthlyChartData.titles || this.FiiDiiMonthlyChartData.titles.length === 0) return;
+
+                    const datasetsList = [this.FiiDiiMonthlyChartData.Data];
+
+                    datasetsList.forEach((monthData, index) => {
+                        const ctx = document.getElementById('fiidiimonthly-chart-' + index)?.getContext('2d');
+                        if (!ctx) return;
+
+                        this.charts[`fiidiimonthly-${index}`] = new Chart(ctx, this.getChartConfig(
+                            monthData.labels,
+                            monthData.datasets,
+                            'Monthly FII/DII Activity',
+                            monthData.fiiData
+                        ));
+                    });
+                },
+                drawFiiDiiCharts() {
+                    if (!this.FiiDiiChartData.titles || this.FiiDiiChartData.titles.length === 0) return;
+
+                    const datasetsList = [this.FiiDiiChartData.Data];
+
+                    datasetsList.forEach((dailyData, index) => {
+                        const ctx = document.getElementById('fiidii-chart-' + index)?.getContext('2d');
+                        if (!ctx) return;
+
+                        this.charts[`fiidii-${index}`] = new Chart(ctx, this.getChartConfig(
+                            dailyData.labels,
+                            dailyData.datasets,
+                            'Daily FII/DII Activity',
+                            dailyData.fiiData
+                        ));
+                    });
+                },
+                drawIndexCharts() {
+                    if (!this.indexChartData.titles || this.indexChartData.titles.length === 0) return;
+
+                    const datasetsList = [this.indexChartData.Data];
+
+                    datasetsList.forEach((indexData, index) => {
+                        const ctx = document.getElementById('index-chart-' + index)?.getContext('2d');
+                        if (!ctx) return;
+
+                        this.charts[`index-${index}`] = new Chart(ctx, this.getChartConfig(
+                            indexData.labels,
+                            indexData.datasets,
+                            'Index Performance',
+                            indexData.fiiData,
+                            true // Show price formatting
+                        ));
+                    });
+                },
+                drawStocksCharts() {
+                    if (!this.stocksChartData.titles || this.stocksChartData.titles.length === 0) return;
+
+                    const datasetsList = [this.stocksChartData.stocksData];
+
+                    datasetsList.forEach((stockData, index) => {
+                        const ctx = document.getElementById('stocks-chart-' + index)?.getContext('2d');
+                        if (!ctx) return;
+
+                        this.charts[`stocks-${index}`] = new Chart(ctx, this.getChartConfig(
+                            stockData?.labels,
+                            stockData?.datasets,
+                            'Stock Performance',
+                            stockData?.fiiData,
+                            true // Show price formatting
+                        ));
+                    });
+                },
+                getChartConfig(labels, datasets, title, fiiData, isPrice = false) {
+                    return {
+                        type: 'line',
+                        plugins: [this.getCustomBackgroundPlugin(), ChartZoom, this.getCrosshairPlugin()],
+                        data: {
+                            labels: labels,
+                            datasets: datasets?.map(dataset => ({
+                                ...dataset,
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                pointHoverRadius: 5,
+                                pointBackgroundColor: '#FFFFFF',
+                                pointHoverBorderWidth: 2,
+                                pointBorderColor: dataset.borderColor,
+                                pointHoverBackgroundColor: dataset.borderColor,
+                                backgroundColor: this.addAlpha(dataset.borderColor, 0.1),
+                                fill: true,
+                                borderJoinStyle: 'round',
+                                borderCapStyle: 'round'
+                            }))
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            interaction: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        color: '#FAFAFA',
+                                        padding: 20,
+                                        usePointStyle: true,
+                                        pointStyle: 'circle',
+                                        font: {
+                                            size: 11
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    enabled: false, // We use custom tooltip
+                                    external: (context) => {
+                                        const { chart, tooltip } = context;
+                                        const tooltipEl = document.getElementById('chart-tooltip');
+
+                                        if (tooltip.opacity === 0) {
+                                            tooltipEl.style.opacity = '0';
+                                            return;
+                                        }
+
+                                        // Set tooltip content
+                                        if (tooltip.dataPoints) {
+                                            const dataPoint = tooltip.dataPoints[0];
+                                            const label = dataPoint.dataset.label || '';
+                                            const value = isPrice
+                                                ? '₹' + dataPoint.parsed.y.toLocaleString('en-IN')
+                                                : dataPoint.parsed.y.toLocaleString('en-IN');
+
+                                            this.showTooltip(label, value);
+                                        }
+                                    }
+                                },
+                                zoom: {
+                                    zoom: {
+                                        wheel: {
+                                            enabled: true,
+                                        },
+                                        pinch: {
+                                            enabled: true
+                                        },
+                                        mode: 'xy',
+                                    },
+                                    pan: {
+                                        enabled: true,
+                                        mode: 'xy',
+                                    },
+                                    limits: {
+                                        x: { min: 'original', max: 'original' },
+                                        y: { min: 'original', max: 'original' }
+                                    }
+                                },
+                                crosshair: {
+                                    line: {
+                                        color: 'rgba(255, 255, 255, 0.5)',
+                                        width: 1,
+                                        dashPattern: [5, 5]
+                                    },
+                                    sync: {
+                                        enabled: false
+                                    },
+                                    zoom: {
+                                        enabled: false
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.05)',
+                                        borderColor: 'rgba(255, 255, 255, 0.05)'
+                                    },
+                                    ticks: {
+                                        color: '#B0BEC5',
+                                        maxRotation: 45,
+                                        minRotation: 45,
+                                        font: {
+                                            size: 11
+                                        }
+                                    }
+                                },
+                                x2: {
+                                    position: 'top',
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        color: (context) => {
+                                            const index = context.index;
+                                            const fiiValue = fiiData?.[index];
+                                            if (fiiValue !== undefined) {
+                                                return fiiValue >= 0 ? '#00E676' : '#FF4081';
+                                            }
+                                            return '#B0BEC5';
+                                        },
+                                        callback: (value, index) => {
+                                            const fiiValue = fiiData?.[index];
+                                            if (fiiValue !== undefined) {
+                                                return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                            }
+                                            return '';
+                                        },
+                                        font: {
+                                            size: 10
+                                        }
+                                    }
+                                },
+                                y: {
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.05)',
+                                        borderColor: 'rgba(255, 255, 255, 0.05)'
+                                    },
+                                    ticks: {
+                                        color: '#B0BEC5',
+                                        callback: (value) => {
+                                            if (isPrice) {
+                                                return value.toLocaleString('en-IN');
+                                            }
+                                            return value.toLocaleString('en-IN');
+                                        }
+                                    }
+                                }
+                            },
+                            animation: {
+                                duration: 1000,
+                                easing: 'easeOutQuart'
+                            },
+                            elements: {
+                                line: {
+                                    tension: 0.4
+                                }
+                            },
+                            onHover: (event, chartElements) => {
+                                if (chartElements.length > 0) {
+                                    this.showTooltip('Hover', 'Value: ' + chartElements[0].element.$context.raw);
+                                } else {
+                                    this.hideTooltip();
+                                }
+                            }
+                        }
+                    };
+                },
+                getCustomBackgroundPlugin() {
+                    return {
+                        id: 'customBackground',
+                        beforeDraw: (chart) => {
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.globalCompositeOperation = 'destination-over';
+                            ctx.fillStyle = '#131B3A';
+                            ctx.fillRect(0, 0, chart.width, chart.height);
+                            ctx.restore();
+                        }
+                    };
+                },
+                getCrosshairPlugin() {
+                    return {
+                        id: 'crosshair',
+                        afterDraw: (chart) => {
+                            if (!chart.tooltip?._active || chart.tooltip._active.length === 0) return;
+
+                            const ctx = chart.ctx;
+                            const activePoint = chart.tooltip._active[0];
+                            const x = activePoint.element.x;
+                            const topY = chart.scales.y.top;
+                            const bottomY = chart.scales.y.bottom;
+
+                            // Draw vertical line
+                            ctx.save();
+                            ctx.beginPath();
+                            ctx.moveTo(x, topY);
+                            ctx.lineTo(x, bottomY);
+                            ctx.lineWidth = 1;
+                            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                            ctx.setLineDash([5, 5]);
+                            ctx.stroke();
+                            ctx.restore();
+
+                            // Draw circle at data point
+                            ctx.save();
+                            ctx.beginPath();
+                            ctx.arc(x, activePoint.element.y, 5, 0, Math.PI * 2);
+                            ctx.fillStyle = activePoint.element.options.backgroundColor;
+                            ctx.fill();
+                            ctx.lineWidth = 2;
+                            ctx.strokeStyle = '#FFFFFF';
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    };
+                },
+                addAlpha(color, opacity) {
+                    // Helper function to add opacity to hex colors
+                    const _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
+                    return color + _opacity.toString(16).toUpperCase();
+                },
+                downloadChart(type, index) {
+                    const canvas = document.getElementById(`${type}-chart-${index}`);
+                    if (!canvas) return;
+
+                    const a = document.createElement('a');
+                    a.href = canvas.toDataURL('image/png');
+                    a.download = `${type}-chart-${index}.png`;
+                    a.click();
+                },
+                fullscreenChart(type, index) {
+                    const canvas = document.getElementById(`${type}-chart-${index}`);
+                    if (!canvas) return;
+
+                    if (canvas.requestFullscreen) {
+                        canvas.requestFullscreen();
+                    } else if (canvas.webkitRequestFullscreen) {
+                        canvas.webkitRequestFullscreen();
+                    } else if (canvas.msRequestFullscreen) {
+                        canvas.msRequestFullscreen();
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
