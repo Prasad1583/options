@@ -867,8 +867,8 @@
                             datasets: datasets?.map(dataset => ({
                                 ...dataset,
                                 borderWidth: 2,
-                                pointRadius: 0,
-                                pointHoverRadius: 5,
+                                pointRadius: 3,
+                                pointHoverRadius: 6,
                                 pointBackgroundColor: '#FFFFFF',
                                 pointHoverBorderWidth: 2,
                                 pointBorderColor: dataset.borderColor,
@@ -900,27 +900,7 @@
                                     }
                                 },
                                 tooltip: {
-                                    enabled: false, // We use custom tooltip
-                                    external: (context) => {
-                                        const { chart, tooltip } = context;
-                                        const tooltipEl = document.getElementById('chart-tooltip');
-
-                                        if (tooltip.opacity === 0) {
-                                            tooltipEl.style.opacity = '0';
-                                            return;
-                                        }
-
-                                        // Set tooltip content
-                                        if (tooltip.dataPoints) {
-                                            const dataPoint = tooltip.dataPoints[0];
-                                            const label = dataPoint.dataset.label || '';
-                                            const value = isPrice
-                                                ? '₹' + dataPoint.parsed.y.toLocaleString('en-IN')
-                                                : dataPoint.parsed.y.toLocaleString('en-IN');
-
-                                            this.showTooltip(label, value);
-                                        }
-                                    }
+                                    enabled: true
                                 },
                                 zoom: {
                                     zoom: {
@@ -1021,13 +1001,6 @@
                                     tension: 0.4
                                 }
                             },
-                            onHover: (event, chartElements) => {
-                                if (chartElements.length > 0) {
-                                    this.showTooltip('Hover', 'Value: ' + chartElements[0].element.$context.raw);
-                                } else {
-                                    this.hideTooltip();
-                                }
-                            }
                         }
                     };
                 },
