@@ -568,30 +568,6 @@
 <body>
     <div id="app">
         <div class="grid-container">
-            <!-- Monthly FII/DII Section -->
-            <div class="grid-section fade-in" style="animation-delay: 0.1s">
-                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Monthly Trends</h2>
-                <div class="grid">
-                    <div class="chart-box" v-for="(item, index) in FiiDiiMonthlyChartData.titles"
-                        :key="'monthly-' + index">
-                        <div class="chart-header">
-                            <div class="chart-title"><i class="fas fa-chart-area"></i> {{ item }}</div>
-                            <div class="chart-actions">
-                                <button class="action-btn" title="Download"
-                                    @click="downloadChart('fiidiimonthly', index)">
-                                    <i class="fas fa-download"></i>
-                                </button>
-                                <button class="action-btn" title="Fullscreen"
-                                    @click="fullscreenChart('fiidiimonthly', index)">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <canvas :id="'fiidiimonthly-chart-' + index"></canvas>
-                    </div>
-                </div>
-            </div>
-
             <!-- Daily FII/DII Section -->
             <div class="grid-section fade-in" style="animation-delay: 0.2s">
                 <h2 class="section-title"><i class="fas fa-chart-line"></i> Daily Activity</h2>
@@ -651,6 +627,30 @@
                             </div>
                         </div>
                         <canvas :id="'stocks-chart-' + index"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly FII/DII Section -->
+            <div class="grid-section fade-in" style="animation-delay: 0.1s">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Monthly Trends</h2>
+                <div class="grid">
+                    <div class="chart-box" v-for="(item, index) in FiiDiiMonthlyChartData.titles"
+                        :key="'monthly-' + index">
+                        <div class="chart-header">
+                            <div class="chart-title"><i class="fas fa-chart-area"></i> {{ item }}</div>
+                            <div class="chart-actions">
+                                <button class="action-btn" title="Download"
+                                    @click="downloadChart('fiidiimonthly', index)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Fullscreen"
+                                    @click="fullscreenChart('fiidiimonthly', index)">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas :id="'fiidiimonthly-chart-' + index"></canvas>
                     </div>
                 </div>
             </div>
