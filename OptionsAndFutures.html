@@ -794,7 +794,8 @@
                             monthData.labels,
                             monthData.datasets,
                             'Monthly FII/DII Activity',
-                            monthData.fiiData
+                            monthData.fiiData,
+                            monthData.diiData,
                         ));
                     });
                 },
@@ -811,11 +812,12 @@
                             dailyData.labels,
                             dailyData.datasets,
                             'Daily FII/DII Activity',
-                            dailyData.fiiData
+                            dailyData.fiiData,
+                            dailyData.diiData,
                         ));
                     });
                 },
-                drawIndexCharts() {
+                drawIndexCharts() { 
                     if (!this.indexChartData.titles || this.indexChartData.titles.length === 0) return;
 
                     const datasetsList = [this.indexChartData.Data];
@@ -829,6 +831,7 @@
                             indexData.datasets,
                             'Index Performance',
                             indexData.fiiData,
+                            indexData.diiData,
                             true // Show price formatting
                         ));
                     });
@@ -847,11 +850,12 @@
                             stockData?.datasets,
                             'Stock Performance',
                             stockData?.fiiData,
+                            stockData?.diiData,
                             true // Show price formatting
                         ));
                     });
                 },
-                getChartConfig(labels, datasets, title, fiiData, isPrice = false) {
+                getChartConfig(labels, datasets, title, fiiData,diiData, isPrice = false) {
                     return {
                         type: 'line',
                         plugins: [this.getCustomBackgroundPlugin(), ChartZoom, this.getCrosshairPlugin()],
@@ -959,6 +963,32 @@
                                         },
                                         callback: (value, index) => {
                                             const fiiValue = fiiData?.[index];
+                                            if (fiiValue !== undefined) {
+                                                return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                            }
+                                            return '';
+                                        },
+                                        font: {
+                                            size: 10
+                                        }
+                                    }
+                                },
+                                x3: {
+                                    position: 'bottom',
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        color: (context) => {
+                                            const index = context.index;
+                                            const fiiValue = diiData?.[index];
+                                            if (fiiValue !== undefined) {
+                                                return fiiValue >= 0 ? '#00E676' : '#FF4081';
+                                            }
+                                            return '#B0BEC5';
+                                        },
+                                        callback: (value, index) => {
+                                            const fiiValue = diiData?.[index];
                                             if (fiiValue !== undefined) {
                                                 return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
                                             }
