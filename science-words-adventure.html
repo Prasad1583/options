@@ -281,25 +281,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="game-area">
-                <div class="game-title">Action Word Game</div>
-                <div class="action-image" :class="{'correct': isCorrect, 'incorrect': isIncorrect}">
-                    <span v-if="currentVerb" class="emoji">💃</span>
-                    <span v-else class="emoji">🤔</span>
-                </div>
-                <div id="currentVerb">{{ currentVerb || 'Click "Start Game" to begin!' }}</div>
-                <button @click="startGame" :disabled="gameStarted && !gameEnded">
-                    {{ gameStarted ? (gameEnded ? 'Play Again' : 'Game in Progress') : 'Start Game' }}
-                </button>
-                <button @click="showAnswer" :disabled="!gameStarted || gameEnded">Show Answer</button>
-                <div class="score-display">
-                    Score: {{ score }} / {{ totalQuestions }}
-                    <span v-if="gameEnded">
-                        - {{ getResultMessage() }} <span class="emoji">{{ getResultEmoji() }}</span>
-                    </span>
-                </div>
-            </div>
         </div>
 
         <footer>
