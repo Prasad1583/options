@@ -1,61 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Root Thinking Framework</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Thinking Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background-color: white !important;
+            }
+
+            .print-container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            textarea {
+                border: none !important;
+                resize: none !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans">
-  <div class="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-2xl mt-10">
-    <h1 class="text-4xl font-bold text-indigo-600 mb-4">🌳 Root Thinking Framework</h1>
-    <p class="text-gray-600 mb-8">Use this template to explore any concept from its roots — scientifically, logically, and philosophically.</p>
 
-    <div class="space-y-10">
+<body class="bg-gray-100 font-sans min-h-screen">
+    <div class="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-xl mt-10">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+            <div>
+                <h1 class="text-4xl font-bold text-violet-700 mb-1 flex items-center">
+                    <span class="mr-2">🌳</span> Root Thinking Framework
+                </h1>
+                <p class="text-gray-600">Explore any concept from its roots — scientifically, logically, and
+                    philosophically.</p>
+            </div>
+            
+        </div>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">1️⃣ Purpose & Origin</h2>
-        <p class="text-gray-500 mb-2">Why does this exist? What problem does it solve?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+        <div class="mb-4">
+            <div class="flex flex-wrap gap-2 mt-4 sm:mt-0 no-print">
+                <button class="bg-violet-700 hover:bg-violet-800 text-white px-4 py-2 rounded text-sm font-semibold">💾
+                    Save Progress</button>
+                <button class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded text-sm font-semibold">📂
+                    Load</button>
+                <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-semibold">🖨️
+                    Export PDF</button>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-semibold">🗑️ Clear
+                    All</button>
+            </div>
+             <hr class="my-6">
+            <label class="block text-sm font-medium text-gray-700 mb-1">What concept are you exploring?</label>
+            <input type="text" placeholder="Enter your topic or concept..." class="w-full p-3 border rounded-md" />
+        </div>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">🔬 Fundamental Building Blocks</h2>
-        <p class="text-gray-500 mb-2">What is it made of at the smallest level?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+        <hr class="my-6">
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">⚙️ Internal Function & Mechanisms</h2>
-        <p class="text-gray-500 mb-2">How does it work? What are its processes or flows?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+        <div class="progress-bar bg-gray-200 rounded-full h-2 mb-6 overflow-hidden no-print">
+            <div id="progressBar" class="bg-indigo-600 h-full" style="width: 0%"></div>
+        </div>
+        </header>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">🌐 Ecosystem & Relationships</h2>
-        <p class="text-gray-500 mb-2">How is it connected to other systems?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+        <div class="space-y-6" id="sectionContainer">
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="100">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">1️⃣</span> Purpose & Origin
+                </h2>
+                <p class="text-gray-500 mb-3">Why does this exist? What problem does it solve?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">⏳ Evolution & Adaptation</h2>
-        <p class="text-gray-500 mb-2">How has it changed over time?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="200">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">🔬</span> Fundamental Building Blocks
+                </h2>
+                <p class="text-gray-500 mb-3">What is it made of at the smallest level?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">🌟 Meaning & Impact</h2>
-        <p class="text-gray-500 mb-2">Why does it matter? What value does it provide?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your insights here..."></textarea>
-      </section>
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="300">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">⚙️</span> Internal Function & Mechanisms
+                </h2>
+                <p class="text-gray-500 mb-3">How does it work? What are its processes or flows?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
 
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-800">🔄 Insights & Reflections</h2>
-        <p class="text-gray-500 mb-2">What surprised you? How has your thinking evolved?</p>
-        <textarea class="w-full border rounded-md p-3" rows="4" placeholder="Type your thoughts here..."></textarea>
-      </section>
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="400">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">🌐</span> Ecosystem & Relationships
+                </h2>
+                <p class="text-gray-500 mb-3">How is it connected to other systems?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
 
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="500">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">⏳</span> Evolution & Adaptation
+                </h2>
+                <p class="text-gray-500 mb-3">How has it changed over time?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
+
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="600">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">🌟</span> Meaning & Impact
+                </h2>
+                <p class="text-gray-500 mb-3">Why does it matter? What value does it provide?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your insights here..."></textarea>
+            </section>
+
+            <section class="section-card bg-white p-6 rounded-xl border border-gray-200 fade-in" data-delay="700">
+                <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                    <span class="mr-2">🔄</span> Insights & Reflections
+                </h2>
+                <p class="text-gray-500 mb-3">What surprised you? How has your thinking evolved?</p>
+                <textarea class="framework-input w-full border rounded-md p-3" rows="4"
+                    placeholder="Type your thoughts here..."></textarea>
+            </section>
+        </div>
+
+        <footer class="mt-8 text-center text-gray-500 text-sm fade-in no-print">
+            <p>Root Thinking Framework • Created with 💭</p>
+        </footer>
     </div>
-  </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Apply staggered fade-in animation
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                const delay = el.dataset.delay ? parseInt(el.dataset.delay) : index * 100;
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, delay);
+            });
+
+            // Auto-expand textareas as content grows
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                textarea.addEventListener('input', function () {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+            });
+
+            // Save to local storage when typing
+            const debounce = (func, delay) => {
+                let timeout;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), delay);
+                };
+            };
+
+            // Update progress bar
+            function updateProgressBar() {
+                const inputs = document.querySelectorAll('.framework-input');
+                let filledCount = 0;
+
+                inputs.forEach(input => {
+                    if (input.value.trim().length > 0) {
+                        filledCount++;
+                    }
+                });
+
+                const progressPercent = (filledCount / inputs.length) * 100;
+                document.getElementById('progressBar').style.width = progressPercent + '%';
+            }
+
+            // Auto-save functionality
+            const autoSave = debounce(() => {
+                saveFramework();
+                updateProgressBar();
+            }, 1000);
+
+            document.querySelectorAll('.framework-input, #topicInput').forEach(el => {
+                el.addEventListener('input', autoSave);
+            });
+
+            // Save framework to local storage
+            function saveFramework() {
+                const frameworkData = {
+                    topic: document.getElementById('topicInput').value,
+                    sections: []
+                };
+
+                document.querySelectorAll('.framework-input').forEach(input => {
+                    frameworkData.sections.push(input.value);
+                });
+
+                localStorage.setItem('rootThinkingFramework', JSON.stringify(frameworkData));
+
+                // Show save indicator
+                const saveBtn = document.getElementById('saveBtn');
+                const originalText = saveBtn.innerHTML;
+                saveBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Saved!';
+
+                setTimeout(() => {
+                    saveBtn.innerHTML = originalText;
+                }, 2000);
+            }
+
+            // Load framework from local storage
+            function loadFramework() {
+                const savedData = localStorage.getItem('rootThinkingFramework');
+
+                if (savedData) {
+                    const frameworkData = JSON.parse(savedData);
+
+                    document.getElementById('topicInput').value = frameworkData.topic || '';
+
+                    const textareas = document.querySelectorAll('.framework-input');
+                    frameworkData.sections.forEach((text, index) => {
+                        if (index < textareas.length) {
+                            textareas[index].value = text;
+                            // Adjust height
+                            textareas[index].style.height = 'auto';
+                            textareas[index].style.height = (textareas[index].scrollHeight) + 'px';
+                        }
+                    });
+
+                    updateProgressBar();
+                }
+            }
+
+            // Clear all fields
+            function clearFramework() {
+                if (confirm('Are you sure you want to clear all your entries?')) {
+                    document.getElementById('topicInput').value = '';
+                    document.querySelectorAll('.framework-input').forEach(input => {
+                        input.value = '';
+                        input.style.height = 'auto';
+                    });
+                    localStorage.removeItem('rootThinkingFramework');
+                    updateProgressBar();
+                }
+            }
+
+            // Export to PDF
+            function exportToPDF() {
+                const topic = document.getElementById('topicInput').value.trim() || 'Root Thinking Framework';
+
+                // Clone the element to modify it for printing
+                const element = document.querySelector('.print-container').cloneNode(true);
+
+                // Add topic as heading
+                const topicHeading = document.createElement('h2');
+                topicHeading.textContent = 'Topic: ' + topic;
+                topicHeading.className = 'text-2xl font-bold mb-4 text-gray-700';
+                element.querySelector('header').appendChild(topicHeading);
+
+                // Remove non-print elements
+                element.querySelectorAll('.no-print').forEach(el => el.remove());
+
+                // Convert textareas to divs for better PDF rendering
+                element.querySelectorAll('textarea').forEach(textarea => {
+                    const div = document.createElement('div');
+                    div.className = 'border rounded-md p-3 min-h-20 whitespace-pre-wrap';
+                    div.textContent = textarea.value || 'No content provided';
+                    textarea.parentNode.replaceChild(div, textarea);
+                });
+
+                const opt = {
+                    margin: 10,
+                    filename: topic.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_framework.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save();
+            }
+
+            // Button event listeners
+            document.getElementById('saveBtn').addEventListener('click', saveFramework);
+            document.getElementById('loadBtn').addEventListener('click', loadFramework);
+            document.getElementById('clearBtn').addEventListener('click', clearFramework);
+            document.getElementById('printBtn').addEventListener('click', exportToPDF);
+
+            // Load saved data on page load
+            loadFramework();
+        });
+    </script>
 </body>
+
 </html>
