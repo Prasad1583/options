@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Hierarchy Visualizer</title>
+  <style>
+    :root {
+      --primary: #66fcf1;
+      --secondary: #45a29e;
+      --dark: #0b0c10;
+      --medium: #1f2833;
+      --light: #c5c6c7;
+      --highlight: #00f2ff;
+    }
+    
+    body {
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--highlight);
+      margin: 20px 0;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: var(--light);
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+    }
+    
+    .scale-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .connector {
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), transparent);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    
+    .node {
+      background: var(--medium);
+      border-left: 5px solid var(--primary);
+      margin: 15px 0;
+      padding: 15px 25px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      opacity: 0.9;
+    }
+    
+    .node:hover {
+      background: var(--secondary);
+      transform: scale(1.03);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      opacity: 1;
+    }
+    
+    .level {
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .description {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .examples {
+      font-style: italic;
+      color: var(--light);
+      font-size: 0.9rem;
+    }
+    
+    .zoom-controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    
+    .zoom-btn {
+      background: var(--medium);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .zoom-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+    
+    .scale-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(31, 40, 51, 0.8);
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.9rem;
+      z-index: 100;
+    }
+    
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.6;
+      z-index: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .node {
+        width: 90%;
+        padding: 12px 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cosmic Hierarchy Visualizer</h1>
+  <div class="subtitle">From Quantum Fields to the Multiverse</div>
+  
+  <div class="scale-indicator" id="scaleIndicator">Scale: 1.0x</div>
+  
+  <div class="container" id="hierarchyContainer">
+    <div class="scale-container" id="scaleContainer">
+      <!-- Nodes will be inserted here -->
+    </div>
+  </div>
+  
+  <div class="zoom-controls">
+    <button class="zoom-btn" id="zoomIn">+</button>
+    <button class="zoom-btn" id="zoomOut">-</button>
+    <button class="zoom-btn" id="resetZoom">↻</button>
+  </div>
+
+  <script>
+    const hierarchyData = [
+      { level: 0, name: "Quantum Fields", description: "Fundamental fields from which particles emerge", examples: ["Electromagnetic field", "Higgs field"], color: "#ff00aa" },
+      { level: 1, name: "Subatomic Particles", description: "Elementary particles and their combinations", examples: ["Quarks", "Electrons", "Protons", "Neutrons", "Photons"], color: "#ff5500" },
+      { level: 2, name: "Atoms", description: "Smallest unit of chemical elements", examples: ["Hydrogen", "Oxygen", "Carbon"], color: "#ffaa00" },
+      { level: 3, name: "Molecules", description: "Groups of atoms bonded together", examples: ["H₂O", "CO₂", "DNA"], color: "#ffff00" },
+      { level: 4, name: "Macromolecules", description: "Large, complex molecules (polymers)", examples: ["Proteins", "RNA", "Cellulose"], color: "#aaff00" },
+      { level: 5, name: "Supramolecular Assemblies", description: "Organized molecular clusters", examples: ["Cell membranes", "Ribosomes", "Viruses"], color: "#00ff55" },
+      { level: 6, name: "Organelles", description: "Specialized structures within cells", examples: ["Mitochondria", "Nucleus", "Chloroplasts"], color: "#00ffaa" },
+      { level: 7, name: "Cells", description: "Basic unit of life", examples: ["Neuron", "Red blood cell", "Plant cell"], color: "#00ffff" },
+      { level: 8, name: "Tissues", description: "Groups of similar cells performing a function", examples: ["Muscle tissue", "Xylem", "Nervous tissue"], color: "#00aaff" },
+      { level: 9, name: "Organs", description: "Functional biological structures", examples: ["Heart", "Leaf", "Brain", "Root"], color: "#0055ff" },
+      { level: 10, name: "Organ Systems", description: "Groups of organs working together", examples: ["Circulatory system", "Root system"], color: "#0000ff" },
+      { level: 11, name: "Organisms", description: "Complete living beings", examples: ["Human", "Oak tree", "E. coli bacterium"], color: "#5500ff" },
+      { level: 12, name: "Populations", description: "Groups of the same species in an area", examples: ["School of fish", "Human city", "Ant colony"], color: "#aa00ff" },
+      { level: 13, name: "Communities", description: "Interacting populations in an ecosystem", examples: ["Coral reef", "Forest ecosystem"], color: "#ff00ff" },
+      { level: 14, name: "Ecosystems", description: "Communities and their physical environment", examples: ["Rainforest", "Desert", "Ocean"], color: "#ff00aa" },
+      { level: 15, name: "Biosphere", description: "All ecosystems on Earth", examples: ["Earth's global life system"], color: "#ff0055" },
+      { level: 16, name: "Planets", description: "Celestial bodies with bound matter", examples: ["Earth", "Mars", "Gas giants"], color: "#ff0000" },
+      { level: 17, name: "Stars & Solar Systems", description: "Gravitationally bound star(s) and orbiting bodies", examples: ["Sun + planets", "Binary star systems"], color: "#ff5500" },
+      { level: 18, name: "Galaxies", description: "Massive systems of stars, gas, and dark matter", examples: ["Milky Way", "Andromeda"], color: "#ffaa00" },
+      { level: 19, name: "Galaxy Clusters", description: "Groups of galaxies bound by gravity", examples: ["Virgo Cluster", "Laniakea Supercluster"], color: "#ffff00" },
+      { level: 20, name: "Universe", description: "All observable matter, energy, and spacetime", examples: ["The observable cosmos"], color: "#aaff00" },
+      { level: 21, name: "Multiverse (Hypothetical)", description: "Possible set of multiple universes", examples: ["String theory branes", "Inflationary bubbles"], color: "#00ff55" }
+    ];
+
+    const container = document.getElementById("scaleContainer");
+    const scaleIndicator = document.getElementById("scaleIndicator");
+    let currentScale = 1;
+
+    // Create particles background
+    function createParticles() {
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.width = `${Math.random() * 5 + 1}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(particle);
+      }
+    }
+
+    // Create hierarchy nodes
+    function createNodes() {
+      // Create connector line
+      const connector = document.createElement("div");
+      connector.className = "connector";
+      connector.style.height = `${hierarchyData.length * 100}px`;
+      container.appendChild(connector);
+
+      hierarchyData.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "node";
+        div.style.borderLeftColor = item.color;
+        div.style.animationDelay = `${index * 0.1}s`;
+        div.innerHTML = `
+          <div class="level">${item.level}. ${item.name}</div>
+          <div class="description">${item.description}</div>
+          <div class="examples">Examples: ${item.examples.join(", ")}</div>
+        `;
+        
+        // Add click event to highlight and center
+        div.addEventListener("click", () => {
+          document.querySelectorAll(".node").forEach(n => n.style.borderLeftWidth = "5px");
+          div.style.borderLeftWidth = "8px";
+          div.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+        
+        container.appendChild(div);
+      });
+    }
+
+    // Zoom functionality
+    document.getElementById("zoomIn").addEventListener("click", () => {
+      currentScale *= 1.1;
+      updateScale();
+    });
+
+    document.getElementById("zoomOut").addEventListener("click", () => {
+      currentScale /= 1.1;
+      updateScale();
+    });
+
+    document.getElementById("resetZoom").addEventListener("click", () => {
+      currentScale = 1;
+      updateScale();
+    });
+
+    function updateScale() {
+      container.style.transform = `scale(${currentScale})`;
+      scaleIndicator.textContent = `Scale: ${currentScale.toFixed(1)}x`;
+    }
+
+    // Initialize
+    createParticles();
+    createNodes();
+    
+    // Animate nodes on load
+    setTimeout(() => {
+      document.querySelectorAll(".node").forEach(node => {
+        node.style.opacity = "1";
+      });
+    }, 100);
+  </script>
+</body>
+</html>
