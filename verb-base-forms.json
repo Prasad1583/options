@@ -1,0 +1,63 @@
+{
+  "motion": {
+    "general_movement": ["move", "go", "come", "leave", "arrive", "depart", "enter", "exit", "pass", "travel"],
+    "manner_of_movement": ["walk", "run", "swim", "fly", "jump", "hop", "skip", "crawl", "climb", "dance", "slide", "glide", "float", "stumble", "stroll", "jog", "sprint", "dash", "trot", "march", "limp", "saunter", "trek", "hike", "wander", "roam"],
+    "directed_movement": ["rise", "fall", "ascend", "descend", "advance", "retreat", "approach", "recede", "return", "escape", "flee", "chase", "follow", "lead", "guide", "direct", "drive", "steer", "navigate", "zigzag", "circle", "revolve", "rotate", "spin", "turn", "twist"],
+    "caused_movement": ["push", "pull", "drag", "lift", "raise", "lower", "throw", "catch", "drop", "place", "put", "set", "lay", "bring", "take", "carry", "transport", "shift", "move", "remove", "insert", "extract", "send", "deliver", "fetch"]
+  },
+  "communication": {
+    "speech_acts": ["speak", "say", "tell", "talk", "chat", "converse", "discuss", "address", "lecture", "preach", "narrate", "recite", "quote", "utter", "pronounce", "articulate", "verbalize", "vocalize", "state", "declare"],
+    "information_transfer": ["inform", "notify", "announce", "report", "relate", "convey", "communicate", "express", "reveal", "disclose", "divulge", "mention", "note", "explain", "describe", "define", "clarify", "teach", "instruct", "educate"],
+    "requests_and_directives": ["ask", "request", "inquire", "question", "query", "demand", "require", "order", "command", "instruct", "direct", "assign", "task", "charge", "entreat", "implore", "beg", "plead", "appeal"],
+    "agreements_and_responses": ["agree", "consent", "assent", "concur", "accept", "approve", "confirm", "affirm", "acknowledge", "admit", "concede", "grant", "allow", "permit", "disagree", "object", "refuse", "reject", "deny", "decline"],
+    "emotional_expression": ["praise", "compliment", "flatter", "commend", "criticize", "blame", "condemn", "scold", "reprimand", "rebuke", "thank", "apologize", "greet", "welcome", "farewell", "console", "comfort", "reassure", "encourage", "support"]
+  },
+  "perception": {
+    "visual": ["see", "look", "watch", "view", "observe", "witness", "notice", "spot", "sight", "glimpse", "peer", "stare", "gaze", "glance", "glare", "scan", "inspect", "examine", "study", "survey"],
+    "auditory": ["hear", "listen", "eavesdrop", "overhear", "detect", "perceive", "catch", "discern", "distinguish", "recognize", "identify", "comprehend", "understand", "grasp", "follow", "register"],
+    "tactile": ["touch", "feel", "handle", "hold", "grasp", "grip", "seize", "grab", "clutch", "pat", "tap", "stroke", "rub", "scratch", "pinch", "poke", "prod", "press", "squeeze", "massage"],
+    "gustatory": ["taste", "savor", "sample", "sip", "drink", "consume", "swallow", "digest", "eat", "devour", "ingest", "chew", "munch", "crunch", "nibble", "gnaw", "lick"],
+    "olfactory": ["smell", "sniff", "inhale", "breathe", "detect", "sense", "perceive", "recognize", "identify", "distinguish", "scent", "whiff"]
+  },
+  "cognition": {
+    "thinking_processes": ["think", "ponder", "contemplate", "consider", "reflect", "meditate", "deliberate", "ruminate", "muse", "speculate", "reason", "analyze", "assess", "evaluate", "judge", "review", "examine", "study", "investigate", "explore"],
+    "knowing_and_understanding": ["know", "understand", "comprehend", "grasp", "fathom", "realize", "recognize", "acknowledge", "appreciate", "perceive", "discern", "identify", "apprehend", "learn", "master", "memorize", "remember", "recall", "recollect", "forget"],
+    "decision_making": ["decide", "determine", "resolve", "conclude", "choose", "select", "pick", "opt", "prefer", "favor", "settle", "establish", "commit", "dedicate", "devote", "plan", "intend", "mean", "aim", "purpose"],
+    "problem_solving": ["solve", "resolve", "figure", "work", "deduce", "infer", "conclude", "interpret", "translate", "decode", "decipher", "unravel", "untangle", "diagnose", "troubleshoot", "debug", "fix", "remedy", "correct", "repair"]
+  },
+  "emotion": {
+    "positive_emotions": ["love", "like", "adore", "cherish", "treasure", "enjoy", "delight", "appreciate", "admire", "respect", "esteem", "value", "prize", "rejoice", "celebrate", "cheer", "exult", "triumph", "hope", "trust"],
+    "negative_emotions": ["hate", "dislike", "detest", "loathe", "abhor", "despise", "scorn", "disdain", "resent", "envy", "jealous", "covet", "fear", "dread", "worry", "fret", "anguish", "grieve", "mourn", "lament"],
+    "emotional_states": ["feel", "experience", "undergo", "bear", "suffer", "endure", "withstand", "tolerate", "stand", "survive", "weather", "brave", "face", "confront", "encounter", "meet", "handle", "manage", "cope", "deal"]
+  },
+  "creation_and_destruction": {
+    "creation": ["create", "make", "build", "construct", "produce", "manufacture", "fabricate", "forge", "craft", "form", "shape", "fashion", "design", "develop", "generate", "originate", "invent", "devise", "conceive", "found"],
+    "destruction": ["destroy", "ruin", "wreck", "demolish", "dismantle", "disassemble", "break", "shatter", "smash", "crush", "crumble", "collapse", "topple", "overthrow", "subvert", "undermine", "sabotage", "spoil", "damage", "harm"],
+    "transformation": ["change", "alter", "modify", "transform", "convert", "adapt", "adjust", "revise", "reform", "amend", "correct", "improve", "enhance", "augment", "increase", "expand", "extend", "enlarge", "diminish", "reduce"]
+  },
+  "possession": {
+    "acquiring": ["get", "acquire", "obtain", "gain", "earn", "win", "secure", "procure", "attain", "receive", "accept", "take", "collect", "gather", "accumulate", "amass", "hoard", "buy", "purchase", "shop"],
+    "owning": ["have", "own", "possess", "hold", "keep", "retain", "maintain", "preserve", "save", "store", "stash", "hoard", "guard", "protect", "defend", "shelter", "shield", "harbor", "safeguard", "secure"],
+    "transferring": ["give", "offer", "present", "provide", "supply", "furnish", "equip", "outfit", "stock", "lend", "loan", "rent", "lease", "hire", "sell", "trade", "exchange", "swap", "barter", "deal"]
+  },
+  "existence_and_state": {
+    "being": ["be", "exist", "live", "survive", "remain", "stay", "continue", "persist", "endure", "last", "prevail", "abide", "dwell", "reside", "inhabit", "occupy", "populate", "settle", "frequent", "haunt"],
+    "becoming": ["become", "grow", "develop", "evolve", "progress", "advance", "proceed", "mature", "ripen", "age", "turn", "transform", "change", "convert", "transition", "shift", "switch", "alter", "modify", "vary"],
+    "appearing": ["seem", "appear", "look", "sound", "feel", "taste", "smell", "sense", "emerge", "surface", "arise", "spring", "crop", "materialize", "manifest", "show", "display", "exhibit", "present", "demonstrate"]
+  },
+  "social_interaction": {
+    "cooperation": ["cooperate", "collaborate", "coordinate", "assist", "help", "aid", "support", "back", "endorse", "advocate", "promote", "further", "advance", "contribute", "participate", "share", "join", "unite", "combine", "merge"],
+    "competition": ["compete", "contest", "challenge", "oppose", "confront", "face", "battle", "fight", "struggle", "strive", "vie", "contend", "dispute", "argue", "debate", "differ", "disagree", "contradict", "counter", "rebut"],
+    "relationship_management": ["meet", "greet", "introduce", "present", "acquaint", "familiarize", "associate", "relate", "connect", "link", "bond", "attach", "affiliate", "ally", "belong", "separate", "detach", "disconnect", "dissociate", "alienate"]
+  },
+  "change_and_development": {
+    "growth": ["grow", "develop", "mature", "evolve", "progress", "advance", "improve", "enhance", "increase", "expand", "extend", "enlarge", "amplify", "augment", "magnify", "multiply", "proliferate", "spread", "flourish", "thrive"],
+    "decline": ["decline", "decrease", "diminish", "reduce", "lessen", "shrink", "contract", "narrow", "deteriorate", "degrade", "degenerate", "worsen", "weaken", "fade", "wane", "ebb", "dwindle", "wither", "decay", "rot"],
+    "cycles": ["begin", "start", "commence", "initiate", "launch", "end", "finish", "complete", "conclude", "terminate", "cease", "stop", "halt", "pause", "break", "interrupt", "suspend", "discontinue", "resume", "continue"]
+  },
+  "control_and_power": {
+    "exercising_power": ["rule", "govern", "control", "manage", "administer", "run", "operate", "supervise", "oversee", "direct", "guide", "lead", "command", "order", "dominate", "master", "subjugate", "subdue", "suppress", "oppress"],
+    "yielding_power": ["obey", "comply", "conform", "adhere", "follow", "observe", "respect", "heed", "mind", "listen", "submit", "yield", "surrender", "capitulate", "concede", "acquiesce", "consent", "agree", "accept", "approve"],
+    "resisting_power": ["resist", "oppose", "defy", "challenge", "confront", "face", "withstand", "endure", "bear", "stand", "fight", "struggle", "strive", "compete", "contend", "contest", "dispute", "argue", "debate", "disagree"]
+  }
+}
