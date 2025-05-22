@@ -1,0 +1,114 @@
+{
+  "people_and_relationships": {
+    "family": ["mother", "father", "parent", "child", "son", "daughter", "brother", "sister", "sibling", "grandmother", "grandfather", "grandparent", "grandchild", "grandson", "granddaughter", "aunt", "uncle", "cousin", "nephew", "niece", "spouse", "husband", "wife", "partner"],
+    "professions": ["doctor", "teacher", "lawyer", "engineer", "nurse", "pilot", "chef", "artist", "writer", "musician", "actor", "scientist", "farmer", "mechanic", "carpenter", "electrician", "plumber", "architect", "accountant", "manager", "clerk", "cashier", "waiter", "waitress", "driver", "police", "firefighter", "soldier"],
+    "social_roles": ["friend", "neighbor", "colleague", "classmate", "teammate", "partner", "rival", "enemy", "stranger", "acquaintance", "mentor", "student", "pupil", "apprentice", "leader", "follower", "citizen", "resident", "tourist", "visitor", "guest", "host"],
+    "age_groups": ["baby", "infant", "toddler", "child", "teenager", "adolescent", "adult", "elder", "senior"]
+  },
+  "animals": {
+    "mammals": ["dog", "cat", "horse", "cow", "pig", "sheep", "goat", "rabbit", "mouse", "rat", "elephant", "lion", "tiger", "bear", "wolf", "fox", "deer", "monkey", "ape", "gorilla", "chimpanzee", "whale", "dolphin", "seal", "bat", "squirrel", "raccoon", "skunk", "beaver", "otter"],
+    "birds": ["chicken", "duck", "goose", "turkey", "eagle", "hawk", "owl", "crow", "raven", "robin", "sparrow", "cardinal", "blue jay", "woodpecker", "hummingbird", "penguin", "ostrich", "flamingo", "peacock", "parrot", "canary", "pigeon", "swan", "pelican"],
+    "reptiles": ["snake", "lizard", "turtle", "tortoise", "crocodile", "alligator", "iguana", "gecko", "chameleon", "dragon"],
+    "amphibians": ["frog", "toad", "salamander", "newt"],
+    "fish": ["salmon", "tuna", "shark", "goldfish", "trout", "bass", "cod", "herring", "mackerel", "sardine", "anchovy", "eel", "catfish", "swordfish"],
+    "insects": ["ant", "bee", "wasp", "butterfly", "moth", "beetle", "spider", "fly", "mosquito", "grasshopper", "cricket", "ladybug", "dragonfly", "cockroach", "termite", "flea", "tick", "louse"],
+    "sea_creatures": ["octopus", "squid", "jellyfish", "starfish", "crab", "lobster", "shrimp", "oyster", "clam", "mussel", "scallop", "seahorse", "coral"]
+  },
+  "body_parts": {
+    "head": ["head", "face", "forehead", "eye", "eyebrow", "eyelid", "eyelash", "nose", "nostril", "mouth", "lip", "tooth", "tongue", "chin", "cheek", "jaw", "ear", "hair", "scalp", "skull", "brain"],
+    "torso": ["neck", "throat", "shoulder", "chest", "breast", "back", "spine", "waist", "hip", "stomach", "belly", "abdomen", "rib", "heart", "lung", "liver", "kidney"],
+    "limbs": ["arm", "elbow", "wrist", "hand", "finger", "thumb", "palm", "knuckle", "nail", "leg", "thigh", "knee", "calf", "ankle", "foot", "toe", "heel", "sole"],
+    "internal": ["bone", "muscle", "skin", "blood", "vein", "artery", "nerve", "organ", "tissue", "cell"]
+  },
+  "food_and_drink": {
+    "fruits": ["apple", "orange", "banana", "grape", "strawberry", "blueberry", "raspberry", "blackberry", "cherry", "peach", "pear", "plum", "apricot", "mango", "pineapple", "watermelon", "cantaloupe", "honeydew", "kiwi", "papaya", "coconut", "avocado", "lemon", "lime", "grapefruit"],
+    "vegetables": ["carrot", "potato", "tomato", "onion", "garlic", "pepper", "cucumber", "lettuce", "spinach", "broccoli", "cauliflower", "cabbage", "celery", "corn", "peas", "beans", "mushroom", "radish", "turnip", "beet", "squash", "pumpkin", "zucchini", "eggplant", "asparagus"],
+    "grains": ["wheat", "rice", "corn", "oat", "barley", "rye", "quinoa", "bread", "pasta", "cereal", "flour"],
+    "proteins": ["meat", "beef", "pork", "chicken", "turkey", "fish", "egg", "cheese", "milk", "yogurt", "tofu", "nuts", "beans"],
+    "beverages": ["water", "juice", "soda", "coffee", "tea", "milk", "wine", "beer", "cocktail", "smoothie", "shake"],
+    "desserts": ["cake", "cookie", "pie", "ice cream", "candy", "chocolate", "pudding", "donut", "muffin", "pastry"]
+  },
+  "clothing_and_accessories": {
+    "upper_body": ["shirt", "blouse", "sweater", "jacket", "coat", "vest", "blazer", "cardigan", "hoodie", "tank top", "t-shirt"],
+    "lower_body": ["pants", "jeans", "shorts", "skirt", "dress", "leggings", "tights", "underwear"],
+    "footwear": ["shoe", "boot", "sneaker", "sandal", "slipper", "heel", "loafer", "sock", "stocking"],
+    "accessories": ["hat", "cap", "scarf", "glove", "mitten", "belt", "tie", "bow tie", "jewelry", "necklace", "bracelet", "ring", "earring", "watch", "glasses", "sunglasses", "bag", "purse", "backpack", "wallet"]
+  },
+  "home_and_furniture": {
+    "rooms": ["bedroom", "bathroom", "kitchen", "living room", "dining room", "office", "basement", "attic", "garage", "laundry room", "closet", "pantry", "hallway", "foyer"],
+    "furniture": ["chair", "table", "desk", "bed", "sofa", "couch", "armchair", "stool", "bench", "dresser", "wardrobe", "bookshelf", "cabinet", "counter", "nightstand", "ottoman"],
+    "appliances": ["refrigerator", "stove", "oven", "microwave", "dishwasher", "washing machine", "dryer", "vacuum", "toaster", "blender", "mixer", "coffee maker", "television", "computer", "phone"],
+    "household_items": ["lamp", "mirror", "picture", "painting", "clock", "vase", "pillow", "blanket", "sheet", "towel", "curtain", "rug", "carpet", "plant", "flower", "candle", "book", "magazine", "newspaper"]
+  },
+  "transportation": {
+    "vehicles": ["car", "truck", "van", "bus", "motorcycle", "bicycle", "scooter", "taxi", "limousine", "ambulance", "fire truck", "police car", "train", "subway", "airplane", "helicopter", "boat", "ship", "yacht", "canoe", "kayak", "sailboat"],
+    "vehicle_parts": ["wheel", "tire", "engine", "brake", "steering wheel", "seat", "window", "door", "trunk", "hood", "bumper", "headlight", "taillight", "mirror", "license plate"],
+    "infrastructure": ["road", "street", "highway", "bridge", "tunnel", "intersection", "traffic light", "stop sign", "sidewalk", "crosswalk", "parking lot", "garage", "gas station", "airport", "train station", "bus stop", "harbor", "port"]
+  },
+  "places_and_locations": {
+    "buildings": ["house", "apartment", "building", "skyscraper", "office", "store", "shop", "mall", "restaurant", "cafe", "bar", "hotel", "motel", "hospital", "school", "university", "library", "museum", "theater", "cinema", "church", "mosque", "synagogue", "temple", "bank", "post office", "police station", "fire station", "courthouse", "prison", "factory", "warehouse"],
+    "natural_places": ["mountain", "hill", "valley", "plain", "desert", "forest", "woods", "jungle", "field", "meadow", "prairie", "beach", "shore", "coast", "island", "peninsula", "lake", "pond", "river", "stream", "creek", "waterfall", "ocean", "sea", "bay", "gulf", "cave", "canyon", "cliff", "volcano"],
+    "geographic_areas": ["country", "state", "province", "city", "town", "village", "neighborhood", "district", "region", "continent", "county", "territory"],
+    "outdoor_spaces": ["park", "garden", "yard", "playground", "campground", "trail", "path", "road", "street", "alley", "square", "plaza"]
+  },
+  "weather_and_nature": {
+    "weather_phenomena": ["rain", "snow", "hail", "sleet", "fog", "mist", "cloud", "storm", "thunder", "lightning", "wind", "breeze", "hurricane", "tornado", "blizzard", "drought", "flood"],
+    "weather_conditions": ["sunshine", "shadow", "temperature", "heat", "cold", "humidity", "pressure"],
+    "celestial_objects": ["sun", "moon", "star", "planet", "comet", "meteor", "galaxy", "constellation"],
+    "natural_elements": ["fire", "water", "air", "earth", "ice", "steam", "smoke", "ash", "dust", "mud", "sand", "rock", "stone", "mineral", "crystal", "metal", "gold", "silver", "copper", "iron"],
+    "plants": ["tree", "bush", "shrub", "grass", "flower", "rose", "tulip", "daisy", "sunflower", "lily", "orchid", "fern", "moss", "vine", "weed", "herb", "spice", "leaf", "branch", "trunk", "root", "seed", "fruit", "vegetable"]
+  },
+  "time": {
+    "periods": ["second", "minute", "hour", "day", "week", "month", "year", "decade", "century", "millennium", "moment", "instant", "period", "duration", "era", "age", "epoch"],
+    "times_of_day": ["morning", "afternoon", "evening", "night", "dawn", "dusk", "twilight", "midnight", "noon", "sunrise", "sunset"],
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "weekday", "weekend", "today", "yesterday", "tomorrow"],
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "seasons": ["spring", "summer", "autumn", "fall", "winter"],
+    "events": ["birthday", "anniversary", "holiday", "vacation", "wedding", "funeral", "graduation", "party", "celebration", "festival", "ceremony", "meeting", "appointment", "date", "deadline"]
+  },
+  "emotions_and_feelings": {
+    "positive": ["happiness", "joy", "love", "excitement", "enthusiasm", "hope", "optimism", "confidence", "pride", "satisfaction", "contentment", "peace", "relief", "gratitude", "admiration", "respect", "trust", "friendship", "affection", "compassion", "sympathy", "empathy"],
+    "negative": ["sadness", "anger", "fear", "anxiety", "worry", "stress", "frustration", "disappointment", "regret", "guilt", "shame", "embarrassment", "loneliness", "jealousy", "envy", "hatred", "disgust", "contempt", "resentment", "bitterness", "despair", "depression"],
+    "neutral": ["surprise", "curiosity", "confusion", "doubt", "uncertainty", "indifference", "boredom", "fatigue", "tiredness"]
+  },
+  "concepts_and_abstractions": {
+    "qualities": ["beauty", "ugliness", "strength", "weakness", "intelligence", "stupidity", "wisdom", "foolishness", "courage", "cowardice", "honesty", "dishonesty", "kindness", "cruelty", "generosity", "selfishness", "patience", "impatience", "loyalty", "betrayal", "freedom", "slavery", "justice", "injustice", "equality", "inequality", "peace", "war", "order", "chaos", "success", "failure", "progress", "decline"],
+    "states": ["life", "death", "health", "sickness", "youth", "age", "poverty", "wealth", "power", "weakness", "fame", "obscurity", "popularity", "isolation"],
+    "ideas": ["truth", "lie", "fact", "fiction", "reality", "fantasy", "dream", "nightmare", "imagination", "memory", "thought", "idea", "opinion", "belief", "knowledge", "ignorance", "understanding", "confusion", "wisdom", "education", "learning", "teaching", "experience", "experiment", "discovery", "invention", "creation", "destruction", "change", "tradition", "culture", "custom", "habit", "routine", "pattern", "system", "method", "process", "procedure", "rule", "law", "regulation", "policy", "plan", "strategy", "goal", "purpose", "meaning", "significance", "importance", "value", "worth", "price", "cost", "benefit", "advantage", "disadvantage", "problem", "solution", "question", "answer", "mystery", "secret", "surprise", "coincidence", "accident", "mistake", "error", "fault", "blame", "responsibility", "duty", "obligation", "right", "privilege", "permission", "prohibition", "choice", "decision", "option", "alternative", "possibility", "probability", "chance", "luck", "fortune", "fate", "destiny", "future", "past", "present", "history", "tradition", "heritage", "legacy"]
+  },
+  "activities_and_actions": {
+    "sports": ["football", "basketball", "baseball", "soccer", "tennis", "golf", "swimming", "running", "cycling", "skiing", "skating", "boxing", "wrestling", "gymnastics", "volleyball", "hockey", "cricket", "rugby", "bowling", "archery", "fishing", "hunting", "hiking", "camping", "climbing"],
+    "hobbies": ["reading", "writing", "painting", "drawing", "photography", "music", "singing", "dancing", "cooking", "baking", "gardening", "knitting", "sewing", "woodworking", "pottery", "sculpture", "collecting", "gaming", "puzzles", "chess", "cards"],
+    "work_activities": ["meeting", "presentation", "conference", "interview", "training", "project", "task", "assignment", "deadline", "report", "analysis", "research", "study", "experiment", "test", "examination", "evaluation", "assessment", "review", "inspection", "maintenance", "repair", "construction", "manufacturing", "production", "development", "design", "planning", "organization", "management", "leadership", "supervision", "coordination", "communication", "negotiation", "sales", "marketing", "advertising", "promotion", "service", "support", "assistance", "help"],
+    "daily_activities": ["eating", "drinking", "sleeping", "waking", "dressing", "washing", "bathing", "brushing", "cleaning", "cooking", "shopping", "walking", "driving", "traveling", "visiting", "calling", "texting", "emailing", "watching", "listening", "playing", "exercising", "studying", "working", "relaxing", "resting"]
+  },
+  "objects_and_tools": {
+    "tools": ["hammer", "screwdriver", "wrench", "pliers", "saw", "drill", "knife", "scissors", "needle", "thread", "ruler", "measuring tape", "level", "screws", "nails", "glue", "tape", "rope", "chain", "wire", "cable"],
+    "kitchen_utensils": ["spoon", "fork", "knife", "plate", "bowl", "cup", "mug", "glass", "pot", "pan", "cutting board", "spatula", "whisk", "ladle", "tongs", "can opener", "bottle opener", "corkscrew"],
+    "office_supplies": ["pen", "pencil", "paper", "notebook", "folder", "file", "stapler", "paperclip", "rubber band", "envelope", "stamp", "calculator", "computer", "printer", "scanner", "phone", "desk", "chair"],
+    "technology": ["computer", "laptop", "tablet", "smartphone", "television", "radio", "camera", "video", "internet", "website", "email", "software", "program", "application", "app", "database", "server", "network", "cable", "wire", "battery", "charger", "remote", "keyboard", "mouse", "screen", "monitor", "speaker", "headphones", "microphone"],
+    "toys_and_games": ["ball", "doll", "teddy bear", "puzzle", "game", "toy", "blocks", "cards", "dice", "board", "video game", "console", "controller", "chess", "checkers", "monopoly", "scrabble"],
+    "containers": ["box", "bag", "basket", "bucket", "barrel", "bottle", "jar", "can", "container", "package", "envelope", "suitcase", "briefcase", "purse", "wallet", "backpack"]
+  },
+  "materials_and_substances": {
+    "natural_materials": ["wood", "stone", "rock", "metal", "gold", "silver", "copper", "iron", "steel", "aluminum", "glass", "crystal", "diamond", "coal", "oil", "gas", "water", "ice", "steam", "air", "oxygen", "hydrogen", "carbon", "nitrogen", "plastic", "rubber", "leather", "fur", "wool", "cotton", "silk", "linen", "hemp", "paper", "cardboard"],
+    "chemicals": ["acid", "base", "salt", "sugar", "alcohol", "medicine", "drug", "poison", "toxin", "vitamin", "mineral", "protein", "carbohydrate", "fat", "fiber"],
+    "liquids": ["water", "milk", "juice", "oil", "vinegar", "sauce", "soup", "coffee", "tea", "wine", "beer", "gasoline", "paint", "ink", "blood", "sweat", "tears"],
+    "gases": ["air", "oxygen", "carbon dioxide", "nitrogen", "hydrogen", "helium", "methane", "steam", "smoke", "gas"]
+  },
+  "measurements_and_quantities": {
+    "units": ["inch", "foot", "yard", "mile", "millimeter", "centimeter", "meter", "kilometer", "ounce", "pound", "ton", "gram", "kilogram", "cup", "pint", "quart", "gallon", "liter", "degree", "percentage"],
+    "quantities": ["number", "amount", "quantity", "total", "sum", "difference", "product", "quotient", "fraction", "decimal", "percent", "ratio", "proportion", "average", "minimum", "maximum", "limit", "range", "scale", "size", "length", "width", "height", "depth", "area", "volume", "weight", "mass", "density", "speed", "velocity", "acceleration", "force", "pressure", "temperature", "energy", "power", "frequency", "wavelength", "amplitude"]
+  },
+  "education_and_knowledge": {
+    "subjects": ["mathematics", "science", "history", "geography", "language", "literature", "art", "music", "physical education", "health", "biology", "chemistry", "physics", "astronomy", "geology", "psychology", "sociology", "philosophy", "economics", "politics", "law", "medicine", "engineering", "technology", "computer science", "business", "accounting", "marketing", "management"],
+    "educational_items": ["book", "textbook", "notebook", "pencil", "pen", "paper", "homework", "assignment", "test", "exam", "quiz", "grade", "report card", "diploma", "degree", "certificate", "scholarship", "tuition", "classroom", "blackboard", "whiteboard", "projector", "computer", "laboratory", "library", "desk", "chair"],
+    "levels": ["preschool", "kindergarten", "elementary school", "middle school", "high school", "college", "university", "graduate school", "doctorate", "freshman", "sophomore", "junior", "senior"]
+  },
+  "health_and_medicine": {
+    "conditions": ["disease", "illness", "sickness", "infection", "virus", "bacteria", "fever", "cold", "flu", "cough", "headache", "pain", "injury", "wound", "cut", "bruise", "burn", "fracture", "sprain", "allergy", "asthma", "diabetes", "cancer", "heart disease", "stroke", "depression", "anxiety"],
+    "treatments": ["medicine", "drug", "pill", "tablet", "capsule", "injection", "shot", "vaccine", "surgery", "operation", "therapy", "treatment", "cure", "remedy", "bandage", "cast", "stitches", "prescription", "dose"],
+    "medical_professionals": ["doctor", "physician", "surgeon", "nurse", "dentist", "pharmacist", "therapist", "psychiatrist", "psychologist", "paramedic", "technician"],
+    "medical_facilities": ["hospital", "clinic", "doctor's office", "pharmacy", "laboratory", "emergency room", "operating room", "waiting room", "examination room"]
+  }
+}
