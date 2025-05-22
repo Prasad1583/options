@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science → Technology → Business Innovation Pipeline</title>
+    <style>
+        :root {
+            --science-color: #4a89dc;
+            --tech-color: #3bafda;
+            --business-color: #37bc9b;
+            --dark-bg: #2f3640;
+            --light-text: #f5f6fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--science-color), var(--business-color));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--dark-bg);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        
+        .search-box {
+            padding: 0.5rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+        }
+        
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .science-header {
+            background-color: var(--science-color);
+        }
+        
+        .tech-header {
+            background-color: var(--tech-color);
+        }
+        
+        .business-header {
+            background-color: var(--business-color);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .discovery, .innovation, .application {
+            margin-bottom: 1rem;
+        }
+        
+        .discovery h3, .innovation h3, .application h3 {
+            margin-top: 0;
+            color: var(--dark-bg);
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .science-tag {
+            background-color: rgba(74, 137, 220, 0.2);
+            color: var(--science-color);
+        }
+        
+        .tech-tag {
+            background-color: rgba(59, 175, 218, 0.2);
+            color: var(--tech-color);
+        }
+        
+        .business-tag {
+            background-color: rgba(55, 188, 155, 0.2);
+            color: var(--business-color);
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .pipeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Science → Technology → Business</h1>
+            <div class="subtitle">20 breakthrough innovations from fundamental research to market</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search discoveries, technologies or companies...">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="physics">Physics</button>
+            <button class="filter-btn" data-filter="biology">Biology</button>
+            <button class="filter-btn" data-filter="computing">Computing</button>
+            <button class="filter-btn" data-filter="materials">Materials</button>
+        </div>
+        
+        <div class="pipeline" id="pipeline-container">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Science-to-Business Innovation Map</p>
+            <p>Data-driven visualization of research commercialization</p>
+        </div>
+    </footer>
+
+    <script>
+        // JSON data for all 20 examples
+        const innovations = [
+            {
+                id: 1,
+                title: "Electromagnetism",
+                scientists: "Faraday, Maxwell (19th Century)",
+                discovery: "Fundamental principles of electricity and magnetism relationships",
+                technology: "Electric generators, motors, power grids",
+                business: "Tesla (EVs), Siemens (industrial motors), home appliances (LG)",
+                tags: ["physics", "energy"],
+                scienceTags: ["Physics", "Electrodynamics"],
+                techTags: ["Energy", "Infrastructure"],
+                businessTags: ["Automotive", "Consumer Electronics"]
+            },
+            {
+                id: 2,
+                title: "Newton's Laws",
+                scientists: "Isaac Newton (1687)",
+                discovery: "Laws of motion and universal gravitation",
+                technology: "Mechanical engines, aerospace engineering, rockets",
+                business: "SpaceX (space travel), Boeing (aircraft), automotive industry",
+                tags: ["physics"],
+                scienceTags: ["Classical Mechanics"],
+                techTags: ["Aerospace", "Transportation"],
+                businessTags: ["Aviation", "Automotive"]
+            },
+            {
+                id: 3,
+                title: "Quantum Mechanics",
+                scientists: "Bohr, Heisenberg, Schrödinger (1920s)",
+                discovery: "Behavior of matter and energy at atomic scales",
+                technology: "Transistors, lasers, semiconductor chips, MRI machines",
+                business: "Intel (processors), IBM (quantum computing), Philips (healthcare)",
+                tags: ["physics", "computing"],
+                scienceTags: ["Quantum Physics"],
+                techTags: ["Electronics", "Medical Imaging"],
+                businessTags: ["Computing", "Healthcare"]
+            },
+            {
+                id: 4,
+                title: "DNA Structure",
+                scientists: "Watson & Crick (1953)",
+                discovery: "Double helix structure of genetic material",
+                technology: "CRISPR gene editing, PCR testing, synthetic biology",
+                business: "23andMe (genetics), Moderna (mRNA vaccines), BioNTech",
+                tags: ["biology"],
+                scienceTags: ["Molecular Biology"],
+                techTags: ["Biotech", "Gene Therapy"],
+                businessTags: ["Pharmaceuticals", "Personalized Medicine"]
+            },
+            {
+                id: 5,
+                title: "Thermodynamics",
+                scientists: "Carnot, Clausius, Kelvin (19th Century)",
+                discovery: "Laws of energy conversion and heat transfer",
+                technology: "Refrigeration, air conditioning, combustion engines",
+                business: "HVAC (Carrier), automotive (Mercedes), power plants (GE)",
+                tags: ["physics"],
+                scienceTags: ["Thermal Physics"],
+                techTags: ["Energy Systems"],
+                businessTags: ["Manufacturing", "Energy"]
+            },
+            {
+                id: 6,
+                title: "Optics & Photonics",
+                scientists: "Huygens, Fresnel, Einstein",
+                discovery: "Wave nature of light and quantum optics",
+                technology: "Fiber optics, lasers, smartphone cameras",
+                business: "Sony (sensors), Meta (VR), Huawei (5G networks)",
+                tags: ["physics"],
+                scienceTags: ["Optical Physics"],
+                techTags: ["Telecom", "Imaging"],
+                businessTags: ["Consumer Electronics", "Telecommunications"]
+            },
+            {
+                id: 7,
+                title: "Machine Learning",
+                scientists: "Turing, McCarthy, Hinton (1950s-2010s)",
+                discovery: "Algorithms that learn patterns from data",
+                technology: "Deep learning models (GPT, DALL-E), recommendation systems",
+                business: "OpenAI (ChatGPT), Netflix (recommendations), Waymo (self-driving)",
+                tags: ["computing"],
+                scienceTags: ["Computer Science"],
+                techTags: ["Artificial Intelligence"],
+                businessTags: ["Software", "Automation"]
+            },
+            {
+                id: 8,
+                title: "Microbiology",
+                scientists: "Pasteur, Koch, Fleming",
+                discovery: "Microorganisms and their effects",
+                technology: "Antibiotics, vaccines, fermentation tech",
+                business: "Pfizer (drugs), Moderna (vaccines), Danone (probiotics)",
+                tags: ["biology"],
+                scienceTags: ["Microbial Science"],
+                techTags: ["Medical Tech"],
+                businessTags: ["Pharma", "Food Tech"]
+            },
+            {
+                id: 9,
+                title: "Relativity",
+                scientists: "Albert Einstein (1905-1915)",
+                discovery: "Space-time relationships and gravity",
+                technology: "GPS satellites, atomic clocks, cosmological models",
+                business: "Google Maps (navigation), SpaceX (Starlink), Lockheed Martin",
+                tags: ["physics"],
+                scienceTags: ["Theoretical Physics"],
+                techTags: ["Aerospace", "Precision Timing"],
+                businessTags: ["Navigation", "Defense"]
+            },
+            {
+                id: 10,
+                title: "Materials Science",
+                scientists: "Various (20th-21st Century)",
+                discovery: "Properties of graphene, carbon fiber, metamaterials",
+                technology: "Lightweight alloys, bulletproof materials, flexible electronics",
+                business: "Boeing (aircraft), DuPont (Kevlar), Samsung (foldable phones)",
+                tags: ["materials"],
+                scienceTags: ["Condensed Matter"],
+                techTags: ["Nanotech"],
+                businessTags: ["Manufacturing", "Electronics"]
+            },
+            {
+                id: 11,
+                title: "Nuclear Physics",
+                scientists: "Curie, Fermi, Oppenheimer",
+                discovery: "Atomic nucleus structure and reactions",
+                technology: "Nuclear power plants, radiation therapy, nuclear medicine",
+                business: "Westinghouse (reactors), GE Healthcare (cancer treatment)",
+                tags: ["physics"],
+                scienceTags: ["Nuclear Science"],
+                techTags: ["Energy", "Medical"],
+                businessTags: ["Energy", "Healthcare"]
+            },
+            {
+                id: 12,
+                title: "Fluid Dynamics",
+                scientists: "Bernoulli, Navier, Stokes",
+                discovery: "Behavior of liquids and gases in motion",
+                technology: "Aerodynamic designs, hydroelectric turbines, weather modeling",
+                business: "Airbus (airplanes), Tesla (vehicle design), wind energy companies",
+                tags: ["physics"],
+                scienceTags: ["Classical Physics"],
+                techTags: ["Engineering"],
+                businessTags: ["Transportation", "Energy"]
+            },
+            {
+                id: 13,
+                title: "Biochemistry",
+                scientists: "Buchner, Krebs, Pauling",
+                discovery: "Chemical processes in living organisms",
+                technology: "Enzymatic reactions, biofuels, metabolic engineering",
+                business: "Beyond Meat (alt protein), Novozymes (industrial enzymes)",
+                tags: ["biology"],
+                scienceTags: ["Chemical Biology"],
+                techTags: ["Biotech"],
+                businessTags: ["Food Tech", "Energy"]
+            },
+            {
+                id: 14,
+                title: "Neuroscience",
+                scientists: "Cajal, Hodgkin, Hubel",
+                discovery: "Nervous system structure and function",
+                technology: "Brain-computer interfaces, neuroprosthetics, brain imaging",
+                business: "Neuralink (BCIs), Cochlear (implants), Medtronic",
+                tags: ["biology"],
+                scienceTags: ["Cognitive Science"],
+                techTags: ["Neurotech"],
+                businessTags: ["Medical Devices"]
+            },
+            {
+                id: 15,
+                title: "Nanotechnology",
+                scientists: "Feynman, Drexler, Smalley",
+                discovery: "Manipulation of matter at atomic/molecular scale",
+                technology: "Nanomedicine, quantum dots, self-cleaning surfaces",
+                business: "Samsung (nano-coated devices), Nanobiotix (cancer treatment)",
+                tags: ["materials"],
+                scienceTags: ["Nanoscale Science"],
+                techTags: ["Materials"],
+                businessTags: ["Healthcare", "Electronics"]
+            },
+            {
+                id: 16,
+                title: "Robotics",
+                scientists: "Asimov, Engelberger",
+                discovery: "Principles of automation and mechanical control",
+                technology: "Industrial robots, autonomous vehicles, robotic surgery",
+                business: "Boston Dynamics, Tesla (self-driving), Intuitive Surgical",
+                tags: ["computing"],
+                scienceTags: ["Control Theory"],
+                techTags: ["Automation"],
+                businessTags: ["Manufacturing", "Healthcare"]
+            },
+            {
+                id: 17,
+                title: "Environmental Science",
+                scientists: "Carson, Lovelock, Hansen",
+                discovery: "Earth systems and human impact",
+                technology: "Carbon capture, water purification, renewable energy systems",
+                business: "Tesla (solar), Veolia (water), Ørsted (wind)",
+                tags: ["biology"],
+                scienceTags: ["Ecology"],
+                techTags: ["Clean Tech"],
+                businessTags: ["Energy", "Sustainability"]
+            },
+            {
+                id: 18,
+                title: "Behavioral Economics",
+                scientists: "Kahneman, Tversky, Thaler",
+                discovery: "Psychological factors in economic decisions",
+                technology: "AI-driven marketing, predictive analytics, gamification",
+                business: "Google (targeted ads), Duolingo (learning), hedge funds",
+                tags: ["computing"],
+                scienceTags: ["Psychology"],
+                techTags: ["Data Science"],
+                businessTags: ["Finance", "Education"]
+            },
+            {
+                id: 19,
+                title: "Blockchain",
+                scientists: "Nakamoto, Buterin",
+                discovery: "Cryptographic distributed ledgers",
+                technology: "Bitcoin, smart contracts, secure databases",
+                business: "Coinbase (crypto), Chainalysis (analytics), DeFi platforms",
+                tags: ["computing"],
+                scienceTags: ["Cryptography"],
+                techTags: ["Distributed Systems"],
+                businessTags: ["Finance", "Security"]
+            },
+            {
+                id: 20,
+                title: "3D Printing",
+                scientists: "Hull, Crump",
+                discovery: "Additive manufacturing principles",
+                technology: "Rapid prototyping, bioprinting, custom manufacturing",
+                business: "Stratasys (industrial), Nike (shoes), dental implant companies",
+                tags: ["materials"],
+                scienceTags: ["Materials Science"],
+                techTags: ["Manufacturing"],
+                businessTags: ["Healthcare", "Consumer Goods"]
+            }
+        ];
+
+        // DOM elements
+        const pipelineContainer = document.getElementById('pipeline-container');
+        const searchBox = document.querySelector('.search-box');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Display all cards initially
+        displayInnovations(innovations);
+
+        // Search functionality
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = innovations.filter(innovation => 
+                innovation.title.toLowerCase().includes(searchTerm) ||
+                innovation.discovery.toLowerCase().includes(searchTerm) ||
+                innovation.technology.toLowerCase().includes(searchTerm) ||
+                innovation.business.toLowerCase().includes(searchTerm) ||
+                innovation.scientists.toLowerCase().includes(searchTerm)
+            );
+            displayInnovations(filtered);
+        });
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                if (filter === 'all') {
+                    displayInnovations(innovations);
+                } else {
+                    const filtered = innovations.filter(innovation => 
+                        innovation.tags.includes(filter)
+                    );
+                    displayInnovations(filtered);
+                }
+            });
+        });
+
+        // Function to display innovations
+        function displayInnovations(items) {
+            pipelineContainer.innerHTML = '';
+            
+            if (items.length === 0) {
+                pipelineContainer.innerHTML = '<div class="no-results">No matching innovations found. Try a different search.</div>';
+                return;
+            }
+            
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header science-header">
+                        <h2>${item.title}</h2>
+                        <div>${item.scientists}</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="discovery">
+                            <h3>Scientific Discovery</h3>
+                            <p>${item.discovery}</p>
+                            <div class="tags">
+                                ${item.scienceTags.map(tag => `<span class="tag science-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="innovation">
+                            <h3>Technology Built</h3>
+                            <p>${item.technology}</p>
+                            <div class="tags">
+                                ${item.techTags.map(tag => `<span class="tag tech-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="application">
+                            <h3>Business Applications</h3>
+                            <p>${item.business}</p>
+                            <div class="tags">
+                                ${item.businessTags.map(tag => `<span class="tag business-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                pipelineContainer.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
