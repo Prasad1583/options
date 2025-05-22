@@ -6,190 +6,341 @@
     <title>Science → Technology → Business Innovation Pipeline</title>
     <style>
         :root {
-            --science-color: #4a89dc;
-            --tech-color: #3bafda;
-            --business-color: #37bc9b;
-            --dark-bg: #2f3640;
-            --light-text: #f5f6fa;
+            --science-color: #5a9bd4;
+            --tech-color: #4ab8e6;
+            --business-color: #48c9a8;
+            --dark-bg: #2d3436;
+            --light-text: #f1f3f5;
+            --accent-color: #ff6b6b;
         }
-        
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
-        
+
         header {
-            background: linear-gradient(135deg, var(--science-color), var(--business-color));
-            color: white;
+            background: linear-gradient(135deg, var(--science-color) 0%, var(--business-color) 100%);
+            color: var(--light-text);
             text-align: center;
-            padding: 3rem 1rem;
-            margin-bottom: 2rem;
+            padding: 4rem 1rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        
+
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
-        
+
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
+            font-size: 1.3rem;
+            opacity: 0.85;
+            margin-top: 0.8rem;
+            font-weight: 300;
         }
-        
+
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
-        
+
         .controls {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
             flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2.5rem 0;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
-        
-        button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
+
+        .filter-menu {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: bold;
+        }
+
+        button {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-        }
-        
-        .filter-btn {
-            background-color: white;
+            background: white;
             border: 2px solid var(--dark-bg);
+            color: var(--dark-bg);
         }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--dark-bg);
+
+        button:hover {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            transform: translateY(-2px);
+        }
+
+        button.active {
+            background: var(--accent-color);
             color: white;
+            border-color: var(--accent-color);
         }
-        
+
+        .search-container {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 400px;
+            width: 100%;
+        }
+
         .search-box {
-            padding: 0.5rem 1rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            width: 300px;
-            max-width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
-        
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--science-color);
+            box-shadow: 0 0 0 3px rgba(90, 155, 212, 0.2);
+        }
+
+        .clear-search {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+        }
+
         .pipeline {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+            position: relative;
         }
-        
+
         .card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
-        
+
         .card-header {
-            padding: 1.5rem;
+            padding: 1.8rem;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
+            background: linear-gradient(135deg, rgba(0,0,0,0.2), transparent);
         }
-        
+
         .science-header {
             background-color: var(--science-color);
         }
-        
+
         .tech-header {
             background-color: var(--tech-color);
         }
-        
+
         .business-header {
             background-color: var(--business-color);
         }
-        
+
         .card-body {
-            padding: 1.5rem;
+            padding: 1.8rem;
         }
-        
+
         .discovery, .innovation, .application {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
-        
+
         .discovery h3, .innovation h3, .application h3 {
-            margin-top: 0;
+            margin: 0 0 0.5rem;
             color: var(--dark-bg);
+            font-size: 1.2rem;
+            font-weight: 600;
         }
-        
+
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.6rem;
             margin-top: 1rem;
         }
-        
+
         .tag {
-            padding: 0.3rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
-        
+
         .science-tag {
-            background-color: rgba(74, 137, 220, 0.2);
+            background-color: rgba(90, 155, 212, 0.15);
             color: var(--science-color);
         }
-        
+
         .tech-tag {
-            background-color: rgba(59, 175, 218, 0.2);
+            background-color: rgba(74, 184, 230, 0.15);
             color: var(--tech-color);
         }
-        
+
         .business-tag {
-            background-color: rgba(55, 188, 155, 0.2);
+            background-color: rgba(72, 201, 168, 0.15);
             color: var(--business-color);
         }
-        
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
+
         .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 3rem;
+            font-size: 1.3rem;
+            color: #6b7280;
+        }
+
+        .loading {
             text-align: center;
             grid-column: 1 / -1;
             padding: 2rem;
             font-size: 1.2rem;
-            color: #666;
+            color: var(--science-color);
+            animation: pulse 1.5s infinite;
         }
-        
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-bg);
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+        }
+
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
             .pipeline {
                 grid-template-columns: 1fr;
             }
-            
+
             .controls {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
             }
-            
-            .search-box {
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .filter-menu {
+                display: none;
+                flex-direction: column;
+                background: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                position: absolute;
+                top: 100%;
                 width: 100%;
+                z-index: 10;
+            }
+
+            .filter-menu.active {
+                display: flex;
+            }
+
+            .card {
+                margin: 0 0.5rem;
+            }
+
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .card-header {
+                padding: 1.2rem;
+            }
+
+            .card-body {
+                padding: 1.2rem;
             }
         }
     </style>
@@ -201,31 +352,39 @@
             <div class="subtitle">20 breakthrough innovations from fundamental research to market</div>
         </div>
     </header>
-    
+
     <div class="container">
         <div class="controls">
-            <input type="text" class="search-box" placeholder="Search discoveries, technologies or companies...">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="physics">Physics</button>
-            <button class="filter-btn" data-filter="biology">Biology</button>
-            <button class="filter-btn" data-filter="computing">Computing</button>
-            <button class="filter-btn" data-filter="materials">Materials</button>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search discoveries, technologies, or companies...">
+                <button class="clear-search">Clear</button>
+            </div>
+            <button class="menu-toggle">Filters</button>
+            <div class="filter-menu">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="physics">Physics</button>
+                <button class="filter-btn" data-filter="biology">Biology</button>
+                <button class="filter-btn" data-filter="computing">Computing</button>
+                <button class="filter-btn" data-filter="materials">Materials</button>
+            </div>
         </div>
-        
+
         <div class="pipeline" id="pipeline-container">
             <!-- Cards will be inserted here by JavaScript -->
         </div>
     </div>
-    
+
+    <button class="back-to-top" title="Back to Top">↑</button>
+
     <footer>
         <div class="container">
-            <p>© 2023 Science-to-Business Innovation Map</p>
+            <p>© 2025 Science-to-Business Innovation Map</p>
             <p>Data-driven visualization of research commercialization</p>
         </div>
     </footer>
 
     <script>
-        // JSON data for all 20 examples
+        // JSON data (unchanged from original)
         const innovations = [
             {
                 id: 1,
@@ -472,22 +631,40 @@
         // DOM elements
         const pipelineContainer = document.getElementById('pipeline-container');
         const searchBox = document.querySelector('.search-box');
+        const clearSearchBtn = document.querySelector('.clear-search');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const filterMenu = document.querySelector('.filter-menu');
+        const backToTopBtn = document.querySelector('.back-to-top');
 
-        // Display all cards initially
-        displayInnovations(innovations);
+        // Load saved filter state
+        const savedFilter = localStorage.getItem('activeFilter') || 'all';
+        filterBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === savedFilter);
+        });
+
+        // Display initial innovations
+        displayInnovations(innovations.filter(innovation => 
+            savedFilter === 'all' || innovation.tags.includes(savedFilter)
+        ));
+
+        // Toggle filter menu on mobile
+        menuToggle.addEventListener('click', () => {
+            filterMenu.classList.toggle('active');
+        });
 
         // Search functionality
-        searchBox.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = innovations.filter(innovation => 
-                innovation.title.toLowerCase().includes(searchTerm) ||
-                innovation.discovery.toLowerCase().includes(searchTerm) ||
-                innovation.technology.toLowerCase().includes(searchTerm) ||
-                innovation.business.toLowerCase().includes(searchTerm) ||
-                innovation.scientists.toLowerCase().includes(searchTerm)
-            );
-            displayInnovations(filtered);
+        searchBox.addEventListener('input', debounce(() => {
+            const searchTerm = searchBox.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            filterInnovations(searchTerm, activeFilter);
+        }, 300));
+
+        // Clear search
+        clearSearchBtn.addEventListener('click', () => {
+            searchBox.value = '';
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            filterInnovations('', activeFilter);
         });
 
         // Filter functionality
@@ -495,25 +672,69 @@
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                if (filter === 'all') {
-                    displayInnovations(innovations);
-                } else {
-                    const filtered = innovations.filter(innovation => 
-                        innovation.tags.includes(filter)
-                    );
-                    displayInnovations(filtered);
+                localStorage.setItem('activeFilter', btn.dataset.filter);
+                filterInnovations(searchBox.value.toLowerCase(), btn.dataset.filter);
+                if (window.innerWidth <= 768) {
+                    filterMenu.classList.remove('active');
                 }
             });
         });
 
-        // Function to display innovations
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Debounce function to limit search frequency
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Filter and display innovations
+        function filterInnovations(searchTerm, filter) {
+            pipelineContainer.innerHTML = '<div class="loading">Loading...</div>';
+            
+            setTimeout(() => {
+                let filtered = innovations;
+                
+                if (filter !== 'all') {
+                    filtered = filtered.filter(innovation => 
+                        innovation.tags.includes(filter)
+                    );
+                }
+
+                if (searchTerm) {
+                    filtered = filtered.filter(innovation => 
+                        innovation.title.toLowerCase().includes(searchTerm) ||
+                        innovation.discovery.toLowerCase().includes(searchTerm) ||
+                        innovation.technology.toLowerCase().includes(searchTerm) ||
+                        innovation.business.toLowerCase().includes(searchTerm) ||
+                        innovation.scientists.toLowerCase().includes(searchTerm)
+                    );
+                }
+
+                displayInnovations(filtered);
+            }, 300);
+        }
+
+        // Display innovations
         function displayInnovations(items) {
             pipelineContainer.innerHTML = '';
             
             if (items.length === 0) {
-                pipelineContainer.innerHTML = '<div class="no-results">No matching innovations found. Try a different search.</div>';
+                pipelineContainer.innerHTML = '<div class="no-results">No matching innovations found. Try a different search or filter.</div>';
                 return;
             }
             
