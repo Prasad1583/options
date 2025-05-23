@@ -289,9 +289,8 @@
                 <canvas :id="'chart-' + index"></canvas>
             </div>
         </div>
-
         <footer>
-            <p>Data updated: {{ new Date().toLocaleString() }} | © 2025 Options Premium Dashboard</p>
+            <p>Data updated: {{ new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }} IST | © 2025 Options Premium Dashboard</p>
         </footer>
     </div>
 
@@ -312,12 +311,19 @@
             },
             mounted() {
                 fetch('current-month-premiums-data.json')
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to load JSON data');
+                        return response.json();
+                    })
                     .then(data => {
+                        console.log('Loaded chartData:', data); // Debug JSON
                         this.chartData = data;
                         this.$nextTick(() => {
                             this.drawCharts();
                         });
+                    })
+                    .catch(error => {
+                        console.error('Error loading JSON:', error);
                     });
             },
             methods: {
@@ -326,7 +332,16 @@
                     // In a real app, you would filter data here
                 },
                 drawCharts() {
-                    const datasetsList = [this.chartData.nifty50Data, this.chartData.niftyBankData, this.chartData.indicesData, this.chartData.stocksData, this.chartData.niftybankMayCallHighLowData, this.chartData.niftybankMayPutHighLowData,this.chartData.niftyMayCallHighLowData, this.chartData.niftyMayPutHighLowData];
+                    const datasetsList = [
+                        this.chartData.nifty50Data,
+                        this.chartData.niftyBankData,
+                        this.chartData.indicesData,
+                        this.chartData.stocksData,
+                        this.chartData.niftybankMayCallHighLowData,
+                        this.chartData.niftybankMayPutHighLowData,
+                        this.chartData.niftyMayCallHighLowData,
+                        this.chartData.niftyMayPutHighLowData
+                    ];
 
                     // Register plugins
                     Chart.register({
@@ -343,14 +358,21 @@
 
                     datasetsList.forEach((monthData, index) => {
                         const ctx = document.getElementById('chart-' + index)?.getContext('2d');
-                        if (!ctx) return;
-                        
+                        if (!ctx) {
+                            console.warn(`Canvas not found for chart-${index}`);
+                            return;
+                        }
+                        if (!monthData || !monthData.labels || !monthData.datasets) {
+                            console.warn(`Invalid data for chart-${index}:`, monthData);
+                            return;
+                        }
+
                         new Chart(ctx, {
                             type: 'line',
                             plugins: ['customBackground', ChartZoom],
                             data: {
-                                labels: monthData?.labels,
-                                datasets: monthData?.datasets.map(dataset => ({
+                                labels: monthData.labels,
+                                datasets: monthData.datasets.map(dataset => ({
                                     ...dataset,
                                     borderWidth: 3,
                                     pointRadius: window.innerWidth < 768 ? 2 : 3,
@@ -445,7 +467,7 @@
                                             }
                                         }
                                     },
-                                    x2: { // NEW TOP AXIS
+                                    x2: {
                                         position: 'top',
                                         grid: {
                                             display: false
@@ -453,15 +475,15 @@
                                         ticks: {
                                             color: (context) => {
                                                 const index = context.index;
-                                                const fiiValue = monthData.fiiData[index];
-                                                if (fiiValue !== undefined) {
-                                                    return fiiValue >= 0 ? '#00E676' : '#FF4081'; // green for inflow, pink/red for outflow
+                                                const fiiValue = this.chartData.fiiData ? this.chartData.fiiData[index] : null;
+                                                if (Number.isFinite(fiiValue)) {
+                                                    return fiiValue >= 0 ? '#00E676' : '#FF4081';
                                                 }
-                                                return '#B0BEC5'; // fallback light color
+                                                return '#B0BEC5';
                                             },
                                             callback: (value, index) => {
-                                                const fiiValue = monthData.fiiData[index];
-                                                if (fiiValue !== undefined) {
+                                                const fiiValue = this.chartData.fiiData ? this.chartData.fiiData[index] : null;
+                                                if (Number.isFinite(fiiValue)) {
                                                     return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
                                                 }
                                                 return '';
@@ -471,7 +493,7 @@
                                             }
                                         }
                                     },
-                                    x3: { // NEW TOP AXIS
+                                    x3: {
                                         position: 'bottom',
                                         grid: {
                                             display: false
@@ -479,16 +501,16 @@
                                         ticks: {
                                             color: (context) => {
                                                 const index = context.index;
-                                                const fiiValue = monthData.diiData[index];
-                                                if (fiiValue !== undefined) {
-                                                    return fiiValue >= 0 ? '#00E676' : '#FF4081'; // green for inflow, pink/red for outflow
+                                                const diiValue = this.chartData.diiData ? this.chartData.diiData[index] : null;
+                                                if (Number.isFinite(diiValue)) {
+                                                    return diiValue >= 0 ? '#00E676' : '#FF4081';
                                                 }
-                                                return '#B0BEC5'; // fallback light color
+                                                return '#B0BEC5';
                                             },
                                             callback: (value, index) => {
-                                                const fiiValue = monthData.diiData[index];
-                                                if (fiiValue !== undefined) {
-                                                    return (fiiValue >= 0 ? '+' : '') + fiiValue.toLocaleString('en-IN');
+                                                const diiValue = this.chartData.diiData ? this.chartData.diiData[index] : null;
+                                                if (Number.isFinite(diiValue)) {
+                                                    return (diiValue >= 0 ? '+' : '') + diiValue.toLocaleString('en-IN');
                                                 }
                                                 return '';
                                             },
@@ -527,7 +549,6 @@
                     });
                 },
                 addAlpha(color, opacity) {
-                    // Helper function to add opacity to hex colors
                     const _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
                     return color + _opacity.toString(16).toUpperCase();
                 },
