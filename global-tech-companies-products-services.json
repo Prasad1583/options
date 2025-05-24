@@ -1,0 +1,1898 @@
+{
+  "countries": [
+    {
+      "name": "United States",
+      "code": "US",
+      "companies": [
+        {
+          "name": "Apple",
+          "industry": "Consumer electronics, smartphones, computers",
+          "products_services": [
+            "iPhone",
+            "iPad",
+            "Mac",
+            "Apple Watch",
+            "AirPods",
+            "iOS",
+            "macOS",
+            "iCloud",
+            "Apple Music",
+            "Apple TV+"
+          ]
+        },
+        {
+          "name": "Microsoft",
+          "industry": "Software, cloud computing, AI",
+          "products_services": [
+            "Windows",
+            "Microsoft Office",
+            "Azure",
+            "Surface devices",
+            "Xbox",
+            "Microsoft Teams",
+            "Power BI",
+            "AI Copilot"
+          ]
+        },
+        {
+          "name": "Google/Alphabet",
+          "industry": "Search, advertising, cloud, AI",
+          "products_services": [
+            "Google Search",
+            "Google Ads",
+            "Google Cloud",
+            "Android",
+            "Pixel devices",
+            "YouTube",
+            "Google Maps",
+            "Gemini AI"
+          ]
+        },
+        {
+          "name": "Amazon",
+          "industry": "E-commerce, cloud computing (AWS)",
+          "products_services": [
+            "Amazon.com",
+            "AWS (EC2, S3, Lambda)",
+            "Kindle",
+            "Echo/Alexa",
+            "Amazon Prime",
+            "Amazon Music",
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Meta (Facebook)",
+          "industry": "Social media, VR/AR, metaverse",
+          "products_services": [
+            "Facebook",
+            "Instagram",
+            "WhatsApp",
+            "Meta Quest",
+            "Horizon Worlds",
+            "Meta AI"
+          ]
+        },
+        {
+          "name": "Tesla",
+          "industry": "Electric vehicles, energy storage",
+          "products_services": [
+            "Model S",
+            "Model 3",
+            "Model X",
+            "Model Y",
+            "Cybertruck",
+            "Powerwall",
+            "Solar Roof",
+            "Autopilot"
+          ]
+        },
+        {
+          "name": "NVIDIA",
+          "industry": "AI chips, GPUs, data centers",
+          "products_services": [
+            "GeForce GPUs",
+            "NVIDIA RTX",
+            "DGX systems",
+            "Jetson platforms",
+            "CUDA",
+            "NVIDIA AI Enterprise"
+          ]
+        },
+        {
+          "name": "Netflix",
+          "industry": "Streaming, entertainment",
+          "products_services": [
+            "Netflix streaming",
+            "Original content production",
+            "Mobile games"
+          ]
+        },
+        {
+          "name": "Intel",
+          "industry": "Semiconductors, processors",
+          "products_services": [
+            "Core processors",
+            "Xeon processors",
+            "Optane memory",
+            "Intel Arc GPUs"
+          ]
+        },
+        {
+          "name": "Cisco",
+          "industry": "Networking equipment, cybersecurity",
+          "products_services": [
+            "Switches",
+            "Routers",
+            "Webex",
+            "Meraki",
+            "SecureX",
+            "Cisco Umbrella"
+          ]
+        },
+        {
+          "name": "Oracle",
+          "industry": "Database software, cloud",
+          "products_services": [
+            "Oracle Database",
+            "Oracle Cloud Infrastructure",
+            "NetSuite",
+            "Java",
+            "Fusion Applications"
+          ]
+        },
+        {
+          "name": "Salesforce",
+          "industry": "CRM, cloud software",
+          "products_services": [
+            "Sales Cloud",
+            "Service Cloud",
+            "Marketing Cloud",
+            "Slack",
+            "Tableau"
+          ]
+        },
+        {
+          "name": "Adobe",
+          "industry": "Creative software, digital marketing",
+          "products_services": [
+            "Photoshop",
+            "Illustrator",
+            "Premiere Pro",
+            "Adobe Experience Cloud",
+            "Acrobat"
+          ]
+        },
+        {
+          "name": "IBM",
+          "industry": "Enterprise software, AI, consulting",
+          "products_services": [
+            "Watson AI",
+            "IBM Cloud",
+            "Red Hat",
+            "Consulting services",
+            "Quantum computing"
+          ]
+        },
+        {
+          "name": "Uber",
+          "industry": "Ride-sharing, delivery",
+          "products_services": [
+            "Uber Rides",
+            "Uber Eats",
+            "Uber Freight"
+          ]
+        },
+        {
+          "name": "Airbnb",
+          "industry": "Travel, home sharing",
+          "products_services": [
+            "Home rentals",
+            "Experiences",
+            "Online Experiences"
+          ]
+        },
+        {
+          "name": "PayPal",
+          "industry": "Digital payments",
+          "products_services": [
+            "PayPal payments",
+            "Venmo",
+            "Braintree",
+            "Zettle"
+          ]
+        },
+        {
+          "name": "Zoom",
+          "industry": "Video conferencing",
+          "products_services": [
+            "Zoom Meetings",
+            "Zoom Phone",
+            "Zoom Rooms",
+            "Zoom Webinar"
+          ]
+        },
+        {
+          "name": "Snapchat",
+          "industry": "Social media, AR",
+          "products_services": [
+            "Snapchat app",
+            "Spectacles",
+            "Snap Map",
+            "AR Lenses"
+          ]
+        },
+        {
+          "name": "Twitter/X",
+          "industry": "Social media platform",
+          "products_services": [
+            "X platform",
+            "X Premium",
+            "Advertising solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "China",
+      "code": "CN",
+      "companies": [
+        {
+          "name": "Alibaba",
+          "industry": "E-commerce, cloud computing",
+          "products_services": [
+            "Taobao",
+            "Tmall",
+            "AliExpress",
+            "Alibaba Cloud",
+            "Alipay"
+          ]
+        },
+        {
+          "name": "Tencent",
+          "industry": "Gaming, social media, fintech",
+          "products_services": [
+            "WeChat",
+            "QQ",
+            "Tencent Games",
+            "WeGame",
+            "Tencent Cloud"
+          ]
+        },
+        {
+          "name": "ByteDance (TikTok)",
+          "industry": "Social media, short videos",
+          "products_services": [
+            "TikTok",
+            "Douyin",
+            "Toutiao",
+            "CapCut"
+          ]
+        },
+        {
+          "name": "Huawei",
+          "industry": "Telecommunications, smartphones",
+          "products_services": [
+            "Smartphones",
+            "HarmonyOS",
+            "5G equipment",
+            "Huawei Cloud",
+            "MateBook laptops"
+          ]
+        },
+        {
+          "name": "BYD",
+          "industry": "Electric vehicles, batteries",
+          "products_services": [
+            "Electric cars (Han, Tang)",
+            "Electric buses",
+            "Blade Battery",
+            "Solar panels"
+          ]
+        },
+        {
+          "name": "Xiaomi",
+          "industry": "Smartphones, IoT devices",
+          "products_services": [
+            "Mi smartphones",
+            "MIUI",
+            "Smart home devices",
+            "Xiaomi TVs"
+          ]
+        },
+        {
+          "name": "JD.com",
+          "industry": "E-commerce, logistics",
+          "products_services": [
+            "JD.com marketplace",
+            "JD Logistics",
+            "JD Health",
+            "JD Finance"
+          ]
+        },
+        {
+          "name": "Baidu",
+          "industry": "Search engine, AI, autonomous driving",
+          "products_services": [
+            "Baidu Search",
+            "Baidu Maps",
+            "Apollo (autonomous driving)",
+            "DuerOS"
+          ]
+        },
+        {
+          "name": "Didi Chuxing",
+          "industry": "Ride-sharing",
+          "products_services": [
+            "Didi ride-hailing",
+            "Didi Bike",
+            "Didi Delivery"
+          ]
+        },
+        {
+          "name": "Pinduoduo",
+          "industry": "E-commerce, group buying",
+          "products_services": [
+            "Pinduoduo platform",
+            "Duo Duo Grocery"
+          ]
+        },
+        {
+          "name": "DJI",
+          "industry": "Drones, aerial photography",
+          "products_services": [
+            "Mavic drones",
+            "Phantom drones",
+            "DJI Osmo",
+            "DJI FPV"
+          ]
+        },
+        {
+          "name": "Oppo",
+          "industry": "Smartphones",
+          "products_services": [
+            "Find X series",
+            "Reno series",
+            "ColorOS"
+          ]
+        },
+        {
+          "name": "Vivo",
+          "industry": "Smartphones",
+          "products_services": [
+            "X series",
+            "Y series",
+            "Funtouch OS"
+          ]
+        },
+        {
+          "name": "OnePlus",
+          "industry": "Premium smartphones",
+          "products_services": [
+            "OnePlus smartphones",
+            "OxygenOS",
+            "OnePlus Buds"
+          ]
+        },
+        {
+          "name": "Lenovo",
+          "industry": "Personal computers, enterprise",
+          "products_services": [
+            "ThinkPad",
+            "IdeaPad",
+            "Legion gaming PCs",
+            "Moto smartphones"
+          ]
+        },
+        {
+          "name": "Realme",
+          "industry": "Smartphones",
+          "products_services": [
+            "Realme smartphones",
+            "Realme UI",
+            "Smart home devices"
+          ]
+        },
+        {
+          "name": "TikTok/Douyin",
+          "industry": "Short video platform",
+          "products_services": [
+            "Douyin",
+            "TikTok",
+            "Video editing tools"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Japan",
+      "code": "JP",
+      "companies": [
+        {
+          "name": "Sony",
+          "industry": "Electronics, gaming, entertainment",
+          "products_services": [
+            "PlayStation",
+            "Sony TVs",
+            "Alpha cameras",
+            "Bravia",
+            "Sony Music"
+          ]
+        },
+        {
+          "name": "Nintendo",
+          "industry": "Gaming consoles, video games",
+          "products_services": [
+            "Nintendo Switch",
+            "Super Mario",
+            "The Legend of Zelda",
+            "Nintendo eShop"
+          ]
+        },
+        {
+          "name": "Toyota (tech division)",
+          "industry": "Automotive tech, robotics",
+          "products_services": [
+            "Toyota Connected",
+            "Woven City",
+            "Autonomous driving tech"
+          ]
+        },
+        {
+          "name": "SoftBank",
+          "industry": "Telecommunications, investments",
+          "products_services": [
+            "Mobile services",
+            "SoftBank Vision Fund",
+            "Pepper robot"
+          ]
+        },
+        {
+          "name": "Panasonic",
+          "industry": "Electronics, batteries",
+          "products_services": [
+            "Lumix cameras",
+            "Viera TVs",
+            "Eneloop batteries",
+            "Home appliances"
+          ]
+        },
+        {
+          "name": "Canon",
+          "industry": "Cameras, imaging, printers",
+          "products_services": [
+            "EOS cameras",
+            "Pixma printers",
+            "imagePROGRAF"
+          ]
+        },
+        {
+          "name": "Nikon",
+          "industry": "Cameras, imaging equipment",
+          "products_services": [
+            "Z series cameras",
+            "Coolpix",
+            "Nikkor lenses"
+          ]
+        },
+        {
+          "name": "Sharp",
+          "industry": "Displays, electronics",
+          "products_services": [
+            "Aquos TVs",
+            "LCD displays",
+            "Home appliances"
+          ]
+        },
+        {
+          "name": "Fujitsu",
+          "industry": "IT services, computers",
+          "products_services": [
+            "Lifebook laptops",
+            "Fujitsu Cloud",
+            "Supercomputers"
+          ]
+        },
+        {
+          "name": "NEC",
+          "industry": "IT solutions, telecommunications",
+          "products_services": [
+            "NEC Cloud",
+            "Facial recognition",
+            "Network solutions"
+          ]
+        },
+        {
+          "name": "Olympus",
+          "industry": "Cameras, medical devices",
+          "products_services": [
+            "OM-D cameras",
+            "Endoscopy systems",
+            "Microscopes"
+          ]
+        },
+        {
+          "name": "Casio",
+          "industry": "Calculators, watches, electronics",
+          "products_services": [
+            "G-Shock watches",
+            "Scientific calculators",
+            "Electronic keyboards"
+          ]
+        },
+        {
+          "name": "Brother",
+          "industry": "Printers, electronics",
+          "products_services": [
+            "Laser printers",
+            "Inkjet printers",
+            "Label makers"
+          ]
+        },
+        {
+          "name": "Epson",
+          "industry": "Printers, projectors",
+          "products_services": [
+            "EcoTank printers",
+            "SureColor printers",
+            "Projectors"
+          ]
+        },
+        {
+          "name": "Hitachi",
+          "industry": "Industrial tech, IT services",
+          "products_services": [
+            "Lumada IoT",
+            "Storage systems",
+            "Rail systems"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South Korea",
+      "code": "KR",
+      "companies": [
+        {
+          "name": "Samsung Electronics",
+          "industry": "Smartphones, semiconductors, displays",
+          "products_services": [
+            "Galaxy smartphones",
+            "QLED TVs",
+            "Exynos processors",
+            "OLED displays"
+          ]
+        },
+        {
+          "name": "LG Electronics",
+          "industry": "Home appliances, displays, mobile",
+          "products_services": [
+            "OLED TVs",
+            "Refrigerators",
+            "Washing machines",
+            "LG ThinQ"
+          ]
+        },
+        {
+          "name": "SK Hynix",
+          "industry": "Memory semiconductors",
+          "products_services": [
+            "DRAM",
+            "NAND Flash",
+            "SSD solutions"
+          ]
+        },
+        {
+          "name": "Hyundai Motor (tech)",
+          "industry": "Automotive technology",
+          "products_services": [
+            "Ioniq electric vehicles",
+            "SmartSense",
+            "Autonomous driving tech"
+          ]
+        },
+        {
+          "name": "Kia (tech division)",
+          "industry": "Automotive innovation",
+          "products_services": [
+            "EV6",
+            "Kia Connect",
+            "Advanced driver-assistance systems"
+          ]
+        },
+        {
+          "name": "Naver",
+          "industry": "Search engine, messaging",
+          "products_services": [
+            "Naver Search",
+            "Line messenger",
+            "Naver Maps"
+          ]
+        },
+        {
+          "name": "Kakao",
+          "industry": "Messaging, mobile services",
+          "products_services": [
+            "KakaoTalk",
+            "KakaoPay",
+            "KakaoMobility"
+          ]
+        },
+        {
+          "name": "NCSOFT",
+          "industry": "Online gaming",
+          "products_services": [
+            "Lineage",
+            "Guild Wars",
+            "Aion"
+          ]
+        },
+        {
+          "name": "Netmarble",
+          "industry": "Mobile gaming",
+          "products_services": [
+            "Marvel Future Fight",
+            "Lineage 2: Revolution",
+            "Seven Knights"
+          ]
+        },
+        {
+          "name": "Coupang",
+          "industry": "E-commerce, delivery",
+          "products_services": [
+            "Coupang marketplace",
+            "Rocket Delivery",
+            "Coupang Eats"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Germany",
+      "code": "DE",
+      "companies": [
+        {
+          "name": "SAP",
+          "industry": "Enterprise software, ERP",
+          "products_services": [
+            "SAP S/4HANA",
+            "SAP Business One",
+            "SAP Ariba",
+            "SAP SuccessFactors"
+          ]
+        },
+        {
+          "name": "Siemens",
+          "industry": "Industrial automation, digitalization",
+          "products_services": [
+            "MindSphere",
+            "SIMATIC",
+            "Digital Twin",
+            "Factory automation"
+          ]
+        },
+        {
+          "name": "Bosch",
+          "industry": "Automotive tech, IoT",
+          "products_services": [
+            "Automotive sensors",
+            "Bosch IoT Suite",
+            "Power tools",
+            "Home appliances"
+          ]
+        },
+        {
+          "name": "TeamViewer",
+          "industry": "Remote access software",
+          "products_services": [
+            "TeamViewer",
+            "TeamViewer IoT",
+            "TeamViewer AR"
+          ]
+        },
+        {
+          "name": "Infineon",
+          "industry": "Semiconductors",
+          "products_services": [
+            "Power semiconductors",
+            "Microcontrollers",
+            "Automotive chips"
+          ]
+        },
+        {
+          "name": "Continental",
+          "industry": "Automotive technology",
+          "products_services": [
+            "Tires",
+            "ADAS",
+            "Automotive software"
+          ]
+        },
+        {
+          "name": "Zalando",
+          "industry": "E-commerce, fashion",
+          "products_services": [
+            "Zalando marketplace",
+            "Zalando Plus",
+            "Fashion platform"
+          ]
+        },
+        {
+          "name": "Delivery Hero",
+          "industry": "Food delivery platform",
+          "products_services": [
+            "Foodpanda",
+            "Glovo",
+            "Delivery Hero platform"
+          ]
+        },
+        {
+          "name": "Software AG",
+          "industry": "Integration software",
+          "products_services": [
+            "webMethods",
+            "ARIS",
+            "Cumulocity IoT"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Netherlands",
+      "code": "NL",
+      "companies": [
+        {
+          "name": "ASML",
+          "industry": "Semiconductor equipment",
+          "products_services": [
+            "Photolithography machines",
+            "EUV lithography",
+            "TWINSCAN systems"
+          ]
+        },
+        {
+          "name": "Philips",
+          "industry": "Healthcare technology",
+          "products_services": [
+            "Medical imaging",
+            "Patient monitors",
+            "Philips Hue",
+            "HealthSuite"
+          ]
+        },
+        {
+          "name": "TomTom",
+          "industry": "Navigation, mapping",
+          "products_services": [
+            "TomTom GO",
+            "Navigation apps",
+            "HD Maps"
+          ]
+        },
+        {
+          "name": "Adyen",
+          "industry": "Payment processing",
+          "products_services": [
+            "Payment gateway",
+            "POS solutions",
+            "Adyen platform"
+          ]
+        },
+        {
+          "name": "Booking.com",
+          "industry": "Online travel booking",
+          "products_services": [
+            "Booking.com platform",
+            "Hotel reservations",
+            "Travel experiences"
+          ]
+        },
+        {
+          "name": "NXP Semiconductors",
+          "industry": "Automotive chips, IoT",
+          "products_services": [
+            "Automotive processors",
+            "NFC chips",
+            "IoT solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "United Kingdom",
+      "code": "GB",
+      "companies": [
+        {
+          "name": "ARM Holdings",
+          "industry": "Chip design, semiconductor IP",
+          "products_services": [
+            "ARM Cortex processors",
+            "Mali GPUs",
+            "IP licensing"
+          ]
+        },
+        {
+          "name": "DeepMind",
+          "industry": "Artificial intelligence",
+          "products_services": [
+            "AlphaFold",
+            "AI research tools",
+            "Deep learning frameworks"
+          ]
+        },
+        {
+          "name": "Rolls-Royce (tech)",
+          "industry": "Aerospace technology",
+          "products_services": [
+            "Aero engines",
+            "Digital twin technology",
+            "R2 Data Labs"
+          ]
+        },
+        {
+          "name": "BT Group",
+          "industry": "Telecommunications",
+          "products_services": [
+            "Broadband",
+            "EE mobile",
+            "BT Sport"
+          ]
+        },
+        {
+          "name": "Vodafone",
+          "industry": "Mobile telecommunications",
+          "products_services": [
+            "Mobile services",
+            "Broadband",
+            "IoT connectivity"
+          ]
+        },
+        {
+          "name": "Deliveroo",
+          "industry": "Food delivery",
+          "products_services": [
+            "Deliveroo app",
+            "Deliveroo Plus",
+            "Restaurant delivery"
+          ]
+        },
+        {
+          "name": "Revolut",
+          "industry": "Digital banking, fintech",
+          "products_services": [
+            "Revolut app",
+            "Crypto trading",
+            "International transfers"
+          ]
+        },
+        {
+          "name": "Wise",
+          "industry": "International money transfers",
+          "products_services": [
+            "Wise transfers",
+            "Multi-currency account",
+            "Business payments"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Switzerland",
+      "code": "CH",
+      "companies": [
+        {
+          "name": "ABB",
+          "industry": "Industrial automation, robotics",
+          "products_services": [
+            "Industrial robots",
+            "ABB Ability",
+            "Automation systems"
+          ]
+        },
+        {
+          "name": "Logitech",
+          "industry": "Computer peripherals",
+          "products_services": [
+            "Mice",
+            "Keyboards",
+            "Webcams",
+            "Logi Bolt"
+          ]
+        },
+        {
+          "name": "STMicroelectronics",
+          "industry": "Semiconductors",
+          "products_services": [
+            "Microcontrollers",
+            "Sensors",
+            "Power management chips"
+          ]
+        },
+        {
+          "name": "UBS (tech division)",
+          "industry": "Financial technology",
+          "products_services": [
+            "Digital banking",
+            "Wealth management platforms",
+            "Fintech solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "France",
+      "code": "FR",
+      "companies": [
+        {
+          "name": "Thales",
+          "industry": "Aerospace, defense electronics",
+          "products_services": [
+            "Avionics",
+            "Cybersecurity solutions",
+            "Radar systems"
+          ]
+        },
+        {
+          "name": "Dassault Systèmes",
+          "industry": "3D software, PLM",
+          "products_services": [
+            "CATIA",
+            "SOLIDWORKS",
+            "3DEXPERIENCE platform"
+          ]
+        },
+        {
+          "name": "Atos",
+          "industry": "IT services, cybersecurity",
+          "products_services": [
+            "BullSequana",
+            "Cybersecurity services",
+            "Cloud solutions"
+          ]
+        },
+        {
+          "name": "Capgemini",
+          "industry": "IT consulting, services",
+          "products_services": [
+            "Digital transformation",
+            "Cloud services",
+            "AI consulting"
+          ]
+        },
+        {
+          "name": "Orange",
+          "industry": "Telecommunications",
+          "products_services": [
+            "Mobile services",
+            "Broadband",
+            "Orange Business Services"
+          ]
+        },
+        {
+          "name": "Ubisoft",
+          "industry": "Video game development",
+          "products_services": [
+            "Assassin’s Creed",
+            "Far Cry",
+            "Rainbow Six"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweden",
+      "code": "SE",
+      "companies": [
+        {
+          "name": "Spotify",
+          "industry": "Music streaming",
+          "products_services": [
+            "Spotify app",
+            "Spotify Premium",
+            "Podcasts"
+          ]
+        },
+        {
+          "name": "Ericsson",
+          "industry": "Telecom infrastructure, 5G",
+          "products_services": [
+            "5G networks",
+            "Radio Systems",
+            "Ericsson Cloud"
+          ]
+        },
+        {
+          "name": "Klarna",
+          "industry": "Buy-now-pay-later, fintech",
+          "products_services": [
+            "Klarna Pay",
+            "Klarna Card",
+            "Shopping app"
+          ]
+        },
+        {
+          "name": "King Digital",
+          "industry": "Mobile gaming",
+          "products_services": [
+            "Candy Crush Saga",
+            "Farm Heroes",
+            "Bubble Witch"
+          ]
+        },
+        {
+          "name": "H&M (tech division)",
+          "industry": "Fashion tech, e-commerce",
+          "products_services": [
+            "H&M app",
+            "Online store",
+            "AI-driven fashion"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finland",
+      "code": "FI",
+      "companies": [
+        {
+          "name": "Nokia",
+          "industry": "Telecom equipment, 5G",
+          "products_services": [
+            "5G infrastructure",
+            "Nokia AirScale",
+            "Network solutions"
+          ]
+        },
+        {
+          "name": "Supercell",
+          "industry": "Mobile gaming",
+          "products_services": [
+            "Clash of Clans",
+            "Hay Day",
+            "Brawl Stars"
+          ]
+        },
+        {
+          "name": "Rovio",
+          "industry": "Mobile gaming (Angry Birds)",
+          "products_services": [
+            "Angry Birds",
+            "Angry Birds 2",
+            "Mobile games"
+          ]
+        },
+        {
+          "name": "F-Secure",
+          "industry": "Cybersecurity",
+          "products_services": [
+            "F-Secure Total",
+            "F-Secure SAFE",
+            "Business security"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Denmark",
+      "code": "DK",
+      "companies": [
+        {
+          "name": "Unity Technologies",
+          "industry": "Game development platform",
+          "products_services": [
+            "Unity Engine",
+            "Unity Pro",
+            "Unity Ads"
+          ]
+        },
+        {
+          "name": "Zendesk",
+          "industry": "Customer service software",
+          "products_services": [
+            "Zendesk Support",
+            "Zendesk Chat",
+            "Zendesk Sell"
+          ]
+        },
+        {
+          "name": "Sennheiser",
+          "industry": "Audio equipment",
+          "products_services": [
+            "Headphones",
+            "Microphones",
+            "Wireless audio systems"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Norway",
+      "code": "NO",
+      "companies": [
+        {
+          "name": "Opera",
+          "industry": "Web browser",
+          "products_services": [
+            "Opera Browser",
+            "Opera GX",
+            "Opera VPN"
+          ]
+        },
+        {
+          "name": "Telenor",
+          "industry": "Telecommunications",
+          "products_services": [
+            "Mobile services",
+            "Broadband",
+            "IoT solutions"
+          ]
+        },
+        {
+          "name": "Kahoot!",
+          "industry": "Educational gaming platform",
+          "products_services": [
+            "Kahoot! app",
+            "Learning games",
+            "Corporate training"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Israel",
+      "code": "IL",
+      "companies": [
+        {
+          "name": "Wix",
+          "industry": "Website building platform",
+          "products_services": [
+            "Wix Editor",
+            "Wix ADI",
+            "Wix Stores"
+          ]
+        },
+        {
+          "name": "Check Point",
+          "industry": "Cybersecurity",
+          "products_services": [
+            "Check Point Infinity",
+            "Firewalls",
+            "CloudGuard"
+          ]
+        },
+        {
+          "name": "Monday.com",
+          "industry": "Work management platform",
+          "products_services": [
+            "Monday Work Management",
+            "Monday CRM",
+            "Monday Dev"
+          ]
+        },
+        {
+          "name": "CyberArk",
+          "industry": "Cybersecurity",
+          "products_services": [
+            "Privileged Access Management",
+            "Endpoint Privilege Manager",
+            "Cloud Entitlements"
+          ]
+        },
+        {
+          "name": "Mobileye",
+          "industry": "Autonomous driving tech",
+          "products_services": [
+            "EyeQ chips",
+            "ADAS",
+            "Autonomous driving solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Canada",
+      "code": "CA",
+      "companies": [
+        {
+          "name": "Shopify",
+          "industry": "E-commerce platform",
+          "products_services": [
+            "Shopify Store",
+            "Shopify POS",
+            "Shopify Payments"
+          ]
+        },
+        {
+          "name": "BlackBerry",
+          "industry": "Cybersecurity, IoT",
+          "products_services": [
+            "BlackBerry Secure",
+            "QNX software",
+            "Cybersecurity services"
+          ]
+        },
+        {
+          "name": "Corel",
+          "industry": "Software development",
+          "products_services": [
+            "CorelDRAW",
+            "PaintShop Pro",
+            "WinZip"
+          ]
+        },
+        {
+          "name": "OpenText",
+          "industry": "Enterprise information management",
+          "products_services": [
+            "OpenText Content Cloud",
+            "OpenText Experience Cloud",
+            "Documentum"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Australia",
+      "code": "AU",
+      "companies": [
+        {
+          "name": "Atlassian",
+          "industry": "Collaboration software",
+          "products_services": [
+            "Jira",
+            "Confluence",
+            "Trello",
+            "Bitbucket"
+          ]
+        },
+        {
+          "name": "Canva",
+          "industry": "Graphic design platform",
+          "products_services": [
+            "Canva Editor",
+            "Canva Pro",
+            "Presentation tools"
+          ]
+        },
+        {
+          "name": "Afterpay",
+          "industry": "Buy-now-pay-later",
+          "products_services": [
+            "Afterpay payments",
+            "Clearpay",
+            "Merchant solutions"
+          ]
+        },
+        {
+          "name": "WiseTech Global",
+          "industry": "Logistics software",
+          "products_services": [
+            "CargoWise",
+            "Logistics platforms",
+            "Supply chain solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "India",
+      "code": "IN",
+      "companies": [
+        {
+          "name": "Tata Consultancy Services",
+          "industry": "IT services, consulting",
+          "products_services": [
+            "TCS Ignite",
+            "TCS BaNCS",
+            "Cloud consulting",
+            "AI solutions"
+          ]
+        },
+        {
+          "name": "Infosys",
+          "industry": "IT services, digital transformation",
+          "products_services": [
+            "Infosys Finacle",
+            "Nia AI",
+            "Cloud services",
+            "Digital transformation"
+          ]
+        },
+        {
+          "name": "Wipro",
+          "industry": "IT services, consulting",
+          "products_services": [
+            "Wipro HOLMES",
+            "Cloud Studio",
+            "Digital transformation",
+            "Cybersecurity services"
+          ]
+        },
+        {
+          "name": "HCL Technologies",
+          "industry": "IT services",
+          "products_services": [
+            "HCL Domino",
+            "DRYiCE",
+            "Cloud services",
+            "Engineering services"
+          ]
+        },
+        {
+          "name": "Tech Mahindra",
+          "industry": "IT services",
+          "products_services": [
+            "iON platform",
+            "5G solutions",
+            "Cloud services",
+            "AI consulting"
+          ]
+        },
+        {
+          "name": "Flipkart",
+          "industry": "E-commerce",
+          "products_services": [
+            "Flipkart marketplace",
+            "Flipkart Plus",
+            "Myntra"
+          ]
+        },
+        {
+          "name": "Paytm",
+          "industry": "Digital payments, fintech",
+          "products_services": [
+            "Paytm Wallet",
+            "Paytm Payments Bank",
+            "Paytm Mall"
+          ]
+        },
+        {
+          "name": "Zomato",
+          "industry": "Food delivery",
+          "products_services": [
+            "Zomato app",
+            "Hyperpure",
+            "Zomato Pro"
+          ]
+        },
+        {
+          "name": "Ola",
+          "industry": "Ride-sharing",
+          "products_services": [
+            "Ola Cabs",
+            "Ola Electric",
+            "Ola Fleet"
+          ]
+        },
+        {
+          "name": "BYJU'S",
+          "industry": "EdTech platform",
+          "products_services": [
+            "BYJU’S app",
+            "Learning programs",
+            "WhiteHat Jr"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Taiwan",
+      "code": "TW",
+      "companies": [
+        {
+          "name": "TSMC",
+          "industry": "Semiconductor manufacturing",
+          "products_services": [
+            "Semiconductor foundry",
+            "7nm/5nm chips",
+            "Chip manufacturing"
+          ]
+        },
+        {
+          "name": "MediaTek",
+          "industry": "Mobile processors, chips",
+          "products_services": [
+            "Dimensity processors",
+            "Helio chipsets",
+            "IoT chips"
+          ]
+        },
+        {
+          "name": "ASUS",
+          "industry": "Computers, motherboards",
+          "products_services": [
+            "ROG laptops",
+            "ZenBook",
+            "Motherboards",
+            "ROG Phone"
+          ]
+        },
+        {
+          "name": "Acer",
+          "industry": "Personal computers",
+          "products_services": [
+            "Predator gaming PCs",
+            "Aspire laptops",
+            "Monitors"
+          ]
+        },
+        {
+          "name": "HTC",
+          "industry": "Smartphones, VR",
+          "products_services": [
+            "Vive VR",
+            "HTC smartphones",
+            "Viverse platform"
+          ]
+        },
+        {
+          "name": "Foxconn",
+          "industry": "Electronics manufacturing",
+          "products_services": [
+            "OEM manufacturing",
+            "Electronics assembly",
+            "EV components"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Singapore",
+      "code": "SG",
+      "companies": [
+        {
+          "name": "Grab",
+          "industry": "Super app, ride-sharing",
+          "products_services": [
+            "GrabRide",
+            "GrabFood",
+            "GrabPay",
+            "GrabMart"
+          ]
+        },
+        {
+          "name": "Sea Limited",
+          "industry": "Gaming, e-commerce",
+          "products_services": [
+            "Shopee",
+            "Garena",
+            "SeaMoney"
+          ]
+        },
+        {
+          "name": "ST Engineering",
+          "industry": "Aerospace, electronics",
+          "products_services": [
+            "Aerospace MRO",
+            "Smart city solutions",
+            "Defense electronics"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Indonesia",
+      "code": "ID",
+      "companies": [
+        {
+          "name": "GoTo Group",
+          "industry": "Super app (Gojek + Tokopedia)",
+          "products_services": [
+            "Gojek ride-hailing",
+            "Tokopedia marketplace",
+            "GoPay"
+          ]
+        },
+        {
+          "name": "Bukalapak",
+          "industry": "E-commerce",
+          "products_services": [
+            "Bukalapak marketplace",
+            "BukaMall",
+            "BukaMart"
+          ]
+        },
+        {
+          "name": "Traveloka",
+          "industry": "Online travel booking",
+          "products_services": [
+            "Flight bookings",
+            "Hotel reservations",
+            "Travel activities"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brazil",
+      "code": "BR",
+      "companies": [
+        {
+          "name": "MercadoLibre",
+          "industry": "E-commerce, fintech",
+          "products_services": [
+            "MercadoLibre marketplace",
+            "MercadoPago",
+            "MercadoEnvios"
+          ]
+        },
+        {
+          "name": "Stone",
+          "industry": "Payment processing",
+          "products_services": [
+            "Stone payments",
+            "POS systems",
+            "Digital banking"
+          ]
+        },
+        {
+          "name": "Nubank",
+          "industry": "Digital banking",
+          "products_services": [
+            "Nubank credit card",
+            "NuConta",
+            "Investment products"
+          ]
+        },
+        {
+          "name": "Embraer",
+          "industry": "Aviation technology",
+          "products_services": [
+            "Commercial jets",
+            "Executive jets",
+            "Defense aircraft"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Argentina",
+      "code": "AR",
+      "companies": [
+        {
+          "name": "Globant",
+          "industry": "Software development",
+          "products_services": [
+            "Custom software",
+            "AI solutions",
+            "Digital transformation"
+          ]
+        },
+        {
+          "name": "Auth0",
+          "industry": "Identity management",
+          "products_services": [
+            "Auth0 platform",
+            "Single Sign-On",
+            "Identity APIs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Russia",
+      "code": "RU",
+      "companies": [
+        {
+          "name": "Yandex",
+          "industry": "Search, tech services",
+          "products_services": [
+            "Yandex Search",
+            "Yandex Maps",
+            "Yandex Taxi",
+            "Yandex Cloud"
+          ]
+        },
+        {
+          "name": "Kaspersky",
+          "industry": "Cybersecurity",
+          "products_services": [
+            "Kaspersky Antivirus",
+            "Internet Security",
+            "Endpoint Security"
+          ]
+        },
+        {
+          "name": "VK",
+          "industry": "Social media",
+          "products_services": [
+            "VKontakte",
+            "VK Music",
+            "VK Ads"
+          ]
+        },
+        {
+          "name": "Mail.ru",
+          "industry": "Internet services",
+          "products_services": [
+            "Mail.ru email",
+            "My.Games",
+            "Cloud services"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ukraine",
+      "code": "UA",
+      "companies": [
+        {
+          "name": "GitLab",
+          "industry": "DevOps platform",
+          "products_services": [
+            "GitLab platform",
+            "CI/CD pipelines",
+            "Code repository"
+          ]
+        },
+        {
+          "name": "Grammarly",
+          "industry": "AI writing assistant",
+          "products_services": [
+            "Grammarly app",
+            "Grammarly Business",
+            "Writing APIs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Poland",
+      "code": "PL",
+      "companies": [
+        {
+          "name": "CD Projekt",
+          "industry": "Video game development",
+          "products_services": [
+            "The Witcher",
+            "Cyberpunk 2077",
+            "GOG.com"
+          ]
+        },
+        {
+          "name": "Asseco",
+          "industry": "Software solutions",
+          "products_services": [
+            "Banking software",
+            "ERP solutions",
+            "Healthcare IT"
+          ]
+        },
+        {
+          "name": "Allegro",
+          "industry": "E-commerce",
+          "products_services": [
+            "Allegro marketplace",
+            "Allegro Pay",
+            "Allegro Smart"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spain",
+      "code": "ES",
+      "companies": [
+        {
+          "name": "Telefónica",
+          "industry": "Telecommunications",
+          "products_services": [
+            "Movistar",
+            "O2",
+            "Broadband services"
+          ]
+        },
+        {
+          "name": "Indra",
+          "industry": "IT consulting",
+          "products_services": [
+            "Minsait",
+            "Defense systems",
+            "IT solutions"
+          ]
+        },
+        {
+          "name": "Amadeus",
+          "industry": "Travel technology",
+          "products_services": [
+            "Amadeus GDS",
+            "Altea Suite",
+            "Travel APIs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South Africa",
+      "code": "ZA",
+      "companies": [
+        {
+          "name": "Naspers",
+          "industry": "Internet, media investments",
+          "products_services": [
+            "Prosus",
+            "Media24",
+            "OLX"
+          ]
+        },
+        {
+          "name": "MTN",
+          "industry": "Telecommunications",
+          "products_services": [
+            "Mobile services",
+            "MTN Mobile Money",
+            "Broadband"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nigeria",
+      "code": "NG",
+      "companies": [
+        {
+          "name": "Flutterwave",
+          "industry": "Fintech payments",
+          "products_services": [
+            "Payment gateway",
+            "Barter",
+            "Rave"
+          ]
+        },
+        {
+          "name": "Paystack",
+          "industry": "Payment processing",
+          "products_services": [
+            "Paystack Payments",
+            "Paystack Commerce",
+            "Payment APIs"
+          ]
+        },
+        {
+          "name": "Jumia",
+          "industry": "E-commerce",
+          "products_services": [
+            "Jumia marketplace",
+            "JumiaPay",
+            "Jumia Logistics"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kenya",
+      "code": "KE",
+      "companies": [
+        {
+          "name": "Safaricom",
+          "industry": "Mobile payments (M-Pesa)",
+          "products_services": [
+            "M-Pesa",
+            "Mobile services",
+            "Safaricom Home Fibre"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UAE",
+      "code": "AE",
+      "companies": [
+        {
+          "name": "Careem",
+          "industry": "Ride-hailing, super app",
+          "products_services": [
+            "Careem Rides",
+            "Careem NOW",
+            "Careem Pay"
+          ]
+        },
+        {
+          "name": "Noon",
+          "industry": "E-commerce",
+          "products_services": [
+            "Noon marketplace",
+            "Noon Payments",
+            "Noon Daily"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mexico",
+      "code": "MX",
+      "companies": [
+        {
+          "name": "Softtek",
+          "industry": "IT services",
+          "products_services": [
+            "Digital transformation",
+            "Cloud services",
+            "Software development"
+          ]
+        },
+        {
+          "name": "Kavak",
+          "industry": "Used car marketplace",
+          "products_services": [
+            "Kavak marketplace",
+            "Car financing",
+            "Inspection services"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vietnam",
+      "code": "VN",
+      "companies": [
+        {
+          "name": "VinFast",
+          "industry": "Electric vehicles",
+          "products_services": [
+            "Electric cars",
+            "Electric scooters",
+            "EV batteries"
+          ]
+        },
+        {
+          "name": "Zalo",
+          "industry": "Messaging app",
+          "products_services": [
+            "Zalo app",
+            "ZaloPay",
+            "Zalo Cloud"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Thailand",
+      "code": "TH",
+      "companies": [
+        {
+          "name": "CP Group",
+          "industry": "Digital transformation",
+          "products_services": [
+            "Digital retail",
+            "TrueMoney",
+            "Cloud solutions"
+          ]
+        },
+        {
+          "name": "Delta Electronics",
+          "industry": "Power electronics",
+          "products_services": [
+            "Power supplies",
+            "Solar inverters",
+            "EV charging solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malaysia",
+      "code": "MY",
+      "companies": [
+        {
+          "name": "Grab Malaysia",
+          "industry": "Regional super app",
+          "products_services": [
+            "GrabRide",
+            "GrabFood",
+            "GrabPay"
+          ]
+        },
+        {
+          "name": "Genting",
+          "industry": "Digital entertainment",
+          "products_services": [
+            "Online gaming platforms",
+            "Digital ticketing",
+            "Resort management apps"
+          ]
+        }
+      ]
+    }
+  ]
+}

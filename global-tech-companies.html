@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Tech Companies Directory (2024-2025)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --hover-color: #eff6ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Search and Filter Section */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+        }
+
+        #search {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #search:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        select {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Country Cards */
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .country-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .country-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .country-flag {
+            font-size: 2rem;
+        }
+
+        .country-name {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .company-list {
+            padding: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .company-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .company-item:last-child {
+            border-bottom: none;
+        }
+
+        .company-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .company-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-industry {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .products-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .products-toggle:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .products-list {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--primary-color);
+            display: none;
+        }
+
+        .products-list.show {
+            display: block;
+        }
+
+        .product-item {
+            font-size: 0.85rem;
+            padding: 0.25rem 0;
+            color: #4b5563;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .company-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .company-industry-modal {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .products-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .product-card {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .country-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Global Tech Companies Directory</h1>
+        <div class="subtitle">Top International Tech Companies & Brands by Country (2024–2025)</div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search" placeholder="Search companies or products...">
+            </div>
+            <div class="filter-container">
+                <select id="industry-filter">
+                    <option value="">All Industries</option>
+                    <option value="Consumer electronics">Consumer Electronics</option>
+                    <option value="Software">Software</option>
+                    <option value="Cloud">Cloud Computing</option>
+                    <option value="AI">Artificial Intelligence</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Social media">Social Media</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Telecommunications">Telecommunications</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Fintech">Fintech</option>
+                </select>
+                <select id="country-filter">
+                    <option value="">All Countries</option>
+                    <!-- Will be populated by JavaScript -->
+                </select>
+            </div>
+        </div>
+
+        <div id="country-grid" class="country-grid">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="company-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-company-name"></h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="company-details">
+                    <div class="company-industry-modal" id="modal-company-industry"></div>
+                    <div>
+                        <h3 class="products-title">
+                            <i class="fas fa-box-open"></i>
+                            Products & Services
+                        </h3>
+                        <div class="products-grid" id="modal-products-list">
+                            <!-- Products will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const countryGrid = document.getElementById('country-grid');
+            const searchInput = document.getElementById('search');
+            const industryFilter = document.getElementById('industry-filter');
+            const countryFilter = document.getElementById('country-filter');
+            const modal = document.getElementById('company-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalCompanyName = document.getElementById('modal-company-name');
+            const modalCompanyIndustry = document.getElementById('modal-company-industry');
+            const modalProductsList = document.getElementById('modal-products-list');
+
+            // Sample data (would be fetched from JSON in real implementation)
+            let companiesData = {
+                "countries": [
+                    // Your full JSON data would be here
+                    // For this example, I'll include just a few entries
+                    {
+                        "name": "United States",
+                        "code": "US",
+                        "companies": [
+                            {
+                                "name": "Apple",
+                                "industry": "Consumer electronics, smartphones, computers",
+                                "products_services": [
+                                    "iPhone",
+                                    "iPad",
+                                    "Mac",
+                                    "Apple Watch",
+                                    "AirPods",
+                                    "iOS",
+                                    "macOS",
+                                    "iCloud",
+                                    "Apple Music",
+                                    "Apple TV+"
+                                ]
+                            },
+                            {
+                                "name": "Microsoft",
+                                "industry": "Software, cloud computing, AI",
+                                "products_services": [
+                                    "Windows",
+                                    "Microsoft Office",
+                                    "Azure",
+                                    "Surface devices",
+                                    "Xbox",
+                                    "Microsoft Teams",
+                                    "Power BI",
+                                    "AI Copilot"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "China",
+                        "code": "CN",
+                        "companies": [
+                            {
+                                "name": "Alibaba",
+                                "industry": "E-commerce, cloud computing",
+                                "products_services": [
+                                    "Taobao",
+                                    "Tmall",
+                                    "AliExpress",
+                                    "Alibaba Cloud",
+                                    "Alipay"
+                                ]
+                            },
+                            {
+                                "name": "Tencent",
+                                "industry": "Gaming, social media, fintech",
+                                "products_services": [
+                                    "WeChat",
+                                    "QQ",
+                                    "Tencent Games",
+                                    "WeGame",
+                                    "Tencent Cloud"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // In a real implementation, you would fetch the JSON:
+            fetch('global-tech-companies-products-services.json')
+                .then(response => response.json())
+                .then(data => {
+                    companiesData = data;
+                    renderCountries();
+                    populateCountryFilter();
+                })
+                .catch(error => console.error('Error loading data:', error));
+
+
+            // For this demo, we'll use the sample data directly
+            renderCountries();
+            populateCountryFilter();
+
+            // Render all countries and companies
+            function renderCountries(filteredData = companiesData) {
+                countryGrid.innerHTML = '';
+                
+                if (filteredData.countries.length === 0) {
+                    countryGrid.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>No companies found</h3>
+                            <p>Try adjusting your search or filters</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                filteredData.countries.forEach(country => {
+                    const countryCard = document.createElement('div');
+                    countryCard.className = 'country-card';
+                    
+                    countryCard.innerHTML = `
+                        <div class="country-header">
+                            <div class="country-flag">${getFlagEmoji(country.code)}</div>
+                            <h2 class="country-name">${country.name}</h2>
+                        </div>
+                        <div class="company-list">
+                            ${country.companies.map(company => `
+                                <div class="company-item" data-country="${country.name}" data-company="${company.name}">
+                                    <div class="company-name">
+                                        ${company.name}
+                                        <button class="products-toggle">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                    <div class="company-industry">${company.industry}</div>
+                                    <div class="products-list">
+                                        ${company.products_services.map(product => `
+                                            <div class="product-item">${product}</div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    countryGrid.appendChild(countryCard);
+                });
+
+                // Add event listeners to company items
+                document.querySelectorAll('.company-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        // Don't open modal if clicking the toggle button
+                        if (e.target.closest('.products-toggle')) {
+                            const productsList = this.querySelector('.products-list');
+                            const icon = this.querySelector('.products-toggle i');
+                            
+                            productsList.classList.toggle('show');
+                            icon.classList.toggle('fa-chevron-down');
+                            icon.classList.toggle('fa-chevron-up');
+                            
+                            e.stopPropagation();
+                            return;
+                        }
+                        
+                        const countryName = this.getAttribute('data-country');
+                        const companyName = this.getAttribute('data-company');
+                        
+                        openCompanyModal(countryName, companyName);
+                    });
+                });
+            }
+
+            // Open modal with company details
+            function openCompanyModal(countryName, companyName) {
+                const country = companiesData.countries.find(c => c.name === countryName);
+                if (!country) return;
+                
+                const company = country.companies.find(c => c.name === companyName);
+                if (!company) return;
+                
+                modalCompanyName.textContent = company.name;
+                modalCompanyIndustry.textContent = company.industry;
+                
+                // Clear previous products
+                modalProductsList.innerHTML = '';
+                
+                // Add products
+                company.products_services.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    // Get an appropriate icon based on product type
+                    const icon = getProductIcon(product);
+                    
+                    productCard.innerHTML = `
+                        <div class="product-icon">${icon}</div>
+                        <div>${product}</div>
+                    `;
+                    
+                    modalProductsList.appendChild(productCard);
+                });
+                
+                // Show modal
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Filter functionality
+            function filterCompanies() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const industryTerm = industryFilter.value.toLowerCase();
+                const countryTerm = countryFilter.value.toLowerCase();
+                
+                const filteredData = {
+                    countries: companiesData.countries
+                        .filter(country => {
+                            // Filter by country name if country filter is set
+                            if (countryTerm && !country.name.toLowerCase().includes(countryTerm)) {
+                                return false;
+                            }
+                            
+                            // Filter companies within each country
+                            const filteredCompanies = country.companies.filter(company => {
+                                const matchesSearch = searchTerm === '' || 
+                                    company.name.toLowerCase().includes(searchTerm) || 
+                                    company.industry.toLowerCase().includes(searchTerm) || 
+                                    company.products_services.some(product => 
+                                        product.toLowerCase().includes(searchTerm)
+                                    );
+                                
+                                const matchesIndustry = industryTerm === '' || 
+                                    company.industry.toLowerCase().includes(industryTerm);
+                                
+                                return matchesSearch && matchesIndustry;
+                            });
+                            
+                            // Only include country if it has matching companies
+                            if (filteredCompanies.length === 0) return false;
+                            
+                            // Update country's companies to only include filtered ones
+                            country.companies = filteredCompanies;
+                            return true;
+                        })
+                };
+                
+                renderCountries(filteredData);
+            }
+
+            // Populate country filter dropdown
+            function populateCountryFilter() {
+                const uniqueCountries = companiesData.countries.map(country => country.name).sort();
+                
+                uniqueCountries.forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country;
+                    option.textContent = country;
+                    countryFilter.appendChild(option);
+                });
+            }
+
+            // Event listeners for filtering
+            searchInput.addEventListener('input', filterCompanies);
+            industryFilter.addEventListener('change', filterCompanies);
+            countryFilter.addEventListener('change', filterCompanies);
+
+            // Helper function to get flag emoji from country code
+            function getFlagEmoji(countryCode) {
+                if (!countryCode) return '🌐';
+                
+                const codePoints = countryCode
+                    .toUpperCase()
+                    .split('')
+                    .map(char => 127397 + char.charCodeAt());
+                
+                return String.fromCodePoint(...codePoints);
+            }
+
+            // Helper function to get appropriate icon for a product
+            function getProductIcon(product) {
+                const productLower = product.toLowerCase();
+                
+                if (productLower.includes('phone') || productLower.includes('smartphone')) {
+                    return '<i class="fas fa-mobile-alt"></i>';
+                }
+                if (productLower.includes('cloud') || productLower.includes('aws')) {
+                    return '<i class="fas fa-cloud"></i>';
+                }
+                if (productLower.includes('game') || productLower.includes('gaming')) {
+                    return '<i class="fas fa-gamepad"></i>';
+                }
+                if (productLower.includes('music') || productLower.includes('spotify')) {
+                    return '<i class="fas fa-music"></i>';
+                }
+                if (productLower.includes('video') || productLower.includes('youtube')) {
+                    return '<i class="fas fa-video"></i>';
+                }
+                if (productLower.includes('social') || productLower.includes('facebook') || productLower.includes('instagram')) {
+                    return '<i class="fas fa-users"></i>';
+                }
+                if (productLower.includes('payment') || productLower.includes('pay') || productLower.includes('fintech')) {
+                    return '<i class="fas fa-money-bill-wave"></i>';
+                }
+                if (productLower.includes('security') || productLower.includes('cyber')) {
+                    return '<i class="fas fa-shield-alt"></i>';
+                }
+                if (productLower.includes('car') || productLower.includes('vehicle') || productLower.includes('auto')) {
+                    return '<i class="fas fa-car"></i>';
+                }
+                if (productLower.includes('ai') || productLower.includes('artificial intelligence')) {
+                    return '<i class="fas fa-brain"></i>';
+                }
+                if (productLower.includes('search') || productLower.includes('engine')) {
+                    return '<i class="fas fa-search"></i>';
+                }
+                if (productLower.includes('os') || productLower.includes('operating system') || productLower.includes('windows') || productLower.includes('ios')) {
+                    return '<i class="fas fa-laptop-code"></i>';
+                }
+                
+                // Default icon
+                return '<i class="fas fa-box"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
