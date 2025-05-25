@@ -2,8 +2,8 @@
     "titles": [
         "May 2025 - Nifty Multi Call & Put Premiums",
         "May 2025 - Nifty Bank Multi Call & Put Premiums",
-        "May 2025 - Nifty Indices Change Data",
-        "May 2025 - Nifty Weightage Stocks Change Data",
+        "May 2025 - Nifty Indices Data",
+        "May 2025 - Nifty Weightage Stocks Data",
         "May 2025 - Nifty Bank Call OHLC Data",
         "May 2025 - Nifty Bank Put OHLC Data",
         "May 2025 - Nifty Call OHLC Data",
@@ -994,7 +994,7 @@
         ],
         "datasets": [
             {
-                "label": "NIFTYBANK Change",
+                "label": "NIFTYBANK",
                 "data": [
                     -569.5,
                     199.25,
@@ -1021,7 +1021,7 @@
                 "tension": 0.4
             },
             {
-                "label": "NIFTY50 Change",
+                "label": "NIFTY50",
                 "data": [
                     -249.65,
                     39.5,
@@ -1048,7 +1048,7 @@
                 "tension": 0.4
             },
             {
-                "label": "NIFTYIT Change",
+                "label": "NIFTYIT",
                 "data": [
                     74.95,
                     -4.35,
@@ -1075,7 +1075,7 @@
                 "tension": 0.4
             },
             {
-                "label": "FINNIFTY Change",
+                "label": "FINNIFTY",
                 "data": [
                     -318.6,
                     -63.05,
@@ -1128,7 +1128,7 @@
         ],
         "datasets": [
             {
-                "label": "HDFCBANK Change",
+                "label": "HDFCBANK",
                 "data": [
                     -13.6,
                     -4.6,
@@ -1155,7 +1155,7 @@
                 "tension": 0.4
             },
             {
-                "label": "ICICIBANK Change",
+                "label": "ICICIBANK",
                 "data": [
                     -5.2,
                     18.8,
@@ -1182,7 +1182,7 @@
                 "tension": 0.4
             },
             {
-                "label": "RELIANCE Change",
+                "label": "RELIANCE",
                 "data": [
                     -3.1,
                     65.3,
@@ -1209,7 +1209,7 @@
                 "tension": 0.4
             },
             {
-                "label": "INFY Change",
+                "label": "INFY",
                 "data": [
                     4.7,
                     6.6,
@@ -1236,7 +1236,7 @@
                 "tension": 0.4
             },
             {
-                "label": "BHARTIARTL Change",
+                "label": "BHARTIARTL",
                 "data": [
                     -29.5,
                     -24.9,
@@ -1263,7 +1263,7 @@
                 "tension": 0.4
             },
             {
-                "label": "LT Change",
+                "label": "LT",
                 "data": [
                     -37.9,
                     17.3,
@@ -1290,7 +1290,7 @@
                 "tension": 0.4
             },
             {
-                "label": "ITC Change",
+                "label": "ITC",
                 "data": [
                     -2.25,
                     -1.25,
@@ -1317,7 +1317,7 @@
                 "tension": 0.4
             },
             {
-                "label": "TCS Change",
+                "label": "TCS",
                 "data": [
                     28,
                     23.5,
@@ -1344,7 +1344,7 @@
                 "tension": 0.4
             },
             {
-                "label": "KOTAKBANK Change",
+                "label": "KOTAKBANK",
                 "data": [
                     -15.6,
                     5.6,
@@ -1371,7 +1371,7 @@
                 "tension": 0.4
             },
             {
-                "label": "AXISBANK Change",
+                "label": "AXISBANK",
                 "data": [
                     -10.7,
                     15.8,
@@ -1398,7 +1398,7 @@
                 "tension": 0.4
             },
             {
-                "label": "SBIN Change",
+                "label": "SBIN",
                 "data": [
                     -16.35,
                     2.35,
