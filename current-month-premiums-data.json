@@ -4,10 +4,10 @@
         "May 2025 - Nifty Bank Multi Call & Put Premiums",
         "May 2025 - Nifty Indices Change Data",
         "May 2025 - Nifty Weightage Stocks Change Data",
-        "May 2025 - Nifty Bank Call High & Low Data",
-        "May 2025 - Nifty Bank Put High & Low Data",
-        "May 2025 - Nifty Call High & Low Data",
-        "May 2025 - Nifty Put High & Low Data"
+        "May 2025 - Nifty Bank Call OHLC Data",
+        "May 2025 - Nifty Bank Put OHLC Data",
+        "May 2025 - Nifty Call OHLC Data",
+        "May 2025 - Nifty Put OHLC Data"
     ],
     "fiiData": [
         2952,
