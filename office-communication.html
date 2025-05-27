@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Communication Lexicon</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #2c5e92;
+            --secondary-blue: #4a89c7;
+            --light-blue: #e6f0fa;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f5f5;
+            --accent-green: #4caf50;
+            --accent-orange: #ff9800;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.3em;
+            padding: 50px;
+            color: var(--medium-gray);
+        }
+
+        .lexicon-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 1.3em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-description {
+            padding: 15px 20px;
+            color: var(--medium-gray);
+            font-size: 0.95em;
+            border-bottom: 1px solid #eee;
+        }
+
+        .words-container {
+            padding: 15px 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .word-tag {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 16px;
+            margin: 5px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .word-tag:hover {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            transform: scale(1.05);
+            cursor: default;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 0 2px rgba(74, 137, 199, 0.2);
+        }
+
+        .filter-select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: var(--white);
+            cursor: pointer;
+        }
+
+        .stats-bar {
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--medium-gray);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--medium-gray);
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .lexicon-container {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Office Communication Lexicon</h1>
+            <div class="subtitle">Essential vocabulary for professional workplace communication</div>
+        </header>
+
+        <div v-if="loading" class="loading">
+            Loading office communication lexicon... <span>⏳</span>
+        </div>
+
+        <div v-else>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">{{ totalCategories }}</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ totalSubcategories }}</div>
+                    <div class="stat-label">Subcategories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ totalWords }}</div>
+                    <div class="stat-label">Words & Terms</div>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for words or descriptions..."
+                    v-model="searchQuery" @input="filterWords">
+                <select class="filter-select" v-model="selectedCategory" @change="filterWords">
+                    <option value="">All Categories</option>
+                    <option v-for="(category, catName) in filteredData" :value="catName">{{ formatCategoryName(catName)
+                        }}</option>
+                </select>
+            </div>
+
+            <div class="lexicon-container">
+                <div v-for="(category, catName) in filteredData" class="category-card" :key="catName">
+                    <div class="category-header">
+                        <span>{{ formatCategoryName(catName) }}</span>
+                    </div>
+                    <div v-for="(subcategory, subName) in category" class="subcategory-section" :key="subName">
+                        <div class="category-description">
+                            {{ subcategory.description }}
+                        </div>
+                        <div class="words-container">
+                            <span v-for="(word, index) in subcategory.examples" class="word-tag" :key="index"
+                                :title="word">
+                                {{ word }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Office Communication Lexicon &copy; 2023 | Designed for professional workplace vocabulary</p>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, computed, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const officeLexicon = ref({ office_communication_lexical_fields: {} });
+                const loading = ref(true);
+                const searchQuery = ref('');
+                const selectedCategory = ref('');
+
+                // Sample data - in production you would fetch this from your JSON file
+                const sampleData = {
+                    "office_communication_lexical_fields": {
+                        "meetings_and_discussions": {
+                            "description": "Words related to organizing, conducting, and participating in meetings or discussions.",
+                            "examples": [
+                                "agenda", "meeting", "conference", "briefing", "discussion", "brainstorm", "presentation",
+                                "minutes", "chair", "attendee", "schedule", "facilitate", "convene", "recap", "follow-up",
+                                "consensus", "dialogue", "workshop", "summit", "debrief", "symposium", "forum", "roundtable",
+                                "panel", "webinar", "townhall", "scrum", "standup", "retrospective", "kickoff", "walkthrough",
+                                "demo", "showcase", "rehearsal", "dry-run", "caucus", "huddle", "powwow", "consultation"
+                            ]
+                        },
+                        "written_correspondence": {
+                            "description": "Terms used in emails, memos, reports, and other written office communication.",
+                            "examples": [
+                                "email", "memo", "report", "letter", "draft", "correspondence", "attachment", "subject",
+                                "recipient", "cc", "bcc", "signature", "formal", "informal", "query", "response", "proposal",
+                                "circular", "newsletter", "documentation", "bulletin", "communique", "notice", "advisory",
+                                "dispatch", "briefing-note", "executive-summary", "white-paper", "policy-document",
+                                "guidebook", "manual", "handbook", "protocol", "directive", "instruction-sheet", "template"
+                            ]
+                        },
+                        "collaboration_and_teamwork": {
+                            "description": "Vocabulary for working together, sharing tasks, and coordinating efforts.",
+                            "examples": [
+                                "team", "collaboration", "cooperation", "partnership", "synergy", "delegate", "coordinate",
+                                "contribute", "joint", "group", "taskforce", "align", "integrate", "share", "input",
+                                "feedback", "support", "liaise", "colleague", "stakeholder", "cross-functional", "interdisciplinary",
+                                "matrix", "pod", "squad", "guild", "consortium", "collective", "alliance", "network",
+                                "cohort", "peer", "mentor", "buddy-system", "pairing", "shadowing", "knowledge-sharing"
+                            ]
+                        },
+                        "instructions_and_directives": {
+                            "description": "Words used to give orders, instructions, or guidance.",
+                            "examples": [
+                                "instruct", "direct", "assign", "task", "guideline", "directive", "order", "mandate",
+                                "request", "priority", "deadline", "brief", "outline", "clarify", "specify", "execute",
+                                "implement", "comply", "adhere", "enforce", "command", "dictate", "prescribe", "stipulate",
+                                "require", "necessitate", "charge", "commission", "entrust", "authorize", "empower",
+                                "dispatch", "deploy", "mobilize", "activate", "initiate", "launch", "trigger"
+                            ]
+                        },
+                        "feedback_and_evaluation": {
+                            "description": "Terms for providing feedback, reviews, or assessments.",
+                            "examples": [
+                                "feedback", "review", "appraisal", "assessment", "evaluation", "critique", "comment",
+                                "suggestion", "recommendation", "performance", "rating", "constructive", "praise",
+                                "criticism", "improve", "address", "revise", "adjust", "benchmark", "metric",
+                                "calibration", "audit", "inspection", "analysis", "diagnosis", "examination", "scrutiny",
+                                "peer-review", "360-review", "self-assessment", "reflection", "observation", "coaching",
+                                "mentoring", "guidance", "counseling", "debriefing", "post-mortem"
+                            ]
+                        },
+                        "technology_and_tools": {
+                            "description": "Words related to communication tools and technology used in the office.",
+                            "examples": [
+                                "software", "platform", "tool", "application", "system", "network", "server", "cloud",
+                                "database", "interface", "video-conference", "chat", "intranet", "email-client",
+                                "calendar", "scheduler", "dashboard", "file-sharing", "virtual", "encryption",
+                                "automation", "workflow", "integration", "API", "CRM", "ERP", "collaboration-suite",
+                                "messaging", "instant-messaging", "slack", "teams", "zoom", "sharepoint", "google-workspace",
+                                "portal", "repository", "version-control", "backup", "synchronization", "mobile-app"
+                            ]
+                        },
+                        "professional_tone_and_etiquette": {
+                            "description": "Terms reflecting professionalism, politeness, and workplace etiquette.",
+                            "examples": [
+                                "courtesy", "respect", "professionalism", "tone", "formal", "polite", "cordial", "tact",
+                                "discretion", "confidential", "ethical", "appropriate", "dear", "regards", "sincerely",
+                                "acknowledge", "appreciate", "prompt", "timely", "considerate", "diplomatic", "gracious",
+                                "respectful", "decorous", "mannerly", "civil", "courteous", "refined", "dignified",
+                                "businesslike", "protocol", "etiquette", "propriety", "decency", "integrity", "transparency"
+                            ]
+                        },
+                        "conflict_and_resolution": {
+                            "description": "Vocabulary for addressing disagreements or problem-solving.",
+                            "examples": [
+                                "conflict", "dispute", "issue", "concern", "resolution", "mediate", "negotiate",
+                                "compromise", "escalate", "resolve", "address", "clarification", "misunderstanding",
+                                "tension", "agreement", "consensus", "arbitrate", "reconcile", "mitigate", "de-escalate",
+                                "intervention", "facilitation", "conciliation", "settlement", "accord", "truce",
+                                "diplomacy", "troubleshoot", "crisis-management", "damage-control", "peace-making",
+                                "bridge-building", "common-ground", "win-win", "grievance", "complaint", "remedy"
+                            ]
+                        },
+                        "project_management": {
+                            "description": "Terms related to planning, tracking, and managing projects.",
+                            "examples": [
+                                "project", "milestone", "deliverable", "timeline", "roadmap", "plan", "strategy",
+                                "objective", "goal", "task", "progress", "update", "status", "tracking", "resource",
+                                "budget", "scope", "priority", "kickoff", "closure", "phase", "sprint", "iteration",
+                                "backlog", "burndown", "velocity", "capacity", "allocation", "workstream", "workpackage",
+                                "dependency", "critical-path", "bottleneck", "risk-management", "stakeholder-management",
+                                "change-management", "quality-assurance", "testing", "deployment", "rollout", "launch"
+                            ]
+                        },
+                        "decision_making_and_approval": {
+                            "description": "Words used in decision-making processes and approvals.",
+                            "examples": [
+                                "decision", "approve", "reject", "authorize", "endorse", "validate", "confirm", "decline",
+                                "propose", "recommend", "review", "assess", "determine", "finalize", "ratify", "consensus",
+                                "vote", "deliberate", "consult", "sign-off", "sanction", "permit", "license", "certify",
+                                "accredit", "veto", "override", "defer", "postpone", "table", "shelve", "greenlight",
+                                "red-flag", "rubber-stamp", "due-diligence", "feasibility", "cost-benefit", "pros-cons"
+                            ]
+                        },
+                        "time_management_and_scheduling": {
+                            "description": "Vocabulary related to managing time, schedules, and appointments.",
+                            "examples": [
+                                "schedule", "appointment", "calendar", "booking", "slot", "availability", "window",
+                                "timeframe", "duration", "deadline", "timeline", "milestone", "buffer", "overlap",
+                                "conflict", "reschedule", "postpone", "advance", "delay", "urgent", "immediate",
+                                "ASAP", "priority", "sequence", "chronological", "simultaneous", "concurrent",
+                                "consecutive", "recurring", "periodic", "reminder", "notification", "alert",
+                                "time-block", "batch", "efficiency", "productivity", "time-sensitive", "lead-time"
+                            ]
+                        },
+                        "hierarchy_and_organizational_structure": {
+                            "description": "Terms describing organizational levels, reporting relationships, and corporate structure.",
+                            "examples": [
+                                "hierarchy", "chain-of-command", "reporting", "subordinate", "superior", "manager",
+                                "supervisor", "director", "executive", "C-suite", "board", "department", "division",
+                                "unit", "branch", "subsidiary", "affiliate", "headquarters", "regional", "local",
+                                "matrix-organization", "flat-organization", "vertical", "horizontal", "cross-functional",
+                                "dotted-line", "direct-report", "skip-level", "organizational-chart", "structure",
+                                "governance", "oversight", "accountability", "responsibility", "authority", "delegation"
+                            ]
+                        },
+                        "performance_and_productivity": {
+                            "description": "Words related to work performance, efficiency, and output measurement.",
+                            "examples": [
+                                "performance", "productivity", "efficiency", "effectiveness", "output", "throughput",
+                                "KPI", "metric", "benchmark", "target", "goal", "objective", "achievement", "success",
+                                "excellence", "quality", "standard", "expectation", "requirement", "deliverable",
+                                "outcome", "result", "impact", "value", "ROI", "optimization", "improvement",
+                                "enhancement", "streamlining", "automation", "lean", "agile", "best-practice",
+                                "continuous-improvement", "innovation", "creativity", "initiative", "proactive"
+                            ]
+                        },
+                        "financial_and_budgetary": {
+                            "description": "Terms related to financial discussions, budgets, and cost considerations.",
+                            "examples": [
+                                "budget", "cost", "expense", "revenue", "profit", "loss", "margin", "ROI", "investment",
+                                "funding", "allocation", "expenditure", "financial", "fiscal", "monetary", "economic",
+                                "pricing", "quotation", "estimate", "forecast", "projection", "variance", "overhead",
+                                "operational-cost", "capital-expenditure", "cash-flow", "break-even", "cost-effective",
+                                "value-for-money", "procurement", "purchasing", "vendor", "supplier", "contract",
+                                "negotiation", "tender", "bid", "proposal", "invoice", "payment", "reimbursement"
+                            ]
+                        },
+                        "training_and_development": {
+                            "description": "Vocabulary for learning, skill development, and professional growth.",
+                            "examples": [
+                                "training", "development", "learning", "education", "skill", "competency", "capability",
+                                "expertise", "knowledge", "workshop", "seminar", "course", "program", "curriculum",
+                                "module", "session", "tutorial", "mentoring", "coaching", "guidance", "instruction",
+                                "certification", "qualification", "accreditation", "professional-development",
+                                "career-advancement", "upskilling", "reskilling", "cross-training", "orientation",
+                                "onboarding", "induction", "shadowing", "apprenticeship", "internship", "fellowship",
+                                "continuing-education", "lifelong-learning", "knowledge-transfer", "best-practices"
+                            ]
+                        },
+                        "change_management": {
+                            "description": "Terms related to organizational change, transitions, and adaptability.",
+                            "examples": [
+                                "change", "transformation", "transition", "adaptation", "evolution", "innovation",
+                                "reform", "restructuring", "reorganization", "reengineering", "modernization",
+                                "digitalization", "automation", "disruption", "agility", "flexibility", "resilience",
+                                "scalability", "sustainability", "continuous-improvement", "kaizen", "pivot",
+                                "shift", "adjustment", "modification", "update", "upgrade", "migration",
+                                "implementation", "rollout", "deployment", "adoption", "integration", "assimilation",
+                                "change-agent", "champion", "resistance", "buy-in", "stakeholder-engagement"
+                            ]
+                        },
+                        "compliance_and_governance": {
+                            "description": "Words related to rules, regulations, policies, and legal requirements.",
+                            "examples": [
+                                "compliance", "regulation", "policy", "procedure", "protocol", "guideline", "standard",
+                                "requirement", "mandate", "law", "legislation", "statute", "ordinance", "rule",
+                                "governance", "oversight", "audit", "inspection", "monitoring", "surveillance",
+                                "accountability", "responsibility", "liability", "risk", "mitigation", "controls",
+                                "framework", "code-of-conduct", "ethics", "integrity", "transparency", "disclosure",
+                                "confidentiality", "privacy", "data-protection", "security", "safety", "health",
+                                "environmental", "sustainability", "corporate-social-responsibility", "due-diligence"
+                            ]
+                        },
+                        "crisis_and_emergency_communication": {
+                            "description": "Vocabulary for urgent situations, emergencies, and crisis management.",
+                            "examples": [
+                                "crisis", "emergency", "urgent", "critical", "immediate", "priority", "alert",
+                                "warning", "notification", "bulletin", "advisory", "escalation", "response",
+                                "reaction", "intervention", "action-plan", "contingency", "backup", "recovery",
+                                "continuity", "resilience", "damage-control", "firefighting", "triage", "hotfix",
+                                "patch", "workaround", "temporary", "stopgap", "band-aid", "quick-fix",
+                                "all-hands", "code-red", "defcon", "mayday", "SOS", "red-alert", "situation-room",
+                                "command-center", "incident-response", "post-mortem", "lessons-learned"
+                            ]
+                        },
+                        "networking_and_relationship_building": {
+                            "description": "Terms for building professional relationships and networks.",
+                            "examples": [
+                                "networking", "relationship", "connection", "contact", "referral", "introduction",
+                                "rapport", "trust", "credibility", "reputation", "influence", "partnership",
+                                "alliance", "collaboration", "cooperation", "synergy", "mutual-benefit", "reciprocity",
+                                "give-and-take", "quid-pro-quo", "favor", "goodwill", "social-capital", "networking-event",
+                                "mixer", "conference", "trade-show", "exhibition", "professional-association",
+                                "industry-group", "alumni-network", "mentorship", "sponsorship", "endorsement",
+                                "recommendation", "testimonial", "reference", "word-of-mouth", "buzz", "visibility"
+                            ]
+                        },
+                        "innovation_and_creativity": {
+                            "description": "Words related to creative thinking, innovation, and new ideas.",
+                            "examples": [
+                                "innovation", "creativity", "invention", "ideation", "brainstorming", "thinking-outside-the-box",
+                                "blue-sky", "disruptive", "groundbreaking", "cutting-edge", "state-of-the-art",
+                                "novel", "original", "unique", "pioneering", "trailblazing", "revolutionary",
+                                "paradigm-shift", "game-changer", "breakthrough", "eureka", "lightbulb-moment",
+                                "inspiration", "insight", "epiphany", "revelation", "discovery", "exploration",
+                                "experimentation", "prototyping", "proof-of-concept", "pilot", "beta", "MVP",
+                                "iteration", "refinement", "enhancement", "optimization", "design-thinking",
+                                "human-centered", "user-experience", "customer-centric", "solution-oriented"
+                            ]
+                        }
+                    }
+                };
+
+                // In a real app, you would fetch this from your JSON file
+                const fetchLexiconData = async () => {
+                    try {
+                        // Simulate API fetch with timeout
+                        await new Promise(resolve => setTimeout(resolve, 800));
+
+                        // In production, you would use:
+                        // const response = await fetch("office_communication_lexical_fields.json");
+                        // officeLexicon.value = await response.json();
+
+                        officeLexicon.value = sampleData;
+                        loading.value = false;
+                    } catch (error) {
+                        console.error("Error fetching lexicon data:", error);
+                        loading.value = false;
+                    }
+                };
+
+                // Computed properties for stats
+                const totalCategories = computed(() => {
+                    return Object.keys(officeLexicon.value.office_communication_lexical_fields).length;
+                });
+
+                const totalSubcategories = computed(() => {
+                    let count = 0;
+                    for (const category in officeLexicon.value.office_communication_lexical_fields) {
+                        count += Object.keys(officeLexicon.value.office_communication_lexical_fields[category]).length;
+                    }
+                    return count;
+                });
+
+                const totalWords = computed(() => {
+                    let count = 0;
+                    for (const category in officeLexicon.value.office_communication_lexical_fields) {
+                        for (const subcategory in officeLexicon.value.office_communication_lexical_fields[category]) {
+                            count += officeLexicon.value.office_communication_lexical_fields[category][subcategory].examples.length;
+                        }
+                    }
+                    return count;
+                });
+
+                // Format category name for display
+                const formatCategoryName = (name) => {
+                    return name.split('_').map(word =>
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ');
+                };
+
+                // Filter words based on search query and selected category
+                const filteredData = computed(() => {
+                    const result = {};
+                    const query = searchQuery.value.toLowerCase();
+
+                    for (const [catName, category] of Object.entries(officeLexicon.value.office_communication_lexical_fields)) {
+                        // Skip if category filter is active and doesn't match
+                        if (selectedCategory.value && catName !== selectedCategory.value) continue;
+
+                        const filteredCategory = {};
+
+                        for (const [subName, subcategory] of Object.entries(category)) {
+                            // Check if description matches search
+                            const descMatch = subcategory.description.toLowerCase().includes(query);
+
+                            // Filter examples
+                            const filteredExamples = subcategory.examples.filter(word =>
+                                word.toLowerCase().includes(query)
+                            );
+
+                            // Only include if there's a match or no search query
+                            if (query === '' || descMatch || filteredExamples.length > 0) {
+                                filteredCategory[subName] = {
+                                    ...subcategory,
+                                    examples: query ? filteredExamples : subcategory.examples
+                                };
+                            }
+                        }
+
+                        // Only include category if it has matching subcategories
+                        if (Object.keys(filteredCategory).length > 0) {
+                            result[catName] = filteredCategory;
+                        }
+                    }
+
+                    return result;
+                });
+
+                // Initialize
+                onMounted(() => {
+                    fetchLexiconData();
+                });
+
+                return {
+                    officeLexicon,
+                    loading,
+                    searchQuery,
+                    selectedCategory,
+                    totalCategories,
+                    totalSubcategories,
+                    totalWords,
+                    filteredData,
+                    formatCategoryName,
+                    fetchLexiconData
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+{
+  "office_communication_lexical_fields": {
+    "meetings_and_discussions": {
+      "description": "Words related to organizing, conducting, and participating in meetings or discussions.",
+      "examples": [
+        "agenda", "meeting", "conference", "briefing", "discussion", "brainstorm", "presentation",
+        "minutes", "chair", "attendee", "schedule", "facilitate", "convene", "recap", "follow-up",
+        "consensus", "dialogue", "workshop", "summit", "debrief", "symposium", "forum", "roundtable",
+        "panel", "webinar", "townhall", "scrum", "standup", "retrospective", "kickoff", "walkthrough",
+        "demo", "showcase", "rehearsal", "dry-run", "caucus", "huddle", "powwow", "consultation"
+      ]
+    },
+    "written_correspondence": {
+      "description": "Terms used in emails, memos, reports, and other written office communication.",
+      "examples": [
+        "email", "memo", "report", "letter", "draft", "correspondence", "attachment", "subject",
+        "recipient", "cc", "bcc", "signature", "formal", "informal", "query", "response", "proposal",
+        "circular", "newsletter", "documentation", "bulletin", "communique", "notice", "advisory",
+        "dispatch", "briefing-note", "executive-summary", "white-paper", "policy-document",
+        "guidebook", "manual", "handbook", "protocol", "directive", "instruction-sheet", "template"
+      ]
+    },
+    "collaboration_and_teamwork": {
+      "description": "Vocabulary for working together, sharing tasks, and coordinating efforts.",
+      "examples": [
+        "team", "collaboration", "cooperation", "partnership", "synergy", "delegate", "coordinate",
+        "contribute", "joint", "group", "taskforce", "align", "integrate", "share", "input",
+        "feedback", "support", "liaise", "colleague", "stakeholder", "cross-functional", "interdisciplinary",
+        "matrix", "pod", "squad", "guild", "consortium", "collective", "alliance", "network",
+        "cohort", "peer", "mentor", "buddy-system", "pairing", "shadowing", "knowledge-sharing"
+      ]
+    },
+    "instructions_and_directives": {
+      "description": "Words used to give orders, instructions, or guidance.",
+      "examples": [
+        "instruct", "direct", "assign", "task", "guideline", "directive", "order", "mandate",
+        "request", "priority", "deadline", "brief", "outline", "clarify", "specify", "execute",
+        "implement", "comply", "adhere", "enforce", "command", "dictate", "prescribe", "stipulate",
+        "require", "necessitate", "charge", "commission", "entrust", "authorize", "empower",
+        "dispatch", "deploy", "mobilize", "activate", "initiate", "launch", "trigger"
+      ]
+    },
+    "feedback_and_evaluation": {
+      "description": "Terms for providing feedback, reviews, or assessments.",
+      "examples": [
+        "feedback", "review", "appraisal", "assessment", "evaluation", "critique", "comment",
+        "suggestion", "recommendation", "performance", "rating", "constructive", "praise",
+        "criticism", "improve", "address", "revise", "adjust", "benchmark", "metric",
+        "calibration", "audit", "inspection", "analysis", "diagnosis", "examination", "scrutiny",
+        "peer-review", "360-review", "self-assessment", "reflection", "observation", "coaching",
+        "mentoring", "guidance", "counseling", "debriefing", "post-mortem"
+      ]
+    },
+    "technology_and_tools": {
+      "description": "Words related to communication tools and technology used in the office.",
+      "examples": [
+        "software", "platform", "tool", "application", "system", "network", "server", "cloud",
+        "database", "interface", "video-conference", "chat", "intranet", "email-client",
+        "calendar", "scheduler", "dashboard", "file-sharing", "virtual", "encryption",
+        "automation", "workflow", "integration", "API", "CRM", "ERP", "collaboration-suite",
+        "messaging", "instant-messaging", "slack", "teams", "zoom", "sharepoint", "google-workspace",
+        "portal", "repository", "version-control", "backup", "synchronization", "mobile-app"
+      ]
+    },
+    "professional_tone_and_etiquette": {
+      "description": "Terms reflecting professionalism, politeness, and workplace etiquette.",
+      "examples": [
+        "courtesy", "respect", "professionalism", "tone", "formal", "polite", "cordial", "tact",
+        "discretion", "confidential", "ethical", "appropriate", "dear", "regards", "sincerely",
+        "acknowledge", "appreciate", "prompt", "timely", "considerate", "diplomatic", "gracious",
+        "respectful", "decorous", "mannerly", "civil", "courteous", "refined", "dignified",
+        "businesslike", "protocol", "etiquette", "propriety", "decency", "integrity", "transparency"
+      ]
+    },
+    "conflict_and_resolution": {
+      "description": "Vocabulary for addressing disagreements or problem-solving.",
+      "examples": [
+        "conflict", "dispute", "issue", "concern", "resolution", "mediate", "negotiate",
+        "compromise", "escalate", "resolve", "address", "clarification", "misunderstanding",
+        "tension", "agreement", "consensus", "arbitrate", "reconcile", "mitigate", "de-escalate",
+        "intervention", "facilitation", "conciliation", "settlement", "accord", "truce",
+        "diplomacy", "troubleshoot", "crisis-management", "damage-control", "peace-making",
+        "bridge-building", "common-ground", "win-win", "grievance", "complaint", "remedy"
+      ]
+    },
+    "project_management": {
+      "description": "Terms related to planning, tracking, and managing projects.",
+      "examples": [
+        "project", "milestone", "deliverable", "timeline", "roadmap", "plan", "strategy",
+        "objective", "goal", "task", "progress", "update", "status", "tracking", "resource",
+        "budget", "scope", "priority", "kickoff", "closure", "phase", "sprint", "iteration",
+        "backlog", "burndown", "velocity", "capacity", "allocation", "workstream", "workpackage",
+        "dependency", "critical-path", "bottleneck", "risk-management", "stakeholder-management",
+        "change-management", "quality-assurance", "testing", "deployment", "rollout", "launch"
+      ]
+    },
+    "decision_making_and_approval": {
+      "description": "Words used in decision-making processes and approvals.",
+      "examples": [
+        "decision", "approve", "reject", "authorize", "endorse", "validate", "confirm", "decline",
+        "propose", "recommend", "review", "assess", "determine", "finalize", "ratify", "consensus",
+        "vote", "deliberate", "consult", "sign-off", "sanction", "permit", "license", "certify",
+        "accredit", "veto", "override", "defer", "postpone", "table", "shelve", "greenlight",
+        "red-flag", "rubber-stamp", "due-diligence", "feasibility", "cost-benefit", "pros-cons"
+      ]
+    },
+    "time_management_and_scheduling": {
+      "description": "Vocabulary related to managing time, schedules, and appointments.",
+      "examples": [
+        "schedule", "appointment", "calendar", "booking", "slot", "availability", "window",
+        "timeframe", "duration", "deadline", "timeline", "milestone", "buffer", "overlap",
+        "conflict", "reschedule", "postpone", "advance", "delay", "urgent", "immediate",
+        "ASAP", "priority", "sequence", "chronological", "simultaneous", "concurrent",
+        "consecutive", "recurring", "periodic", "reminder", "notification", "alert",
+        "time-block", "batch", "efficiency", "productivity", "time-sensitive", "lead-time"
+      ]
+    },
+    "hierarchy_and_organizational_structure": {
+      "description": "Terms describing organizational levels, reporting relationships, and corporate structure.",
+      "examples": [
+        "hierarchy", "chain-of-command", "reporting", "subordinate", "superior", "manager",
+        "supervisor", "director", "executive", "C-suite", "board", "department", "division",
+        "unit", "branch", "subsidiary", "affiliate", "headquarters", "regional", "local",
+        "matrix-organization", "flat-organization", "vertical", "horizontal", "cross-functional",
+        "dotted-line", "direct-report", "skip-level", "organizational-chart", "structure",
+        "governance", "oversight", "accountability", "responsibility", "authority", "delegation"
+      ]
+    },
+    "performance_and_productivity": {
+      "description": "Words related to work performance, efficiency, and output measurement.",
+      "examples": [
+        "performance", "productivity", "efficiency", "effectiveness", "output", "throughput",
+        "KPI", "metric", "benchmark", "target", "goal", "objective", "achievement", "success",
+        "excellence", "quality", "standard", "expectation", "requirement", "deliverable",
+        "outcome", "result", "impact", "value", "ROI", "optimization", "improvement",
+        "enhancement", "streamlining", "automation", "lean", "agile", "best-practice",
+        "continuous-improvement", "innovation", "creativity", "initiative", "proactive"
+      ]
+    },
+    "financial_and_budgetary": {
+      "description": "Terms related to financial discussions, budgets, and cost considerations.",
+      "examples": [
+        "budget", "cost", "expense", "revenue", "profit", "loss", "margin", "ROI", "investment",
+        "funding", "allocation", "expenditure", "financial", "fiscal", "monetary", "economic",
+        "pricing", "quotation", "estimate", "forecast", "projection", "variance", "overhead",
+        "operational-cost", "capital-expenditure", "cash-flow", "break-even", "cost-effective",
+        "value-for-money", "procurement", "purchasing", "vendor", "supplier", "contract",
+        "negotiation", "tender", "bid", "proposal", "invoice", "payment", "reimbursement"
+      ]
+    },
+    "training_and_development": {
+      "description": "Vocabulary for learning, skill development, and professional growth.",
+      "examples": [
+        "training", "development", "learning", "education", "skill", "competency", "capability",
+        "expertise", "knowledge", "workshop", "seminar", "course", "program", "curriculum",
+        "module", "session", "tutorial", "mentoring", "coaching", "guidance", "instruction",
+        "certification", "qualification", "accreditation", "professional-development",
+        "career-advancement", "upskilling", "reskilling", "cross-training", "orientation",
+        "onboarding", "induction", "shadowing", "apprenticeship", "internship", "fellowship",
+        "continuing-education", "lifelong-learning", "knowledge-transfer", "best-practices"
+      ]
+    },
+    "change_management": {
+      "description": "Terms related to organizational change, transitions, and adaptability.",
+      "examples": [
+        "change", "transformation", "transition", "adaptation", "evolution", "innovation",
+        "reform", "restructuring", "reorganization", "reengineering", "modernization",
+        "digitalization", "automation", "disruption", "agility", "flexibility", "resilience",
+        "scalability", "sustainability", "continuous-improvement", "kaizen", "pivot",
+        "shift", "adjustment", "modification", "update", "upgrade", "migration",
+        "implementation", "rollout", "deployment", "adoption", "integration", "assimilation",
+        "change-agent", "champion", "resistance", "buy-in", "stakeholder-engagement"
+      ]
+    },
+    "compliance_and_governance": {
+      "description": "Words related to rules, regulations, policies, and legal requirements.",
+      "examples": [
+        "compliance", "regulation", "policy", "procedure", "protocol", "guideline", "standard",
+        "requirement", "mandate", "law", "legislation", "statute", "ordinance", "rule",
+        "governance", "oversight", "audit", "inspection", "monitoring", "surveillance",
+        "accountability", "responsibility", "liability", "risk", "mitigation", "controls",
+        "framework", "code-of-conduct", "ethics", "integrity", "transparency", "disclosure",
+        "confidentiality", "privacy", "data-protection", "security", "safety", "health",
+        "environmental", "sustainability", "corporate-social-responsibility", "due-diligence"
+      ]
+    },
+    "crisis_and_emergency_communication": {
+      "description": "Vocabulary for urgent situations, emergencies, and crisis management.",
+      "examples": [
+        "crisis", "emergency", "urgent", "critical", "immediate", "priority", "alert",
+        "warning", "notification", "bulletin", "advisory", "escalation", "response",
+        "reaction", "intervention", "action-plan", "contingency", "backup", "recovery",
+        "continuity", "resilience", "damage-control", "firefighting", "triage", "hotfix",
+        "patch", "workaround", "temporary", "stopgap", "band-aid", "quick-fix",
+        "all-hands", "code-red", "defcon", "mayday", "SOS", "red-alert", "situation-room",
+        "command-center", "incident-response", "post-mortem", "lessons-learned"
+      ]
+    },
+    "networking_and_relationship_building": {
+      "description": "Terms for building professional relationships and networks.",
+      "examples": [
+        "networking", "relationship", "connection", "contact", "referral", "introduction",
+        "rapport", "trust", "credibility", "reputation", "influence", "partnership",
+        "alliance", "collaboration", "cooperation", "synergy", "mutual-benefit", "reciprocity",
+        "give-and-take", "quid-pro-quo", "favor", "goodwill", "social-capital", "networking-event",
+        "mixer", "conference", "trade-show", "exhibition", "professional-association",
+        "industry-group", "alumni-network", "mentorship", "sponsorship", "endorsement",
+        "recommendation", "testimonial", "reference", "word-of-mouth", "buzz", "visibility"
+      ]
+    },
+    "innovation_and_creativity": {
+      "description": "Words related to creative thinking, innovation, and new ideas.",
+      "examples": [
+        "innovation", "creativity", "invention", "ideation", "brainstorming", "thinking-outside-the-box",
+        "blue-sky", "disruptive", "groundbreaking", "cutting-edge", "state-of-the-art",
+        "novel", "original", "unique", "pioneering", "trailblazing", "revolutionary",
+        "paradigm-shift", "game-changer", "breakthrough", "eureka", "lightbulb-moment",
+        "inspiration", "insight", "epiphany", "revelation", "discovery", "exploration",
+        "experimentation", "prototyping", "proof-of-concept", "pilot", "beta", "MVP",
+        "iteration", "refinement", "enhancement", "optimization", "design-thinking",
+        "human-centered", "user-experience", "customer-centric", "solution-oriented"
+      ]
+    }
+  }
+}
