@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 50px;
+            color: #7f8c8d;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category {
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-header {
+            font-size: 1.5em;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: -15px -15px 15px -15px;
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .subcategory {
+            margin-bottom: 15px;
+        }
+
+        .subcategory-header {
+            font-weight: bold;
+            color: #555;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .word {
+            background-color: #e3f2fd;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .word:hover {
+            background-color: #bbdefb;
+            transform: scale(1.05);
+        }
+
+        .word.selected {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .game-area {
+            background-color: #fff8e1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .game-title {
+            color: #ff9800;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #currentWord {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin: 20px 0;
+            min-height: 60px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .word-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        .score-display {
+            font-size: 1.2em;
+            margin-top: 15px;
+            color: #7f8c8d;
+        }
+
+        .correct {
+            animation: correct 0.5s;
+        }
+
+        .incorrect {
+            animation: incorrect 0.5s;
+        }
+
+        @keyframes correct {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes incorrect {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            75% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Word Explorer</h1>
+            <div class="subtitle">Discover words from different categories</div>
+        </header>
+
+        <div v-if="loading" class="loading">
+            Loading words... <span class="emoji">⏳</span>
+        </div>
+
+        <div v-else>
+            <div class="category-container">
+                <div v-for="(category, catName) in lexicalData.lexical_fields" :key="catName" class="category">
+                    <div class="category-header" :style="{backgroundColor: getCategoryColor(catName)}">
+                        {{ formatCategoryName(catName) }}
+                    </div>
+                    <div v-for="(subcategory, subName) in category" :key="subName" class="subcategory">
+                        <div class="subcategory-header">{{ formatSubcategoryName(subName) }}</div>
+                        <div class="words-list">
+                            <div v-for="(word, index) in subcategory" :key="index" class="word"
+                                :class="{selected: selectedWord === word}" @click="selectWord(word)">
+                                {{ word }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Explore words from different categories and test your knowledge!</p>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const lexicalData = ref({ lexical_fields: {} });
+                const loading = ref(true);
+                const selectedWord = ref(null);
+                const currentWord = ref('');
+                const gameStarted = ref(false);
+                const gameEnded = ref(false);
+                const score = ref(0);
+                const totalQuestions = ref(10);
+                const questionsAnswered = ref(0);
+                const isCorrect = ref(false);
+                const isIncorrect = ref(false);
+                const allWords = ref([]);
+                const currentCorrectAnswer = ref('');
+                const currentCategory = ref('');
+                const hint = ref('');
+
+                // Colors for different categories
+                const categoryColors = {
+                    human_body: '#FF9AA2',
+                    family_relationships: '#FFB7B2',
+                    emotions: '#FFDAC1',
+                    colors: '#E2F0CB',
+                    animals: '#B5EAD7',
+                    food_drink: '#C7CEEA',
+                    clothing: '#F8B195',
+                    weather_nature: '#F67280',
+                    home_household: '#6C5B7B',
+                    transportation: '#355C7D',
+                    occupations: '#A8E6CE',
+                    time: '#DCEDC2',
+                    education: '#FFD3B5',
+                    sports_recreation: '#FFAAA6',
+                    technology: '#A2D7D8',
+                    emotions_mental_states: '#D4A5A5',
+                    actions_movements: '#B5EAD7',
+                    quantities_measurements: '#FFB347',
+                    materials_substances: '#B19CD9',
+                    locations_places: '#FF6961',
+                    abstract_concepts: '#77DD77'
+                };
+
+                // Emojis for different categories
+                const categoryEmojis = {
+                    human_body: '👤',
+                    family_relationships: '👪',
+                    emotions: '😊',
+                    colors: '🎨',
+                    animals: '🐶',
+                    food_drink: '🍎',
+                    clothing: '👕',
+                    weather_nature: '☀️',
+                    home_household: '🏠',
+                    transportation: '🚗',
+                    occupations: '👩‍⚕️',
+                    time: '⏰',
+                    education: '📚',
+                    sports_recreation: '⚽',
+                    technology: '💻',
+                    emotions_mental_states: '🧠',
+                    actions_movements: '🏃',
+                    quantities_measurements: '📏',
+                    materials_substances: '🧱',
+                    locations_places: '🗺️',
+                    abstract_concepts: '💡'
+                };
+
+                // Fetch the lexical data
+                const fetchLexicalData = async () => {
+                    try {
+                        const res = await fetch("lexical-fields.json");
+                        if (!res.ok) {
+                            throw new Error(`Failed to fetch: ${res.status}`);
+                        }
+                        const response = await res.json();
+                        lexicalData.value = response;
+                        flattenWords();
+                        loading.value = false;
+                    } catch (error) {
+                        console.error("Error fetching lexical data:", error);
+                        loading.value = false;
+                    }
+                };
+
+                // Flatten all words into a single array for the game
+                const flattenWords = () => {
+                    const words = [];
+                    const categories = [];
+                    
+                    for (const category in lexicalData.value.lexical_fields) {
+                        for (const subcategory in lexicalData.value.lexical_fields[category]) {
+                            lexicalData.value.lexical_fields[category][subcategory].forEach(word => {
+                                words.push({
+                                    word: word,
+                                    category: category,
+                                    subcategory: subcategory
+                                });
+                            });
+                        }
+                    }
+                    allWords.value = words;
+                };
+
+                // Format category name for display
+                const formatCategoryName = (name) => {
+                    return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                };
+
+                // Format subcategory name for display
+                const formatSubcategoryName = (name) => {
+                    return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                };
+
+                // Get color for a category
+                const getCategoryColor = (category) => {
+                    return categoryColors[category] || '#7f8c8d';
+                };
+
+                // Get emoji for a category
+                const getCategoryEmoji = (category) => {
+                    return categoryEmojis[category] || '❓';
+                };
+
+                // Select a word
+                const selectWord = (word) => {
+                    selectedWord.value = word;
+                };
+
+                // Start the game
+                const startGame = () => {
+                    gameStarted.value = true;
+                    gameEnded.value = false;
+                    score.value = 0;
+                    questionsAnswered.value = 0;
+                    nextQuestion();
+                };
+
+                // Show the answer
+                const showAnswer = () => {
+                    if (currentWord.value && !gameEnded.value) {
+                        currentWord.value = currentCorrectAnswer.value.word;
+                        hint.value = `Category: ${formatCategoryName(currentCorrectAnswer.value.category)}`;
+                        questionsAnswered.value++;
+                        if (questionsAnswered.value >= totalQuestions.value) {
+                            endGame();
+                        } else {
+                            setTimeout(nextQuestion, 2000);
+                        }
+                    }
+                };
+
+                // Go to next question
+                const nextQuestion = () => {
+                    if (allWords.value.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * allWords.value.length);
+                        currentCorrectAnswer.value = allWords.value[randomIndex];
+                        currentCategory.value = currentCorrectAnswer.value.category;
+                        currentWord.value = "What word is this?";
+                        hint.value = `Category: ${formatCategoryName(currentCorrectAnswer.value.category)}`;
+                        selectedWord.value = null;
+                        isCorrect.value = false;
+                        isIncorrect.value = false;
+                    }
+                };
+
+                // End the game
+                const endGame = () => {
+                    gameEnded.value = true;
+                    currentWord.value = `Game Over! Final Score: ${score.value}/${totalQuestions.value}`;
+                    hint.value = '';
+                };
+
+                // Get result message
+                const getResultMessage = () => {
+                    const percentage = (score.value / totalQuestions.value) * 100;
+                    if (percentage >= 80) return 'Excellent!';
+                    if (percentage >= 60) return 'Well done!';
+                    if (percentage >= 40) return 'Good effort!';
+                    return 'Keep practicing!';
+                };
+
+                // Get result emoji
+                const getResultEmoji = () => {
+                    const percentage = (score.value / totalQuestions.value) * 100;
+                    if (percentage >= 80) return '🎉';
+                    if (percentage >= 60) return '👍';
+                    if (percentage >= 40) return '🙂';
+                    return '🤓';
+                };
+
+                // Check if the selected word is correct
+                const checkAnswer = () => {
+                    if (selectedWord.value === currentCorrectAnswer.value.word) {
+                        score.value++;
+                        isCorrect.value = true;
+                    } else {
+                        isIncorrect.value = true;
+                    }
+
+                    questionsAnswered.value++;
+                    selectedWord.value = null;
+
+                    if (questionsAnswered.value >= totalQuestions.value) {
+                        endGame();
+                    } else {
+                        setTimeout(nextQuestion, 1000);
+                    }
+                };
+
+                // Keyboard event listener
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Enter' && gameStarted.value && !gameEnded.value && selectedWord.value) {
+                        checkAnswer();
+                    }
+                };
+
+                // Initialize
+                onMounted(() => {
+                    fetchLexicalData();
+                    window.addEventListener('keydown', handleKeyDown);
+                });
+
+                return {
+                    lexicalData,
+                    loading,
+                    selectedWord,
+                    currentWord,
+                    currentCategory,
+                    hint,
+                    gameStarted,
+                    gameEnded,
+                    score,
+                    totalQuestions,
+                    isCorrect,
+                    isIncorrect,
+                    fetchLexicalData,
+                    formatCategoryName,
+                    formatSubcategoryName,
+                    getCategoryColor,
+                    getCategoryEmoji,
+                    selectWord,
+                    startGame,
+                    showAnswer,
+                    nextQuestion,
+                    endGame,
+                    getResultMessage,
+                    getResultEmoji,
+                    checkAnswer
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

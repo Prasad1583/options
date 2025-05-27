@@ -1,0 +1,140 @@
+{
+  "lexical_fields": {
+    "human_body": {
+      "head": ["head", "skull", "brain", "face", "forehead", "temple", "cheek", "chin", "jaw", "scalp", "hair"],
+      "eyes": ["eye", "eyeball", "eyelid", "eyelash", "eyebrow", "pupil", "iris", "retina", "cornea", "vision", "sight"],
+      "nose": ["nose", "nostril", "bridge", "tip", "smell", "scent", "odor", "aroma", "fragrance"],
+      "mouth": ["mouth", "lip", "tongue", "tooth", "teeth", "gum", "palate", "throat", "taste", "flavor"],
+      "ears": ["ear", "earlobe", "hearing", "sound", "listen", "deaf", "loud", "quiet"],
+      "limbs": ["arm", "hand", "finger", "thumb", "wrist", "elbow", "shoulder", "leg", "foot", "toe", "ankle", "knee", "thigh"],
+      "torso": ["chest", "breast", "back", "spine", "waist", "hip", "stomach", "belly", "abdomen"],
+      "internal": ["heart", "lung", "liver", "kidney", "bone", "muscle", "blood", "nerve", "skin"]
+    },
+    "family_relationships": {
+      "immediate": ["parent", "mother", "father", "child", "son", "daughter", "sibling", "brother", "sister", "spouse", "husband", "wife"],
+      "extended": ["grandparent", "grandmother", "grandfather", "grandchild", "grandson", "granddaughter", "uncle", "aunt", "cousin", "nephew", "niece"],
+      "in_laws": ["mother-in-law", "father-in-law", "son-in-law", "daughter-in-law", "brother-in-law", "sister-in-law"],
+      "step_relations": ["stepmother", "stepfather", "stepchild", "stepson", "stepdaughter", "stepbrother", "stepsister"]
+    },
+    "emotions": {
+      "positive": ["happy", "joy", "love", "excitement", "pride", "satisfaction", "contentment", "delight", "bliss", "ecstasy", "euphoria"],
+      "negative": ["sad", "anger", "fear", "disgust", "shame", "guilt", "jealousy", "envy", "hatred", "despair", "anxiety", "worry"],
+      "neutral": ["surprise", "curiosity", "interest", "boredom", "indifference", "confusion", "contemplation"]
+    },
+    "colors": {
+      "primary": ["red", "blue", "yellow"],
+      "secondary": ["green", "orange", "purple", "violet"],
+      "neutral": ["black", "white", "gray", "grey", "brown"],
+      "shades": ["pink", "crimson", "scarlet", "navy", "turquoise", "lime", "olive", "maroon", "beige", "tan", "ivory", "silver", "gold"]
+    },
+    "animals": {
+      "mammals": ["dog", "cat", "horse", "cow", "pig", "sheep", "goat", "rabbit", "mouse", "rat", "elephant", "lion", "tiger", "bear", "wolf"],
+      "birds": ["bird", "eagle", "hawk", "owl", "robin", "sparrow", "pigeon", "chicken", "duck", "goose", "swan", "penguin", "ostrich"],
+      "fish": ["fish", "salmon", "tuna", "shark", "goldfish", "trout", "bass", "cod", "herring"],
+      "insects": ["insect", "ant", "bee", "butterfly", "moth", "fly", "mosquito", "spider", "beetle", "cricket", "grasshopper"],
+      "reptiles": ["snake", "lizard", "turtle", "crocodile", "alligator", "gecko", "iguana"],
+      "amphibians": ["frog", "toad", "salamander"]
+    },
+    "food_drink": {
+      "fruits": ["apple", "banana", "orange", "grape", "strawberry", "cherry", "peach", "pear", "plum", "watermelon", "pineapple"],
+      "vegetables": ["carrot", "potato", "tomato", "lettuce", "spinach", "broccoli", "cabbage", "onion", "garlic", "pepper", "cucumber"],
+      "grains": ["rice", "wheat", "corn", "oats", "barley", "bread", "pasta", "cereal"],
+      "meat": ["beef", "pork", "chicken", "fish", "lamb", "turkey", "bacon", "ham", "sausage"],
+      "dairy": ["milk", "cheese", "butter", "yogurt", "cream", "ice cream"],
+      "beverages": ["water", "juice", "coffee", "tea", "soda", "beer", "wine", "milk"],
+      "sweets": ["candy", "chocolate", "cake", "cookie", "pie", "sugar", "honey"]
+    },
+    "clothing": {
+      "upper_body": ["shirt", "blouse", "sweater", "jacket", "coat", "vest", "tie", "scarf"],
+      "lower_body": ["pants", "trousers", "jeans", "skirt", "shorts", "underwear"],
+      "footwear": ["shoe", "boot", "sandal", "sneaker", "slipper", "sock", "stocking"],
+      "accessories": ["hat", "cap", "glove", "belt", "watch", "jewelry", "necklace", "ring", "earring", "bracelet"],
+      "fabrics": ["cotton", "wool", "silk", "leather", "denim", "linen", "polyester"]
+    },
+    "weather_nature": {
+      "weather": ["sunny", "cloudy", "rainy", "snowy", "windy", "stormy", "foggy", "humid", "dry", "hot", "cold", "warm", "cool"],
+      "precipitation": ["rain", "snow", "hail", "sleet", "drizzle", "shower", "storm", "thunder", "lightning"],
+      "seasons": ["spring", "summer", "autumn", "fall", "winter"],
+      "natural_features": ["mountain", "hill", "valley", "river", "lake", "ocean", "sea", "beach", "forest", "desert", "island"],
+      "plants": ["tree", "flower", "grass", "bush", "leaf", "branch", "root", "stem", "petal", "thorn"]
+    },
+    "home_household": {
+      "rooms": ["kitchen", "bedroom", "bathroom", "living room", "dining room", "office", "basement", "attic", "garage"],
+      "furniture": ["chair", "table", "bed", "sofa", "couch", "desk", "dresser", "bookshelf", "cabinet", "mirror"],
+      "appliances": ["refrigerator", "stove", "oven", "microwave", "dishwasher", "washing machine", "dryer", "television", "computer"],
+      "kitchen_items": ["plate", "bowl", "cup", "glass", "fork", "knife", "spoon", "pot", "pan", "cutting board"],
+      "cleaning": ["broom", "mop", "vacuum", "soap", "detergent", "towel", "sponge", "brush"]
+    },
+    "transportation": {
+      "vehicles": ["car", "truck", "bus", "train", "plane", "airplane", "ship", "boat", "bicycle", "motorcycle", "taxi", "subway"],
+      "car_parts": ["engine", "wheel", "tire", "brake", "steering wheel", "seat", "window", "door", "trunk", "hood"],
+      "roads": ["street", "road", "highway", "avenue", "lane", "sidewalk", "crosswalk", "intersection", "bridge", "tunnel"]
+    },
+    "occupations": {
+      "medical": ["doctor", "nurse", "surgeon", "dentist", "pharmacist", "therapist", "veterinarian"],
+      "education": ["teacher", "professor", "principal", "student", "tutor", "librarian"],
+      "service": ["waiter", "waitress", "chef", "cook", "barber", "hairdresser", "mechanic", "plumber", "electrician"],
+      "professional": ["lawyer", "judge", "accountant", "engineer", "architect", "designer", "programmer", "manager"],
+      "public_service": ["police officer", "firefighter", "soldier", "pilot", "driver", "mailman", "clerk"],
+      "arts": ["artist", "musician", "singer", "actor", "writer", "photographer", "dancer"]
+    },
+    "time": {
+      "periods": ["second", "minute", "hour", "day", "week", "month", "year", "decade", "century"],
+      "times_of_day": ["morning", "noon", "afternoon", "evening", "night", "midnight", "dawn", "dusk", "twilight"],
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      "temporal": ["past", "present", "future", "now", "then", "today", "yesterday", "tomorrow", "always", "never", "sometimes", "often", "rarely"]
+    },
+    "education": {
+      "institutions": ["school", "college", "university", "library", "classroom", "laboratory", "gymnasium"],
+      "subjects": ["mathematics", "science", "history", "geography", "literature", "art", "music", "physical education", "chemistry", "biology", "physics"],
+      "materials": ["book", "notebook", "pen", "pencil", "paper", "eraser", "ruler", "calculator", "computer", "blackboard", "whiteboard"],
+      "activities": ["read", "write", "study", "learn", "teach", "homework", "test", "exam", "grade", "diploma", "degree"]
+    },
+    "sports_recreation": {
+      "team_sports": ["football", "soccer", "basketball", "baseball", "hockey", "volleyball", "rugby"],
+      "individual_sports": ["tennis", "golf", "swimming", "running", "cycling", "boxing", "wrestling", "gymnastics"],
+      "equipment": ["ball", "bat", "racket", "net", "goal", "helmet", "uniform", "shoes", "gloves"],
+      "activities": ["play", "game", "match", "competition", "tournament", "win", "lose", "score", "team", "player", "coach"]
+    },
+    "technology": {
+      "devices": ["computer", "laptop", "tablet", "smartphone", "phone", "camera", "television", "radio", "printer", "scanner"],
+      "internet": ["website", "email", "social media", "browser", "search", "download", "upload", "password", "username"],
+      "components": ["screen", "keyboard", "mouse", "speaker", "microphone", "battery", "charger", "cable", "software", "hardware"]
+    },
+    "emotions_mental_states": {
+      "cognitive": ["think", "remember", "forget", "understand", "know", "learn", "believe", "doubt", "wonder", "imagine"],
+      "emotional_verbs": ["feel", "love", "hate", "like", "dislike", "enjoy", "worry", "hope", "fear", "trust"],
+      "personality": ["kind", "mean", "funny", "serious", "smart", "stupid", "brave", "coward", "honest", "dishonest", "patient", "impatient"]
+    },
+    "actions_movements": {
+      "basic_actions": ["walk", "run", "jump", "sit", "stand", "lie", "sleep", "wake", "eat", "drink", "talk", "listen"],
+      "hand_actions": ["hold", "grab", "touch", "push", "pull", "throw", "catch", "write", "draw", "point"],
+      "facial_actions": ["see", "look", "watch", "smile", "laugh", "cry", "frown", "wink", "blink"],
+      "movement": ["go", "come", "enter", "exit", "climb", "fall", "fly", "swim", "drive", "ride"]
+    },
+    "quantities_measurements": {
+      "numbers": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "hundred", "thousand", "million"],
+      "size": ["big", "small", "large", "tiny", "huge", "enormous", "little", "giant", "miniature"],
+      "length": ["long", "short", "tall", "high", "low", "deep", "shallow", "wide", "narrow", "thick", "thin"],
+      "weight": ["heavy", "light", "pound", "kilogram", "ounce", "gram", "ton"],
+      "distance": ["near", "far", "close", "distant", "mile", "kilometer", "inch", "foot", "meter", "yard"]
+    },
+    "materials_substances": {
+      "metals": ["gold", "silver", "iron", "steel", "copper", "aluminum", "lead", "tin", "bronze"],
+      "natural": ["wood", "stone", "rock", "sand", "clay", "mud", "ice", "water", "oil", "gas"],
+      "synthetic": ["plastic", "rubber", "glass", "paper", "fabric", "concrete", "cement"]
+    },
+    "locations_places": {
+      "buildings": ["house", "apartment", "office", "store", "shop", "restaurant", "hotel", "hospital", "church", "bank", "post office"],
+      "outdoor": ["park", "garden", "farm", "field", "yard", "playground", "street", "square", "market"],
+      "geographical": ["city", "town", "village", "country", "state", "province", "continent", "world", "earth"],
+      "directions": ["north", "south", "east", "west", "left", "right", "up", "down", "front", "back", "inside", "outside"]
+    },
+    "abstract_concepts": {
+      "qualities": ["good", "bad", "beautiful", "ugly", "new", "old", "young", "clean", "dirty", "rich", "poor", "safe", "dangerous"],
+      "concepts": ["love", "peace", "war", "freedom", "justice", "truth", "lie", "success", "failure", "hope", "dream", "idea", "plan"],
+      "states": ["life", "death", "health", "sickness", "happiness", "sadness", "strength", "weakness", "power", "energy"]
+    }
+  }
+}
