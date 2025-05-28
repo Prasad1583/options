@@ -1,0 +1,743 @@
+{
+  "Communication_Expression": {
+    "Speaking_Verbal": [
+      "announce",
+      "answer",
+      "apologize",
+      "argue",
+      "ask",
+      "chat",
+      "comment",
+      "communicate",
+      "complain",
+      "confess",
+      "declare",
+      "deny",
+      "discuss",
+      "explain",
+      "express",
+      "greet",
+      "interrupt",
+      "joke",
+      "lecture",
+      "mention",
+      "persuade",
+      "phone",
+      "pronounce",
+      "quote",
+      "reply",
+      "report",
+      "respond",
+      "say",
+      "scream",
+      "shout",
+      "speak",
+      "swear",
+      "talk",
+      "telephone",
+      "tell",
+      "thank",
+      "threaten",
+      "whisper"
+    ],
+    "Written_Communication": [
+      "cite",
+      "document",
+      "draft",
+      "edit",
+      "email",
+      "file",
+      "label",
+      "list",
+      "mail",
+      "note",
+      "post",
+      "print",
+      "publish",
+      "record",
+      "text",
+      "type",
+      "write"
+    ],
+    "Non_verbal_Communication": [
+      "gesture",
+      "nod",
+      "point",
+      "signal",
+      "wave"
+    ]
+  },
+  "Mental_Processes_Thinking": {
+    "Cognitive": [
+      "analyse",
+      "assess",
+      "calculate",
+      "concentrate",
+      "conclude",
+      "consider",
+      "decide",
+      "determine",
+      "evaluate",
+      "examine",
+      "figure",
+      "focus",
+      "identify",
+      "imagine",
+      "interpret",
+      "judge",
+      "justify",
+      "realize",
+      "recognize",
+      "reflect",
+      "remember",
+      "remind",
+      "solve",
+      "study",
+      "think",
+      "understand"
+    ],
+    "Opinion_Belief": [
+      "admire",
+      "agree",
+      "appreciate",
+      "assume",
+      "believe",
+      "doubt",
+      "expect",
+      "fancy",
+      "hope",
+      "suppose",
+      "trust"
+    ],
+    "Learning_Memory": [
+      "forget",
+      "know",
+      "learn",
+      "memorize",
+      "recall",
+      "study"
+    ]
+  },
+  "Physical_Actions_Movement": {
+    "Movement": [
+      "approach",
+      "arrive",
+      "climb",
+      "come",
+      "crawl",
+      "dance",
+      "depart",
+      "dive",
+      "drag",
+      "drive",
+      "escape",
+      "fall",
+      "fly",
+      "follow",
+      "go",
+      "hang",
+      "hurry",
+      "jump",
+      "lean",
+      "leave",
+      "lift",
+      "march",
+      "move",
+      "pace",
+      "pass",
+      "race",
+      "ride",
+      "rise",
+      "roll",
+      "run",
+      "rush",
+      "sail",
+      "sink",
+      "sit",
+      "ski",
+      "slide",
+      "slip",
+      "spring",
+      "stand",
+      "step",
+      "swim",
+      "travel",
+      "trip",
+      "turn",
+      "visit",
+      "walk"
+    ],
+    "Physical_Contact": [
+      "beat",
+      "bite",
+      "blow",
+      "brush",
+      "bump",
+      "carry",
+      "catch",
+      "grab",
+      "hit",
+      "hold",
+      "hug",
+      "kick",
+      "kiss",
+      "knock",
+      "push",
+      "pull",
+      "punch",
+      "rub",
+      "shake",
+      "squeeze",
+      "stick",
+      "strike",
+      "throw",
+      "touch"
+    ],
+    "Body_Actions": [
+      "blink",
+      "breathe",
+      "cry",
+      "laugh",
+      "smile",
+      "sneeze",
+      "sweat",
+      "yawn"
+    ]
+  },
+  "Actions_with_Objects": {
+    "Creating_Building": [
+      "bake",
+      "boil",
+      "build",
+      "cook",
+      "create",
+      "design",
+      "develop",
+      "establish",
+      "form",
+      "fry",
+      "generate",
+      "make",
+      "manufacture",
+      "produce"
+    ],
+    "Destroying_Damaging": [
+      "break",
+      "burn",
+      "crash",
+      "damage",
+      "destroy",
+      "explode",
+      "harm",
+      "hurt",
+      "injure",
+      "kill",
+      "murder",
+      "poison",
+      "ruin",
+      "tear",
+      "wound"
+    ],
+    "Changing_Modifying": [
+      "adapt",
+      "adjust",
+      "alter",
+      "change",
+      "convert",
+      "correct",
+      "decorate",
+      "edit",
+      "enhance",
+      "expand",
+      "fix",
+      "improve",
+      "modify",
+      "reform",
+      "repair",
+      "replace",
+      "restore",
+      "transform",
+      "update"
+    ]
+  },
+  "Possession_Exchange": {
+    "Getting_Acquiring": [
+      "achieve",
+      "acquire",
+      "buy",
+      "capture",
+      "catch",
+      "collect",
+      "earn",
+      "gain",
+      "get",
+      "obtain",
+      "purchase",
+      "receive",
+      "win"
+    ],
+    "Giving_Losing": [
+      "donate",
+      "give",
+      "grant",
+      "lend",
+      "lose",
+      "offer",
+      "owe",
+      "pay",
+      "provide",
+      "sell",
+      "spend",
+      "supply"
+    ],
+    "Owning_Keeping": [
+      "belong",
+      "have",
+      "keep",
+      "own",
+      "possess",
+      "retain",
+      "save",
+      "store"
+    ]
+  },
+  "Interaction_Relationships": {
+    "Social_Actions": [
+      "accompany",
+      "associate",
+      "befriend",
+      "celebrate",
+      "compete",
+      "cooperate",
+      "date",
+      "divorce",
+      "marry",
+      "meet",
+      "participate",
+      "relate",
+      "socialize"
+    ],
+    "Helping_Supporting": [
+      "aid",
+      "assist",
+      "care",
+      "comfort",
+      "defend",
+      "guide",
+      "help",
+      "protect",
+      "rescue",
+      "serve",
+      "shelter",
+      "sponsor",
+      "support"
+    ],
+    "Opposing_Conflict": [
+      "attack",
+      "battle",
+      "challenge",
+      "compete",
+      "conflict",
+      "criticize",
+      "defeat",
+      "disagree",
+      "dismiss",
+      "fight",
+      "oppose",
+      "protest",
+      "reject",
+      "resist",
+      "struggle"
+    ]
+  },
+  "Emotional_Mental_States": {
+    "Positive_Emotions": [
+      "celebrate",
+      "cheer",
+      "delight",
+      "enjoy",
+      "entertain",
+      "excite",
+      "please",
+      "relax",
+      "satisfy"
+    ],
+    "Negative_Emotions": [
+      "anger",
+      "annoy",
+      "bother",
+      "disappoint",
+      "embarrass",
+      "frighten",
+      "hate",
+      "irritate",
+      "offend",
+      "shock",
+      "surprise",
+      "upset",
+      "worry"
+    ],
+    "Emotional_Responses": [
+      "admire",
+      "fear",
+      "love",
+      "miss",
+      "regret",
+      "respect"
+    ]
+  },
+  "Sensory_Perception": {
+    "Seeing": [
+      "glance",
+      "glimpse",
+      "look",
+      "notice",
+      "observe",
+      "see",
+      "spot",
+      "stare",
+      "view",
+      "watch",
+      "witness"
+    ],
+    "Hearing": [
+      "hear",
+      "listen",
+      "sound"
+    ],
+    "Other_Senses": [
+      "feel",
+      "smell",
+      "taste",
+      "touch"
+    ]
+  },
+  "Work_Professional": {
+    "Business_Commerce": [
+      "advertise",
+      "brand",
+      "budget",
+      "campaign",
+      "charge",
+      "commission",
+      "contract",
+      "cost",
+      "credit",
+      "deal",
+      "discount",
+      "export",
+      "finance",
+      "fund",
+      "import",
+      "invest",
+      "manage",
+      "market",
+      "price",
+      "profit",
+      "purchase",
+      "sell",
+      "trade"
+    ],
+    "Employment": [
+      "employ",
+      "fire",
+      "hire",
+      "interview",
+      "promote",
+      "qualify",
+      "recruit",
+      "retire",
+      "train",
+      "work"
+    ],
+    "Leadership_Management": [
+      "command",
+      "conduct",
+      "control",
+      "direct",
+      "govern",
+      "guide",
+      "head",
+      "lead",
+      "manage",
+      "operate",
+      "organize",
+      "rule",
+      "supervise"
+    ]
+  },
+  "Technology_Media": {
+    "Digital_Actions": [
+      "access",
+      "click",
+      "code",
+      "connect",
+      "download",
+      "email",
+      "install",
+      "link",
+      "log",
+      "network",
+      "phone",
+      "program",
+      "scan",
+      "screen",
+      "search",
+      "surf",
+      "text",
+      "update",
+      "upload"
+    ],
+    "Media_Broadcasting": [
+      "broadcast",
+      "film",
+      "photograph",
+      "picture",
+      "record",
+      "stream",
+      "televise"
+    ]
+  },
+  "Legal_Formal": {
+    "Legal_Actions": [
+      "accuse",
+      "arrest",
+      "charge",
+      "commit",
+      "convict",
+      "defend",
+      "judge",
+      "justify",
+      "prosecute",
+      "punish",
+      "sentence",
+      "sue",
+      "testify",
+      "trial"
+    ],
+    "Official_Actions": [
+      "approve",
+      "authorize",
+      "ban",
+      "certificate",
+      "confirm",
+      "declare",
+      "license",
+      "permit",
+      "register",
+      "validate"
+    ]
+  },
+  "Maintenance_Care": {
+    "Cleaning_Tidying": [
+      "clean",
+      "clear",
+      "dust",
+      "mop",
+      "sweep",
+      "tidy",
+      "wash"
+    ],
+    "Maintenance": [
+      "fix",
+      "maintain",
+      "repair",
+      "service"
+    ],
+    "Care_Health": [
+      "cure",
+      "heal",
+      "nurse",
+      "treat"
+    ]
+  },
+  "Time_Scheduling": {
+    "Time_Management": [
+      "begin",
+      "continue",
+      "delay",
+      "end",
+      "finish",
+      "last",
+      "pause",
+      "postpone",
+      "schedule",
+      "start",
+      "stop",
+      "time"
+    ],
+    "Frequency_Duration": [
+      "extend",
+      "prolong",
+      "repeat",
+      "resume"
+    ]
+  },
+  "Measurement_Evaluation": {
+    "Measuring": [
+      "calculate",
+      "count",
+      "estimate",
+      "gauge",
+      "measure",
+      "rate",
+      "scale",
+      "weigh"
+    ],
+    "Testing_Evaluation": [
+      "assess",
+      "evaluate",
+      "examine",
+      "grade",
+      "inspect",
+      "review",
+      "test"
+    ]
+  },
+  "Location_Positioning": {
+    "Placement": [
+      "arrange",
+      "balance",
+      "base",
+      "center",
+      "hang",
+      "lean",
+      "lie",
+      "place",
+      "position",
+      "put",
+      "rest",
+      "seat",
+      "set",
+      "settle",
+      "sit",
+      "stand"
+    ],
+    "Finding_Locating": [
+      "discover",
+      "find",
+      "locate",
+      "search",
+      "seek",
+      "trace",
+      "track"
+    ]
+  },
+  "Processing_Analysis": {
+    "Data_Processing": [
+      "analyze",
+      "classify",
+      "compare",
+      "compile",
+      "compute",
+      "process",
+      "sort",
+      "summarize"
+    ],
+    "Research": [
+      "explore",
+      "investigate",
+      "research",
+      "study",
+      "survey"
+    ]
+  },
+  "Influence_Control": {
+    "Influence": [
+      "affect",
+      "convince",
+      "encourage",
+      "influence",
+      "inspire",
+      "motivate",
+      "persuade",
+      "urge"
+    ],
+    "Control": [
+      "command",
+      "control",
+      "dominate",
+      "govern",
+      "manage",
+      "regulate",
+      "restrict",
+      "rule"
+    ]
+  },
+  "Response_Reaction": {
+    "Reacting": [
+      "react",
+      "respond",
+      "result"
+    ],
+    "Adapting": [
+      "accommodate",
+      "adapt",
+      "adjust",
+      "conform"
+    ]
+  },
+  "Abstract_Actions": {
+    "Causation": [
+      "cause",
+      "create",
+      "generate",
+      "produce",
+      "result"
+    ],
+    "Prevention": [
+      "avoid",
+      "prevent",
+      "prohibit",
+      "stop"
+    ],
+    "Permission": [
+      "allow",
+      "enable",
+      "let",
+      "permit"
+    ],
+    "Requirement": [
+      "demand",
+      "insist",
+      "need",
+      "require"
+    ]
+  },
+  "Miscellaneous_Actions": {
+    "General_Actions": [
+      "act",
+      "behave",
+      "do",
+      "function",
+      "happen",
+      "occur",
+      "perform",
+      "practice",
+      "proceed",
+      "undertake"
+    ],
+    "State_Changes": [
+      "become",
+      "grow",
+      "mature",
+      "remain",
+      "stay",
+      "turn"
+    ],
+    "Effort_Attempt": [
+      "attempt",
+      "effort",
+      "endeavor",
+      "strive",
+      "struggle",
+      "try"
+    ],
+    "Success_Failure": [
+      "accomplish",
+      "achieve",
+      "fail",
+      "succeed"
+    ]
+  }
+}
