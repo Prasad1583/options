@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Earth Resources Lifecycle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .node {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .node::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s;
+    }
+    
+    .node:hover::before {
+      left: 100%;
+    }
+    
+    .node:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .node.active {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .flow-arrow {
+      width: 4px;
+      height: 80px;
+      background: linear-gradient(to bottom, #667eea, #764ba2);
+      margin: 20px auto;
+      position: relative;
+      border-radius: 2px;
+    }
+    
+    .flow-arrow::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: -6px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid #764ba2;
+    }
+    
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .7; }
+    }
+    
+    .connection-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 3s ease-out forwards;
+    }
+    
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    
+    .metric-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .metric-card:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+      transform: translateY(-4px);
+    }
+    
+    .progress-bar {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      height: 6px;
+      border-radius: 3px;
+      transition: width 1s ease-out;
+    }
+    
+    .stage-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #667eea;
+      border: 3px solid white;
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+      animation: pulse-indicator 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-indicator {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    .three-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .modal-overlay {
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .sidebar {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <!-- <div class="fixed left-0 top-0 h-full w-20 sidebar z-50 flex flex-col items-center py-6 space-y-6">
+      <button 
+        v-for="(stage, index) in stages" 
+        :key="index"
+        @click="scrollToStage(index)"
+        :class="['stage-indicator', { 'bg-yellow-400': currentStage === index }]"
+        :title="stage.name"
+      ></button>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="ml-20 min-h-screen">
+      <!-- Header -->
+      <!-- <header class="glassmorphism p-8 mb-8">
+        <div class="max-w-7xl mx-auto">
+          <h1 class="text-5xl font-bold text-white mb-4 floating-animation">
+            Advanced Earth Resources Lifecycle
+          </h1>
+          <p class="text-xl text-white/80 max-w-3xl">
+            Interactive visualization of the complete lifecycle from natural resources to societal impact, 
+            featuring real-time data, 3D visualizations, and predictive analytics.
+          </p> -->
+          
+          <!-- Global Metrics Dashboard -->
+          <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+            <div class="metric-card p-4 rounded-xl">
+              <h3 class="text-white/70 text-sm font-medium">Global Resource Index</h3>
+              <p class="text-3xl font-bold text-white">{{ globalMetrics.resourceIndex }}</p>
+              <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+                <div class="progress-bar" :style="{width: globalMetrics.resourceIndex + '%'}"></div>
+              </div>
+            </div>
+            <div class="metric-card p-4 rounded-xl">
+              <h3 class="text-white/70 text-sm font-medium">Sustainability Score</h3>
+              <p class="text-3xl font-bold text-white">{{ globalMetrics.sustainability }}</p>
+              <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+                <div class="progress-bar" :style="{width: globalMetrics.sustainability + '%'}"></div>
+              </div>
+            </div>
+            <div class="metric-card p-4 rounded-xl">
+              <h3 class="text-white/70 text-sm font-medium">Innovation Rate</h3>
+              <p class="text-3xl font-bold text-white">{{ globalMetrics.innovation }}%</p>
+              <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+                <div class="progress-bar" :style="{width: globalMetrics.innovation + '%'}"></div>
+              </div>
+            </div>
+            <div class="metric-card p-4 rounded-xl">
+              <h3 class="text-white/70 text-sm font-medium">Global Impact</h3>
+              <p class="text-3xl font-bold text-white">${{ globalMetrics.economicImpact }}T</p>
+              <div class="w-full bg-white/20 rounded-full h-2 mt-2">
+                <div class="progress-bar" :style="{width: '85%'}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header> -->
+
+      <!-- Main Lifecycle Flow -->
+      <div class="max-w-7xl mx-auto px-8 pb-20">
+        <div class="relative">
+          <!-- Connection Lines SVG -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
+            <defs>
+              <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.6" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.6" />
+              </linearGradient>
+            </defs>
+            <path 
+              v-for="(connection, index) in connections" 
+              :key="index"
+              :d="connection.path" 
+              stroke="url(#connectionGradient)" 
+              stroke-width="3" 
+              fill="none"
+              class="connection-line"
+              :style="{animationDelay: index * 0.5 + 's'}"
+            />
+          </svg>
+
+          <!-- Stages -->
+          <div class="space-y-16 relative z-10">
+            <div 
+              v-for="(stage, stageIndex) in stages" 
+              :key="stageIndex"
+              :ref="el => stageRefs[stageIndex] = el"
+              :class="['node glassmorphism p-8 rounded-3xl', { 'active': currentStage === stageIndex }]"
+              @mouseenter="setCurrentStage(stageIndex)"
+            >
+              <!-- Stage Header -->
+              <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                  <div :class="['w-16 h-16 rounded-2xl flex items-center justify-center text-3xl', stage.colorClass]">
+                    {{ stage.icon }}
+                  </div>
+                  <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">{{ stage.name }}</h2>
+                    <p class="text-white/70 text-lg">{{ stage.description }}</p>
+                  </div>
+                </div>
+                <button 
+                  @click="openStageDetails(stageIndex)"
+                  class="glassmorphism px-6 py-3 rounded-xl text-white hover:bg-white/20 transition-all"
+                >
+                  Explore Details
+                </button>
+              </div>
+
+              <!-- Stage Content Grid -->
+              <div :class="['grid gap-6', stage.gridClass]">
+                <div 
+                  v-for="(item, itemIndex) in stage.items" 
+                  :key="itemIndex"
+                  class="glassmorphism p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group"
+                  @click="openItemDetails(stageIndex, itemIndex)"
+                >
+                  <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-xl font-semibold text-white group-hover:text-yellow-300 transition-colors">
+                      {{ item.category }}
+                    </h3>
+                    <div class="text-2xl opacity-60 group-hover:opacity-100 transition-opacity">
+                      {{ item.icon }}
+                    </div>
+                  </div>
+                  <p class="text-white/70 mb-4">{{ item.description }}</p>
+                  
+                  <!-- Progress/Metrics -->
+                  <div class="space-y-2">
+                    <div class="flex justify-between text-sm text-white/60">
+                      <span>{{ item.metricLabel }}</span>
+                      <span>{{ item.metricValue }}</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                      <div 
+                        class="progress-bar" 
+                        :style="{width: item.progress + '%'}"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Key Examples -->
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <span 
+                      v-for="example in item.examples" 
+                      :key="example"
+                      class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80"
+                    >
+                      {{ example }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stage Metrics -->
+              <div class="mt-8 grid grid-cols-3 gap-4">
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-white">{{ stage.metrics.efficiency }}%</p>
+                  <p class="text-white/60 text-sm">Efficiency</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-white">${{ stage.metrics.investment }}B</p>
+                  <p class="text-white/60 text-sm">Investment</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-white">{{ stage.metrics.jobs }}M</p>
+                  <p class="text-white/60 text-sm">Jobs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback Loop Visualization -->
+          <div class="mt-16 glassmorphism p-8 rounded-3xl">
+            <h3 class="text-2xl font-bold text-white mb-6 text-center">
+              🔄 Sustainable Feedback Loop
+            </h3>
+            <div class="flex items-center justify-center space-x-8">
+              <div class="text-center">
+                <div class="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center text-3xl mb-2">
+                  ⚠️
+                </div>
+                <p class="text-white/80">Resource Depletion</p>
+              </div>
+              <div class="text-4xl text-white/60">→</div>
+              <div class="text-center">
+                <div class="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center text-3xl mb-2">
+                  🔬
+                </div>
+                <p class="text-white/80">Innovation Response</p>
+              </div>
+              <div class="text-4xl text-white/60">→</div>
+              <div class="text-center">
+                <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center text-3xl mb-2">
+                  🌱
+                </div>
+                <p class="text-white/80">Restoration & Renewal</p>
+              </div>
+              <div class="text-4xl text-white/60">→</div>
+              <div class="text-center">
+                <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center text-3xl mb-2">
+                  🌍
+                </div>
+                <p class="text-white/80">Enhanced Resources</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Stage Details -->
+    <div 
+      v-if="showModal" 
+      class="fixed inset-0 modal-overlay flex items-center justify-center z-50 p-4"
+      @click="closeModal"
+    >
+      <div 
+        class="glassmorphism rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        @click.stop
+      >
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-bold text-white">{{ modalContent.title }}</h2>
+          <button 
+            @click="closeModal"
+            class="w-10 h-10 glassmorphism rounded-full flex items-center justify-center text-white hover:bg-white/20"
+          >
+            ✕
+          </button>
+        </div>
+        
+        <div class="space-y-6 text-white/80">
+          <p class="text-lg">{{ modalContent.description }}</p>
+          
+          <!-- 3D Visualization Container -->
+          <div class="three-container h-64 bg-black/20 rounded-2xl flex items-center justify-center">
+            <div ref="threeContainer" class="w-full h-full"></div>
+          </div>
+          
+          <!-- Detailed Information -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="text-xl font-semibold text-white mb-3">Key Technologies</h4>
+              <ul class="space-y-2">
+                <li v-for="tech in modalContent.technologies" :key="tech" class="flex items-center space-x-2">
+                  <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                  <span>{{ tech }}</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-white mb-3">Impact Metrics</h4>
+              <div class="space-y-3">
+                <div v-for="metric in modalContent.metrics" :key="metric.label">
+                  <div class="flex justify-between mb-1">
+                    <span>{{ metric.label }}</span>
+                    <span>{{ metric.value }}</span>
+                  </div>
+                  <div class="w-full bg-white/20 rounded-full h-2">
+                    <div class="progress-bar" :style="{width: metric.percentage + '%'}"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref, onMounted, nextTick } = Vue;
+    
+    createApp({
+      setup() {
+        const currentStage = ref(0);
+        const showModal = ref(false);
+        const modalContent = ref({});
+        const stageRefs = ref([]);
+        const threeContainer = ref(null);
+        let scene, camera, renderer, cube;
+
+        const globalMetrics = ref({
+          resourceIndex: 78,
+          sustainability: 65,
+          innovation: 42,
+          economicImpact: 127.5
+        });
+
+        const connections = ref([
+          { path: "M 400 200 Q 500 250 400 300" },
+          { path: "M 400 400 Q 300 450 400 500" },
+          { path: "M 400 600 Q 600 650 400 700" }
+        ]);
+
+        const stages = ref([
+          {
+            name: "Earth Resources",
+            description: "Natural resources foundation of our civilization",
+            icon: "🌍",
+            colorClass: "bg-blue-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+            metrics: { efficiency: 85, investment: 2.4, jobs: 15.2 },
+            items: [
+              {
+                category: "Geological Resources",
+                icon: "⛰️",
+                description: "Mineral deposits, fossil fuels, and rare earth elements",
+                metricLabel: "Global Reserves",
+                metricValue: "78% Mapped",
+                progress: 78,
+                examples: ["Iron Ore", "Lithium", "Copper", "Oil", "Natural Gas"]
+              },
+              {
+                category: "Water Resources",
+                icon: "💧",
+                description: "Freshwater sources, aquifers, and ocean systems",
+                metricLabel: "Accessibility",
+                metricValue: "71% Available",
+                progress: 71,
+                examples: ["Groundwater", "Rivers", "Lakes", "Glaciers", "Desalination"]
+              },
+              {
+                category: "Biological Resources",
+                icon: "🌿",
+                description: "Living organisms and biodiversity ecosystems",
+                metricLabel: "Biodiversity Index",
+                metricValue: "62% Preserved",
+                progress: 62,
+                examples: ["Forests", "Marine Life", "Microorganisms", "Genetic Material"]
+              },
+              {
+                category: "Energy Resources",
+                icon: "⚡",
+                description: "Renewable and non-renewable energy sources",
+                metricLabel: "Renewable Share",
+                metricValue: "29% Clean",
+                progress: 29,
+                examples: ["Solar", "Wind", "Hydro", "Geothermal", "Nuclear"]
+              }
+            ]
+          },
+          {
+            name: "Observation & Measurement",
+            description: "Advanced monitoring and data collection systems",
+            icon: "🛰️",
+            colorClass: "bg-purple-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 92, investment: 1.8, jobs: 8.4 },
+            items: [
+              {
+                category: "Remote Sensing",
+                icon: "📡",
+                description: "Satellite imagery, LiDAR, and aerial reconnaissance",
+                metricLabel: "Coverage",
+                metricValue: "94% Global",
+                progress: 94,
+                examples: ["Landsat", "Sentinel", "MODIS", "Hyperspectral"]
+              },
+              {
+                category: "IoT Sensors",
+                icon: "📊",
+                description: "Ground-based monitoring networks and smart sensors",
+                metricLabel: "Network Density",
+                metricValue: "87% Connected",
+                progress: 87,
+                examples: ["Weather Stations", "Seismic Monitors", "Water Quality", "Air Quality"]
+              },
+              {
+                category: "AI Analytics",
+                icon: "🤖",
+                description: "Machine learning for pattern recognition and prediction",
+                metricLabel: "Accuracy",
+                metricValue: "96% Precise",
+                progress: 96,
+                examples: ["Computer Vision", "Predictive Models", "Anomaly Detection", "Time Series"]
+              }
+            ]
+          },
+          {
+            name: "Scientific Research",
+            description: "Theory development and fundamental discoveries",
+            icon: "🔬",
+            colorClass: "bg-green-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 76, investment: 3.2, jobs: 12.1 },
+            items: [
+              {
+                category: "Climate Science",
+                icon: "🌡️",
+                description: "Understanding climate patterns and change mechanisms",
+                metricLabel: "Model Accuracy",
+                metricValue: "89% Reliable",
+                progress: 89,
+                examples: ["Climate Models", "Carbon Cycle", "Ocean Currents", "Atmospheric Physics"]
+              },
+              {
+                category: "Resource Geology",
+                icon: "🗿",
+                description: "Mineral formation processes and exploration science",
+                metricLabel: "Discovery Rate",
+                metricValue: "73% Success",
+                progress: 73,
+                examples: ["Plate Tectonics", "Ore Genesis", "Hydrogeology", "Geochemistry"]
+              },
+              {
+                category: "Ecosystem Research",
+                icon: "🦋",
+                description: "Biodiversity patterns and ecological interactions",
+                metricLabel: "Species Cataloged",
+                metricValue: "68% Known",
+                progress: 68,
+                examples: ["Food Webs", "Migration Patterns", "Genetic Diversity", "Conservation Biology"]
+              }
+            ]
+          },
+          {
+            name: "Engineering Applications",
+            description: "Practical solutions and technological implementations",
+            icon: "⚙️",
+            colorClass: "bg-yellow-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 84, investment: 5.7, jobs: 28.3 },
+            items: [
+              {
+                category: "Extraction Technology",
+                icon: "🏗️",
+                description: "Advanced mining, drilling, and harvesting systems",
+                metricLabel: "Efficiency",
+                metricValue: "91% Optimized",
+                progress: 91,
+                examples: ["Autonomous Mining", "Deep Sea Drilling", "Precision Agriculture", "Smart Forestry"]
+              },
+              {
+                category: "Processing Systems",
+                icon: "🏭",
+                description: "Refinement, purification, and transformation processes",
+                metricLabel: "Yield Rate",
+                metricValue: "86% Recovery",
+                progress: 86,
+                examples: ["Hydrometallurgy", "Bioleaching", "Desalination", "Carbon Capture"]
+              },
+              {
+                category: "Infrastructure",
+                icon: "🌉",
+                description: "Transportation, storage, and distribution networks",
+                metricLabel: "Reliability",
+                metricValue: "93% Uptime",
+                progress: 93,
+                examples: ["Smart Grids", "Pipeline Networks", "Port Systems", "Supply Chains"]
+              }
+            ]
+          },
+          {
+            name: "Technology Innovation",
+            description: "Cutting-edge technologies and breakthrough solutions",
+            icon: "🚀",
+            colorClass: "bg-red-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 67, investment: 8.9, jobs: 18.7 },
+            items: [
+              {
+                category: "Clean Technology",
+                icon: "🔋",
+                description: "Renewable energy systems and storage solutions",
+                metricLabel: "Adoption Rate",
+                metricValue: "45% Deployed",
+                progress: 45,
+                examples: ["Solar Panels", "Wind Turbines", "Battery Storage", "Hydrogen Fuel"]
+              },
+              {
+                category: "Biotechnology",
+                icon: "🧬",
+                description: "Biological systems for resource production and remediation",
+                metricLabel: "Development",
+                metricValue: "72% Advanced",
+                progress: 72,
+                examples: ["Biofuels", "Synthetic Biology", "Bioremediation", "Enzyme Engineering"]
+              },
+              {
+                category: "Digital Solutions",
+                icon: "💻",
+                description: "AI, blockchain, and digital twin technologies",
+                metricLabel: "Integration",
+                metricValue: "58% Implemented",
+                progress: 58,
+                examples: ["Digital Twins", "Blockchain Tracking", "AI Optimization", "VR Training"]
+              }
+            ]
+          },
+          {
+            name: "Products & Services",
+            description: "Market-ready solutions and commercial applications",
+            icon: "📦",
+            colorClass: "bg-indigo-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 88, investment: 12.4, jobs: 45.8 },
+            items: [
+              {
+                category: "Sustainable Products",
+                icon: "♻️",
+                description: "Eco-friendly consumer and industrial goods",
+                metricLabel: "Market Share",
+                metricValue: "34% Green",
+                progress: 34,
+                examples: ["Recycled Materials", "Bio-plastics", "Sustainable Packaging", "Green Chemistry"]
+              },
+              {
+                category: "Energy Services",
+                icon: "🔌",
+                description: "Clean energy generation and distribution services",
+                metricLabel: "Capacity",
+                metricValue: "67% Renewable",
+                progress: 67,
+                examples: ["Solar Farms", "Wind Parks", "Energy Storage", "Grid Services"]
+              },
+              {
+                category: "Environmental Solutions",
+                icon: "🌱",
+                description: "Restoration, monitoring, and conservation services",
+                metricLabel: "Projects Active",
+                metricValue: "2,847 Sites",
+                progress: 78,
+                examples: ["Reforestation", "Water Treatment", "Soil Restoration", "Carbon Offset"]
+              }
+            ]
+          },
+          {
+            name: "Societal Impact",
+            description: "Widespread effects on society, economy, and environment",
+            icon: "🏛️",
+            colorClass: "bg-emerald-500/20",
+            gridClass: "grid-cols-1 md:grid-cols-3",
+            metrics: { efficiency: 75, investment: 15.2, jobs: 89.4 },
+            items: [
+              {
+                category: "Economic Development",
+                icon: "💰",
+                description: "Job creation, GDP growth, and economic transformation",
+                metricLabel: "Growth Rate",
+                metricValue: "4.2% Annual",
+                progress: 82,
+                examples: ["Green Jobs", "Innovation Hubs", "Export Revenue", "Investment Flows"]
+              },
+              {
+                category: "Social Equity",
+                icon: "🤝",
+                description: "Access to resources, education, and opportunities",
+                metricLabel: "Inclusion Index",
+                metricValue: "69% Equitable",
+                progress: 69,
+                examples: ["Universal Access", "Skill Development", "Community Programs", "Gender Equality"]
+              },
+              {
+                category: "Environmental Health",
+                icon: "🌍",
+                description: "Ecosystem preservation and restoration outcomes",
+                metricLabel: "Sustainability",
+                metricValue: "71% Improved",
+                progress: 71,
+                examples: ["Biodiversity Recovery", "Pollution Reduction", "Climate Resilience", "Ecosystem Services"]
+              }
+            ]
+          }
+        ]);
+
+        const setCurrentStage = (index) => {
+          currentStage.value = index;
+        };
+
+        const scrollToStage = (index) => {
+          const element = stageRefs.value[index];
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setCurrentStage(index);
+          }
+        };
+
+        const openStageDetails = (stageIndex) => {
+          const stage = stages.value[stageIndex];
+          modalContent.value = {
+            title: stage.name,
+            description: `Detailed analysis of ${stage.name.toLowerCase()} including advanced metrics, 3D visualizations, and comprehensive data insights.`,
+            technologies: [
+              "Machine Learning Algorithms",
+              "Satellite Remote Sensing",
+              "IoT Sensor Networks",
+              "Blockchain Tracking",
+              "Digital Twin Technology",
+              "Predictive Analytics"
+            ],
+            metrics: [
+              { label: "Efficiency Score", value: stage.metrics.efficiency + "%", percentage: stage.metrics.efficiency },
+              { label: "Investment Level", value: "$" + stage.metrics.investment + "B", percentage: Math.min(stage.metrics.investment * 10, 100) },
+              { label: "Job Creation", value: stage.metrics.jobs + "M", percentage: Math.min(stage.metrics.jobs * 2, 100) }
+            ]
+          };
+          showModal.value = true;
+          nextTick(() => {
+            initThreeJS();
+          });
+        };
+
+        const openItemDetails = (stageIndex, itemIndex) => {
+          const stage = stages.value[stageIndex];
+          const item = stage.items[itemIndex];
+          modalContent.value = {
+            title: item.category,
+            description: item.description + ". This represents a critical component in the Earth Resources lifecycle with significant technological and environmental implications.",
+            technologies: item.examples,
+            metrics: [
+              { label: item.metricLabel, value: item.metricValue, percentage: item.progress },
+              { label: "Innovation Index", value: "87%", percentage: 87 },
+              { label: "Market Penetration", value: "54%", percentage: 54 }
+            ]
+          };
+          showModal.value = true;
+          nextTick(() => {
+            initThreeJS();
+          });
+        };
+
+        const closeModal = () => {
+          showModal.value = false;
+          if (renderer) {
+            renderer.dispose();
+          }
+        };
+
+        const initThreeJS = () => {
+          if (!threeContainer.value) return;
+
+          // Scene setup
+          scene = new THREE.Scene();
+          camera = new THREE.PerspectiveCamera(75, threeContainer.value.clientWidth / threeContainer.value.clientHeight, 0.1, 1000);
+          renderer = new THREE.WebGLRenderer({ alpha: true });
+          renderer.setSize(threeContainer.value.clientWidth, threeContainer.value.clientHeight);
+          renderer.setClearColor(0x000000, 0);
+          threeContainer.value.appendChild(renderer.domElement);
+
+          // Create a rotating earth-like sphere
+          const geometry = new THREE.SphereGeometry(1, 32, 32);
+          const material = new THREE.MeshBasicMaterial({ 
+            color: 0x4f46e5,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.8
+          });
+          cube = new THREE.Mesh(geometry, material);
+          scene.add(cube);
+
+          // Add some particles
+          const particlesGeometry = new THREE.BufferGeometry();
+          const particlesCount = 100;
+          const posArray = new Float32Array(particlesCount * 3);
+
+          for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 5;
+          }
+
+          particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+          const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0x667eea
+          });
+
+          const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+          scene.add(particlesMesh);
+
+          camera.position.z = 3;
+
+          // Animation loop
+          const animate = () => {
+            requestAnimationFrame(animate);
+            
+            if (cube) {
+              cube.rotation.x += 0.01;
+              cube.rotation.y += 0.01;
+            }
+            
+            if (particlesMesh) {
+              particlesMesh.rotation.y += 0.002;
+            }
+
+            renderer.render(scene, camera);
+          };
+          animate();
+        };
+
+        // Simulate real-time data updates
+        const updateMetrics = () => {
+          globalMetrics.value.resourceIndex = Math.max(50, Math.min(100, globalMetrics.value.resourceIndex + (Math.random() - 0.5) * 2));
+          globalMetrics.value.sustainability = Math.max(40, Math.min(100, globalMetrics.value.sustainability + (Math.random() - 0.5) * 1.5));
+          globalMetrics.value.innovation = Math.max(20, Math.min(80, globalMetrics.value.innovation + (Math.random() - 0.5) * 3));
+          globalMetrics.value.economicImpact = Math.max(100, Math.min(200, globalMetrics.value.economicImpact + (Math.random() - 0.5) * 5));
+        };
+
+        onMounted(() => {
+          // Update metrics every 5 seconds
+          setInterval(updateMetrics, 5000);
+          
+          // Intersection Observer for stage tracking
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const index = stageRefs.value.indexOf(entry.target);
+                if (index !== -1) {
+                  setCurrentStage(index);
+                }
+              }
+            });
+          }, { threshold: 0.5 });
+
+          stageRefs.value.forEach(ref => {
+            if (ref) observer.observe(ref);
+          });
+        });
+
+        return {
+          currentStage,
+          showModal,
+          modalContent,
+          stageRefs,
+          threeContainer,
+          globalMetrics,
+          connections,
+          stages,
+          setCurrentStage,
+          scrollToStage,
+          openStageDetails,
+          openItemDetails,
+          closeModal
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
