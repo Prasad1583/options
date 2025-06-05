@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Engineering Diagrams Reference</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00d1b2;
+      --primary-dark: #00b39e;
+      --dark: #121212;
+      --darker: #0a0a0a;
+      --light: #f8f9fa;
+      --gray: #2d2d2d;
+      --light-gray: #444;
+      --card-bg: #1e1e1e;
+      --card-hover: #2a2a2a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--darker), var(--gray));
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--primary);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    h2 i {
+      margin-right: 10px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      margin-bottom: 3rem;
+    }
+    
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      background-color: var(--card-hover);
+    }
+    
+    .card-header {
+      background-color: var(--primary);
+      color: var(--darker);
+      padding: 12px 15px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card-header i {
+      margin-right: 10px;
+    }
+    
+    .card-body {
+      padding: 15px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th {
+      background-color: var(--primary-dark);
+      color: white;
+      text-align: left;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+    }
+    
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover {
+      background-color: var(--gray);
+    }
+    
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      background-color: var(--darker);
+      color: #777;
+    }
+    
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Software Engineering Diagrams Reference</h1>
+      <p class="subtitle">A comprehensive guide to all diagrams used in software development</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <h2><i class="fas fa-brain"></i> Requirement Analysis Diagrams</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-users"></i> Use Case Diagram</div>
+        <div class="card-body">
+          Shows how users (actors) interact with the system and its functionality
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-project-diagram"></i> Context Diagram</div>
+        <div class="card-body">
+          High-level view of the system and its external entities and interactions
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-map"></i> User Story Map</div>
+        <div class="card-body">
+          Organizes user stories by goals and priorities in a visual layout
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-shapes"></i> Domain Model Diagram</div>
+        <div class="card-body">
+          Conceptual view of entities, their attributes, and relationships
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-cubes"></i> System Design & Modeling (UML)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-object-group"></i> Class Diagram</div>
+        <div class="card-body">
+          Defines classes, their attributes, methods, and relationships
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-cube"></i> Object Diagram</div>
+        <div class="card-body">
+          Snapshot of objects and their relationships at a specific moment
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-puzzle-piece"></i> Component Diagram</div>
+        <div class="card-body">
+          Shows system components/modules and their interfaces
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-box-open"></i> Package Diagram</div>
+        <div class="card-body">
+          Groups related classes/interfaces into packages and dependencies
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-sitemap"></i> Composite Structure</div>
+        <div class="card-body">
+          Describes internal structure of a class or component
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-server"></i> Deployment Diagram</div>
+        <div class="card-body">
+          Maps software components to physical hardware nodes
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-project-diagram"></i> Behavioral Diagrams</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-tasks"></i> Activity Diagram</div>
+        <div class="card-body">
+          Models workflows, business processes with decisions and loops
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-exchange-alt"></i> State Machine</div>
+        <div class="card-body">
+          Shows states of an object and transitions between them
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-arrows-alt-h"></i> Sequence Diagram</div>
+        <div class="card-body">
+          Illustrates object interactions in chronological sequence
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-comments"></i> Communication</div>
+        <div class="card-body">
+          Focuses on message passing between objects
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-network-wired"></i> Architecture & Infrastructure</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-layer-group"></i> Logical Architecture</div>
+        <div class="card-body">
+          Abstract view of system modules and components
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-server"></i> Physical Architecture</div>
+        <div class="card-body">
+          Actual hardware, network layout and deployment
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-microchip"></i> Microservices</div>
+        <div class="card-body">
+          Service boundaries, APIs, and database relationships
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-cloud"></i> Serverless</div>
+        <div class="card-body">
+          Cloud components and event-driven functions architecture
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-flask"></i> Testing & Quality</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-vial"></i> Test Case Diagram</div>
+        <div class="card-body">
+          Visual representation of test cases and their flows
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-table"></i> Decision Table</div>
+        <div class="card-body">
+          Logical combinations of inputs and expected outputs
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-border-style"></i> Boundary Value</div>
+        <div class="card-body">
+          Tests focused on input boundaries and edge cases
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-database"></i> Data Modeling</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-erd"></i> Entity-Relationship</div>
+        <div class="card-body">
+          Defines data schema, entities, attributes and relationships
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-stream"></i> Data Flow Diagram</div>
+        <div class="card-body">
+          Shows how data moves between processes in a system
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-table"></i> Database Schema</div>
+        <div class="card-body">
+          Physical structure of database tables and constraints
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-code-branch"></i> DevOps & CI/CD</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-pipe"></i> CI/CD Pipeline</div>
+        <div class="card-body">
+          Visualizes workflow from code commit to production deployment
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-cloud-upload-alt"></i> Infrastructure as Code</div>
+        <div class="card-body">
+          Shows cloud resource provisioning and configuration
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-code-merge"></i> Version Control</div>
+        <div class="card-body">
+          Illustrates branching, merging and release strategies
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-shield-alt"></i> Security & Compliance</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-bug"></i> Threat Modeling</div>
+        <div class="card-body">
+          Identifies and mitigates security vulnerabilities (STRIDE)
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-user-lock"></i> Access Control</div>
+        <div class="card-body">
+          Maps user roles to resource permissions
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-lock"></i> Security Architecture</div>
+        <div class="card-body">
+          Shows trust zones, firewalls, and encryption points
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-business-time"></i> Business Process & Workflow</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-diagram-project"></i> BPMN</div>
+        <div class="card-body">
+          Standard notation for business process modeling
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-swimming-pool"></i> Swimlane</div>
+        <div class="card-body">
+          Allocates workflow tasks to roles or departments
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-random"></i> Workflow</div>
+        <div class="card-body">
+          Shows steps, decisions and flow of tasks
+        </div>
+      </div>
+    </div>
+
+    <h2><i class="fas fa-tasks"></i> Project Management & Agile</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><i class="fas fa-chart-gantt"></i> Gantt Chart</div>
+        <div class="card-body">
+          Timeline view of tasks, dependencies and milestones
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-columns"></i> Kanban Board</div>
+        <div class="card-body">
+          Visualizes task progression (To-do, In Progress, Done)
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-chart-line"></i> Burndown Chart</div>
+        <div class="card-body">
+          Tracks remaining work in a sprint or project
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header"><i class="fas fa-map-marked-alt"></i> Product Roadmap</div>
+        <div class="card-body">
+          High-level plan of features and milestones
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <p>Software Engineering Diagrams Reference &copy; 2023</p>
+      <p><i class="fas fa-code"></i> For developers, by developers</p>
+    </div>
+  </footer>
+</body>
+</html>
