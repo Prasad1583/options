@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Diagrams Reference</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            background-color: #eaf2f8;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .category {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Software Engineering Diagrams Reference Guide</h1>
+    
+    <div class="category">
+        <h2><span class="emoji">🧠</span> 1. Requirements & Analysis Diagrams</h2>
+        <p>Used to understand what the system should do.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Use Case Diagram</td>
+                <td>Shows actors and their interactions with the system</td>
+            </tr>
+            <tr>
+                <td>User Story Map</td>
+                <td>Visualizes user stories by goal and priority</td>
+            </tr>
+            <tr>
+                <td>Context Diagram</td>
+                <td>High-level view of the system and external entities</td>
+            </tr>
+            <tr>
+                <td>Data Flow Diagram (DFD)</td>
+                <td>Tracks flow of data through processes</td>
+            </tr>
+            <tr>
+                <td>Entity Relationship Diagram (ERD)</td>
+                <td>Shows data structure and relationships (often for DB)</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">🧱</span> 2. Design & Architecture Diagrams</h2>
+        <p>Used to design how the system is structured internally.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Class Diagram</td>
+                <td>Models object-oriented classes and relationships</td>
+            </tr>
+            <tr>
+                <td>Component Diagram</td>
+                <td>Shows modular parts (components) of a system</td>
+            </tr>
+            <tr>
+                <td>Sequence Diagram</td>
+                <td>Shows time-based message interaction between components</td>
+            </tr>
+            <tr>
+                <td>Activity Diagram</td>
+                <td>Represents workflows, decisions, and loops</td>
+            </tr>
+            <tr>
+                <td>State Machine Diagram</td>
+                <td>Shows object states and transitions</td>
+            </tr>
+            <tr>
+                <td>Package Diagram</td>
+                <td>Groups classes or components into packages</td>
+            </tr>
+            <tr>
+                <td>Deployment Diagram</td>
+                <td>Shows hardware nodes and software components' deployment</td>
+            </tr>
+            <tr>
+                <td>Object Diagram</td>
+                <td>Snapshot of objects and values at a specific point in time</td>
+            </tr>
+            <tr>
+                <td>Composite Structure Diagram</td>
+                <td>Describes internal structure of a class or component</td>
+            </tr>
+            <tr>
+                <td>Communication Diagram</td>
+                <td>Focuses on object interactions using message passing</td>
+            </tr>
+            <tr>
+                <td>Timing Diagram</td>
+                <td>Shows object behavior over time (used in embedded/real-time systems)</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">⚙️</span> 3. System Architecture Diagrams</h2>
+        <p>Used for high-level infrastructure and system design.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Logical Architecture Diagram</td>
+                <td>Abstract system architecture and relationships</td>
+            </tr>
+            <tr>
+                <td>Physical Architecture Diagram</td>
+                <td>Actual servers, networks, storage, and physical layout</td>
+            </tr>
+            <tr>
+                <td>Layered Architecture Diagram</td>
+                <td>Represents software layers (e.g., presentation, service, DB)</td>
+            </tr>
+            <tr>
+                <td>Microservices Architecture</td>
+                <td>Shows services, APIs, databases, and communication paths</td>
+            </tr>
+            <tr>
+                <td>Serverless / Cloud Diagram</td>
+                <td>Depicts AWS, Azure, or GCP components and workflows</td>
+            </tr>
+            <tr>
+                <td>Client-Server Architecture</td>
+                <td>Shows interaction between clients and servers</td>
+            </tr>
+            <tr>
+                <td>API Gateway and Backend-for-Frontend (BFF)</td>
+                <td>For modern web/mobile architecture patterns</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">🔁</span> 4. DevOps & Process Diagrams</h2>
+        <p>Used for deployment, CI/CD, and operations.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>CI/CD Pipeline Diagram</td>
+                <td>Visualizes steps from code to production</td>
+            </tr>
+            <tr>
+                <td>Infrastructure as Code (IaC)</td>
+                <td>Shows cloud resource provisioning (e.g., Terraform layout)</td>
+            </tr>
+            <tr>
+                <td>Version Control Flow (Git Flow)</td>
+                <td>Branching and merging strategy</td>
+            </tr>
+            <tr>
+                <td>Deployment Flowchart</td>
+                <td>Visualizes how software moves across dev/test/staging/prod</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">🧪</span> 5. Testing & Quality</h2>
+        <p>Used to model test strategies and scenarios.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Test Case Flowchart</td>
+                <td>Shows test case execution paths</td>
+            </tr>
+            <tr>
+                <td>Boundary Value Table</td>
+                <td>Used for input validation</td>
+            </tr>
+            <tr>
+                <td>Decision Table</td>
+                <td>Helps in designing test scenarios from business rules</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">🧩</span> 6. Behavioral Modeling</h2>
+        <p>Focuses on system behavior over time.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Sequence Diagram</td>
+                <td>Time-order of messages</td>
+            </tr>
+            <tr>
+                <td>State Machine Diagram</td>
+                <td>States and transitions</td>
+            </tr>
+            <tr>
+                <td>Activity Diagram</td>
+                <td>Flow of control and data</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">📊</span> 7. Data & Process Diagrams</h2>
+        <p>Shows how data is processed or stored.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>ERD (Entity-Relationship Diagram)</td>
+                <td>Data model and relationships</td>
+            </tr>
+            <tr>
+                <td>DFD (Data Flow Diagram)</td>
+                <td>Data movement across system</td>
+            </tr>
+            <tr>
+                <td>CRUD Matrix</td>
+                <td>Shows Create, Read, Update, Delete operations on entities</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">🗃️</span> 8. Security & Compliance</h2>
+        <p>Important for audit, permissions, and threat modeling.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Threat Modeling Diagram (STRIDE)</td>
+                <td>Identifies and mitigates security threats</td>
+            </tr>
+            <tr>
+                <td>Access Control Matrix</td>
+                <td>Maps users/roles to allowed actions/resources</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="category">
+        <h2><span class="emoji">📦</span> 9. Business Process & Workflow</h2>
+        <p>Focuses on business logic and flow of tasks.</p>
+        <table>
+            <tr>
+                <th>Diagram</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Business Process Model (BPMN)</td>
+                <td>Standardized process modeling notation</td>
+            </tr>
+            <tr>
+                <td>Workflow Diagram</td>
+                <td>Tracks sequence of tasks and decisions</td>
+            </tr>
+            <tr>
+                <td>Swimlane Diagram</td>
+                <td>Allocates tasks to roles or systems</td>
+            </tr>
+        </table>
+    </div>
+    
+    <footer>
+        <p>Software Engineering Diagrams Reference Guide &copy; 2023</p>
+    </footer>
+</body>
+</html>
