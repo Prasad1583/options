@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Architecture Matrix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #232f3e 0%, #131a22 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .architecture-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .layer-header {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            background: #232f3e;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 4px;
+            font-size: 10px;
+            width: 85px;
+            position: relative;
+        }
+
+        .layer-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #ff9900;
+        }
+
+        .component {
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        /* Frontend/Application Layer - Orange tones */
+        .frontend { background: #ff6b35; color: white; }
+        .frontend-light { background: #ff8c42; color: white; }
+        .frontend-medium { background: #ff5722; color: white; }
+
+        /* Compute Layer - Blue tones */
+        .compute { background: #2196f3; color: white; }
+        .compute-light { background: #42a5f5; color: white; }
+        .compute-medium { background: #1976d2; color: white; }
+
+        /* Storage Layer - Green tones */
+        .storage { background: #4caf50; color: white; }
+        .storage-light { background: #66bb6a; color: white; }
+        .storage-medium { background: #388e3c; color: white; }
+
+        /* Database Layer - Purple tones */
+        .database { background: #9c27b0; color: white; }
+        .database-light { background: #ba68c8; color: white; }
+        .database-medium { background: #7b1fa2; color: white; }
+
+        /* Networking Layer - Cyan tones */
+        .networking { background: #00bcd4; color: white; }
+        .networking-light { background: #26c6da; color: white; }
+        .networking-medium { background: #0097a7; color: white; }
+
+        /* Security Layer - Red tones */
+        .security { background: #f44336; color: white; }
+        .security-light { background: #ef5350; color: white; }
+        .security-medium { background: #d32f2f; color: white; }
+
+        /* Analytics Layer - Indigo tones */
+        .analytics { background: #3f51b5; color: white; }
+        .analytics-light { background: #5c6bc0; color: white; }
+        .analytics-medium { background: #303f9f; color: white; }
+
+        /* Integration Layer - Teal tones */
+        .integration { background: #009688; color: white; }
+        .integration-light { background: #26a69a; color: white; }
+        .integration-medium { background: #00695c; color: white; }
+
+        /* Management Layer - Brown tones */
+        .management { background: #795548; color: white; }
+        .management-light { background: #8d6e63; color: white; }
+        .management-medium { background: #5d4037; color: white; }
+
+        /* AI/ML Layer - Deep Purple tones */
+        .ai { background: #673ab7; color: white; }
+        .ai-light { background: #9575cd; color: white; }
+        .ai-medium { background: #512da8; color: white; }
+
+        .layer-section {
+            border-top: 3px solid #e0e0e0;
+        }
+
+        .layer-section:first-child {
+            border-top: none;
+        }
+
+        td {
+            border: 1px solid #f5f5f5;
+        }
+
+        .full-width {
+            background: #f8f9fa;
+            color: #232f3e;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+            padding: 8px;
+        }
+
+        .aws-region {
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .architecture-table {
+                font-size: 9px;
+            }
+            
+            .component {
+                padding: 4px 6px;
+            }
+            
+            .layer-header {
+                width: 65px;
+                font-size: 8px;
+            }
+        }
+
+        .legend {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .legend h3 {
+            color: #232f3e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .service-icon {
+            font-size: 10px;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☁️ AWS Architecture Matrix</h1>
+            <p>Services Organized by Architectural Layers</p>
+        </div>
+
+        <table class="architecture-table">
+            <!-- AWS Global Infrastructure -->
+            <tr>
+                <td colspan="7" class="aws-region">AWS Global Infrastructure</td>
+            </tr>
+
+            <!-- Frontend/Application Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Frontend & Application</td>
+                <td class="component frontend">CloudFront</td>
+                <td class="component frontend-light">Route 53</td>
+                <td class="component frontend-medium">API Gateway</td>
+                <td class="component frontend">AWS Amplify</td>
+                <td class="component frontend-light">AppSync</td>
+                <td class="component frontend-medium">Elastic Beanstalk</td>
+            </tr>
+            <tr>
+                <td class="component frontend-light">CloudFormation</td>
+                <td class="component frontend">AWS CDK</td>
+                <td class="component frontend-medium">AWS SAM</td>
+                <td class="component frontend-light">Cognito</td>
+                <td class="component frontend">WAF</td>
+                <td class="component frontend-medium">Shield</td>
+            </tr>
+            <tr>
+                <td class="component frontend">Lightsail</td>
+                <td class="component frontend-light">Global Accelerator</td>
+                <td class="component frontend-medium">App Runner</td>
+                <td class="component frontend">Device Farm</td>
+                <td class="component frontend-light">Pinpoint</td>
+                <td class="component frontend-medium">Connect</td>
+            </tr>
+
+            <!-- Compute Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Compute Services</td>
+                <td class="component compute">EC2</td>
+                <td class="component compute-light">Lambda</td>
+                <td class="component compute-medium">Fargate</td>
+                <td class="component compute">ECS</td>
+                <td class="component compute-light">EKS</td>
+                <td class="component compute-medium">Batch</td>
+            </tr>
+            <tr>
+                <td class="component compute-light">Auto Scaling</td>
+                <td class="component compute">Elastic Load Balancer</td>
+                <td class="component compute-medium">Outposts</td>
+                <td class="component compute-light">Wavelength</td>
+                <td class="component compute">Local Zones</td>
+                <td class="component compute-medium">Nitro System</td>
+            </tr>
+            <tr>
+                <td class="component compute">App Mesh</td>
+                <td class="component compute-light">Service Discovery</td>
+                <td class="component compute-medium">Container Registry</td>
+                <td class="component compute">Image Builder</td>
+                <td class="component compute-light">Systems Manager</td>
+                <td class="component compute-medium">Step Functions</td>
+            </tr>
+
+            <!-- Storage Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Storage Services</td>
+                <td class="component storage">S3</td>
+                <td class="component storage-light">EBS</td>
+                <td class="component storage-medium">EFS</td>
+                <td class="component storage">FSx</td>
+                <td class="component storage-light">Storage Gateway</td>
+                <td class="component storage-medium">Backup</td>
+            </tr>
+            <tr>
+                <td class="component storage-light">Glacier</td>
+                <td class="component storage">Deep Archive</td>
+                <td class="component storage-medium">DataSync</td>
+                <td class="component storage-light">Transfer Family</td>
+                <td class="component storage">Snow Family</td>
+                <td class="component storage-medium">S3 Transfer Acceleration</td>
+            </tr>
+
+            <!-- Database Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Database Services</td>
+                <td class="component database">RDS</td>
+                <td class="component database-light">Aurora</td>
+                <td class="component database-medium">DynamoDB</td>
+                <td class="component database">DocumentDB</td>
+                <td class="component database-light">ElastiCache</td>
+                <td class="component database-medium">Neptune</td>
+            </tr>
+            <tr>
+                <td class="component database-light">Redshift</td>
+                <td class="component database">QLDB</td>
+                <td class="component database-medium">Timestream</td>
+                <td class="component database-light">MemoryDB</td>
+                <td class="component database">Keyspaces</td>
+                <td class="component database-medium">OpenSearch</td>
+            </tr>
+            <tr>
+                <td class="component database">Database Migration Service</td>
+                <td class="component database-light">Schema Conversion Tool</td>
+                <td class="component database-medium">Data Pipeline</td>
+                <td class="component database">Glue</td>
+                <td class="component database-light">Lake Formation</td>
+                <td class="component database-medium">Data Exchange</td>
+            </tr>
+
+            <!-- Networking Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Networking & Content Delivery</td>
+                <td class="component networking">VPC</td>
+                <td class="component networking-light">Direct Connect</td>
+                <td class="component networking-medium">Transit Gateway</td>
+                <td class="component networking">PrivateLink</td>
+                <td class="component networking-light">Client VPN</td>
+                <td class="component networking-medium">Site-to-Site VPN</td>
+            </tr>
+            <tr>
+                <td class="component networking-light">Cloud Map</td>
+                <td class="component networking">Network Firewall</td>
+                <td class="component networking-medium">NAT Gateway</td>
+                <td class="component networking-light">Internet Gateway</td>
+                <td class="component networking">Elastic IP</td>
+                <td class="component networking-medium">Network Load Balancer</td>
+            </tr>
+
+            <!-- Security Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Security & Identity</td>
+                <td class="component security">IAM</td>
+                <td class="component security-light">Organizations</td>
+                <td class="component security-medium">SSO</td>
+                <td class="component security">Directory Service</td>
+                <td class="component security-light">Certificate Manager</td>
+                <td class="component security-medium">Secrets Manager</td>
+            </tr>
+            <tr>
+                <td class="component security-light">KMS</td>
+                <td class="component security">CloudHSM</td>
+                <td class="component security-medium">GuardDuty</td>
+                <td class="component security-light">Security Hub</td>
+                <td class="component security">Inspector</td>
+                <td class="component security-medium">Macie</td>
+            </tr>
+            <tr>
+                <td class="component security">Config</td>
+                <td class="component security-light">CloudTrail</td>
+                <td class="component security-medium">Detective</td>
+                <td class="component security-light">Firewall Manager</td>
+                <td class="component security">Artifact</td>
+                <td class="component security-medium">Audit Manager</td>
+            </tr>
+
+            <!-- Analytics Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Analytics & Big Data</td>
+                <td class="component analytics">Athena</td>
+                <td class="component analytics-light">EMR</td>
+                <td class="component analytics-medium">Kinesis</td>
+                <td class="component analytics">QuickSight</td>
+                <td class="component analytics-light">Data Pipeline</td>
+                <td class="component analytics-medium">MSK</td>
+            </tr>
+            <tr>
+                <td class="component analytics-light">CloudSearch</td>
+                <td class="component analytics">Elasticsearch</td>
+                <td class="component analytics-medium">Data Firehose</td>
+                <td class="component analytics-light">Data Analytics</td>
+                <td class="component analytics">Glue DataBrew</td>
+                <td class="component analytics-medium">Lake Formation</td>
+            </tr>
+
+            <!-- AI/ML Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">AI & Machine Learning</td>
+                <td class="component ai">SageMaker</td>
+                <td class="component ai-light">Rekognition</td>
+                <td class="component ai-medium">Comprehend</td>
+                <td class="component ai">Lex</td>
+                <td class="component ai-light">Polly</td>
+                <td class="component ai-medium">Transcribe</td>
+            </tr>
+            <tr>
+                <td class="component ai-light">Translate</td>
+                <td class="component ai">Textract</td>
+                <td class="component ai-medium">Forecast</td>
+                <td class="component ai-light">Personalize</td>
+                <td class="component ai">CodeGuru</td>
+                <td class="component ai-medium">DeepRacer</td>
+            </tr>
+
+            <!-- Integration Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Integration Services</td>
+                <td class="component integration">SQS</td>
+                <td class="component integration-light">SNS</td>
+                <td class="component integration-medium">EventBridge</td>
+                <td class="component integration">SWF</td>
+                <td class="component integration-light">MQ</td>
+                <td class="component integration-medium">AppFlow</td>
+            </tr>
+            <tr>
+                <td class="component integration-light">API Gateway</td>
+                <td class="component integration">AppSync</td>
+                <td class="component integration-medium">Express Workflows</td>
+                <td class="component integration-light">Simple Workflow</td>
+                <td class="component integration">Managed Workflows</td>
+                <td class="component integration-medium">EventBridge</td>
+            </tr>
+
+            <!-- Management Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Management & Governance</td>
+                <td class="component management">CloudWatch</td>
+                <td class="component management-light">CloudTrail</td>
+                <td class="component management-medium">Config</td>
+                <td class="component management">Systems Manager</td>
+                <td class="component management-light">OpsWorks</td>
+                <td class="component management-medium">Service Catalog</td>
+            </tr>
+            <tr>
+                <td class="component management-light">Trusted Advisor</td>
+                <td class="component management">Control Tower</td>
+                <td class="component management-medium">Well-Architected Tool</td>
+                <td class="component management-light">Cost Explorer</td>
+                <td class="component management">Budgets</td>
+                <td class="component management-medium">Resource Groups</td>
+            </tr>
+
+            <!-- Developer Tools -->
+            <tr class="layer-section">
+                <td colspan="7" class="full-width">Developer Tools & DevOps</td>
+            </tr>
+            <tr>
+                <td rowspan="1" class="layer-header">Developer Tools</td>
+                <td class="component frontend">CodeCommit</td>
+                <td class="component frontend-light">CodeBuild</td>
+                <td class="component frontend-medium">CodeDeploy</td>
+                <td class="component frontend">CodePipeline</td>
+                <td class="component frontend-light">CodeStar</td>
+                <td class="component frontend-medium">X-Ray</td>
+            </tr>
+        </table>
+
+        <div class="legend">
+            <h3>🎨 AWS Service Categories</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color frontend"></div>
+                    <span>Frontend & Application Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color compute"></div>
+                    <span>Compute Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color storage"></div>
+                    <span>Storage Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color database"></div>
+                    <span>Database Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color networking"></div>
+                    <span>Networking & Content Delivery</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color security"></div>
+                    <span>Security & Identity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color analytics"></div>
+                    <span>Analytics & Big Data</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color ai"></div>
+                    <span>AI & Machine Learning</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color integration"></div>
+                    <span>Integration Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color management"></div>
+                    <span>Management & Governance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effects and interactions
+        document.querySelectorAll('.component').forEach(component => {
+            component.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.zIndex = '10';
+            });
+            
+            component.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
