@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesforce CRM Architecture Matrix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .architecture-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .layer-header {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            background: #34495e;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 4px;
+            font-size: 10px;
+            width: 80px;
+            position: relative;
+        }
+
+        .layer-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .component {
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        /* Presentation Layer - Red tones */
+        .presentation { background: #e74c3c; color: white; }
+        .presentation-light { background: #f39c12; color: white; }
+        .presentation-medium { background: #d35400; color: white; }
+
+        /* Business Logic Layer - Orange tones */
+        .business { background: #f39c12; color: white; }
+        .business-light { background: #f1c40f; color: #2c3e50; }
+        .business-medium { background: #e67e22; color: white; }
+
+        /* Service Layer - Green tones */
+        .service { background: #27ae60; color: white; }
+        .service-light { background: #2ecc71; color: white; }
+        .service-medium { background: #16a085; color: white; }
+
+        /* Data Layer - Blue tones */
+        .data { background: #3498db; color: white; }
+        .data-light { background: #5dade2; color: white; }
+        .data-medium { background: #2980b9; color: white; }
+
+        /* Integration Layer - Purple tones */
+        .integration { background: #9b59b6; color: white; }
+        .integration-light { background: #af7ac5; color: white; }
+        .integration-medium { background: #8e44ad; color: white; }
+
+        /* Security Layer - Dark tones */
+        .security { background: #34495e; color: white; }
+        .security-light { background: #5d6d7e; color: white; }
+        .security-medium { background: #2c3e50; color: white; }
+
+        /* Platform Layer - Teal tones */
+        .platform { background: #1abc9c; color: white; }
+        .platform-light { background: #48c9b0; color: white; }
+        .platform-medium { background: #17a2b8; color: white; }
+
+        .layer-section {
+            border-top: 3px solid #bdc3c7;
+        }
+
+        .layer-section:first-child {
+            border-top: none;
+        }
+
+        td {
+            border: 1px solid #ecf0f1;
+        }
+
+        .wide-component {
+            background: #e8f5e8;
+            color: #2c3e50;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .full-width {
+            background: #f8f9fa;
+            color: #2c3e50;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        .component:hover .tooltip {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .architecture-table {
+                font-size: 9px;
+            }
+            
+            .component {
+                padding: 4px 6px;
+            }
+            
+            .layer-header {
+                width: 60px;
+                font-size: 8px;
+            }
+        }
+
+        .legend {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .legend h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☁️ Salesforce CRM Architecture</h1>
+            <p>Component Matrix & Layer Structure</p>
+        </div>
+
+        <table class="architecture-table">
+            <!-- Presentation Layer -->
+            <tr class="layer-section">
+                <td rowspan="4" class="layer-header">Presentation Layer</td>
+                <td class="component presentation">Lightning Experience</td>
+                <td class="component presentation">Salesforce Classic</td>
+                <td class="component presentation-light">Mobile App</td>
+                <td class="component presentation-medium">Communities</td>
+                <td class="component presentation">Visualforce</td>
+                <td class="component presentation-light">Lightning Components</td>
+            </tr>
+            <tr>
+                <td class="component presentation-medium">App Builder</td>
+                <td class="component presentation">Page Layouts</td>
+                <td class="component presentation-light">Record Types</td>
+                <td class="component presentation">Dashboards</td>
+                <td class="component presentation-medium">Reports</td>
+                <td class="component presentation-light">List Views</td>
+            </tr>
+            <tr>
+                <td class="component presentation">Custom Tabs</td>
+                <td class="component presentation-medium">Home Page</td>
+                <td class="component presentation-light">Chatter</td>
+                <td class="component presentation">Global Actions</td>
+                <td class="component presentation-medium">Quick Actions</td>
+                <td class="component presentation">Path</td>
+            </tr>
+            <tr>
+                <td class="component presentation-light">Einstein Analytics</td>
+                <td class="component presentation">Tableau CRM</td>
+                <td class="component presentation-medium">AppExchange Apps</td>
+                <td class="component presentation-light">Partner Portal</td>
+                <td class="component presentation">Customer Portal</td>
+                <td class="component presentation-medium">Self-Service</td>
+            </tr>
+
+            <!-- Business Logic Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Business Logic Layer</td>
+                <td class="component business">Apex Classes</td>
+                <td class="component business-light">Triggers</td>
+                <td class="component business-medium">Controllers</td>
+                <td class="component business">Batch Apex</td>
+                <td class="component business-light">Scheduled Apex</td>
+                <td class="component business-medium">Future Methods</td>
+            </tr>
+            <tr>
+                <td class="component business-light">Validation Rules</td>
+                <td class="component business">Workflow Rules</td>
+                <td class="component business-medium">Process Builder</td>
+                <td class="component business-light">Flow</td>
+                <td class="component business">Approval Process</td>
+                <td class="component business-medium">Assignment Rules</td>
+            </tr>
+            <tr>
+                <td class="component business">Formula Fields</td>
+                <td class="component business-light">Roll-Up Summary</td>
+                <td class="component business-medium">Custom Settings</td>
+                <td class="component business">Custom Metadata</td>
+                <td class="component business-light">Custom Labels</td>
+                <td class="component business-medium">Static Resources</td>
+            </tr>
+
+            <!-- Service Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Service Layer</td>
+                <td class="component service">REST API</td>
+                <td class="component service-light">SOAP API</td>
+                <td class="component service-medium">Bulk API</td>
+                <td class="component service">Streaming API</td>
+                <td class="component service-light">Metadata API</td>
+                <td class="component service-medium">Tooling API</td>
+            </tr>
+            <tr>
+                <td class="component service-light">Platform Events</td>
+                <td class="component service">Change Data Capture</td>
+                <td class="component service-medium">Pub/Sub API</td>
+                <td class="component service-light">Connect API</td>
+                <td class="component service">Web Services</td>
+                <td class="component service-medium">Callouts</td>
+            </tr>
+
+            <!-- Data Layer -->
+            <tr class="layer-section">
+                <td rowspan="3" class="layer-header">Data Layer</td>
+                <td class="component data">Standard Objects</td>
+                <td class="component data-light">Custom Objects</td>
+                <td class="component data-medium">External Objects</td>
+                <td class="component data">Big Objects</td>
+                <td class="component data-light">Platform Events</td>
+                <td class="component data-medium">Attachments</td>
+            </tr>
+            <tr>
+                <td class="component data-light">SOQL</td>
+                <td class="component data">SOSL</td>
+                <td class="component data-medium">Data Loader</td>
+                <td class="component data-light">Import Wizard</td>
+                <td class="component data">Dataloader.io</td>
+                <td class="component data-medium">Data Export</td>
+            </tr>
+            <tr>
+                <td class="component data">Relationships</td>
+                <td class="component data-light">Lookup</td>
+                <td class="component data-medium">Master-Detail</td>
+                <td class="component data">Hierarchical</td>
+                <td class="component data-light">External Lookup</td>
+                <td class="component data-medium">Indirect Lookup</td>
+            </tr>
+
+            <!-- Integration Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Integration Layer</td>
+                <td class="component integration">MuleSoft</td>
+                <td class="component integration-light">Heroku Connect</td>
+                <td class="component integration-medium">Lightning Connect</td>
+                <td class="component integration">Canvas</td>
+                <td class="component integration-light">Outbound Messages</td>
+                <td class="component integration-medium">Event Driven</td>
+            </tr>
+            <tr>
+                <td class="component integration-light">ETL Tools</td>
+                <td class="component integration">Middleware</td>
+                <td class="component integration-medium">API Gateway</td>
+                <td class="component integration-light">ESB</td>
+                <td class="component integration">Message Queues</td>
+                <td class="component integration-medium">Webhooks</td>
+            </tr>
+
+            <!-- Security Layer -->
+            <tr class="layer-section">
+                <td rowspan="2" class="layer-header">Security Layer</td>
+                <td class="component security">Profiles</td>
+                <td class="component security-light">Permission Sets</td>
+                <td class="component security-medium">Roles</td>
+                <td class="component security">OWD</td>
+                <td class="component security-light">Sharing Rules</td>
+                <td class="component security-medium">Field-Level Security</td>
+            </tr>
+            <tr>
+                <td class="component security-light">Single Sign-On</td>
+                <td class="component security">OAuth</td>
+                <td class="component security-medium">SAML</td>
+                <td class="component security-light">Platform Encryption</td>
+                <td class="component security">Shield</td>
+                <td class="component security-medium">Event Monitoring</td>
+            </tr>
+
+            <!-- Platform Services -->
+            <tr class="layer-section">
+                <td colspan="7" class="full-width">Salesforce Platform Services</td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="layer-header">Platform Services</td>
+                <td class="component platform">Multi-Tenant Architecture</td>
+                <td class="component platform-light">Metadata Framework</td>
+                <td class="component platform-medium">Governor Limits</td>
+                <td class="component platform">Apex Runtime</td>
+                <td class="component platform-light">Lightning Platform</td>
+                <td class="component platform-medium">Force.com</td>
+            </tr>
+            <tr>
+                <td class="component platform-light">Database Engine</td>
+                <td class="component platform">Search Engine</td>
+                <td class="component platform-medium">Workflow Engine</td>
+                <td class="component platform-light">Security Framework</td>
+                <td class="component platform">Backup & Recovery</td>
+                <td class="component platform-medium">Monitoring</td>
+            </tr>
+
+            <!-- Infrastructure -->
+            <tr class="layer-section">
+                <td colspan="7" class="full-width">Salesforce Infrastructure & Cloud Services</td>
+            </tr>
+        </table>
+
+        <div class="legend">
+            <h3>🎨 Layer Color Coding</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color presentation"></div>
+                    <span>Presentation Layer - User Interface</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color business"></div>
+                    <span>Business Logic - Application Logic</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color service"></div>
+                    <span>Service Layer - APIs & Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color data"></div>
+                    <span>Data Layer - Data Management</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color integration"></div>
+                    <span>Integration - External Connectivity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color security"></div>
+                    <span>Security - Access & Protection</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color platform"></div>
+                    <span>Platform Services - Core Infrastructure</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effects and interactions
+        document.querySelectorAll('.component').forEach(component => {
+            component.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.zIndex = '10';
+            });
+            
+            component.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
