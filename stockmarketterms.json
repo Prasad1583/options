@@ -1,0 +1,265 @@
+{
+  "basic_concepts": {
+    "securities": [
+      "Stock", "Share", "Equity", "Common Stock", "Preferred Stock", "Security", "Investment",
+      "Asset", "Portfolio", "Holding", "Position", "Lot", "Round Lot", "Odd Lot",
+      "Blue Chip", "Large Cap", "Mid Cap", "Small Cap", "Micro Cap", "Nano Cap",
+      "Growth Stock", "Value Stock", "Income Stock", "Cyclical Stock", "Defensive Stock",
+      "Penny Stock", "Speculative Stock", "Dividend Stock", "Non-Dividend Stock"
+    ],
+    "market_basics": [
+      "Stock Market", "Stock Exchange", "Trading", "Buying", "Selling", "Price", "Value",
+      "Market Price", "Fair Value", "Intrinsic Value", "Book Value", "Market Value",
+      "Par Value", "Face Value", "Nominal Value", "Market Capitalization", "Market Cap",
+      "Float", "Outstanding Shares", "Authorized Shares", "Issued Shares", "Treasury Shares"
+    ],
+    "participants": [
+      "Investor", "Trader", "Shareholder", "Stockholder", "Retail Investor", "Institutional Investor",
+      "Day Trader", "Swing Trader", "Position Trader", "Scalper", "Market Maker", "Specialist",
+      "Floor Trader", "Broker", "Investment Advisor", "Portfolio Manager", "Fund Manager",
+      "Analyst", "Research Analyst", "Buy-Side Analyst", "Sell-Side Analyst"
+    ]
+  },
+  "trading_mechanics": {
+    "order_types": [
+      "Market Order", "Limit Order", "Stop Order", "Stop-Loss Order", "Stop-Limit Order",
+      "Trailing Stop", "Good Till Canceled", "GTC", "Day Order", "Immediate or Cancel", "IOC",
+      "Fill or Kill", "FOK", "All or None", "AON", "Iceberg Order", "Hidden Order",
+      "Bracket Order", "One-Cancels-Other", "OCO", "Conditional Order", "Algorithmic Order"
+    ],
+    "execution": [
+      "Execution", "Fill", "Partial Fill", "Complete Fill", "Slippage", "Market Impact",
+      "Bid", "Ask", "Bid-Ask Spread", "Quote", "Level I Data", "Level II Data",
+      "Time and Sales", "Tape", "Volume", "Average Volume", "Heavy Volume", "Light Volume",
+      "VWAP", "Volume Weighted Average Price", "TWAP", "Time Weighted Average Price"
+    ],
+    "timing": [
+      "Pre-Market", "Regular Hours", "After Hours", "Extended Hours", "Opening Bell",
+      "Closing Bell", "Market Open", "Market Close", "Trading Session", "Trading Day",
+      "Settlement", "T+2", "Settlement Date", "Trade Date", "Ex-Dividend Date",
+      "Record Date", "Payment Date", "Earnings Date", "Options Expiration"
+    ],
+    "market_structure": [
+      "Primary Market", "Secondary Market", "Third Market", "Fourth Market", "Dark Pool",
+      "Electronic Communication Network", "ECN", "Alternative Trading System", "ATS",
+      "Market Fragmentation", "Best Execution", "National Best Bid and Offer", "NBBO",
+      "Payment for Order Flow", "PFOF", "High Frequency Trading", "HFT", "Algorithmic Trading"
+    ]
+  },
+  "financial_metrics": {
+    "valuation_ratios": [
+      "Price-to-Earnings Ratio", "P/E Ratio", "Forward P/E", "Trailing P/E", "PEG Ratio",
+      "Price-to-Book Ratio", "P/B Ratio", "Price-to-Sales Ratio", "P/S Ratio",
+      "Price-to-Cash Flow", "P/CF", "Enterprise Value", "EV", "EV/EBITDA", "EV/Sales",
+      "Price-to-Tangible Book Value", "Dividend Yield", "Dividend Payout Ratio"
+    ],
+    "profitability_metrics": [
+      "Earnings Per Share", "EPS", "Diluted EPS", "Basic EPS", "Adjusted EPS",
+      "Revenue", "Sales", "Top Line", "Net Income", "Bottom Line", "Gross Profit",
+      "Operating Income", "EBIT", "EBITDA", "Free Cash Flow", "Operating Cash Flow",
+      "Return on Equity", "ROE", "Return on Assets", "ROA", "Return on Investment", "ROI"
+    ],
+    "growth_metrics": [
+      "Revenue Growth", "Earnings Growth", "EPS Growth", "Dividend Growth",
+      "Year-over-Year Growth", "YoY", "Quarter-over-Quarter Growth", "QoQ",
+      "Compound Annual Growth Rate", "CAGR", "Organic Growth", "Inorganic Growth",
+      "Same-Store Sales", "Comparable Sales", "Comps", "Growth Rate", "Growth Stock"
+    ],
+    "financial_health": [
+      "Debt-to-Equity Ratio", "Current Ratio", "Quick Ratio", "Acid Test Ratio",
+      "Cash Ratio", "Working Capital", "Net Working Capital", "Debt-to-Assets",
+      "Interest Coverage Ratio", "Debt Service Coverage", "Credit Rating", "Investment Grade",
+      "Junk Bond", "High Yield", "Financial Leverage", "Operating Leverage"
+    ]
+  },
+  "market_analysis": {
+    "technical_analysis": [
+      "Technical Analysis", "Chart", "Candlestick Chart", "Bar Chart", "Line Chart",
+      "Support", "Resistance", "Trend", "Uptrend", "Downtrend", "Sideways Trend",
+      "Breakout", "Breakdown", "Reversal", "Continuation Pattern", "Head and Shoulders",
+      "Double Top", "Double Bottom", "Triangle", "Flag", "Pennant", "Cup and Handle",
+      "Moving Average", "Simple Moving Average", "SMA", "Exponential Moving Average", "EMA"
+    ],
+    "technical_indicators": [
+      "Relative Strength Index", "RSI", "Moving Average Convergence Divergence", "MACD",
+      "Bollinger Bands", "Stochastic Oscillator", "Williams %R", "Commodity Channel Index", "CCI",
+      "Average True Range", "ATR", "Volume Oscillator", "On-Balance Volume", "OBV",
+      "Accumulation/Distribution Line", "Money Flow Index", "MFI", "Fibonacci Retracement",
+      "Pivot Points", "Parabolic SAR", "Ichimoku Cloud", "Momentum", "Rate of Change", "ROC"
+    ],
+    "fundamental_analysis": [
+      "Fundamental Analysis", "Financial Statements", "Income Statement", "Balance Sheet",
+      "Cash Flow Statement", "10-K", "10-Q", "8-K", "Proxy Statement", "Annual Report",
+      "Quarterly Report", "Earnings Report", "Revenue", "Expenses", "Assets", "Liabilities",
+      "Shareholders' Equity", "Retained Earnings", "Working Capital", "Capital Expenditure"
+    ],
+    "market_sentiment": [
+      "Market Sentiment", "Bullish", "Bearish", "Neutral", "Bull Market", "Bear Market",
+      "Correction", "Crash", "Rally", "Rebound", "Recovery", "Volatility", "VIX",
+      "Fear and Greed Index", "Put/Call Ratio", "Short Interest", "Insider Trading",
+      "Institutional Ownership", "Retail Sentiment", "Contrarian Indicator"
+    ]
+  },
+  "investment_strategies": {
+    "approaches": [
+      "Buy and Hold", "Long-Term Investing", "Value Investing", "Growth Investing",
+      "Income Investing", "Dividend Investing", "Momentum Investing", "Contrarian Investing",
+      "Index Investing", "Passive Investing", "Active Investing", "Quantitative Investing",
+      "Factor Investing", "ESG Investing", "Socially Responsible Investing", "SRI"
+    ],
+    "portfolio_management": [
+      "Asset Allocation", "Diversification", "Portfolio Optimization", "Modern Portfolio Theory",
+      "Efficient Frontier", "Risk-Return Profile", "Correlation", "Beta", "Alpha",
+      "Sharpe Ratio", "Information Ratio", "Treynor Ratio", "Jensen's Alpha",
+      "Risk-Adjusted Return", "Tracking Error", "Active Return", "Benchmark"
+    ],
+    "risk_management": [
+      "Risk Management", "Portfolio Risk", "Systematic Risk", "Unsystematic Risk",
+      "Market Risk", "Credit Risk", "Liquidity Risk", "Interest Rate Risk",
+      "Currency Risk", "Political Risk", "Regulatory Risk", "Operational Risk",
+      "Concentration Risk", "Value at Risk", "VaR", "Maximum Drawdown", "Stop Loss"
+    ]
+  },
+  "derivatives": {
+    "options": [
+      "Option", "Call Option", "Put Option", "Strike Price", "Expiration Date",
+      "Premium", "Exercise", "Assignment", "In-the-Money", "ITM", "Out-of-the-Money", "OTM",
+      "At-the-Money", "ATM", "Intrinsic Value", "Time Value", "Time Decay", "Theta",
+      "Delta", "Gamma", "Vega", "Rho", "Greeks", "Implied Volatility", "Historical Volatility"
+    ],
+    "options_strategies": [
+      "Covered Call", "Protective Put", "Married Put", "Bull Call Spread", "Bear Put Spread",
+      "Iron Condor", "Iron Butterfly", "Straddle", "Strangle", "Calendar Spread",
+      "Diagonal Spread", "Collar", "Synthetic Position", "Box Spread", "Butterfly Spread",
+      "Condor Spread", "Ratio Spread", "Backspread", "Strip", "Strap"
+    ],
+    "futures": [
+      "Futures Contract", "Commodity Futures", "Financial Futures", "Index Futures",
+      "Currency Futures", "Interest Rate Futures", "Margin", "Initial Margin",
+      "Maintenance Margin", "Margin Call", "Mark-to-Market", "Daily Settlement",
+      "Delivery", "Cash Settlement", "Contango", "Backwardation", "Basis", "Convergence"
+    ],
+    "other_derivatives": [
+      "Swap", "Interest Rate Swap", "Currency Swap", "Credit Default Swap", "CDS",
+      "Forward Contract", "Warrant", "Rights", "Convertible Bond", "Convertible Preferred",
+      "Structured Product", "Exchange-Traded Note", "ETN", "Inverse ETF", "Leveraged ETF"
+    ]
+  },
+  "corporate_actions": {
+    "dividends": [
+      "Dividend", "Cash Dividend", "Stock Dividend", "Special Dividend", "Extra Dividend",
+      "Regular Dividend", "Interim Dividend", "Final Dividend", "Dividend Yield",
+      "Dividend Payout Ratio", "Dividend Coverage Ratio", "Ex-Dividend Date", "Record Date",
+      "Payment Date", "Declaration Date", "Dividend Reinvestment Plan", "DRIP"
+    ],
+    "stock_changes": [
+      "Stock Split", "Reverse Stock Split", "Stock Consolidation", "Bonus Issue",
+      "Rights Issue", "Share Buyback", "Share Repurchase", "Treasury Stock",
+      "Spin-off", "Split-off", "Carve-out", "Merger", "Acquisition", "Tender Offer",
+      "Liquidation", "Delisting", "Going Private", "Going Public"
+    ],
+    "restructuring": [
+      "Corporate Restructuring", "Recapitalization", "Refinancing", "Debt Restructuring",
+      "Chapter 11", "Bankruptcy", "Reorganization", "Liquidation", "Asset Sale",
+      "Divestitures", "Management Buyout", "MBO", "Leveraged Buyout", "LBO",
+      "Private Equity", "Venture Capital", "Initial Public Offering", "IPO"
+    ]
+  },
+  "market_sectors": {
+    "sector_classification": [
+      "Sector", "Industry", "Sub-Industry", "GICS", "Global Industry Classification Standard",
+      "Technology", "Healthcare", "Financials", "Consumer Discretionary", "Consumer Staples",
+      "Energy", "Materials", "Industrials", "Utilities", "Real Estate", "Communication Services",
+      "Cyclical Sector", "Defensive Sector", "Growth Sector", "Value Sector"
+    ],
+    "style_boxes": [
+      "Large Cap Growth", "Large Cap Value", "Large Cap Blend", "Mid Cap Growth",
+      "Mid Cap Value", "Mid Cap Blend", "Small Cap Growth", "Small Cap Value", "Small Cap Blend",
+      "Style Drift", "Style Box", "Morningstar Style Box", "Russell Indices", "S&P Indices"
+    ],
+    "geographic_focus": [
+      "Domestic", "International", "Global", "Emerging Markets", "Developed Markets",
+      "Frontier Markets", "Regional", "Country-Specific", "ADR", "American Depositary Receipt",
+      "GDR", "Global Depositary Receipt", "Foreign Exchange", "Currency Hedging"
+    ]
+  },
+  "exchanges_indices": {
+    "major_exchanges": [
+      "New York Stock Exchange", "NYSE", "NASDAQ", "Chicago Mercantile Exchange", "CME",
+      "Chicago Board of Trade", "CBOT", "Chicago Board Options Exchange", "CBOE",
+      "London Stock Exchange", "LSE", "Tokyo Stock Exchange", "TSE", "Hong Kong Stock Exchange",
+      "Shanghai Stock Exchange", "Shenzhen Stock Exchange", "Euronext", "Deutsche Börse"
+    ],
+    "major_indices": [
+      "Dow Jones Industrial Average", "DJIA", "S&P 500", "NASDAQ Composite", "Russell 2000",
+      "Russell 1000", "Wilshire 5000", "FTSE 100", "DAX", "CAC 40", "Nikkei 225",
+      "Hang Seng", "Shanghai Composite", "MSCI World", "MSCI Emerging Markets", "VIX"
+    ],
+    "index_construction": [
+      "Market Cap Weighted", "Price Weighted", "Equal Weighted", "Fundamental Weighted",
+      "Float Adjusted", "Index Methodology", "Index Committee", "Index Reconstitution",
+      "Index Rebalancing", "Index Inclusion", "Index Exclusion", "Sector Neutral",
+      "Currency Hedged Index", "Total Return Index", "Price Return Index"
+    ]
+  },
+  "investment_vehicles": {
+    "funds": [
+      "Mutual Fund", "Exchange-Traded Fund", "ETF", "Index Fund", "Active Fund",
+      "Passive Fund", "Open-End Fund", "Closed-End Fund", "Load Fund", "No-Load Fund",
+      "Front-End Load", "Back-End Load", "Expense Ratio", "Management Fee", "12b-1 Fee",
+      "Net Asset Value", "NAV", "Fund Manager", "Portfolio Manager", "Prospectus"
+    ],
+    "alternative_investments": [
+      "Hedge Fund", "Private Equity", "Venture Capital", "Real Estate Investment Trust", "REIT",
+      "Commodity Fund", "Currency Fund", "Absolute Return Fund", "Long/Short Fund",
+      "Market Neutral Fund", "Arbitrage Fund", "Distressed Debt", "Merger Arbitrage",
+      "Event Driven", "Macro Fund", "Fund of Funds", "Alternative Investment"
+    ],
+    "retirement_accounts": [
+      "401(k)", "403(b)", "IRA", "Individual Retirement Account", "Roth IRA", "Traditional IRA",
+      "SEP-IRA", "SIMPLE IRA", "Rollover IRA", "Required Minimum Distribution", "RMD",
+      "Vesting", "Employer Match", "Contribution Limit", "Catch-Up Contribution",
+      "Tax-Deferred", "Tax-Free", "Early Withdrawal Penalty", "Qualified Distribution"
+    ]
+  },
+  "regulation_compliance": {
+    "regulatory_bodies": [
+      "Securities and Exchange Commission", "SEC", "Financial Industry Regulatory Authority", "FINRA",
+      "Commodity Futures Trading Commission", "CFTC", "Federal Reserve", "Office of the Comptroller", "OCC",
+      "Department of Labor", "DOL", "Internal Revenue Service", "IRS", "Municipal Securities Rulemaking Board", "MSRB",
+      "Public Company Accounting Oversight Board", "PCAOB", "Financial Accounting Standards Board", "FASB"
+    ],
+    "regulations": [
+      "Securities Act of 1933", "Securities Exchange Act of 1934", "Investment Company Act of 1940",
+      "Investment Advisers Act of 1940", "Sarbanes-Oxley Act", "SOX", "Dodd-Frank Act",
+      "Regulation T", "Regulation U", "Regulation FD", "Rule 10b-5", "Rule 144", "Rule 506",
+      "Know Your Customer", "KYC", "Anti-Money Laundering", "AML", "Best Interest Rule"
+    ],
+    "disclosures": [
+      "Form 10-K", "Form 10-Q", "Form 8-K", "Proxy Statement", "Form 13F", "Form 4",
+      "Schedule 13D", "Schedule 13G", "Insider Trading", "Material Information",
+      "Forward-Looking Statements", "Risk Factors", "Management Discussion and Analysis", "MD&A",
+      "Earnings Guidance", "Quiet Period", "Blackout Period", "Fair Disclosure"
+    ]
+  },
+  "market_conditions": {
+    "market_cycles": [
+      "Bull Market", "Bear Market", "Secular Bull Market", "Secular Bear Market",
+      "Cyclical Bull Market", "Cyclical Bear Market", "Market Correction", "Market Crash",
+      "Recovery", "Expansion", "Peak", "Contraction", "Trough", "Economic Cycle",
+      "Business Cycle", "Recession", "Depression", "Inflation", "Deflation", "Stagflation"
+    ],
+    "volatility": [
+      "Volatility", "Historical Volatility", "Implied Volatility", "Realized Volatility",
+      "VIX", "Volatility Index", "Low Volatility", "High Volatility", "Volatility Clustering",
+      "Volatility Smile", "Volatility Skew", "Volatility Surface", "GARCH Model",
+      "Standard Deviation", "Beta", "Correlation", "Systematic Risk", "Unsystematic Risk"
+    ],
+    "liquidity": [
+      "Liquidity", "Market Liquidity", "Bid-Ask Spread", "Market Depth", "Order Book",
+      "Thin Market", "Thick Market", "Illiquid", "Liquid Market", "Trading Volume",
+      "Average Daily Volume", "Dollar Volume", "Share Turnover", "Velocity",
+      "Market Impact", "Price Impact", "Temporary Impact", "Permanent Impact"
+    ]
+  }
+}

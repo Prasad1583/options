@@ -1,0 +1,284 @@
+{
+  "fundamental_concepts": {
+    "basic_electricity": [
+      "Electricity", "Electric Current", "Electric Charge", "Voltage", "Potential Difference",
+      "Electromotive Force", "EMF", "Resistance", "Conductance", "Power", "Energy", "Work",
+      "Electric Field", "Magnetic Field", "Electromagnetic Field", "Flux", "Electric Flux",
+      "Magnetic Flux", "Electron", "Proton", "Ion", "Atom", "Molecule", "Electric Dipole",
+      "Coulomb's Law", "Gauss's Law", "Ampere's Law", "Faraday's Law", "Lenz's Law"
+    ],
+    "electrical_units": [
+      "Ampere", "Amp", "Volt", "Ohm", "Watt", "Joule", "Coulomb", "Farad", "Henry", "Weber",
+      "Tesla", "Gauss", "Siemens", "Mho", "Hertz", "Second", "Meter", "Kilogram", "Kelvin",
+      "Milliampere", "mA", "Microampere", "μA", "Kiloampere", "kA", "Millivolt", "mV",
+      "Kilovolt", "kV", "Megavolt", "MV", "Kilohm", "kΩ", "Megohm", "MΩ", "Kilowatt", "kW",
+      "Megawatt", "MW", "Gigawatt", "GW", "Kilowatt-hour", "kWh", "Megawatt-hour", "MWh"
+    ],
+    "circuit_laws": [
+      "Ohm's Law", "Kirchhoff's Current Law", "KCL", "Kirchhoff's Voltage Law", "KVL",
+      "Superposition Theorem", "Thevenin's Theorem", "Norton's Theorem", "Maximum Power Transfer",
+      "Reciprocity Theorem", "Substitution Theorem", "Millman's Theorem", "Nodal Analysis",
+      "Mesh Analysis", "Loop Analysis", "Star-Delta Transformation", "Y-Delta Conversion",
+      "Compensation Theorem", "Tellegen's Theorem", "Conservation of Energy"
+    ]
+  },
+  "circuit_analysis": {
+    "dc_circuits": [
+      "Direct Current", "DC", "DC Circuit", "Steady State", "Transient", "Series Circuit",
+      "Parallel Circuit", "Series-Parallel Circuit", "Voltage Divider", "Current Divider",
+      "Branch", "Node", "Loop", "Mesh", "Ground", "Common", "Reference Point", "Potential",
+      "Short Circuit", "Open Circuit", "Load", "Source", "Battery", "Cell", "Generator",
+      "Internal Resistance", "Terminal Voltage", "Efficiency", "Power Loss", "I²R Loss"
+    ],
+    "ac_circuits": [
+      "Alternating Current", "AC", "AC Circuit", "Sinusoidal", "Sine Wave", "Frequency",
+      "Period", "Amplitude", "Peak Value", "Peak-to-Peak", "RMS", "Root Mean Square",
+      "Average Value", "Effective Value", "Phase", "Phase Angle", "Phase Difference",
+      "Leading", "Lagging", "In Phase", "Out of Phase", "Phasor", "Complex Number",
+      "Reactance", "Inductive Reactance", "Capacitive Reactance", "Impedance", "Admittance"
+    ],
+    "three_phase_systems": [
+      "Three Phase", "Polyphase", "Balanced System", "Unbalanced System", "Phase Sequence",
+      "Star Connection", "Wye Connection", "Delta Connection", "Line Voltage", "Phase Voltage",
+      "Line Current", "Phase Current", "Neutral", "Neutral Point", "Phase Rotation",
+      "Positive Sequence", "Negative Sequence", "Zero Sequence", "Symmetrical Components",
+      "Power Triangle", "Apparent Power", "Real Power", "Reactive Power", "Power Factor"
+    ],
+    "transient_analysis": [
+      "Transient Response", "Steady State Response", "Initial Conditions", "Final Conditions",
+      "Time Constant", "RC Circuit", "RL Circuit", "RLC Circuit", "Natural Response",
+      "Forced Response", "Complete Response", "Exponential Decay", "Exponential Growth",
+      "First Order Circuit", "Second Order Circuit", "Overdamped", "Underdamped",
+      "Critically Damped", "Oscillatory", "Damping Factor", "Natural Frequency", "Resonance"
+    ]
+  },
+  "electrical_machines": {
+    "dc_machines": [
+      "DC Machine", "DC Motor", "DC Generator", "Dynamo", "Armature", "Field Winding",
+      "Commutator", "Brush", "Pole", "Yoke", "Air Gap", "Back EMF", "Counter EMF",
+      "Armature Reaction", "Commutation", "Separately Excited", "Self Excited", "Shunt Motor",
+      "Series Motor", "Compound Motor", "Permanent Magnet Motor", "Brushless DC Motor", "BLDC",
+      "Speed Control", "Torque Control", "Starting", "Braking", "Regenerative Braking"
+    ],
+    "ac_machines": [
+      "AC Machine", "AC Motor", "AC Generator", "Alternator", "Induction Motor", "Synchronous Motor",
+      "Asynchronous Motor", "Stator", "Rotor", "Slip", "Slip Ring", "Squirrel Cage", "Wound Rotor",
+      "Single Phase Motor", "Three Phase Motor", "Split Phase Motor", "Capacitor Start Motor",
+      "Capacitor Run Motor", "Shaded Pole Motor", "Universal Motor", "Stepper Motor", "Servo Motor",
+      "Linear Motor", "Variable Frequency Drive", "VFD", "Inverter Drive", "Soft Starter"
+    ],
+    "transformers": [
+      "Transformer", "Power Transformer", "Distribution Transformer", "Instrument Transformer",
+      "Current Transformer", "CT", "Potential Transformer", "PT", "Voltage Transformer", "VT",
+      "Step-up Transformer", "Step-down Transformer", "Isolation Transformer", "Auto-transformer",
+      "Primary Winding", "Secondary Winding", "Core", "Laminated Core", "Turns Ratio",
+      "Transformation Ratio", "No Load Current", "Core Loss", "Copper Loss", "Efficiency",
+      "Regulation", "Leakage Reactance", "Magnetizing Current", "Short Circuit Test", "Open Circuit Test"
+    ]
+  },
+  "power_systems": {
+    "generation": [
+      "Power Generation", "Electric Power Plant", "Thermal Power Plant", "Coal Plant", "Gas Plant",
+      "Nuclear Power Plant", "Hydroelectric Plant", "Wind Farm", "Solar Farm", "Geothermal Plant",
+      "Biomass Plant", "Generator", "Turbine", "Steam Turbine", "Gas Turbine", "Water Turbine",
+      "Wind Turbine", "Photovoltaic", "PV", "Solar Panel", "Fuel Cell", "Battery Storage",
+      "Pumped Storage", "Base Load", "Peak Load", "Load Following", "Spinning Reserve", "Grid Stability"
+    ],
+    "transmission": [
+      "Power Transmission", "Transmission Line", "Overhead Line", "Underground Cable", "Conductor",
+      "Aluminum Conductor", "ACSR", "Aluminum Conductor Steel Reinforced", "Bundled Conductor",
+      "Insulator", "Tower", "Pole", "Right of Way", "Corona", "Corona Loss", "Skin Effect",
+      "Proximity Effect", "Surge Impedance", "Characteristic Impedance", "Propagation Constant",
+      "Traveling Wave", "Reflection", "HVDC", "High Voltage Direct Current", "HVAC", "EHV", "UHV"
+    ],
+    "distribution": [
+      "Power Distribution", "Distribution System", "Primary Distribution", "Secondary Distribution",
+      "Feeder", "Lateral", "Service Drop", "Service Entrance", "Meter", "Load Center",
+      "Panelboard", "Switchboard", "Circuit Breaker", "Fuse", "Disconnect Switch", "Recloser",
+      "Sectionalizer", "Voltage Regulator", "Capacitor Bank", "Radial System", "Loop System",
+      "Network System", "Spot Network", "Grid Network", "Underground Distribution", "Overhead Distribution"
+    ],
+    "protection": [
+      "Protection System", "Relay", "Protective Relay", "Overcurrent Relay", "Differential Relay",
+      "Distance Relay", "Directional Relay", "Frequency Relay", "Voltage Relay", "Ground Fault Relay",
+      "Pilot Protection", "Backup Protection", "Primary Protection", "Zone of Protection",
+      "Coordination", "Selectivity", "Circuit Breaker", "Recloser", "Fuse", "Lightning Arrester",
+      "Surge Arrester", "Ground Wire", "Shield Wire", "Fault", "Short Circuit", "Ground Fault",
+      "Arc Fault", "Insulation Failure", "Flashover", "Fault Current", "Symmetrical Fault"
+    ]
+  },
+  "electrical_installation": {
+    "wiring_systems": [
+      "Electrical Wiring", "Wiring System", "Conduit", "Cable Tray", "Raceway", "Electrical Metallic Tubing", "EMT",
+      "Rigid Metal Conduit", "RMC", "Intermediate Metal Conduit", "IMC", "PVC Conduit", "Flexible Conduit",
+      "Armored Cable", "AC", "Metal Clad Cable", "MC", "Non-metallic Cable", "NM", "Romex",
+      "Service Entrance Cable", "SE", "Underground Feeder Cable", "UF", "Telephone Cable", "Coaxial Cable",
+      "Fiber Optic Cable", "Stranded Wire", "Solid Wire", "THHN", "THWN", "XHHW", "USE"
+    ],
+    "electrical_devices": [
+      "Switch", "Outlet", "Receptacle", "GFCI", "Ground Fault Circuit Interrupter", "AFCI",
+      "Arc Fault Circuit Interrupter", "Dimmer Switch", "Three-way Switch", "Four-way Switch",
+      "Motion Sensor", "Occupancy Sensor", "Timer Switch", "Photocell", "Thermostat", "Junction Box",
+      "Outlet Box", "Switch Box", "Panel Box", "Meter Box", "Pull Box", "Wire Nut", "Wire Connector",
+      "Terminal Block", "Bus Bar", "Ground Bar", "Neutral Bar", "Breaker", "Main Breaker"
+    ],
+    "electrical_panels": [
+      "Electrical Panel", "Service Panel", "Main Panel", "Sub Panel", "Load Center", "Panelboard",
+      "Switchboard", "Motor Control Center", "MCC", "Power Distribution Unit", "PDU", "Main Breaker",
+      "Main Disconnect", "Service Entrance", "Meter Socket", "CT Cabinet", "Current Transformer Cabinet",
+      "Switchgear", "Dead Front", "Live Front", "Bus", "Main Bus", "Branch Circuit", "Feeder Circuit",
+      "Service Conductor", "Grounding Electrode Conductor", "Equipment Grounding Conductor"
+    ],
+    "grounding_bonding": [
+      "Grounding", "Earthing", "Ground", "Earth", "Grounding Electrode", "Ground Rod", "Ground Plate",
+      "Grounding Electrode Conductor", "Equipment Grounding Conductor", "EGC", "Grounding Conductor",
+      "Bonding", "Main Bonding Jumper", "Equipment Bonding Jumper", "Bonding Conductor", "Ground Fault",
+      "Ground Loop", "Isolated Ground", "Clean Ground", "Grounding System", "TN System", "TT System",
+      "IT System", "Solidly Grounded", "Resistance Grounded", "Reactance Grounded", "Ungrounded System"
+    ]
+  },
+  "electrical_safety": {
+    "hazards": [
+      "Electrical Hazard", "Electric Shock", "Electrocution", "Arc Flash", "Arc Blast", "Electrical Fire",
+      "Electrical Burn", "Contact Burn", "Arc Burn", "Flash Burn", "Ventricular Fibrillation",
+      "Respiratory Paralysis", "Muscular Control Loss", "Let-go Current", "Threshold of Perception",
+      "Fibrillation Current", "Fatal Current", "Body Resistance", "Skin Resistance", "Contact Resistance",
+      "Current Path", "Hand-to-Hand", "Hand-to-Foot", "Step Potential", "Touch Potential", "Transferred Potential"
+    ],
+    "protective_measures": [
+      "Personal Protective Equipment", "PPE", "Insulated Gloves", "Safety Glasses", "Hard Hat",
+      "Arc Flash Suit", "Flame Resistant Clothing", "FR", "Insulated Tools", "Voltage Tester",
+      "Non-contact Voltage Detector", "Lockout Tagout", "LOTO", "Energy Isolation", "Verification",
+      "Live Work", "Hot Work", "De-energized Work", "Approach Boundaries", "Limited Approach",
+      "Restricted Approach", "Prohibited Approach", "Arc Flash Boundary", "Incident Energy"
+    ],
+    "safety_standards": [
+      "NFPA 70E", "IEEE 1584", "OSHA", "Occupational Safety and Health Administration", "NEC",
+      "National Electrical Code", "NESC", "National Electrical Safety Code", "IEC 61439",
+      "IEEE C2", "Arc Flash Study", "Short Circuit Study", "Coordination Study", "Hazard Risk Category",
+      "HRC", "Cal/cm²", "Incident Energy Analysis", "Working Distance", "Bolted Fault Current",
+      "Arcing Fault Current", "Clearing Time", "Protective Device Coordination", "Safety Training",
+      "Qualified Person", "Unqualified Person", "Electrically Safe Work Condition"
+    ]
+  },
+  "power_quality": {
+    "disturbances": [
+      "Power Quality", "Voltage Disturbance", "Voltage Sag", "Voltage Dip", "Voltage Swell",
+      "Voltage Surge", "Overvoltage", "Undervoltage", "Voltage Fluctuation", "Flicker",
+      "Interruption", "Momentary Interruption", "Temporary Interruption", "Sustained Interruption",
+      "Transient", "Impulse", "Oscillatory Transient", "Notching", "Noise", "Harmonic Distortion",
+      "Total Harmonic Distortion", "THD", "Interharmonics", "Subharmonics", "DC Offset"
+    ],
+    "harmonics": [
+      "Harmonics", "Harmonic Order", "Fundamental Frequency", "Odd Harmonics", "Even Harmonics",
+      "Triplen Harmonics", "Characteristic Harmonics", "Non-characteristic Harmonics", "Harmonic Current",
+      "Harmonic Voltage", "Individual Harmonic Distortion", "IHD", "Total Demand Distortion", "TDD",
+      "Crest Factor", "K-Factor", "Harmonic Filter", "Active Filter", "Passive Filter", "Tuned Filter",
+      "High Pass Filter", "Nonlinear Load", "Variable Frequency Drive", "Switched Mode Power Supply",
+      "Arc Furnace", "Fluorescent Lighting", "Computer Loads", "UPS", "Inverter", "Rectifier"
+    ],
+    "power_factor": [
+      "Power Factor", "Displacement Power Factor", "Distortion Power Factor", "True Power Factor",
+      "Leading Power Factor", "Lagging Power Factor", "Unity Power Factor", "Reactive Power",
+      "Apparent Power", "Real Power", "Active Power", "Power Triangle", "VAR", "Volt-Ampere Reactive",
+      "VA", "Volt-Ampere", "Power Factor Correction", "Capacitor Bank", "Synchronous Condenser",
+      "Static VAR Compensator", "SVC", "STATCOM", "Static Synchronous Compensator", "Power Factor Penalty"
+    ]
+  },
+  "control_systems": {
+    "motor_control": [
+      "Motor Control", "Motor Starter", "Direct Online Starter", "DOL", "Star-Delta Starter",
+      "Auto-transformer Starter", "Soft Starter", "Variable Frequency Drive", "VFD", "Inverter",
+      "AC Drive", "DC Drive", "Servo Drive", "Stepper Drive", "Motor Protection", "Overload Relay",
+      "Thermal Relay", "Motor Circuit Breaker", "Motor Contactor", "Auxiliary Contact", "Interlock",
+      "Forward-Reverse", "Jogging", "Plugging", "Dynamic Braking", "Regenerative Braking", "Speed Control"
+    ],
+    "industrial_control": [
+      "Industrial Control", "Control Panel", "Control Circuit", "Power Circuit", "Control Transformer",
+      "Control Relay", "Timer", "Counter", "Pushbutton", "Selector Switch", "Pilot Light",
+      "Indicator Light", "Alarm", "Annunciator", "PLC", "Programmable Logic Controller", "HMI",
+      "Human Machine Interface", "SCADA", "Supervisory Control and Data Acquisition", "DCS",
+      "Distributed Control System", "Input Module", "Output Module", "Analog Input", "Digital Input",
+      "Analog Output", "Digital Output", "Field Device", "Sensor", "Actuator", "Transducer"
+    ],
+    "automation": [
+      "Automation", "Process Automation", "Factory Automation", "Building Automation", "Home Automation",
+      "Smart Grid", "Smart Home", "Internet of Things", "IoT", "Industrial Internet of Things", "IIoT",
+      "Machine Learning", "Artificial Intelligence", "AI", "Robotics", "Programmable Automation Controller",
+      "PAC", "Motion Control", "Servo System", "Positioning System", "Feedback Control", "Open Loop",
+      "Closed Loop", "PID Controller", "Proportional Integral Derivative", "Setpoint", "Process Variable"
+    ]
+  },
+  "renewable_energy": {
+    "solar_power": [
+      "Solar Power", "Photovoltaic", "PV", "Solar Panel", "Solar Module", "Solar Cell", "Silicon Cell",
+      "Monocrystalline", "Polycrystalline", "Thin Film", "Amorphous Silicon", "CIGS", "CdTe",
+      "Solar Array", "String", "Combiner Box", "DC Combiner", "DC Disconnect", "AC Disconnect",
+      "Solar Inverter", "String Inverter", "Central Inverter", "Micro Inverter", "Power Optimizer",
+      "Maximum Power Point Tracking", "MPPT", "Grid-tied System", "Off-grid System", "Battery Backup",
+      "Net Metering", "Feed-in Tariff", "Solar Irradiance", "Peak Sun Hours", "Capacity Factor"
+    ],
+    "wind_power": [
+      "Wind Power", "Wind Energy", "Wind Turbine", "Wind Generator", "Horizontal Axis", "Vertical Axis",
+      "Rotor", "Blade", "Hub", "Nacelle", "Tower", "Foundation", "Gearbox", "Generator", "Power Electronics",
+      "Wind Farm", "Wind Park", "Onshore Wind", "Offshore Wind", "Wind Speed", "Cut-in Speed",
+      "Rated Speed", "Cut-out Speed", "Capacity Factor", "Power Curve", "Wind Resource Assessment",
+      "Turbulence", "Wake Effect", "Grid Integration", "Power Purchase Agreement", "PPA", "Renewable Energy Certificate"
+    ],
+    "energy_storage": [
+      "Energy Storage", "Battery Storage", "Battery Energy Storage System", "BESS", "Lithium-ion Battery",
+      "Lead-acid Battery", "Nickel-metal Hydride", "Flow Battery", "Compressed Air Energy Storage", "CAES",
+      "Pumped Hydro Storage", "Flywheel Energy Storage", "Supercapacitor", "Ultracapacitor", "Grid Storage",
+      "Utility Scale Storage", "Distributed Storage", "Behind-the-meter Storage", "Frequency Regulation",
+      "Peak Shaving", "Load Leveling", "Time Shifting", "Arbitrage", "Ancillary Services", "Grid Stability"
+    ]
+  },
+  "electric_vehicles": {
+    "ev_technology": [
+      "Electric Vehicle", "EV", "Battery Electric Vehicle", "BEV", "Plug-in Hybrid Electric Vehicle", "PHEV",
+      "Hybrid Electric Vehicle", "HEV", "Electric Motor", "Traction Motor", "Motor Controller", "Inverter",
+      "DC-DC Converter", "Onboard Charger", "Battery Pack", "Battery Management System", "BMS",
+      "Thermal Management", "Regenerative Braking", "Range", "Range Anxiety", "Energy Density",
+      "Power Density", "State of Charge", "SOC", "State of Health", "SOH", "Depth of Discharge", "DOD"
+    ],
+    "charging_infrastructure": [
+      "EV Charging", "Electric Vehicle Supply Equipment", "EVSE", "Charging Station", "Charging Point",
+      "Level 1 Charging", "Level 2 Charging", "Level 3 Charging", "DC Fast Charging", "AC Charging",
+      "CHAdeMO", "CCS", "Combined Charging System", "Tesla Supercharger", "J1772", "Type 1 Connector",
+      "Type 2 Connector", "Charging Cable", "Charging Plug", "Smart Charging", "Load Management",
+      "Demand Response", "Vehicle-to-Grid", "V2G", "Vehicle-to-Home", "V2H", "Bidirectional Charging"
+    ]
+  },
+  "testing_measurement": {
+    "electrical_testing": [
+      "Electrical Testing", "Insulation Resistance Test", "Megger Test", "High Voltage Test", "Hi-Pot Test",
+      "Continuity Test", "Ground Resistance Test", "Loop Impedance Test", "RCD Test", "GFCI Test",
+      "Polarity Test", "Phase Sequence Test", "Power Quality Analysis", "Harmonic Analysis", "Flicker Test",
+      "Voltage Regulation Test", "Load Test", "No-load Test", "Short Circuit Test", "Open Circuit Test",
+      "Temperature Rise Test", "Vibration Test", "Noise Test", "Efficiency Test", "Torque Test"
+    ],
+    "measuring_instruments": [
+      "Multimeter", "Digital Multimeter", "DMM", "Analog Meter", "Ammeter", "Voltmeter", "Ohmmeter",
+      "Wattmeter", "Power Meter", "Energy Meter", "Frequency Meter", "Phase Meter", "Power Factor Meter",
+      "Clamp Meter", "Current Clamp", "Oscilloscope", "Function Generator", "Signal Generator",
+      "Insulation Tester", "Megohmmeter", "Earth Resistance Tester", "Loop Tester", "RCD Tester",
+      "Power Quality Analyzer", "Harmonic Analyzer", "Flicker Meter", "Thermal Imager", "Infrared Camera"
+    ]
+  },
+  "codes_standards": {
+    "electrical_codes": [
+      "National Electrical Code", "NEC", "NFPA 70", "Canadian Electrical Code", "CEC", "International Electrotechnical Commission", "IEC",
+      "IEEE Standards", "ANSI Standards", "UL Standards", "CSA Standards", "NEMA Standards", "API Standards",
+      "Electrical Installation", "Wiring Methods", "Conductor Sizing", "Overcurrent Protection", "Grounding",
+      "Bonding", "GFCI Protection", "AFCI Protection", "Special Occupancies", "Hazardous Locations",
+      "Class I", "Class II", "Class III", "Division 1", "Division 2", "Zone Classification"
+    ],
+    "safety_standards": [
+      "NFPA 70E", "Electrical Safety in the Workplace", "OSHA 1910", "Subpart S", "Arc Flash Standard",
+      "IEEE 1584", "NESC", "National Electrical Safety Code", "Lockout/Tagout", "LOTO", "29 CFR 1910.147",
+      "Personal Protective Equipment", "PPE", "Approach Boundaries", "Energized Work Permit", "Job Briefing",
+      "Hazard Risk Category", "Incident Energy", "Working Distance", "Protective Device Coordination",
+      "Short Circuit Study", "Arc Flash Study", "Electrical Safety Program", "Safety Training"
+    ]
+  }
+}

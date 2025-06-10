@@ -1,0 +1,259 @@
+{
+  "basic_economic_concepts": {
+    "fundamental_principles": [
+      "Economics", "Economy", "Market", "Supply", "Demand", "Price", "Value", "Utility",
+      "Scarcity", "Opportunity Cost", "Trade-off", "Marginal Benefit", "Marginal Cost",
+      "Efficiency", "Equilibrium", "Competition", "Monopoly", "Oligopoly", "Perfect Competition",
+      "Market Failure", "Externality", "Public Good", "Private Good", "Economic System",
+      "Capitalism", "Socialism", "Mixed Economy", "Free Market", "Command Economy"
+    ],
+    "supply_demand": [
+      "Law of Supply", "Law of Demand", "Demand Curve", "Supply Curve", "Market Equilibrium",
+      "Equilibrium Price", "Equilibrium Quantity", "Surplus", "Shortage", "Price Floor",
+      "Price Ceiling", "Consumer Surplus", "Producer Surplus", "Deadweight Loss", "Elasticity",
+      "Price Elasticity of Demand", "Price Elasticity of Supply", "Income Elasticity",
+      "Cross-Price Elasticity", "Elastic", "Inelastic", "Unit Elastic", "Perfectly Elastic"
+    ],
+    "market_structures": [
+      "Perfect Competition", "Monopolistic Competition", "Oligopoly", "Monopoly", "Monopsony",
+      "Duopoly", "Cartel", "Price Maker", "Price Taker", "Market Power", "Barriers to Entry",
+      "Economies of Scale", "Diseconomies of Scale", "Natural Monopoly", "Product Differentiation",
+      "Brand Loyalty", "Market Share", "Concentration Ratio", "Herfindahl Index", "Antitrust"
+    ]
+  },
+  "microeconomics": {
+    "consumer_theory": [
+      "Consumer Choice", "Utility", "Marginal Utility", "Total Utility", "Diminishing Marginal Utility",
+      "Budget Constraint", "Indifference Curve", "Substitution Effect", "Income Effect",
+      "Normal Good", "Inferior Good", "Luxury Good", "Necessity", "Giffen Good", "Veblen Good",
+      "Consumer Preference", "Rationality", "Revealed Preference", "Behavioral Economics",
+      "Nudge Theory", "Loss Aversion", "Anchoring", "Cognitive Bias"
+    ],
+    "producer_theory": [
+      "Production Function", "Total Product", "Marginal Product", "Average Product",
+      "Law of Diminishing Returns", "Returns to Scale", "Constant Returns to Scale",
+      "Increasing Returns to Scale", "Decreasing Returns to Scale", "Isoquant", "Isocost",
+      "Cost Function", "Fixed Cost", "Variable Cost", "Total Cost", "Marginal Cost",
+      "Average Cost", "Average Fixed Cost", "Average Variable Cost", "Sunk Cost"
+    ],
+    "firm_behavior": [
+      "Profit Maximization", "Revenue Maximization", "Economic Profit", "Accounting Profit",
+      "Normal Profit", "Break-even Point", "Shutdown Point", "Entry", "Exit", "Long Run",
+      "Short Run", "Production Efficiency", "Allocative Efficiency", "X-Efficiency",
+      "Price Discrimination", "First-Degree Price Discrimination", "Second-Degree Price Discrimination",
+      "Third-Degree Price Discrimination", "Bundling", "Tying", "Predatory Pricing"
+    ],
+    "labor_markets": [
+      "Labor Supply", "Labor Demand", "Wage Rate", "Human Capital", "Skills", "Education",
+      "Training", "Experience", "Labor Productivity", "Marginal Revenue Product", "MRP",
+      "Monopsony", "Labor Union", "Collective Bargaining", "Minimum Wage", "Living Wage",
+      "Unemployment", "Frictional Unemployment", "Structural Unemployment", "Cyclical Unemployment",
+      "Natural Rate of Unemployment", "Full Employment", "Job Search", "Labor Mobility"
+    ]
+  },
+  "macroeconomics": {
+    "national_accounting": [
+      "Gross Domestic Product", "GDP", "Gross National Product", "GNP", "Net Domestic Product", "NDP",
+      "Real GDP", "Nominal GDP", "GDP Deflator", "Per Capita GDP", "Potential GDP", "Output Gap",
+      "National Income", "Personal Income", "Disposable Income", "Consumption", "Investment",
+      "Government Spending", "Net Exports", "Trade Balance", "Current Account", "Capital Account"
+    ],
+    "economic_growth": [
+      "Economic Growth", "Growth Rate", "Compound Annual Growth Rate", "CAGR", "Productivity",
+      "Labor Productivity", "Total Factor Productivity", "TFP", "Capital Accumulation",
+      "Technological Progress", "Innovation", "Research and Development", "R&D", "Human Capital",
+      "Physical Capital", "Infrastructure", "Endogenous Growth", "Exogenous Growth",
+      "Solow Growth Model", "Convergence", "Divergence", "Sustainable Development"
+    ],
+    "business_cycles": [
+      "Business Cycle", "Economic Cycle", "Expansion", "Peak", "Contraction", "Recession",
+      "Depression", "Trough", "Recovery", "Boom", "Bust", "Leading Indicators", "Lagging Indicators",
+      "Coincident Indicators", "Economic Indicators", "Consumer Confidence", "Business Confidence",
+      "Sentiment", "Volatility", "Stagflation", "Deflation", "Disinflation", "Hyperinflation"
+    ],
+    "unemployment": [
+      "Unemployment Rate", "Labor Force", "Labor Force Participation Rate", "Employment Rate",
+      "Underemployment", "Discouraged Workers", "Natural Rate of Unemployment", "NAIRU",
+      "Non-Accelerating Inflation Rate of Unemployment", "Phillips Curve", "Okun's Law",
+      "Job Creation", "Job Destruction", "Labor Market Flexibility", "Employment Protection",
+      "Unemployment Benefits", "Job Training", "Active Labor Market Policies"
+    ]
+  },
+  "monetary_economics": {
+    "money_banking": [
+      "Money", "Currency", "Legal Tender", "Fiat Money", "Commodity Money", "Representative Money",
+      "Money Supply", "M1", "M2", "M3", "Monetary Base", "High-Powered Money", "Money Multiplier",
+      "Fractional Reserve Banking", "Reserve Requirement", "Bank Reserves", "Excess Reserves",
+      "Credit Creation", "Financial Intermediation", "Banking System", "Central Bank", "Commercial Bank"
+    ],
+    "monetary_policy": [
+      "Monetary Policy", "Central Banking", "Federal Reserve", "Fed", "Interest Rate", "Federal Funds Rate",
+      "Discount Rate", "Prime Rate", "Bank Rate", "Policy Rate", "Open Market Operations",
+      "Quantitative Easing", "QE", "Forward Guidance", "Yield Curve Control", "Reserve Requirements",
+      "Discount Window", "Money Market", "Interbank Market", "Liquidity", "Credit Policy"
+    ],
+    "inflation": [
+      "Inflation", "Price Level", "Consumer Price Index", "CPI", "Producer Price Index", "PPI",
+      "Core Inflation", "Headline Inflation", "Inflation Rate", "Inflation Targeting", "Inflation Expectations",
+      "Cost-Push Inflation", "Demand-Pull Inflation", "Built-in Inflation", "Wage-Price Spiral",
+      "Deflation", "Disinflation", "Hyperinflation", "Stagflation", "Real Interest Rate", "Nominal Interest Rate"
+    ],
+    "exchange_rates": [
+      "Exchange Rate", "Foreign Exchange", "Forex", "Currency", "Appreciation", "Depreciation",
+      "Devaluation", "Revaluation", "Fixed Exchange Rate", "Floating Exchange Rate", "Managed Float",
+      "Currency Peg", "Currency Board", "Dollarization", "Purchasing Power Parity", "PPP",
+      "Real Exchange Rate", "Nominal Exchange Rate", "Effective Exchange Rate", "Currency Crisis"
+    ]
+  },
+  "fiscal_economics": {
+    "government_finance": [
+      "Fiscal Policy", "Government Budget", "Budget Deficit", "Budget Surplus", "Balanced Budget",
+      "National Debt", "Public Debt", "Debt-to-GDP Ratio", "Fiscal Deficit", "Primary Deficit",
+      "Structural Deficit", "Cyclical Deficit", "Automatic Stabilizers", "Discretionary Fiscal Policy",
+      "Fiscal Multiplier", "Crowding Out", "Ricardian Equivalence", "Fiscal Consolidation", "Austerity"
+    ],
+    "taxation": [
+      "Tax", "Taxation", "Tax Rate", "Tax Base", "Tax Revenue", "Tax Burden", "Tax Incidence",
+      "Progressive Tax", "Regressive Tax", "Proportional Tax", "Marginal Tax Rate", "Average Tax Rate",
+      "Income Tax", "Corporate Tax", "Sales Tax", "Value Added Tax", "VAT", "Property Tax",
+      "Capital Gains Tax", "Estate Tax", "Excise Tax", "Tariff", "Tax Evasion", "Tax Avoidance"
+    ],
+    "public_expenditure": [
+      "Government Spending", "Public Expenditure", "Transfer Payments", "Social Security", "Welfare",
+      "Unemployment Benefits", "Medicare", "Medicaid", "Public Goods", "Merit Goods", "Infrastructure",
+      "Defense Spending", "Education Spending", "Healthcare Spending", "Social Spending",
+      "Capital Expenditure", "Current Expenditure", "Subsidies", "Public Investment"
+    ]
+  },
+  "international_economics": {
+    "international_trade": [
+      "International Trade", "Export", "Import", "Trade Balance", "Trade Surplus", "Trade Deficit",
+      "Balance of Payments", "Current Account", "Capital Account", "Financial Account", "Visible Trade",
+      "Invisible Trade", "Terms of Trade", "Comparative Advantage", "Absolute Advantage",
+      "Specialization", "Free Trade", "Protectionism", "Tariff", "Quota", "Trade War"
+    ],
+    "trade_policy": [
+      "Trade Policy", "Commercial Policy", "Import Substitution", "Export Promotion", "Free Trade Agreement",
+      "FTA", "Customs Union", "Common Market", "Economic Union", "World Trade Organization", "WTO",
+      "Most Favored Nation", "MFN", "National Treatment", "Anti-dumping", "Countervailing Duty",
+      "Safeguard Measures", "Trade Creation", "Trade Diversion", "Rules of Origin", "Non-tariff Barriers"
+    ],
+    "globalization": [
+      "Globalization", "Economic Integration", "Multinational Corporation", "MNC", "Foreign Direct Investment",
+      "FDI", "Portfolio Investment", "Capital Flows", "Brain Drain", "Brain Gain", "Technology Transfer",
+      "Global Value Chains", "Outsourcing", "Offshoring", "Nearshoring", "Reshoring", "Supply Chain",
+      "Global Economy", "International Capital Markets", "Financial Integration", "Economic Interdependence"
+    ]
+  },
+  "development_economics": {
+    "economic_development": [
+      "Economic Development", "Developing Country", "Developed Country", "Least Developed Country", "LDC",
+      "Emerging Market", "Middle-Income Country", "Low-Income Country", "Human Development Index", "HDI",
+      "Poverty", "Absolute Poverty", "Relative Poverty", "Poverty Line", "Income Inequality",
+      "Gini Coefficient", "Income Distribution", "Social Mobility", "Inclusive Growth", "Pro-poor Growth"
+    ],
+    "development_strategies": [
+      "Development Strategy", "Import Substitution Industrialization", "ISI", "Export-Oriented Industrialization",
+      "EOI", "Structural Adjustment", "Washington Consensus", "Post-Washington Consensus", "Big Push",
+      "Balanced Growth", "Unbalanced Growth", "Dual Economy", "Lewis Model", "Modernization Theory",
+      "Dependency Theory", "Endogenous Development", "Sustainable Development", "Millennium Development Goals"
+    ],
+    "institutions": [
+      "Institutions", "Property Rights", "Rule of Law", "Governance", "Corruption", "Transparency",
+      "Accountability", "Democracy", "Authoritarianism", "Political Economy", "Rent-Seeking",
+      "Clientelism", "State Capacity", "Failed State", "Institutional Quality", "Social Capital",
+      "Trust", "Cultural Factors", "Informal Economy", "Shadow Economy"
+    ]
+  },
+  "environmental_economics": {
+    "environmental_issues": [
+      "Environmental Economics", "Externality", "Negative Externality", "Positive Externality",
+      "Market Failure", "Tragedy of the Commons", "Common Pool Resources", "Public Goods",
+      "Natural Resources", "Renewable Resources", "Non-renewable Resources", "Resource Depletion",
+      "Sustainability", "Sustainable Development", "Intergenerational Equity", "Environmental Degradation"
+    ],
+    "policy_instruments": [
+      "Environmental Policy", "Pigouvian Tax", "Carbon Tax", "Emission Trading", "Cap and Trade",
+      "Pollution Permits", "Command and Control", "Regulation", "Environmental Standards",
+      "Polluter Pays Principle", "Green Taxes", "Subsidies", "Payment for Ecosystem Services",
+      "Cost-Benefit Analysis", "Environmental Impact Assessment", "Precautionary Principle"
+    ],
+    "climate_economics": [
+      "Climate Change", "Global Warming", "Greenhouse Gases", "Carbon Emissions", "Carbon Footprint",
+      "Climate Policy", "Mitigation", "Adaptation", "Social Cost of Carbon", "Discount Rate",
+      "Climate Damage", "Economic Impact", "Green Economy", "Low-Carbon Economy", "Circular Economy",
+      "Energy Transition", "Renewable Energy", "Clean Technology", "Green Innovation", "Just Transition"
+    ]
+  },
+  "behavioral_economics": {
+    "psychological_factors": [
+      "Behavioral Economics", "Bounded Rationality", "Cognitive Bias", "Heuristics", "Prospect Theory",
+      "Loss Aversion", "Endowment Effect", "Status Quo Bias", "Anchoring", "Framing Effect",
+      "Availability Heuristic", "Representativeness Heuristic", "Overconfidence", "Confirmation Bias",
+      "Mental Accounting", "Time Inconsistency", "Present Bias", "Hyperbolic Discounting", "Nudge"
+    ],
+    "social_factors": [
+      "Social Preferences", "Altruism", "Reciprocity", "Fairness", "Inequality Aversion", "Social Norms",
+      "Peer Effects", "Social Proof", "Conformity", "Herding Behavior", "Network Effects",
+      "Social Capital", "Trust", "Cooperation", "Public Goods Game", "Ultimatum Game",
+      "Dictator Game", "Prisoner's Dilemma", "Experimental Economics", "Field Experiments"
+    ]
+  },
+  "economic_indicators": {
+    "leading_indicators": [
+      "Leading Economic Indicators", "Stock Market Index", "Yield Curve", "Building Permits",
+      "New Orders", "Consumer Expectations", "Business Confidence", "Employment Index",
+      "Money Supply", "Interest Rate Spread", "Commodity Prices", "Initial Jobless Claims",
+      "Average Workweek", "Vendor Performance", "New Business Formation", "R&D Spending"
+    ],
+    "coincident_indicators": [
+      "Coincident Indicators", "Gross Domestic Product", "Employment", "Industrial Production",
+      "Personal Income", "Retail Sales", "Manufacturing Sales", "Service Sector Activity",
+      "Capacity Utilization", "Hours Worked", "Wage Growth", "Corporate Profits", "Tax Revenue"
+    ],
+    "lagging_indicators": [
+      "Lagging Indicators", "Unemployment Rate", "Labor Costs", "Inventory Levels", "Corporate Profits",
+      "Interest Rates", "Inflation Rate", "Government Debt", "Trade Balance", "Currency Value",
+      "Bank Lending", "Consumer Debt", "Bankruptcy Filings", "Real Estate Prices", "Commodity Inventories"
+    ]
+  },
+  "economic_schools": {
+    "classical_economics": [
+      "Classical Economics", "Adam Smith", "Invisible Hand", "Say's Law", "Laissez-faire",
+      "Free Market", "Self-regulating Market", "Natural Price", "Market Price", "Division of Labor",
+      "Specialization", "Comparative Advantage", "David Ricardo", "Thomas Malthus", "Jean-Baptiste Say"
+    ],
+    "keynesian_economics": [
+      "Keynesian Economics", "John Maynard Keynes", "General Theory", "Aggregate Demand",
+      "Aggregate Supply", "Liquidity Trap", "Animal Spirits", "Multiplier Effect", "Paradox of Thrift",
+      "Sticky Prices", "Sticky Wages", "Involuntary Unemployment", "Demand Management",
+      "Fiscal Stimulus", "Neo-Keynesian", "New Keynesian", "Post-Keynesian"
+    ],
+    "monetarism": [
+      "Monetarism", "Milton Friedman", "Chicago School", "Quantity Theory of Money",
+      "Monetary Rule", "Natural Rate of Unemployment", "Permanent Income Hypothesis",
+      "Rational Expectations", "Policy Ineffectiveness", "Lucas Critique", "Real Business Cycle",
+      "Supply-Side Economics", "Austrian School", "Neoclassical Economics", "New Classical"
+    ]
+  },
+  "economic_systems": {
+    "market_economy": [
+      "Market Economy", "Free Market Economy", "Capitalist Economy", "Private Property",
+      "Profit Motive", "Competition", "Price Mechanism", "Supply and Demand", "Consumer Sovereignty",
+      "Economic Freedom", "Laissez-faire", "Minimal Government", "Deregulation", "Privatization",
+      "Market Forces", "Entrepreneurship", "Innovation", "Creative Destruction", "Economic Efficiency"
+    ],
+    "planned_economy": [
+      "Planned Economy", "Command Economy", "Centrally Planned Economy", "Socialist Economy",
+      "Communist Economy", "State Ownership", "Central Planning", "Five-Year Plan", "Production Quotas",
+      "Price Controls", "Resource Allocation", "Economic Planning", "Public Ownership", "Collective Ownership",
+      "Redistribution", "Social Equality", "Economic Security", "Full Employment", "Social Welfare"
+    ],
+    "mixed_economy": [
+      "Mixed Economy", "Welfare State", "Social Market Economy", "Regulated Capitalism", "Public-Private Mix",
+      "Government Intervention", "Market Regulation", "Antitrust", "Social Safety Net", "Progressive Taxation",
+      "Public Goods", "Merit Goods", "Market Failures", "Income Redistribution", "Economic Stabilization",
+      "Industrial Policy", "Regional Policy", "Competition Policy", "Consumer Protection"
+    ]
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "compute": {
+    "services": [
+      "EC2", "Lambda", "ECS", "EKS", "Fargate", "Batch", "Lightsail", 
+      "Elastic Beanstalk", "App Runner", "EC2 Image Builder", "AWS Outposts",
+      "AWS Wavelength", "AWS Local Zones", "AWS Nitro System"
+    ],
+    "terms": [
+      "Instance", "AMI", "Auto Scaling", "Load Balancer", "Target Group",
+      "Security Group", "Key Pair", "Elastic IP", "Placement Group",
+      "Reserved Instance", "Spot Instance", "On-Demand Instance",
+      "Dedicated Host", "Dedicated Instance", "Burstable Performance",
+      "Enhanced Networking", "SR-IOV", "Nitro Enclaves", "Hibernation",
+      "Instance Store", "User Data", "Instance Metadata", "IMDSv2"
+    ]
+  },
+  "storage": {
+    "services": [
+      "S3", "EBS", "EFS", "FSx", "Storage Gateway", "AWS Backup",
+      "DataSync", "Snow Family", "S3 Glacier", "S3 Intelligent-Tiering"
+    ],
+    "terms": [
+      "Bucket", "Object", "Key", "Versioning", "Lifecycle Policy",
+      "Cross-Region Replication", "Same-Region Replication", "Multipart Upload",
+      "Pre-signed URL", "Access Point", "Object Lock", "MFA Delete",
+      "Storage Class", "Standard", "Standard-IA", "One Zone-IA",
+      "Glacier Instant Retrieval", "Glacier Flexible Retrieval", "Glacier Deep Archive",
+      "Volume", "Snapshot", "IOPS", "Throughput Optimized", "Cold HDD",
+      "General Purpose SSD", "Provisioned IOPS SSD", "Multi-Attach",
+      "Encryption at Rest", "Encryption in Transit", "KMS", "SSE-S3", "SSE-KMS", "SSE-C"
+    ]
+  },
+  "database": {
+    "services": [
+      "RDS", "DynamoDB", "Aurora", "Redshift", "DocumentDB", "Neptune",
+      "ElastiCache", "MemoryDB", "Timestream", "QLDB", "Amazon Keyspaces",
+      "Amazon PartiQL", "DMS", "SCT"
+    ],
+    "terms": [
+      "Multi-AZ", "Read Replica", "Backup", "Point-in-Time Recovery",
+      "Automated Backup", "Manual Snapshot", "Parameter Group", "Option Group",
+      "Subnet Group", "Security Group", "Engine Version", "Maintenance Window",
+      "Table", "Item", "Attribute", "Primary Key", "Sort Key", "GSI", "LSI",
+      "Partition Key", "Eventually Consistent", "Strongly Consistent",
+      "Provisioned Capacity", "On-Demand Capacity", "Auto Scaling",
+      "DynamoDB Streams", "DAX", "Global Tables", "Point-in-Time Recovery",
+      "Cluster", "Writer Instance", "Reader Instance", "Aurora Serverless",
+      "Aurora Global Database", "Backtrack", "Fast Clone", "Parallel Query"
+    ]
+  },
+  "networking": {
+    "services": [
+      "VPC", "CloudFront", "Route 53", "ELB", "API Gateway", "Direct Connect",
+      "VPN", "Transit Gateway", "PrivateLink", "Global Accelerator",
+      "AWS Shield", "AWS WAF", "Network Firewall", "Cloud Map"
+    ],
+    "terms": [
+      "Subnet", "Route Table", "Internet Gateway", "NAT Gateway", "NAT Instance",
+      "VPC Endpoint", "Peering Connection", "Security Group", "NACL",
+      "Elastic IP", "ENI", "Placement Group", "DHCP Options Set",
+      "Flow Logs", "VPC Sharing", "Transit Gateway", "Customer Gateway",
+      "Virtual Private Gateway", "BGP", "CIDR", "Availability Zone",
+      "Edge Location", "Regional Edge Cache", "Origin", "Distribution",
+      "Cache Behavior", "TTL", "Invalidation", "OAI", "OAC",
+      "Hosted Zone", "Record Set", "Alias Record", "Health Check",
+      "Routing Policy", "Geolocation", "Latency-based", "Weighted",
+      "Failover", "Multivalue Answer", "DNSSEC"
+    ]
+  },
+  "security": {
+    "services": [
+      "IAM", "AWS Organizations", "AWS SSO", "Cognito", "KMS", "CloudHSM",
+      "AWS Certificate Manager", "AWS Secrets Manager", "AWS Systems Manager",
+      "AWS Config", "AWS CloudTrail", "Amazon GuardDuty", "Amazon Inspector",
+      "AWS Security Hub", "AWS Macie", "AWS Detective", "AWS Shield",
+      "AWS WAF", "AWS Firewall Manager", "AWS Network Firewall"
+    ],
+    "terms": [
+      "User", "Group", "Role", "Policy", "Permission", "Principal",
+      "Resource", "Action", "Effect", "Condition", "ARN", "STS",
+      "Assume Role", "Cross-Account Access", "Federated Access", "SAML",
+      "OpenID Connect", "MFA", "Access Key", "Secret Access Key",
+      "Session Token", "Temporary Credentials", "Root User", "IAM User",
+      "Service Role", "Service-Linked Role", "Inline Policy", "Managed Policy",
+      "Customer Managed Policy", "AWS Managed Policy", "Resource-Based Policy",
+      "Identity-Based Policy", "Permission Boundary", "Access Analyzer",
+      "Credential Report", "Access Advisor", "Policy Simulator",
+      "User Pool", "Identity Pool", "JWT", "Encryption Key", "Data Key",
+      "Key Rotation", "Key Policy", "Grant", "Envelope Encryption"
+    ]
+  },
+  "monitoring": {
+    "services": [
+      "CloudWatch", "X-Ray", "AWS Systems Manager", "AWS Config",
+      "AWS CloudTrail", "AWS Personal Health Dashboard", "AWS Trusted Advisor",
+      "Amazon EventBridge", "AWS SNS", "AWS SQS"
+    ],
+    "terms": [
+      "Metric", "Alarm", "Dashboard", "Log Group", "Log Stream",
+      "Custom Metric", "Dimension", "Namespace", "Period", "Statistic",
+      "CloudWatch Logs", "CloudWatch Events", "CloudWatch Insights",
+      "CloudWatch Synthetics", "CloudWatch Container Insights",
+      "CloudWatch Lambda Insights", "CloudWatch Application Insights",
+      "Trace", "Segment", "Subsegment", "Annotation", "Metadata",
+      "Service Map", "Sampling Rule", "Filter Expression"
+    ]
+  },
+  "analytics": {
+    "services": [
+      "Redshift", "EMR", "Athena", "Glue", "Kinesis", "MSK", "QuickSight",
+      "Data Pipeline", "AWS Lake Formation", "OpenSearch Service"
+    ],
+    "terms": [
+      "Data Warehouse", "Cluster", "Node", "Leader Node", "Compute Node",
+      "Columnar Storage", "Compression", "Distribution Key", "Sort Key",
+      "Vacuum", "Analyze", "WLM", "Concurrency Scaling", "Elastic Resize",
+      "Snapshot", "Cross-Region Snapshot", "Spectrum", "Federated Query",
+      "Data Lake", "Catalog", "Crawler", "Classifier", "Connection",
+      "Job", "Trigger", "Workflow", "Data Catalog", "Schema Registry",
+      "Stream", "Shard", "Partition Key", "Sequence Number", "Retention Period",
+      "Kinesis Data Streams", "Kinesis Data Firehose", "Kinesis Data Analytics",
+      "Kinesis Video Streams", "Producer", "Consumer", "Checkpoint"
+    ]
+  },
+  "machine_learning": {
+    "services": [
+      "SageMaker", "Rekognition", "Comprehend", "Polly", "Transcribe",
+      "Translate", "Lex", "Connect", "Personalize", "Forecast",
+      "Fraud Detector", "CodeGuru", "DevOps Guru", "Lookout", "Monitron",
+      "Panorama", "HealthLake", "Kendra", "Textract", "Bedrock"
+    ],
+    "terms": [
+      "Model", "Training Job", "Inference", "Endpoint", "Batch Transform",
+      "Hyperparameter Tuning", "Algorithm", "Framework", "Instance Type",
+      "Ground Truth", "Data Labeling", "Feature Store", "Model Registry",
+      "Pipeline", "Processing Job", "Auto Scaling", "Multi-Model Endpoint",
+      "Serverless Inference", "Real-time Inference", "Batch Inference",
+      "Model Deployment", "A/B Testing", "Shadow Testing", "Model Monitor",
+      "Data Drift", "Model Drift", "Bias Detection", "Explainability"
+    ]
+  },
+  "developer_tools": {
+    "services": [
+      "CodeCommit", "CodeBuild", "CodeDeploy", "CodePipeline", "CodeStar",
+      "CodeArtifact", "CodeGuru", "X-Ray", "Cloud9", "CloudShell",
+      "CLI", "SDK", "CDK", "SAM", "Amplify", "Device Farm"
+    ],
+    "terms": [
+      "Repository", "Branch", "Commit", "Pull Request", "Merge",
+      "Build Project", "Build Specification", "Artifact", "Source Provider",
+      "Build Environment", "Build Phase", "Build Commands", "Post-build",
+      "Application", "Deployment Group", "Deployment Configuration",
+      "Revision", "Blue/Green Deployment", "In-place Deployment",
+      "Auto Rollback", "Pipeline", "Stage", "Action", "Artifact Store",
+      "Source Stage", "Build Stage", "Deploy Stage", "Approval Action",
+      "Lambda Action", "SNS Action", "CloudFormation Action"
+    ]
+  },
+  "management": {
+    "services": [
+      "CloudFormation", "AWS Organizations", "AWS Control Tower",
+      "AWS Service Catalog", "AWS Systems Manager", "AWS Config",
+      "AWS CloudTrail", "AWS License Manager", "AWS Well-Architected Tool",
+      "AWS Trusted Advisor", "AWS Support", "AWS Resource Groups",
+      "AWS Tag Editor", "AWS Cost Explorer", "AWS Budgets"
+    ],
+    "terms": [
+      "Stack", "Template", "Resource", "Parameter", "Output", "Mapping",
+      "Condition", "Metadata", "Transform", "Drift Detection", "Change Set",
+      "Nested Stack", "Cross-Stack Reference", "Stack Set", "StackSets",
+      "Custom Resource", "Intrinsic Function", "Cross-Region", "Multi-Account",
+      "Organization", "Organizational Unit", "Account", "Master Account",
+      "Member Account", "Service Control Policy", "Consolidated Billing",
+      "AWS Single Sign-On", "Landing Zone", "Guardrails", "Account Factory",
+      "Patch Group", "Maintenance Window", "Run Command", "Session Manager",
+      "Parameter Store", "Automation", "Compliance", "Inventory"
+    ]
+  },
+  "integration": {
+    "services": [
+      "SQS", "SNS", "EventBridge", "Step Functions", "SWF", "MQ",
+      "AppSync", "API Gateway", "AWS App Mesh", "AWS App Runner"
+    ],
+    "terms": [
+      "Queue", "Message", "Visibility Timeout", "Dead Letter Queue",
+      "FIFO Queue", "Standard Queue", "Long Polling", "Short Polling",
+      "Message Retention", "Redrive Policy", "DelaySeconds", "ReceiveCount",
+      "Topic", "Subscription", "Publisher", "Subscriber", "Filter Policy",
+      "Message Filtering", "Fan-out", "SMS", "Email", "HTTP", "HTTPS",
+      "Event", "Rule", "Target", "Event Pattern", "Schedule Expression",
+      "Custom Event", "Partner Event", "Archive", "Replay", "DLQ",
+      "State Machine", "State", "Task", "Choice", "Wait", "Succeed",
+      "Fail", "Parallel", "Map", "Pass", "Retry", "Catch", "Input Path",
+      "Output Path", "Result Path", "Parameters", "Express Workflow",
+      "Standard Workflow", "Execution", "History", "CloudWatch Integration"
+    ]
+  },
+  "mobile": {
+    "services": [
+      "AWS Amplify", "AWS AppSync", "Amazon Cognito", "AWS Device Farm",
+      "Amazon Pinpoint", "AWS Mobile SDK", "Amazon SNS Mobile Push"
+    ],
+    "terms": [
+      "Authentication", "Authorization", "User Pool", "Identity Pool",
+      "Federated Identity", "Social Login", "Multi-Factor Authentication",
+      "GraphQL", "Real-time Subscriptions", "Offline Sync", "Conflict Resolution",
+      "Data Store", "API", "Push Notification", "Campaign", "Journey",
+      "Segment", "Event", "Funnel", "Cohort", "A/B Testing", "Device Testing",
+      "Remote Access", "Automated Testing", "Performance Testing"
+    ]
+  },
+  "iot": {
+    "services": [
+      "AWS IoT Core", "AWS IoT Device Management", "AWS IoT Analytics",
+      "AWS IoT Events", "AWS IoT Greengrass", "AWS IoT SiteWise",
+      "AWS IoT Things Graph", "AWS IoT Device Defender", "AWS IoT Fleet Hub"
+    ],
+    "terms": [
+      "Thing", "Device", "Certificate", "Policy", "Shadow", "Topic",
+      "MQTT", "HTTP", "WebSocket", "Rule", "Action", "SQL", "Device Registry",
+      "Fleet", "Job", "OTA Update", "Bulk Registration", "Provisioning",
+      "Just-in-Time Provisioning", "Fleet Provisioning", "Claim Certificate",
+      "Channel", "Dataset", "Pipeline", "Detector", "Input", "State",
+      "Core", "Component", "Deployment", "Lambda Function", "Connector",
+      "Asset", "Asset Model", "Property", "Hierarchy", "Portal", "Project"
+    ]
+  },
+  "migration": {
+    "services": [
+      "AWS Migration Hub", "AWS Application Discovery Service", "AWS DMS",
+      "AWS SCT", "AWS Server Migration Service", "AWS DataSync",
+      "AWS Snow Family", "AWS Application Migration Service"
+    ],
+    "terms": [
+      "Migration", "Replication", "Source", "Target", "Endpoint",
+      "Replication Instance", "Replication Task", "Full Load", "CDC",
+      "Schema Conversion", "Assessment Report", "Migration Project",
+      "Wave", "Application", "Server", "Agent", "Connector", "Discovery",
+      "Dependency Mapping", "Cost Estimation", "Migration Strategy",
+      "Rehost", "Refactor", "Revise", "Rebuild", "Replace", "Retire"
+    ]
+  },
+  "cost_management": {
+    "services": [
+      "AWS Cost Explorer", "AWS Budgets", "AWS Cost and Usage Report",
+      "AWS Billing", "AWS Pricing Calculator", "AWS Cost Anomaly Detection",
+      "AWS Savings Plans", "Reserved Instances"
+    ],
+    "terms": [
+      "Cost", "Usage", "Budget", "Forecast", "Anomaly", "Alert",
+      "Savings Plan", "Reserved Instance", "On-Demand", "Spot Instance",
+      "Billing", "Invoice", "Credit", "Refund", "Tax", "Currency",
+      "Cost Allocation Tag", "Resource Tag", "Cost Category", "Dimension",
+      "Filter", "Group By", "Time Period", "Granularity", "Utilization",
+      "Coverage", "Recommendation", "Right-sizing", "Compute Optimizer"
+    ]
+  },
+  "global_infrastructure": {
+    "terms": [
+      "Region", "Availability Zone", "Edge Location", "Local Zone",
+      "Wavelength Zone", "Outpost", "Ground Station", "Direct Connect Location",
+      "Point of Presence", "Regional Edge Cache", "CloudFront Edge Location",
+      "Multi-Region", "Cross-AZ", "Fault Tolerance", "High Availability",
+      "Disaster Recovery", "Backup and Restore", "Pilot Light", "Warm Standby",
+      "Multi-Site Active/Active", "RTO", "RPO", "Latency", "Throughput"
+    ]
+  },
+  "well_architected": {
+    "pillars": [
+      "Operational Excellence", "Security", "Reliability", "Performance Efficiency",
+      "Cost Optimization", "Sustainability"
+    ],
+    "principles": [
+      "Design Principles", "Best Practices", "Architecture Review",
+      "Continuous Improvement", "Data-Driven Decisions", "Game Days",
+      "Failure Management", "Change Management", "Monitoring and Observability",
+      "Automation", "Infrastructure as Code", "Loose Coupling", "Scalability",
+      "Elasticity", "Rightsizing", "Managed Services", "Serverless"
+    ]
+  }
+}

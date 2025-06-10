@@ -1,0 +1,189 @@
+{
+  "core_business_systems": {
+    "erp_systems": {
+      "tier_1": ["SAP S/4HANA", "Oracle ERP Cloud", "Microsoft Dynamics 365"],
+      "tier_2": ["NetSuite", "Workday", "Infor CloudSuite", "IFS Applications"],
+      "tier_3": ["Sage Intacct", "Acumatica", "Epicor", "SYSPRO", "Unit4"]
+    },
+    "crm_systems": {
+      "enterprise": ["Salesforce", "Microsoft Dynamics 365", "Oracle CX Cloud", "SAP CRM"],
+      "mid_market": ["HubSpot", "Pipedrive", "Zoho CRM", "SugarCRM", "Freshworks"],
+      "specialized": ["Insightly", "Copper", "ActiveCampaign", "Pardot", "Marketo"]
+    },
+    "financial_management": {
+      "accounting": ["QuickBooks Enterprise", "Sage 300", "Xero", "FreshBooks", "Wave"],
+      "fp_a": ["Adaptive Insights", "Anaplan", "Planful", "OneStream", "Workiva"],
+      "expense": ["Concur", "Expensify", "Chrome River", "Ramp", "Brex"],
+      "treasury": ["Kyriba", "GTreasury", "Bellin", "TreasuryXpress", "Openlink"]
+    }
+  },
+  "human_resources": {
+    "hris_core": ["Workday", "SuccessFactors", "Oracle HCM Cloud", "BambooHR", "UltiPro"],
+    "talent_acquisition": ["Greenhouse", "Lever", "iCIMS", "SmartRecruiters", "Taleo"],
+    "performance": ["15Five", "Lattice", "Culture Amp", "Cornerstone OnDemand", "Halogen"],
+    "learning": ["Cornerstone Learning", "Docebo", "LearnUpon", "TalentLMS", "Absorb LMS"],
+    "payroll": ["ADP", "Paychex", "Gusto", "Ceridian Dayforce", "Paycom"],
+    "benefits": ["Workday Benefits", "BenefitFocus", "Maxwell Health", "Zenefits", "Justworks"],
+    "time_attendance": ["Kronos", "Deputy", "When I Work", "TSheets", "BambooHR Time"]
+  },
+  "it_infrastructure": {
+    "cloud_platforms": ["AWS", "Microsoft Azure", "Google Cloud Platform", "IBM Cloud", "Oracle Cloud"],
+    "virtualization": ["VMware vSphere", "Hyper-V", "Citrix XenServer", "KVM", "Proxmox"],
+    "containers": ["Docker", "Kubernetes", "OpenShift", "Rancher", "Amazon EKS"],
+    "monitoring": ["Nagios", "Zabbix", "PRTG", "SolarWinds", "New Relic", "Datadog"],
+    "backup": ["Veeam", "Commvault", "Veritas NetBackup", "Acronis", "Carbonite"],
+    "security": ["Symantec", "McAfee", "Trend Micro", "CrowdStrike", "SentinelOne"],
+    "network": ["Cisco", "Juniper", "Aruba", "Fortinet", "Palo Alto Networks"]
+  },
+  "productivity_collaboration": {
+    "office_suites": ["Microsoft 365", "Google Workspace", "LibreOffice", "Apple iWork"],
+    "communication": ["Slack", "Microsoft Teams", "Zoom", "WebEx", "GoToMeeting"],
+    "file_sharing": ["SharePoint", "Box", "Dropbox", "OneDrive", "Google Drive"],
+    "project_management": ["Microsoft Project", "Asana", "Monday.com", "Smartsheet", "Wrike"],
+    "wiki_knowledge": ["Confluence", "Notion", "OneNote", "Obsidian", "Roam Research"],
+    "video_conferencing": ["Zoom", "Microsoft Teams", "WebEx", "GoToMeeting", "BlueJeans"]
+  },
+  "development_tools": {
+    "ides": ["Visual Studio", "IntelliJ IDEA", "Eclipse", "VSCode", "Sublime Text"],
+    "version_control": ["Git", "GitHub", "GitLab", "Bitbucket", "Azure DevOps"],
+    "ci_cd": ["Jenkins", "Azure DevOps", "GitLab CI", "CircleCI", "Travis CI"],
+    "testing": ["Selenium", "JUnit", "TestNG", "Cucumber", "Postman"],
+    "databases": ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "MongoDB"],
+    "api_tools": ["Postman", "Insomnia", "Swagger", "SoapUI", "REST Assured"],
+    "low_code": ["OutSystems", "Mendix", "PowerApps", "Appian", "Pega"]
+  },
+  "security_compliance": {
+    "identity_access": ["Okta", "Azure AD", "Ping Identity", "SailPoint", "CyberArk"],
+    "endpoint_security": ["CrowdStrike", "Carbon Black", "SentinelOne", "Sophos", "ESET"],
+    "siem": ["Splunk", "IBM QRadar", "ArcSight", "LogRhythm", "Elastic Security"],
+    "vulnerability": ["Qualys", "Rapid7", "Nessus", "OpenVAS", "Veracode"],
+    "compliance": ["ServiceNow GRC", "MetricStream", "Resolver", "LogicGate", "NAVEX Global"],
+    "data_protection": ["Varonis", "Forcepoint", "Symantec DLP", "Microsoft Purview", "Code42"]
+  },
+  "analytics_bi": {
+    "enterprise_bi": ["Tableau", "Power BI", "QlikSense", "IBM Cognos", "MicroStrategy"],
+    "self_service": ["Looker", "Sisense", "Domo", "ThoughtSpot", "Yellowfin"],
+    "data_platforms": ["Snowflake", "Databricks", "Palantir", "Amazon Redshift", "Google BigQuery"],
+    "etl_tools": ["Informatica", "Talend", "Pentaho", "SSIS", "Alteryx"],
+    "statistical": ["SAS", "SPSS", "R", "Python", "Stata"]
+  },
+  "industry_specific": {
+    "healthcare": {
+      "ehr": ["Epic", "Cerner", "Allscripts", "athenahealth", "eClinicalWorks"],
+      "pacs": ["GE Healthcare", "Philips", "Siemens", "Agfa", "Carestream"],
+      "revenue_cycle": ["Epic Revenue Cycle", "Cerner PowerChart", "athenaCollector"],
+      "patient_portal": ["MyChart", "FollowMyHealth", "Patient Gateway"]
+    },
+    "manufacturing": {
+      "mes": ["Wonderware MES", "GE Digital", "Siemens Opcenter", "Rockwell FactoryTalk"],
+      "plm": ["Siemens Teamcenter", "PTC Windchill", "Dassault CATIA", "Autodesk Fusion"],
+      "scada": ["Wonderware", "GE iFIX", "Siemens WinCC", "Rockwell RSView"],
+      "cad": ["AutoCAD", "SolidWorks", "CATIA", "Inventor", "Fusion 360"]
+    },
+    "financial_services": {
+      "core_banking": ["Temenos T24", "FIS Profile", "Jack Henry", "Fiserv"],
+      "trading": ["Bloomberg Terminal", "Reuters Eikon", "Charles River", "Murex"],
+      "risk": ["SAS Risk Management", "Moody's Analytics", "MSCI RiskMetrics", "Axioma"],
+      "compliance": ["NICE Actimize", "SAS Anti-Money Laundering", "Mantas", "Palantir"]
+    },
+    "retail": {
+      "pos": ["Square", "Shopify POS", "Lightspeed", "Clover", "Toast"],
+      "inventory": ["Manhattan Associates", "JDA", "Blue Yonder", "Infor WMS"],
+      "ecommerce": ["Shopify", "Magento", "WooCommerce", "BigCommerce", "Salesforce Commerce"],
+      "merchandising": ["Oracle Retail", "JDA Category Management", "SAS Merchandise Intelligence"]
+    },
+    "education": {
+      "sis": ["PowerSchool", "Infinite Campus", "Skyward", "Clever", "Blackbaud"],
+      "lms": ["Canvas", "Blackboard", "Moodle", "Brightspace", "Schoology"],
+      "library": ["Ex Libris Alma", "OCLC WorldShare", "SirsiDynix Symphony", "Koha"]
+    },
+    "government": {
+      "case_management": ["Tyler Technologies", "COTS", "CGI", "NIC", "Socrata"],
+      "gis": ["Esri ArcGIS", "MapInfo", "QGIS", "Bentley MicroStation"],
+      "public_safety": ["Tyler New World", "Motorola CommandCentral", "Hexagon HxGN"]
+    }
+  },
+  "marketing_sales": {
+    "marketing_automation": ["HubSpot", "Marketo", "Pardot", "Eloqua", "ActiveCampaign"],
+    "email_marketing": ["Mailchimp", "Constant Contact", "Campaign Monitor", "SendGrid"],
+    "social_media": ["Hootsuite", "Sprout Social", "Buffer", "Later", "SocialBee"],
+    "content_management": ["WordPress", "Drupal", "Sitecore", "Adobe Experience Manager"],
+    "seo_tools": ["SEMrush", "Ahrefs", "Moz", "BrightEdge", "Conductor"],
+    "advertising": ["Google Ads", "Facebook Ads Manager", "LinkedIn Campaign Manager", "Adobe Advertising Cloud"],
+    "analytics": ["Google Analytics", "Adobe Analytics", "Mixpanel", "Amplitude", "Hotjar"]
+  },
+  "operations_supply_chain": {
+    "wms": ["Manhattan Associates", "Blue Yonder", "Infor WMS", "HighJump", "Oracle WMS"],
+    "tms": ["Oracle Transportation Management", "JDA Transportation", "MercuryGate", "3Gtms"],
+    "procurement": ["SAP Ariba", "Coupa", "Jaggaer", "Ivalua", "Zycus"],
+    "supplier_management": ["SAP Supplier Relationship Management", "Coupa Supplier Portal"],
+    "demand_planning": ["Blue Yonder", "Kinaxis RapidResponse", "o9 Solutions", "Anaplan"],
+    "quality_management": ["MasterControl", "Sparta TrackWise", "EtQ", "Greenlight Guru"]
+  },
+  "customer_service": {
+    "helpdesk": ["ServiceNow", "Zendesk", "Freshworks", "Jira Service Management"],
+    "call_center": ["Genesys", "Avaya", "Cisco Contact Center", "Five9", "Amazon Connect"],
+    "chat_support": ["Intercom", "Drift", "LiveChat", "Olark", "Tidio"],
+    "knowledge_base": ["Zendesk Guide", "Freshworks Knowledge Base", "Helpjuice", "Document360"],
+    "survey_feedback": ["Qualtrics", "SurveyMonkey", "Typeform", "GetFeedback", "Medallia"]
+  },
+  "finance_accounting": {
+    "accounting_software": ["SAP", "Oracle Financials", "NetSuite", "Sage Intacct", "QuickBooks"],
+    "expense_management": ["Concur", "Expensify", "Chrome River", "Ramp", "Brex"],
+    "billing_invoicing": ["Zuora", "Chargebee", "Recurly", "Stripe Billing", "FreshBooks"],
+    "tax_software": ["Vertex", "Avalara", "Thomson Reuters ONESOURCE", "Sovos"],
+    "audit_software": ["TeamMate", "AuditBoard", "Workiva", "MindBridge", "DataSnipper"],
+    "treasury": ["Kyriba", "GTreasury", "Bellin Treasury", "TreasuryXpress"]
+  },
+  "legal_compliance": {
+    "contract_management": ["DocuSign CLM", "Ironclad", "ContractWorks", "Concord", "PandaDoc"],
+    "legal_research": ["Westlaw", "LexisNexis", "Bloomberg Law", "Fastcase", "Casetext"],
+    "document_review": ["Relativity", "Logikcull", "Everlaw", "DISCO", "Zylab"],
+    "compliance_management": ["MetricStream", "ServiceNow GRC", "Thomson Reuters GRC", "LogicGate"],
+    "ip_management": ["Anaqua", "PatSnap", "Clarivate Innovation", "Cardinal IP"]
+  },
+  "facilities_real_estate": {
+    "space_management": ["Archibus", "FM:Systems", "iOFFICE", "SpaceIQ", "Condeco"],
+    "maintenance": ["Maximo", "ServiceChannel", "UpKeep", "Fiix", "Maintenance Connection"],
+    "security_access": ["Lenel", "Software House", "Genetec", "Honeywell", "Johnson Controls"],
+    "energy_management": ["Schneider Electric", "Johnson Controls", "Siemens", "Honeywell"],
+    "visitor_management": ["Envoy", "Proxyclick", "SwipedOn", "Greetly", "WhosOnLocation"]
+  },
+  "specialized_tools": {
+    "design_creative": ["Adobe Creative Suite", "Sketch", "Figma", "Canva", "InVision"],
+    "video_editing": ["Adobe Premiere", "Final Cut Pro", "Avid Media Composer", "DaVinci Resolve"],
+    "survey_research": ["Qualtrics", "SurveyMonkey", "Typeform", "SurveyGizmo", "Formstack"],
+    "translation": ["SDL Trados", "MemoQ", "Phrase", "Lokalise", "Smartling"],
+    "scheduling": ["Calendly", "Acuity Scheduling", "When2meet", "Doodle", "ScheduleOnce"],
+    "password_management": ["1Password", "LastPass", "Bitwarden", "Dashlane", "KeePass"]
+  },
+  "mobile_applications": {
+    "productivity": ["Microsoft Office Mobile", "Google Workspace", "Slack", "Zoom", "Teams"],
+    "expense": ["Concur Mobile", "Expensify", "Receipt Bank", "Shoeboxed"],
+    "crm_mobile": ["Salesforce Mobile", "HubSpot Mobile", "Pipedrive Mobile"],
+    "collaboration": ["Slack", "Microsoft Teams", "Zoom", "WhatsApp Business", "Telegram"],
+    "file_access": ["Box", "Dropbox", "OneDrive", "Google Drive", "SharePoint Mobile"]
+  },
+  "emerging_technologies": {
+    "ai_ml_platforms": ["AWS SageMaker", "Azure ML", "Google AI Platform", "IBM Watson", "H2O.ai"],
+    "rpa_tools": ["UiPath", "Blue Prism", "Automation Anywhere", "Microsoft Power Automate"],
+    "blockchain": ["Hyperledger Fabric", "Ethereum", "R3 Corda", "IBM Blockchain Platform"],
+    "iot_platforms": ["AWS IoT", "Azure IoT", "Google Cloud IoT", "PTC ThingWorx", "GE Predix"],
+    "ar_vr": ["Microsoft HoloLens", "Magic Leap", "Oculus for Business", "HTC Vive"],
+    "chatbots": ["Microsoft Bot Framework", "IBM Watson Assistant", "Dialogflow", "Amazon Lex"]
+  },
+  "integration_middleware": {
+    "ipaas": ["MuleSoft", "Dell Boomi", "Informatica Cloud", "SnapLogic", "Jitterbit"],
+    "api_management": ["Apigee", "Azure API Management", "AWS API Gateway", "Kong", "3scale"],
+    "message_queues": ["Apache Kafka", "RabbitMQ", "Amazon SQS", "Azure Service Bus"],
+    "etl_tools": ["Informatica PowerCenter", "Talend", "Pentaho", "SSIS", "Alteryx"],
+    "workflow": ["Microsoft Power Automate", "Zapier", "IFTTT", "Nintex", "K2"]
+  },
+  "development_platforms": {
+    "databases": ["Oracle", "SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Cassandra"],
+    "cloud_databases": ["Amazon RDS", "Azure SQL", "Google Cloud SQL", "Amazon DynamoDB"],
+    "application_servers": ["Apache Tomcat", "JBoss", "WebLogic", "WebSphere", "IIS"],
+    "frameworks": ["Spring", ".NET", "Django", "Ruby on Rails", "Express.js", "Laravel"],
+    "mobile_development": ["Xamarin", "React Native", "Flutter", "Ionic", "PhoneGap"]
+  }
+}

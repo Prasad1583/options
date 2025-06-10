@@ -1,0 +1,265 @@
+{
+  "design": {
+    "conceptual_design": [
+      "ideation",
+      "brainstorming",
+      "concept_generation",
+      "mind_mapping",
+      "design_thinking",
+      "user_research",
+      "market_research",
+      "competitive_analysis",
+      "user_personas",
+      "journey_mapping",
+      "problem_definition",
+      "solution_exploration"
+    ],
+    "technical_design": [
+      "system_architecture",
+      "technical_specifications",
+      "wireframing",
+      "prototyping",
+      "mockups",
+      "design_patterns",
+      "data_modeling",
+      "api_design",
+      "database_design",
+      "security_design",
+      "scalability_planning",
+      "performance_requirements"
+    ],
+    "visual_design": [
+      "ui_design",
+      "ux_design",
+      "visual_identity",
+      "brand_guidelines",
+      "color_schemes",
+      "typography",
+      "iconography",
+      "style_guides",
+      "design_systems",
+      "responsive_design",
+      "accessibility_design"
+    ],
+    "design_validation": [
+      "usability_testing",
+      "design_reviews",
+      "stakeholder_feedback",
+      "design_iterations",
+      "proof_of_concept",
+      "feasibility_studies",
+      "design_approval",
+      "requirement_validation"
+    ]
+  },
+  "development": {
+    "planning": [
+      "project_planning",
+      "sprint_planning",
+      "resource_allocation",
+      "timeline_estimation",
+      "risk_assessment",
+      "technology_selection",
+      "team_formation",
+      "milestone_definition",
+      "budget_planning",
+      "scope_definition"
+    ],
+    "implementation": [
+      "coding",
+      "programming",
+      "frontend_development",
+      "backend_development",
+      "database_implementation",
+      "api_development",
+      "integration_development",
+      "component_development",
+      "module_creation",
+      "feature_implementation"
+    ],
+    "methodologies": [
+      "agile_development",
+      "scrum",
+      "kanban",
+      "waterfall",
+      "devops",
+      "continuous_integration",
+      "continuous_deployment",
+      "test_driven_development",
+      "behavior_driven_development",
+      "lean_development"
+    ],
+    "quality_assurance": [
+      "unit_testing",
+      "integration_testing",
+      "system_testing",
+      "acceptance_testing",
+      "performance_testing",
+      "security_testing",
+      "code_review",
+      "static_analysis",
+      "automated_testing",
+      "manual_testing",
+      "bug_tracking",
+      "quality_metrics"
+    ]
+  },
+  "delivery": {
+    "deployment": [
+      "production_deployment",
+      "staging_deployment",
+      "blue_green_deployment",
+      "canary_deployment",
+      "rolling_deployment",
+      "infrastructure_setup",
+      "environment_configuration",
+      "database_migration",
+      "server_provisioning",
+      "cloud_deployment"
+    ],
+    "launch": [
+      "soft_launch",
+      "beta_release",
+      "public_launch",
+      "product_announcement",
+      "marketing_campaign",
+      "user_onboarding",
+      "training_delivery",
+      "documentation_release",
+      "support_readiness",
+      "go_live_checklist"
+    ],
+    "distribution": [
+      "app_store_submission",
+      "package_distribution",
+      "content_delivery_network",
+      "global_rollout",
+      "regional_deployment",
+      "channel_distribution",
+      "partner_integration",
+      "third_party_integration"
+    ],
+    "monitoring": [
+      "performance_monitoring",
+      "system_monitoring",
+      "user_analytics",
+      "error_tracking",
+      "uptime_monitoring",
+      "security_monitoring",
+      "business_metrics",
+      "kpi_tracking",
+      "real_time_monitoring"
+    ]
+  },
+  "maintenance": {
+    "support": [
+      "technical_support",
+      "customer_support",
+      "help_desk",
+      "ticketing_system",
+      "knowledge_base",
+      "user_documentation",
+      "troubleshooting",
+      "escalation_procedures",
+      "sla_management",
+      "support_training"
+    ],
+    "updates": [
+      "bug_fixes",
+      "security_patches",
+      "feature_updates",
+      "performance_improvements",
+      "version_control",
+      "release_management",
+      "backward_compatibility",
+      "migration_support",
+      "update_notifications",
+      "rollback_procedures"
+    ],
+    "optimization": [
+      "performance_tuning",
+      "resource_optimization",
+      "cost_optimization",
+      "scalability_improvements",
+      "efficiency_enhancements",
+      "capacity_planning",
+      "load_balancing",
+      "caching_strategies",
+      "database_optimization"
+    ],
+    "evolution": [
+      "feature_enhancement",
+      "technology_upgrades",
+      "platform_migration",
+      "architecture_refactoring",
+      "legacy_modernization",
+      "api_versioning",
+      "data_migration",
+      "system_integration",
+      "third_party_updates"
+    ],
+    "governance": [
+      "change_management",
+      "configuration_management",
+      "incident_management",
+      "problem_management",
+      "service_level_management",
+      "capacity_management",
+      "availability_management",
+      "continuity_management",
+      "security_management",
+      "compliance_management"
+    ]
+  },
+  "cross_cutting_concerns": {
+    "project_management": [
+      "stakeholder_management",
+      "communication_management",
+      "risk_management",
+      "quality_management",
+      "resource_management",
+      "time_management",
+      "cost_management",
+      "scope_management",
+      "procurement_management",
+      "integration_management"
+    ],
+    "business_analysis": [
+      "requirements_gathering",
+      "business_process_analysis",
+      "gap_analysis",
+      "impact_analysis",
+      "cost_benefit_analysis",
+      "roi_analysis",
+      "market_analysis",
+      "competitor_analysis",
+      "swot_analysis",
+      "stakeholder_analysis"
+    ],
+    "compliance_security": [
+      "regulatory_compliance",
+      "data_protection",
+      "privacy_compliance",
+      "security_audits",
+      "penetration_testing",
+      "vulnerability_assessment",
+      "access_control",
+      "authentication",
+      "authorization",
+      "encryption",
+      "backup_recovery"
+    ],
+    "metrics_analytics": [
+      "performance_metrics",
+      "business_intelligence",
+      "data_analytics",
+      "reporting",
+      "dashboards",
+      "trend_analysis",
+      "predictive_analytics",
+      "user_behavior_analysis",
+      "conversion_tracking",
+      "a_b_testing"
+    ]
+  }
+}

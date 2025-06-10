@@ -1,0 +1,277 @@
+{
+  "clinical_care": {
+    "patient_care": [
+      "Patient", "Client", "Resident", "Outpatient", "Inpatient", "Day Patient",
+      "Admission", "Discharge", "Transfer", "Referral", "Consultation", "Follow-up",
+      "Primary Care", "Secondary Care", "Tertiary Care", "Quaternary Care",
+      "Acute Care", "Chronic Care", "Preventive Care", "Palliative Care", "Hospice Care",
+      "Home Care", "Long-term Care", "Skilled Nursing", "Assisted Living"
+    ],
+    "diagnosis_treatment": [
+      "Diagnosis", "Differential Diagnosis", "Provisional Diagnosis", "Final Diagnosis",
+      "ICD-10", "ICD-11", "CPT Code", "SNOMED CT", "Symptom", "Sign", "Syndrome",
+      "Condition", "Disease", "Disorder", "Pathology", "Etiology", "Prognosis",
+      "Treatment", "Therapy", "Intervention", "Procedure", "Surgery", "Operation",
+      "Protocol", "Clinical Pathway", "Care Plan", "Treatment Plan"
+    ],
+    "medical_specialties": [
+      "Internal Medicine", "Family Medicine", "Pediatrics", "Obstetrics", "Gynecology",
+      "Surgery", "Orthopedics", "Cardiology", "Neurology", "Psychiatry", "Dermatology",
+      "Radiology", "Pathology", "Anesthesiology", "Emergency Medicine", "Oncology",
+      "Hematology", "Gastroenterology", "Pulmonology", "Nephrology", "Endocrinology",
+      "Rheumatology", "Infectious Disease", "Geriatrics", "Sports Medicine"
+    ],
+    "clinical_documentation": [
+      "Medical Record", "Health Record", "Electronic Health Record", "EHR", "Electronic Medical Record", "EMR",
+      "Chart", "Progress Note", "SOAP Note", "History and Physical", "H&P",
+      "Discharge Summary", "Operative Note", "Consultation Note", "Nursing Note",
+      "Medication Administration Record", "MAR", "Vital Signs", "Assessment", "Plan",
+      "Chief Complaint", "History of Present Illness", "HPI", "Review of Systems", "ROS"
+    ]
+  },
+  "healthcare_delivery": {
+    "care_settings": [
+      "Hospital", "Clinic", "Ambulatory Surgery Center", "ASC", "Emergency Department", "ED",
+      "Intensive Care Unit", "ICU", "Critical Care Unit", "CCU", "Neonatal ICU", "NICU",
+      "Operating Room", "OR", "Recovery Room", "PACU", "Medical-Surgical Unit",
+      "Skilled Nursing Facility", "SNF", "Nursing Home", "Rehabilitation Center",
+      "Outpatient Clinic", "Urgent Care", "Walk-in Clinic", "Telemedicine", "Telehealth"
+    ],
+    "healthcare_providers": [
+      "Physician", "Doctor", "Nurse", "Registered Nurse", "RN", "Licensed Practical Nurse", "LPN",
+      "Nurse Practitioner", "NP", "Physician Assistant", "PA", "Certified Nursing Assistant", "CNA",
+      "Pharmacist", "Physical Therapist", "PT", "Occupational Therapist", "OT",
+      "Speech Therapist", "Respiratory Therapist", "RT", "Social Worker", "Case Manager",
+      "Health Information Manager", "Medical Assistant", "Medical Technologist"
+    ],
+    "care_coordination": [
+      "Multidisciplinary Team", "Interdisciplinary Team", "Care Team", "Care Coordinator",
+      "Case Management", "Discharge Planning", "Transition of Care", "Continuum of Care",
+      "Care Collaboration", "Shared Care", "Integrated Care", "Coordinated Care",
+      "Patient Navigator", "Care Manager", "Population Health", "Care Management"
+    ],
+    "quality_safety": [
+      "Quality Improvement", "QI", "Quality Assurance", "QA", "Patient Safety",
+      "Medication Safety", "Hospital-Acquired Infection", "HAI", "Healthcare-Associated Infection",
+      "Adverse Event", "Sentinel Event", "Near Miss", "Medical Error", "Medication Error",
+      "Patient Fall", "Pressure Ulcer", "Readmission", "Length of Stay", "LOS",
+      "Mortality Rate", "Morbidity Rate", "Infection Control", "Risk Management"
+    ]
+  },
+  "health_information": {
+    "health_records": [
+      "Personal Health Record", "PHR", "Longitudinal Health Record", "Comprehensive Health Record",
+      "Problem List", "Medication List", "Allergy List", "Immunization Record",
+      "Lab Results", "Radiology Results", "Pathology Report", "Discharge Summary",
+      "Continuity of Care Document", "CCD", "Clinical Document Architecture", "CDA",
+      "Health Level 7", "HL7", "FHIR", "Direct Trust", "Health Information Exchange", "HIE"
+    ],
+    "clinical_coding": [
+      "Medical Coding", "Clinical Coding", "ICD-10-CM", "ICD-10-PCS", "CPT", "HCPCS",
+      "DRG", "Diagnosis Related Group", "MS-DRG", "APR-DRG", "SNOMED CT",
+      "LOINC", "RxNorm", "NDC", "Modifier", "Principal Diagnosis", "Secondary Diagnosis",
+      "Comorbidity", "Complication", "Present on Admission", "POA", "Encoder", "Grouper"
+    ],
+    "data_analytics": [
+      "Health Analytics", "Clinical Analytics", "Population Health Analytics", "Predictive Analytics",
+      "Real-Time Analytics", "Clinical Decision Support", "CDS", "Business Intelligence", "BI",
+      "Data Warehouse", "Clinical Data Repository", "CDR", "Registry", "Database",
+      "Big Data", "Machine Learning", "Artificial Intelligence", "AI", "Natural Language Processing", "NLP"
+    ],
+    "privacy_security": [
+      "HIPAA", "Protected Health Information", "PHI", "Minimum Necessary", "Authorization",
+      "Consent", "Notice of Privacy Practices", "NPP", "Business Associate Agreement", "BAA",
+      "Breach Notification", "Risk Assessment", "Audit", "Encryption", "Access Control",
+      "Authentication", "De-identification", "Limited Data Set", "Safe Harbor", "Expert Determination"
+    ]
+  },
+  "healthcare_administration": {
+    "organizational_structure": [
+      "Health System", "Hospital Network", "Medical Group", "Clinic Network",
+      "Accountable Care Organization", "ACO", "Clinically Integrated Network", "CIN",
+      "Independent Practice Association", "IPA", "Physician Hospital Organization", "PHO",
+      "Management Services Organization", "MSO", "Group Practice", "Solo Practice",
+      "Multi-specialty Practice", "Single-specialty Practice", "Academic Medical Center", "AMC"
+    ],
+    "governance": [
+      "Board of Directors", "Board of Trustees", "Medical Staff", "Medical Executive Committee",
+      "Credentials Committee", "Quality Committee", "Pharmacy and Therapeutics Committee", "P&T",
+      "Infection Control Committee", "Safety Committee", "Ethics Committee", "IRB",
+      "Institutional Review Board", "Chief Executive Officer", "CEO", "Chief Medical Officer", "CMO",
+      "Chief Nursing Officer", "CNO", "Chief Financial Officer", "CFO", "Chief Information Officer", "CIO"
+    ],
+    "accreditation": [
+      "Joint Commission", "TJC", "NCQA", "AAAHC", "HFAP", "DNV", "CMS Conditions of Participation",
+      "CoP", "Deemed Status", "Accreditation", "Certification", "Licensure", "Credentialing",
+      "Privileging", "Peer Review", "Ongoing Professional Practice Evaluation", "OPPE",
+      "Focused Professional Practice Evaluation", "FPPE", "Maintenance of Certification", "MOC"
+    ],
+    "strategic_planning": [
+      "Strategic Plan", "Mission Statement", "Vision Statement", "Values", "Goals", "Objectives",
+      "Key Performance Indicators", "KPIs", "Balanced Scorecard", "Dashboard", "Metrics",
+      "Benchmarking", "Best Practices", "Performance Improvement", "Change Management",
+      "Stakeholder Engagement", "Community Health Needs Assessment", "CHNA", "Implementation Strategy"
+    ]
+  },
+  "healthcare_finance": {
+    "payment_models": [
+      "Fee-for-Service", "FFS", "Capitation", "Bundled Payment", "Episode-Based Payment",
+      "Value-Based Payment", "Pay-for-Performance", "P4P", "Shared Savings", "Risk Sharing",
+      "Global Payment", "Per Member Per Month", "PMPM", "Diagnosis Related Group", "DRG",
+      "Ambulatory Payment Classification", "APC", "Resource-Based Relative Value Scale", "RBRVS"
+    ],
+    "insurance": [
+      "Health Insurance", "Medical Insurance", "Health Plan", "Managed Care", "HMO", "PPO",
+      "EPO", "POS", "High Deductible Health Plan", "HDHP", "Health Savings Account", "HSA",
+      "Flexible Spending Account", "FSA", "Medicare", "Medicaid", "CHIP", "Tricare",
+      "Workers' Compensation", "Premium", "Deductible", "Copayment", "Coinsurance", "Out-of-Pocket Maximum"
+    ],
+    "revenue_cycle": [
+      "Revenue Cycle Management", "RCM", "Patient Registration", "Insurance Verification",
+      "Authorization", "Pre-authorization", "Charge Capture", "Coding", "Billing",
+      "Claims Processing", "Claims Submission", "Adjudication", "Payment Posting", "Denial Management",
+      "Appeals", "Collections", "Bad Debt", "Charity Care", "Patient Financial Services",
+      "Days in Accounts Receivable", "AR", "Clean Claim Rate", "Denial Rate", "Collection Rate"
+    ],
+    "financial_management": [
+      "Budget", "Operating Budget", "Capital Budget", "Cash Flow", "Working Capital",
+      "Accounts Receivable", "Accounts Payable", "Revenue", "Expenses", "EBITDA",
+      "Operating Margin", "Net Margin", "Return on Investment", "ROI", "Cost Center",
+      "Profit Center", "Cost Accounting", "Activity-Based Costing", "ABC", "Break-Even Analysis"
+    ]
+  },
+  "pharmaceuticals": {
+    "drug_development": [
+      "Pharmaceutical", "Drug", "Medication", "Medicine", "Active Ingredient", "Excipient",
+      "Formulation", "Dosage Form", "Route of Administration", "Bioavailability", "Bioequivalence",
+      "Pharmacokinetics", "Pharmacodynamics", "Therapeutic Index", "Half-life", "Clearance",
+      "Clinical Trial", "Phase I", "Phase II", "Phase III", "Phase IV", "FDA Approval",
+      "New Drug Application", "NDA", "Investigational New Drug", "IND", "Good Manufacturing Practice", "GMP"
+    ],
+    "pharmacy_operations": [
+      "Pharmacy", "Pharmacist", "Pharmacy Technician", "Dispensing", "Prescription", "Rx",
+      "Over-the-Counter", "OTC", "Generic Drug", "Brand Drug", "Biosimilar", "Specialty Pharmacy",
+      "Mail Order Pharmacy", "Telepharmacy", "Automated Dispensing Device", "ADD",
+      "Unit Dose", "Blister Pack", "Medication Reconciliation", "Drug Interaction",
+      "Contraindication", "Side Effect", "Adverse Drug Reaction", "ADR", "Medication Error"
+    ],
+    "pharmacy_management": [
+      "Formulary", "Pharmacy and Therapeutics Committee", "P&T", "Drug Utilization Review", "DUR",
+      "Prior Authorization", "Step Therapy", "Quantity Limits", "Therapeutic Substitution",
+      "Generic Substitution", "Medication Therapy Management", "MTM", "Clinical Pharmacy",
+      "Pharmaceutical Care", "Drug Information", "Poison Control", "Pharmacovigilance",
+      "Medication Safety", "Root Cause Analysis", "RCA", "Failure Mode and Effects Analysis", "FMEA"
+    ]
+  },
+  "medical_devices": {
+    "device_categories": [
+      "Medical Device", "Diagnostic Device", "Therapeutic Device", "Monitoring Device",
+      "Implantable Device", "Wearable Device", "Class I Device", "Class II Device", "Class III Device",
+      "510(k)", "Premarket Approval", "PMA", "De Novo", "FDA Clearance", "CE Marking",
+      "Medical Device Reporting", "MDR", "Adverse Event", "Malfunction", "Device Recall"
+    ],
+    "imaging_equipment": [
+      "X-ray", "Computed Tomography", "CT", "Magnetic Resonance Imaging", "MRI",
+      "Ultrasound", "Mammography", "Nuclear Medicine", "PET Scan", "SPECT",
+      "Fluoroscopy", "Digital Radiography", "PACS", "Picture Archiving and Communication System",
+      "Radiology Information System", "RIS", "Teleradiology", "3D Imaging", "Contrast Agent"
+    ],
+    "laboratory_equipment": [
+      "Laboratory", "Clinical Laboratory", "Lab Test", "Laboratory Information System", "LIS",
+      "Analyzer", "Chemistry Analyzer", "Hematology Analyzer", "Immunoassay", "Molecular Diagnostics",
+      "Point-of-Care Testing", "POCT", "Rapid Test", "Specimen", "Sample", "Quality Control",
+      "Quality Assurance", "Proficiency Testing", "CLIA", "Clinical Laboratory Improvement Amendments",
+      "Laboratory Developed Test", "LDT", "Companion Diagnostic"
+    ]
+  },
+  "public_health": {
+    "population_health": [
+      "Population Health", "Community Health", "Public Health", "Epidemiology", "Biostatistics",
+      "Health Promotion", "Disease Prevention", "Health Education", "Social Determinants of Health",
+      "Health Disparities", "Health Equity", "Environmental Health", "Occupational Health",
+      "Global Health", "One Health", "Health in All Policies", "Health Impact Assessment", "HIA"
+    ],
+    "surveillance": [
+      "Disease Surveillance", "Syndromic Surveillance", "Sentinel Surveillance", "Active Surveillance",
+      "Passive Surveillance", "Notifiable Disease", "Reportable Condition", "Outbreak Investigation",
+      "Contact Tracing", "Case Definition", "Attack Rate", "Incidence Rate", "Prevalence Rate",
+      "Mortality Rate", "Case Fatality Rate", "Reproductive Number", "R0", "Herd Immunity"
+    ],
+    "emergency_preparedness": [
+      "Emergency Preparedness", "Disaster Response", "Business Continuity", "Emergency Management",
+      "Incident Command System", "ICS", "Hospital Emergency Incident Command System", "HEICS",
+      "Surge Capacity", "Mass Casualty Incident", "MCI", "Pandemic Preparedness", "Bioterrorism",
+      "Chemical Emergency", "Radiation Emergency", "All-Hazards Approach", "Risk Assessment",
+      "Vulnerability Assessment", "Emergency Operations Plan", "EOP", "Drill", "Exercise"
+    ]
+  },
+  "healthcare_technology": {
+    "health_it_systems": [
+      "Health Information Technology", "HIT", "Electronic Health Record", "EHR", "Electronic Medical Record", "EMR",
+      "Practice Management System", "PMS", "Revenue Cycle Management System", "RCM",
+      "Clinical Decision Support System", "CDSS", "Computerized Physician Order Entry", "CPOE",
+      "Medication Administration Record", "eMAR", "Patient Portal", "Mobile Health", "mHealth",
+      "Telemedicine", "Telehealth", "Remote Patient Monitoring", "RPM", "Wearable Technology"
+    ],
+    "interoperability": [
+      "Interoperability", "Health Information Exchange", "HIE", "Health Level 7", "HL7",
+      "Fast Healthcare Interoperability Resources", "FHIR", "Direct Trust", "Nationwide Health Information Network", "NwHIN",
+      "Clinical Document Architecture", "CDA", "Continuity of Care Document", "CCD",
+      "Application Programming Interface", "API", "Data Standards", "Vocabulary Standards",
+      "Semantic Interoperability", "Syntactic Interoperability", "Organizational Interoperability"
+    ],
+    "emerging_technologies": [
+      "Artificial Intelligence", "AI", "Machine Learning", "ML", "Deep Learning", "Neural Networks",
+      "Natural Language Processing", "NLP", "Computer Vision", "Robotics", "Surgical Robotics",
+      "Internet of Things", "IoT", "Internet of Medical Things", "IoMT", "Blockchain",
+      "Cloud Computing", "Edge Computing", "5G", "Augmented Reality", "AR", "Virtual Reality", "VR",
+      "Digital Therapeutics", "Digital Biomarkers", "Precision Medicine", "Personalized Medicine"
+    ]
+  },
+  "research_development": {
+    "clinical_research": [
+      "Clinical Research", "Clinical Trial", "Randomized Controlled Trial", "RCT", "Observational Study",
+      "Cohort Study", "Case-Control Study", "Cross-Sectional Study", "Systematic Review", "Meta-Analysis",
+      "Evidence-Based Medicine", "EBM", "Research Protocol", "Informed Consent", "Institutional Review Board", "IRB",
+      "Good Clinical Practice", "GCP", "Principal Investigator", "PI", "Clinical Research Coordinator", "CRC",
+      "Data and Safety Monitoring Board", "DSMB", "Clinical Trial Management System", "CTMS"
+    ],
+    "translational_research": [
+      "Translational Research", "Bench to Bedside", "T1 Research", "T2 Research", "T3 Research", "T4 Research",
+      "Basic Science", "Preclinical Research", "Animal Models", "In Vitro", "In Vivo", "Biomarker",
+      "Surrogate Endpoint", "Clinical Endpoint", "Primary Endpoint", "Secondary Endpoint",
+      "Proof of Concept", "First-in-Human", "Investigational Device Exemption", "IDE",
+      "Orphan Drug", "Breakthrough Therapy", "Fast Track", "Accelerated Approval", "Priority Review"
+    ],
+    "regulatory_affairs": [
+      "Food and Drug Administration", "FDA", "European Medicines Agency", "EMA", "Health Canada",
+      "Therapeutic Products Directorate", "TPD", "Pharmaceuticals and Medical Devices Agency", "PMDA",
+      "Good Manufacturing Practice", "GMP", "Good Laboratory Practice", "GLP", "Good Clinical Practice", "GCP",
+      "International Council for Harmonisation", "ICH", "Code of Federal Regulations", "CFR",
+      "FDA Guidance", "Regulatory Submission", "Regulatory Strategy", "Regulatory Science"
+    ]
+  },
+  "specialty_areas": {
+    "mental_health": [
+      "Mental Health", "Behavioral Health", "Psychiatric", "Psychology", "Psychiatry",
+      "Depression", "Anxiety", "Bipolar Disorder", "Schizophrenia", "PTSD", "ADHD",
+      "Substance Abuse", "Addiction", "Rehabilitation", "Therapy", "Counseling",
+      "Psychotherapy", "Cognitive Behavioral Therapy", "CBT", "Mental Health Parity",
+      "Crisis Intervention", "Suicide Prevention", "Peer Support", "Recovery"
+    ],
+    "long_term_care": [
+      "Long-Term Care", "LTC", "Skilled Nursing Facility", "SNF", "Nursing Home",
+      "Assisted Living", "Independent Living", "Memory Care", "Adult Day Care",
+      "Home Health", "Home Care", "Hospice", "Palliative Care", "Respite Care",
+      "Activities of Daily Living", "ADL", "Instrumental Activities of Daily Living", "IADL",
+      "Minimum Data Set", "MDS", "Resource Utilization Groups", "RUG", "Care Planning"
+    ],
+    "pediatrics": [
+      "Pediatric", "Neonatal", "Infant", "Child", "Adolescent", "Growth and Development",
+      "Immunization", "Vaccination", "Well-Child Visit", "Developmental Milestone",
+      "Pediatric Intensive Care Unit", "PICU", "Neonatal Intensive Care Unit", "NICU",
+      "Children's Hospital", "Pediatric Emergency Medicine", "Child Life Specialist",
+      "Family-Centered Care", "Childhood Obesity", "Developmental Delays"
+    ]
+  }
+}

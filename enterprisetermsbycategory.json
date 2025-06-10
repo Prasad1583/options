@@ -1,0 +1,276 @@
+{
+  "finance_accounting": {
+    "financial_statements": [
+      "Balance Sheet", "Income Statement", "Cash Flow Statement", "Statement of Equity",
+      "P&L", "EBITDA", "EBIT", "Net Income", "Gross Profit", "Operating Income",
+      "Revenue", "Cost of Goods Sold", "Operating Expenses", "Assets", "Liabilities",
+      "Equity", "Working Capital", "Current Ratio", "Quick Ratio", "Debt-to-Equity"
+    ],
+    "budgeting_planning": [
+      "Annual Budget", "Capital Budget", "Operating Budget", "Cash Budget",
+      "Rolling Forecast", "Variance Analysis", "Budget Allocation", "Cost Center",
+      "Profit Center", "Investment Center", "Zero-Based Budgeting", "Incremental Budgeting",
+      "Activity-Based Costing", "Standard Costing", "Actual vs Budget", "FP&A"
+    ],
+    "metrics_kpis": [
+      "ROI", "ROA", "ROE", "NPV", "IRR", "Payback Period", "WACC", "EVA",
+      "ROIC", "Gross Margin", "Operating Margin", "Net Margin", "Asset Turnover",
+      "Inventory Turnover", "Receivables Turnover", "Days Sales Outstanding",
+      "Days Payable Outstanding", "Cash Conversion Cycle", "Burn Rate", "Runway"
+    ],
+    "corporate_finance": [
+      "IPO", "M&A", "Due Diligence", "Valuation", "DCF", "Multiples", "Synergies",
+      "Acquisition", "Merger", "Divestiture", "Spin-off", "Joint Venture",
+      "Private Equity", "Venture Capital", "Debt Financing", "Equity Financing",
+      "Convertible Notes", "Preferred Stock", "Common Stock", "Dividends", "Share Buyback"
+    ]
+  },
+  "operations_management": {
+    "supply_chain": [
+      "Procurement", "Sourcing", "Vendor Management", "Supplier Relationship",
+      "Purchase Order", "RFP", "RFQ", "Contract Management", "SLA", "KPI",
+      "Inventory Management", "JIT", "EOQ", "Safety Stock", "Reorder Point",
+      "Lead Time", "Cycle Time", "Logistics", "Distribution", "Warehousing",
+      "Fulfillment", "Drop Shipping", "Cross-docking", "3PL", "4PL"
+    ],
+    "quality_management": [
+      "Quality Assurance", "Quality Control", "Six Sigma", "Lean", "Kaizen",
+      "Total Quality Management", "ISO 9001", "ISO 14001", "ISO 27001",
+      "DMAIC", "Root Cause Analysis", "5 Whys", "Fishbone Diagram",
+      "Pareto Analysis", "Control Charts", "Process Improvement", "Continuous Improvement",
+      "Benchmarking", "Best Practices", "Standard Operating Procedures"
+    ],
+    "project_management": [
+      "Agile", "Waterfall", "Scrum", "Kanban", "Sprint", "Epic", "User Story",
+      "Backlog", "Stand-up", "Retrospective", "Product Owner", "Scrum Master",
+      "PMO", "PMP", "Gantt Chart", "Critical Path", "Milestone", "Deliverable",
+      "Work Breakdown Structure", "Risk Management", "Change Management",
+      "Stakeholder Management", "Resource Planning", "Timeline", "Budget", "Scope"
+    ],
+    "process_optimization": [
+      "Business Process Reengineering", "Workflow", "Automation", "RPA",
+      "Digital Transformation", "Process Mapping", "Value Stream Mapping",
+      "Bottleneck Analysis", "Capacity Planning", "Resource Optimization",
+      "Efficiency", "Productivity", "Throughput", "Cycle Time Reduction",
+      "Waste Elimination", "5S", "Gemba", "Poka-Yoke", "Standardization"
+    ]
+  },
+  "human_resources": {
+    "talent_management": [
+      "Recruitment", "Hiring", "Onboarding", "Employee Lifecycle", "Talent Acquisition",
+      "Employer Branding", "Candidate Experience", "Background Check", "Reference Check",
+      "Job Description", "Job Posting", "Interview Process", "Assessment", "Offer Letter",
+      "Compensation", "Benefits", "Total Rewards", "Equity Compensation", "Stock Options"
+    ],
+    "performance_management": [
+      "Performance Review", "360 Feedback", "Goal Setting", "OKRs", "KPIs",
+      "Performance Improvement Plan", "Career Development", "Succession Planning",
+      "High Potential", "Talent Pipeline", "Leadership Development", "Mentoring",
+      "Coaching", "Training", "Learning & Development", "Skills Assessment",
+      "Competency Framework", "Performance Rating", "Calibration", "Promotion"
+    ],
+    "employee_relations": [
+      "Employee Engagement", "Employee Satisfaction", "Retention", "Turnover",
+      "Exit Interview", "Employee Survey", "Culture", "Values", "Code of Conduct",
+      "Diversity & Inclusion", "Equity", "Belonging", "Unconscious Bias",
+      "Employee Resource Group", "Work-Life Balance", "Flexible Work", "Remote Work",
+      "Hybrid Work", "Wellness Program", "Employee Assistance Program"
+    ],
+    "compliance_legal": [
+      "Employment Law", "EEOC", "ADA", "FMLA", "FLSA", "Title VII",
+      "Harassment", "Discrimination", "Workplace Investigation", "Grievance",
+      "Disciplinary Action", "Termination", "Layoff", "WARN Act",
+      "Workers Compensation", "OSHA", "Safety", "Risk Management",
+      "Employment Contract", "Non-Disclosure Agreement", "Non-Compete"
+    ]
+  },
+  "information_technology": {
+    "infrastructure": [
+      "Cloud Computing", "On-Premises", "Hybrid Cloud", "Multi-Cloud", "SaaS",
+      "PaaS", "IaaS", "Virtualization", "Containers", "Microservices",
+      "API", "REST", "SOAP", "GraphQL", "Database", "Data Warehouse",
+      "Big Data", "Analytics", "Business Intelligence", "ETL", "Data Pipeline",
+      "Server", "Network", "Storage", "Backup", "Disaster Recovery"
+    ],
+    "security": [
+      "Cybersecurity", "Information Security", "Data Protection", "Privacy",
+      "GDPR", "CCPA", "SOX", "PCI DSS", "HIPAA", "Encryption",
+      "Multi-Factor Authentication", "Single Sign-On", "Identity Management",
+      "Access Control", "Privilege Management", "Vulnerability Management",
+      "Penetration Testing", "Security Audit", "Incident Response",
+      "Risk Assessment", "Threat Intelligence", "Zero Trust", "VPN"
+    ],
+    "development": [
+      "Software Development", "SDLC", "DevOps", "CI/CD", "Agile Development",
+      "Version Control", "Git", "Code Review", "Testing", "QA",
+      "Unit Testing", "Integration Testing", "UAT", "Bug Tracking",
+      "Release Management", "Deployment", "Rollback", "Hotfix",
+      "Technical Debt", "Refactoring", "Documentation", "API Documentation"
+    ],
+    "governance": [
+      "IT Governance", "IT Strategy", "Digital Strategy", "Technology Roadmap",
+      "Architecture Review", "Technical Standards", "Change Management",
+      "ITIL", "Service Management", "SLA", "Incident Management",
+      "Problem Management", "Configuration Management", "Asset Management",
+      "Vendor Management", "Contract Management", "Budget Management"
+    ]
+  },
+  "marketing_sales": {
+    "marketing_strategy": [
+      "Brand Strategy", "Brand Positioning", "Brand Identity", "Brand Equity",
+      "Market Research", "Customer Insights", "Market Segmentation", "Target Market",
+      "Buyer Persona", "Customer Journey", "Value Proposition", "Messaging",
+      "Go-to-Market Strategy", "Product Marketing", "Content Marketing",
+      "Digital Marketing", "Social Media Marketing", "Email Marketing", "SEO", "SEM"
+    ],
+    "sales_process": [
+      "Sales Funnel", "Lead Generation", "Lead Qualification", "Prospecting",
+      "Cold Calling", "Warm Calling", "Discovery Call", "Needs Assessment",
+      "Proposal", "Quotation", "Negotiation", "Closing", "Objection Handling",
+      "Follow-up", "Upselling", "Cross-selling", "Account Management",
+      "Customer Retention", "Churn", "Win Rate", "Sales Cycle"
+    ],
+    "metrics_analytics": [
+      "CAC", "LTV", "LTV/CAC Ratio", "MRR", "ARR", "Churn Rate",
+      "Net Revenue Retention", "Gross Revenue Retention", "Monthly Active Users",
+      "Daily Active Users", "Conversion Rate", "Click-Through Rate",
+      "Cost Per Click", "Cost Per Acquisition", "Return on Ad Spend",
+      "Marketing Qualified Lead", "Sales Qualified Lead", "Pipeline Velocity"
+    ],
+    "customer_experience": [
+      "Customer Success", "Customer Support", "Customer Service", "Help Desk",
+      "Ticketing System", "SLA", "First Call Resolution", "Customer Satisfaction",
+      "Net Promoter Score", "Customer Effort Score", "Voice of Customer",
+      "Customer Feedback", "Customer Advisory Board", "User Experience",
+      "User Interface", "Usability", "Customer Onboarding", "Training"
+    ]
+  },
+  "strategy_planning": {
+    "strategic_planning": [
+      "Vision Statement", "Mission Statement", "Strategic Objectives", "Strategic Goals",
+      "Strategic Initiatives", "Strategic Plan", "Business Strategy", "Corporate Strategy",
+      "Competitive Strategy", "SWOT Analysis", "Porter's Five Forces", "Blue Ocean Strategy",
+      "Strategic Roadmap", "Balanced Scorecard", "Strategy Map", "Strategic Alignment",
+      "Resource Allocation", "Portfolio Management", "Strategic Review", "Strategic Pivot"
+    ],
+    "competitive_analysis": [
+      "Market Analysis", "Competitive Intelligence", "Competitor Benchmarking",
+      "Market Share", "Market Position", "Competitive Advantage", "Differentiation",
+      "Value Chain Analysis", "Core Competencies", "Barriers to Entry",
+      "Substitute Products", "Competitive Response", "Market Dynamics",
+      "Industry Analysis", "Trend Analysis", "Scenario Planning", "War Gaming"
+    ],
+    "business_development": [
+      "Partnership", "Strategic Alliance", "Joint Venture", "Licensing",
+      "Channel Partnership", "Reseller Agreement", "Distribution Agreement",
+      "OEM Agreement", "Technology Partnership", "Integration Partnership",
+      "Business Model", "Revenue Model", "Pricing Strategy", "Market Entry",
+      "Market Expansion", "Geographic Expansion", "Product Line Extension"
+    ],
+    "innovation": [
+      "Innovation Strategy", "R&D", "Product Development", "Innovation Pipeline",
+      "Idea Generation", "Concept Development", "Prototype", "MVP",
+      "Design Thinking", "Lean Startup", "Innovation Lab", "Incubator",
+      "Accelerator", "Digital Innovation", "Disruptive Innovation",
+      "Incremental Innovation", "Breakthrough Innovation", "Open Innovation"
+    ]
+  },
+  "governance_compliance": {
+    "corporate_governance": [
+      "Board of Directors", "Board Composition", "Board Independence",
+      "Board Committees", "Audit Committee", "Compensation Committee",
+      "Nominating Committee", "Executive Committee", "CEO", "CFO",
+      "Corporate Secretary", "Shareholder Rights", "Proxy Statement",
+      "Annual Meeting", "Corporate Bylaws", "Articles of Incorporation"
+    ],
+    "risk_management": [
+      "Enterprise Risk Management", "Risk Assessment", "Risk Matrix",
+      "Risk Register", "Risk Appetite", "Risk Tolerance", "Risk Mitigation",
+      "Risk Monitoring", "Risk Reporting", "Operational Risk", "Financial Risk",
+      "Strategic Risk", "Compliance Risk", "Reputational Risk", "Cyber Risk",
+      "Business Continuity", "Crisis Management", "Insurance", "Internal Controls"
+    ],
+    "compliance": [
+      "Regulatory Compliance", "Audit", "Internal Audit", "External Audit",
+      "Compliance Program", "Policies and Procedures", "Training and Awareness",
+      "Monitoring and Testing", "Corrective Action", "Remediation",
+      "Whistleblower", "Ethics", "Code of Conduct", "Conflict of Interest",
+      "Anti-Corruption", "Anti-Money Laundering", "Data Privacy", "Environmental"
+    ],
+    "legal": [
+      "Contract Management", "Legal Review", "Terms and Conditions",
+      "Service Agreement", "Master Service Agreement", "Statement of Work",
+      "Non-Disclosure Agreement", "Intellectual Property", "Patent", "Trademark",
+      "Copyright", "Trade Secret", "Litigation", "Dispute Resolution",
+      "Arbitration", "Mediation", "Settlement", "Indemnification", "Liability"
+    ]
+  },
+  "customer_management": {
+    "customer_relationship": [
+      "CRM", "Customer Database", "Customer Profile", "Customer Segmentation",
+      "Customer Lifecycle", "Customer Acquisition", "Customer Retention",
+      "Customer Development", "Customer Expansion", "Account Planning",
+      "Key Account", "Strategic Account", "Customer Health Score",
+      "Customer Success Plan", "Quarterly Business Review", "Executive Briefing"
+    ],
+    "service_delivery": [
+      "Service Level Agreement", "Service Catalog", "Service Delivery",
+      "Professional Services", "Implementation", "Configuration", "Customization",
+      "Integration", "Data Migration", "Go-Live", "Hypercare", "Support",
+      "Maintenance", "Upgrade", "Enhancement", "Change Request", "Scope Creep"
+    ],
+    "account_management": [
+      "Account Executive", "Account Manager", "Customer Success Manager",
+      "Technical Account Manager", "Relationship Manager", "Account Plan",
+      "Account Review", "Renewal", "Expansion", "Upsell", "Cross-sell",
+      "Contract Negotiation", "Pricing", "Discount", "Reference Customer",
+      "Case Study", "Testimonial", "User Conference", "Advisory Board"
+    ]
+  },
+  "business_intelligence": {
+    "data_management": [
+      "Data Governance", "Data Quality", "Data Integrity", "Data Lineage",
+      "Master Data Management", "Data Dictionary", "Data Catalog",
+      "Data Warehouse", "Data Lake", "Data Mart", "ETL", "ELT",
+      "Data Pipeline", "Real-time Data", "Batch Processing", "Stream Processing",
+      "Data Integration", "Data Migration", "Data Backup", "Data Archiving"
+    ],
+    "analytics": [
+      "Business Intelligence", "Reporting", "Dashboard", "Scorecard",
+      "Key Performance Indicator", "Metric", "Dimension", "Measure",
+      "OLAP", "Data Mining", "Predictive Analytics", "Prescriptive Analytics",
+      "Machine Learning", "Artificial Intelligence", "Statistical Analysis",
+      "Trend Analysis", "Forecasting", "What-If Analysis", "Sensitivity Analysis"
+    ],
+    "decision_support": [
+      "Decision Support System", "Executive Information System", "Management Information System",
+      "Business Performance Management", "Corporate Performance Management",
+      "Planning and Budgeting", "Financial Planning", "Scenario Planning",
+      "Simulation", "Optimization", "Business Rules", "Alert", "Exception Reporting",
+      "Drill-down", "Drill-through", "Slice and Dice", "Pivot", "Ad-hoc Query"
+    ]
+  },
+  "digital_transformation": {
+    "transformation_strategy": [
+      "Digital Strategy", "Digital Roadmap", "Digital Maturity", "Digital Adoption",
+      "Change Management", "Organizational Change", "Culture Change",
+      "Digital Culture", "Digital Skills", "Digital Literacy", "Training",
+      "Communication", "Stakeholder Engagement", "Resistance Management",
+      "Success Metrics", "ROI", "Value Realization", "Benefits Tracking"
+    ],
+    "technology_enablers": [
+      "Cloud Migration", "Legacy Modernization", "System Integration",
+      "API Management", "Microservices", "Containerization", "DevOps",
+      "Automation", "Robotic Process Automation", "Artificial Intelligence",
+      "Machine Learning", "Internet of Things", "Edge Computing", "5G",
+      "Blockchain", "Augmented Reality", "Virtual Reality", "Mobile-First"
+    ],
+    "process_digitization": [
+      "Process Automation", "Digital Workflow", "Electronic Forms",
+      "Digital Signature", "Document Management", "Content Management",
+      "Knowledge Management", "Self-Service", "Chatbot", "Virtual Assistant",
+      "Omnichannel", "Customer Portal", "Employee Portal", "Mobile App",
+      "Progressive Web App", "No-Code", "Low-Code", "Citizen Developer"
+    ]
+  }
+}

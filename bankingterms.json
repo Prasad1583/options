@@ -1,0 +1,295 @@
+{
+  "core_banking": {
+    "accounts": [
+      "Checking Account", "Savings Account", "Current Account", "Time Deposit", "Certificate of Deposit",
+      "Money Market Account", "Individual Retirement Account", "IRA", "401k", "Business Account",
+      "Joint Account", "Trust Account", "Custodial Account", "Escrow Account", "Dormant Account",
+      "Frozen Account", "Overdrawn Account", "Account Balance", "Available Balance", "Ledger Balance"
+    ],
+    "deposits": [
+      "Demand Deposit", "Term Deposit", "Fixed Deposit", "Recurring Deposit", "Call Deposit",
+      "Notice Deposit", "Deposit Insurance", "FDIC", "Deposit Slip", "Direct Deposit",
+      "Wire Transfer", "ACH", "Check Deposit", "Mobile Deposit", "ATM Deposit",
+      "Cash Deposit", "Deposit Hold", "Deposit Float", "Deposit Sweep", "Deposit Rate"
+    ],
+    "withdrawals": [
+      "Cash Withdrawal", "ATM Withdrawal", "Check Withdrawal", "Wire Transfer", "Electronic Transfer",
+      "Overdraft", "Overdraft Protection", "Insufficient Funds", "NSF", "Returned Check",
+      "Withdrawal Limit", "Daily Limit", "Transaction Limit", "Early Withdrawal Penalty"
+    ],
+    "transactions": [
+      "Debit Transaction", "Credit Transaction", "Electronic Transaction", "Manual Transaction",
+      "Batch Processing", "Real-Time Processing", "Transaction Fee", "Service Charge",
+      "Maintenance Fee", "Monthly Fee", "Annual Fee", "Transaction History", "Statement",
+      "E-Statement", "Transaction Code", "Reference Number", "Confirmation Number"
+    ]
+  },
+  "lending_credit": {
+    "loan_types": [
+      "Personal Loan", "Auto Loan", "Home Loan", "Mortgage", "Business Loan", "Commercial Loan",
+      "Term Loan", "Line of Credit", "Revolving Credit", "Installment Loan", "Secured Loan",
+      "Unsecured Loan", "Fixed Rate Loan", "Variable Rate Loan", "Adjustable Rate Mortgage", "ARM",
+      "Jumbo Loan", "Conforming Loan", "Non-Conforming Loan", "Subprime Loan", "Prime Loan"
+    ],
+    "credit_terms": [
+      "Principal", "Interest", "Interest Rate", "APR", "Annual Percentage Rate", "Compound Interest",
+      "Simple Interest", "Prime Rate", "Base Rate", "Spread", "Margin", "Points", "Origination Fee",
+      "Closing Costs", "Down Payment", "Loan-to-Value", "LTV", "Debt-to-Income", "DTI",
+      "Credit Score", "FICO Score", "Credit Report", "Credit Bureau", "Credit History"
+    ],
+    "loan_process": [
+      "Loan Application", "Pre-approval", "Pre-qualification", "Underwriting", "Credit Analysis",
+      "Income Verification", "Asset Verification", "Employment Verification", "Appraisal",
+      "Title Search", "Loan Approval", "Loan Commitment", "Loan Closing", "Funding",
+      "Loan Servicing", "Payment Processing", "Escrow", "Amortization", "Prepayment"
+    ],
+    "credit_cards": [
+      "Credit Card", "Debit Card", "Prepaid Card", "Charge Card", "Secured Credit Card",
+      "Unsecured Credit Card", "Rewards Card", "Cashback Card", "Travel Card", "Business Card",
+      "Credit Limit", "Available Credit", "Minimum Payment", "Grace Period", "Finance Charge",
+      "Balance Transfer", "Cash Advance", "Overlimit Fee", "Late Fee", "Annual Fee"
+    ]
+  },
+  "payments_transfers": {
+    "payment_methods": [
+      "Cash", "Check", "Electronic Check", "e-Check", "Wire Transfer", "ACH Transfer",
+      "Direct Deposit", "Direct Debit", "Standing Order", "Automatic Payment", "Bill Pay",
+      "Mobile Payment", "Online Payment", "Card Payment", "Contactless Payment", "NFC Payment"
+    ],
+    "payment_systems": [
+      "SWIFT", "Fedwire", "CHIPS", "ACH Network", "Real-Time Payments", "RTP", "FedNow",
+      "Zelle", "PayPal", "Venmo", "Apple Pay", "Google Pay", "Samsung Pay", "Interbank Network",
+      "SEPA", "TARGET2", "CHAPS", "Faster Payments", "UPI", "RTGS", "NEFT"
+    ],
+    "international": [
+      "Cross-Border Payment", "International Wire", "Foreign Exchange", "FX", "Currency Exchange",
+      "Exchange Rate", "Spot Rate", "Forward Rate", "Currency Conversion", "Remittance",
+      "SWIFT Code", "BIC", "IBAN", "Routing Number", "Sort Code", "Correspondent Banking",
+      "Nostro Account", "Vostro Account", "Documentary Credit", "Letter of Credit"
+    ],
+    "processing": [
+      "Payment Processing", "Transaction Processing", "Batch Processing", "Real-Time Processing",
+      "Settlement", "Clearing", "Reconciliation", "Payment Gateway", "Merchant Services",
+      "POS Terminal", "Card Reader", "EMV", "Chip and PIN", "Contactless", "Tokenization"
+    ]
+  },
+  "investment_banking": {
+    "capital_markets": [
+      "Primary Market", "Secondary Market", "IPO", "Initial Public Offering", "Secondary Offering",
+      "Private Placement", "Public Offering", "Equity", "Debt", "Bond", "Stock", "Share",
+      "Security", "Instrument", "Underwriting", "Syndicate", "Book Building", "Roadshow",
+      "Due Diligence", "Prospectus", "Red Herring", "Green Shoe Option", "Lock-up Period"
+    ],
+    "mergers_acquisitions": [
+      "Merger", "Acquisition", "M&A", "Takeover", "Hostile Takeover", "Friendly Takeover",
+      "Due Diligence", "Valuation", "Fairness Opinion", "Letter of Intent", "LOI",
+      "Definitive Agreement", "Closing", "Escrow", "Earnout", "Synergy", "Integration",
+      "Divestiture", "Spin-off", "Carve-out", "Leveraged Buyout", "LBO", "Management Buyout", "MBO"
+    ],
+    "trading": [
+      "Trading", "Market Making", "Proprietary Trading", "Algorithmic Trading", "High-Frequency Trading",
+      "HFT", "Dark Pool", "Liquidity", "Bid", "Ask", "Spread", "Market Order", "Limit Order",
+      "Stop Order", "Fill", "Execution", "Slippage", "Volatility", "Volume", "Open Interest",
+      "Long Position", "Short Position", "Hedge", "Arbitrage", "Scalping", "Day Trading"
+    ],
+    "structured_products": [
+      "Structured Product", "Derivative", "Option", "Future", "Forward", "Swap", "CDS",
+      "Credit Default Swap", "Asset-Backed Security", "ABS", "Mortgage-Backed Security", "MBS",
+      "Collateralized Debt Obligation", "CDO", "Collateralized Loan Obligation", "CLO",
+      "Securitization", "Tranche", "Senior Tranche", "Subordinate Tranche", "Waterfall"
+    ]
+  },
+  "commercial_banking": {
+    "business_services": [
+      "Business Banking", "Commercial Banking", "Corporate Banking", "Cash Management",
+      "Treasury Services", "Trade Finance", "Working Capital", "Factoring", "Invoice Financing",
+      "Asset-Based Lending", "Equipment Financing", "Real Estate Finance", "Construction Loan",
+      "Bridge Loan", "Mezzanine Financing", "Syndicated Loan", "Club Deal", "Participation"
+    ],
+    "trade_finance": [
+      "Letter of Credit", "LC", "Documentary Credit", "Standby Letter of Credit", "SBLC",
+      "Bank Guarantee", "Performance Guarantee", "Bid Bond", "Performance Bond", "Advance Payment Guarantee",
+      "Trade Finance", "Export Finance", "Import Finance", "Pre-shipment Finance", "Post-shipment Finance",
+      "Bill of Lading", "Invoice", "Packing List", "Certificate of Origin", "Insurance Certificate"
+    ],
+    "cash_management": [
+      "Cash Management", "Concentration Banking", "Zero Balance Account", "ZBA", "Sweep Account",
+      "Lockbox", "Remote Deposit Capture", "RDC", "Positive Pay", "Reverse Positive Pay",
+      "Account Reconciliation", "Balance Reporting", "Wire Transfer", "ACH", "Controlled Disbursement",
+      "Payroll Services", "Employee Benefits", "HSA", "FSA", "Expense Management"
+    ]
+  },
+  "risk_management": {
+    "credit_risk": [
+      "Credit Risk", "Default Risk", "Credit Rating", "Credit Score", "Probability of Default", "PD",
+      "Loss Given Default", "LGD", "Exposure at Default", "EAD", "Expected Loss", "Unexpected Loss",
+      "Credit VaR", "Economic Capital", "Risk-Adjusted Return", "RAROC", "Credit Concentration",
+      "Single Name Concentration", "Sector Concentration", "Geographic Concentration", "Correlation Risk"
+    ],
+    "market_risk": [
+      "Market Risk", "Interest Rate Risk", "Currency Risk", "Equity Risk", "Commodity Risk",
+      "Volatility Risk", "Liquidity Risk", "Basis Risk", "Value at Risk", "VaR", "Expected Shortfall",
+      "Stress Testing", "Scenario Analysis", "Sensitivity Analysis", "Duration", "Convexity",
+      "Delta", "Gamma", "Vega", "Theta", "Rho", "Greeks"
+    ],
+    "operational_risk": [
+      "Operational Risk", "Process Risk", "People Risk", "Systems Risk", "External Risk",
+      "Fraud Risk", "Legal Risk", "Compliance Risk", "Reputational Risk", "Model Risk",
+      "Cyber Risk", "Technology Risk", "Business Continuity Risk", "Key Person Risk",
+      "Outsourcing Risk", "Third Party Risk", "Vendor Risk", "Control Risk"
+    ],
+    "liquidity_risk": [
+      "Liquidity Risk", "Funding Liquidity Risk", "Market Liquidity Risk", "Asset Liability Management", "ALM",
+      "Liquidity Coverage Ratio", "LCR", "Net Stable Funding Ratio", "NSFR", "Liquidity Buffer",
+      "High Quality Liquid Assets", "HQLA", "Contingency Funding Plan", "Stress Testing",
+      "Cash Flow Forecasting", "Maturity Mismatch", "Duration Gap", "Interest Rate Gap"
+    ]
+  },
+  "regulatory_compliance": {
+    "banking_regulations": [
+      "Basel III", "Basel IV", "Dodd-Frank", "Volcker Rule", "MiFID II", "PSD2", "GDPR",
+      "CRD IV", "BRRD", "EMIR", "FATCA", "CRS", "BSA", "Bank Secrecy Act", "USA PATRIOT Act",
+      "FFIEC", "OCC", "Federal Reserve", "FDIC", "CFPB", "SEC", "CFTC", "FinCEN", "FINCEN"
+    ],
+    "capital_requirements": [
+      "Capital Adequacy", "Risk-Weighted Assets", "RWA", "Tier 1 Capital", "Common Equity Tier 1", "CET1",
+      "Additional Tier 1", "AT1", "Tier 2 Capital", "Capital Conservation Buffer", "Countercyclical Buffer",
+      "G-SIB Buffer", "D-SIB Buffer", "Leverage Ratio", "Total Loss Absorbing Capacity", "TLAC",
+      "Minimum Requirement for Own Funds and Eligible Liabilities", "MREL"
+    ],
+    "aml_kyc": [
+      "Anti-Money Laundering", "AML", "Know Your Customer", "KYC", "Customer Due Diligence", "CDD",
+      "Enhanced Due Diligence", "EDD", "Simplified Due Diligence", "SDD", "Politically Exposed Person", "PEP",
+      "Suspicious Activity Report", "SAR", "Currency Transaction Report", "CTR", "Beneficial Ownership",
+      "Ultimate Beneficial Owner", "UBO", "Source of Funds", "Source of Wealth", "Risk Assessment"
+    ],
+    "consumer_protection": [
+      "Truth in Lending Act", "TILA", "Real Estate Settlement Procedures Act", "RESPA",
+      "Fair Credit Reporting Act", "FCRA", "Equal Credit Opportunity Act", "ECOA",
+      "Fair Debt Collection Practices Act", "FDCPA", "Community Reinvestment Act", "CRA",
+      "Home Mortgage Disclosure Act", "HMDA", "Fair Housing Act", "FHA", "UDAAP",
+      "Unfair, Deceptive, or Abusive Acts or Practices", "Consumer Financial Protection Bureau", "CFPB"
+    ]
+  },
+  "digital_banking": {
+    "online_banking": [
+      "Online Banking", "Internet Banking", "Web Banking", "Mobile Banking", "Mobile App",
+      "Digital Banking", "E-Banking", "Virtual Banking", "Branchless Banking", "Self-Service Banking",
+      "Account Aggregation", "Personal Financial Management", "PFM", "Budgeting Tools",
+      "Spending Analysis", "Financial Planning", "Goal Setting", "Alerts", "Notifications"
+    ],
+    "fintech": [
+      "Financial Technology", "FinTech", "RegTech", "Regulatory Technology", "InsurTech",
+      "WealthTech", "PayTech", "LendTech", "Blockchain", "Cryptocurrency", "Bitcoin",
+      "Digital Currency", "Central Bank Digital Currency", "CBDC", "Stablecoin", "DeFi",
+      "Decentralized Finance", "Smart Contract", "Robo-Advisor", "Algorithmic Trading"
+    ],
+    "payment_innovation": [
+      "Digital Wallet", "Mobile Wallet", "E-Wallet", "Contactless Payment", "NFC Payment",
+      "QR Code Payment", "Peer-to-Peer Payment", "P2P", "Real-Time Payment", "Instant Payment",
+      "Open Banking", "API", "Application Programming Interface", "PSD2", "Account Information Service",
+      "AIS", "Payment Initiation Service", "PIS", "Third Party Provider", "TPP"
+    ],
+    "security": [
+      "Multi-Factor Authentication", "MFA", "Two-Factor Authentication", "2FA", "Biometric Authentication",
+      "Tokenization", "Encryption", "Digital Signature", "Public Key Infrastructure", "PKI",
+      "Secure Socket Layer", "SSL", "Transport Layer Security", "TLS", "Fraud Detection",
+      "Risk-Based Authentication", "Device Fingerprinting", "Behavioral Analysis"
+    ]
+  },
+  "treasury_markets": {
+    "money_markets": [
+      "Money Market", "Interbank Market", "Federal Funds", "Fed Funds Rate", "LIBOR",
+      "London Interbank Offered Rate", "SOFR", "Secured Overnight Financing Rate", "EONIA",
+      "SONIA", "Overnight Rate", "Term Rate", "Commercial Paper", "Certificate of Deposit",
+      "Banker's Acceptance", "Repurchase Agreement", "Repo", "Reverse Repo"
+    ],
+    "bond_markets": [
+      "Bond Market", "Government Bond", "Corporate Bond", "Municipal Bond", "Treasury Bill",
+      "Treasury Note", "Treasury Bond", "TIPS", "Treasury Inflation-Protected Securities",
+      "Zero Coupon Bond", "Floating Rate Note", "FRN", "Convertible Bond", "High Yield Bond",
+      "Investment Grade", "Credit Rating", "Yield", "Yield Curve", "Duration", "Convexity"
+    ],
+    "foreign_exchange": [
+      "Foreign Exchange", "FX", "Forex", "Currency", "Exchange Rate", "Spot Rate", "Forward Rate",
+      "Cross Rate", "Major Currency", "Minor Currency", "Exotic Currency", "Currency Pair",
+      "Base Currency", "Quote Currency", "Pip", "Spread", "Volatility", "Carry Trade",
+      "Currency Hedge", "FX Forward", "FX Option", "Currency Swap"
+    ],
+    "derivatives": [
+      "Derivative", "Forward", "Future", "Option", "Swap", "Interest Rate Swap", "Currency Swap",
+      "Credit Default Swap", "CDS", "Total Return Swap", "Equity Swap", "Commodity Swap",
+      "Swaption", "Cap", "Floor", "Collar", "Barrier Option", "Asian Option", "American Option",
+      "European Option", "Strike Price", "Expiration Date", "Premium", "Margin"
+    ]
+  },
+  "banking_operations": {
+    "back_office": [
+      "Settlement", "Clearing", "Reconciliation", "Trade Processing", "Payment Processing",
+      "Corporate Actions", "Dividend Processing", "Interest Processing", "Fee Processing",
+      "Nostro Reconciliation", "General Ledger", "Sub-Ledger", "Trial Balance", "Month-End Close",
+      "Year-End Close", "Regulatory Reporting", "Financial Reporting", "Management Reporting"
+    ],
+    "middle_office": [
+      "Risk Management", "Portfolio Management", "Performance Measurement", "Attribution Analysis",
+      "Compliance Monitoring", "Trade Confirmation", "Trade Settlement", "Exception Management",
+      "Break Management", "Reference Data Management", "Master Data Management", "Data Quality",
+      "Data Governance", "Pricing", "Valuation", "Mark-to-Market", "Fair Value"
+    ],
+    "front_office": [
+      "Trading", "Sales", "Relationship Management", "Client Service", "Research", "Analysis",
+      "Portfolio Management", "Investment Advisory", "Wealth Management", "Private Banking",
+      "Institutional Sales", "Retail Sales", "Product Development", "Structuring", "Origination"
+    ]
+  },
+  "banking_technology": {
+    "core_systems": [
+      "Core Banking System", "CBS", "Account Management System", "Loan Management System",
+      "Customer Information File", "CIF", "Customer Relationship Management", "CRM",
+      "Enterprise Resource Planning", "ERP", "General Ledger System", "Payment System",
+      "Card Management System", "ATM Management System", "Branch Automation", "Teller System"
+    ],
+    "infrastructure": [
+      "Mainframe", "Distributed System", "Cloud Computing", "Software as a Service", "SaaS",
+      "Platform as a Service", "PaaS", "Infrastructure as a Service", "IaaS", "Virtualization",
+      "Containerization", "Microservices", "API", "Web Services", "Service-Oriented Architecture", "SOA",
+      "Enterprise Service Bus", "ESB", "Message Queue", "Database", "Data Warehouse", "Big Data"
+    ],
+    "security_technology": [
+      "Firewall", "Intrusion Detection System", "IDS", "Intrusion Prevention System", "IPS",
+      "Security Information and Event Management", "SIEM", "Data Loss Prevention", "DLP",
+      "Identity and Access Management", "IAM", "Single Sign-On", "SSO", "Multi-Factor Authentication",
+      "Encryption", "Key Management", "Digital Certificate", "Public Key Infrastructure", "PKI"
+    ],
+    "analytics": [
+      "Business Intelligence", "BI", "Data Analytics", "Predictive Analytics", "Machine Learning",
+      "Artificial Intelligence", "AI", "Natural Language Processing", "NLP", "Robotic Process Automation",
+      "RPA", "Optical Character Recognition", "OCR", "Data Mining", "Statistical Analysis",
+      "Risk Analytics", "Credit Scoring", "Fraud Detection", "Customer Analytics"
+    ]
+  },
+  "financial_metrics": {
+    "profitability": [
+      "Return on Assets", "ROA", "Return on Equity", "ROE", "Return on Investment", "ROI",
+      "Net Interest Margin", "NIM", "Net Interest Income", "NII", "Non-Interest Income",
+      "Operating Income", "Net Income", "Earnings Per Share", "EPS", "Book Value Per Share",
+      "Price to Book Ratio", "P/B", "Price to Earnings Ratio", "P/E", "Dividend Yield"
+    ],
+    "efficiency": [
+      "Cost to Income Ratio", "Efficiency Ratio", "Operating Leverage", "Productivity Ratio",
+      "Cost Per Transaction", "Processing Cost", "Administrative Expense", "Personnel Expense",
+      "Technology Expense", "Occupancy Expense", "Marketing Expense", "Legal Expense",
+      "Professional Fees", "Outsourcing Cost", "Third Party Cost"
+    ],
+    "asset_quality": [
+      "Non-Performing Loan", "NPL", "Non-Performing Asset", "NPA", "Provision for Credit Losses",
+      "PCL", "Allowance for Loan Losses", "ALL", "Charge-off", "Recovery", "Restructured Loan",
+      "Impaired Asset", "Watch List", "Special Mention", "Substandard", "Doubtful", "Loss"
+    ],
+    "capital_liquidity": [
+      "Tier 1 Capital Ratio", "Total Capital Ratio", "Leverage Ratio", "Common Equity Tier 1 Ratio",
+      "Risk-Weighted Assets", "RWA", "Liquidity Coverage Ratio", "LCR", "Net Stable Funding Ratio",
+      "NSFR", "Loan to Deposit Ratio", "LDR", "Deposit Growth", "Loan Growth", "Asset Growth"
+    ]
+  }
+}

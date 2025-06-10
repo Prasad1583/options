@@ -1,0 +1,288 @@
+{
+  "active_directory": {
+    "core_components": [
+      "Domain Controller", "Global Catalog", "Schema", "Forest", "Domain", "Tree",
+      "Organizational Unit", "Site", "Subnet", "Domain Name System", "Kerberos",
+      "NTLM", "LDAP", "Group Policy", "Active Directory Database", "SYSVOL",
+      "Active Directory Sites and Services", "Active Directory Users and Computers",
+      "Active Directory Domains and Trusts", "Active Directory Schema"
+    ],
+    "objects": [
+      "User Account", "Computer Account", "Group", "Security Group", "Distribution Group",
+      "Contact", "Printer", "Shared Folder", "Service Account", "Machine Account",
+      "Built-in Groups", "Domain Admins", "Enterprise Admins", "Schema Admins",
+      "Domain Users", "Domain Computers", "Administrator", "Guest", "KRBTGT"
+    ],
+    "authentication": [
+      "Kerberos", "NTLM", "Ticket Granting Ticket", "Service Ticket", "Key Distribution Center",
+      "Authentication Server", "Ticket Granting Server", "Principal", "Realm",
+      "Pre-authentication", "Mutual Authentication", "Single Sign-On", "Pass-through Authentication",
+      "Challenge-Response", "NTLM Hash", "Kerberos Ticket", "Golden Ticket", "Silver Ticket"
+    ],
+    "group_policy": [
+      "Group Policy Object", "GPO", "Group Policy Management Console", "GPMC",
+      "Group Policy Result", "Group Policy Modeling", "Administrative Template",
+      "Security Settings", "Software Installation", "Folder Redirection", "Scripts",
+      "Registry Settings", "WMI Filter", "Security Filtering", "GPO Inheritance",
+      "Block Inheritance", "Enforced", "Loopback Processing", "Resultant Set of Policy"
+    ],
+    "replication": [
+      "Multi-Master Replication", "Replication Topology", "Site Link", "Site Link Bridge",
+      "Replication Schedule", "Replication Cost", "Knowledge Consistency Checker",
+      "Update Sequence Number", "High Watermark", "Up-to-dateness Vector",
+      "Replication Metadata", "Lingering Objects", "Tombstone", "Garbage Collection"
+    ],
+    "security": [
+      "Access Control List", "ACL", "Discretionary Access Control List", "DACL",
+      "System Access Control List", "SACL", "Access Control Entry", "ACE",
+      "Security Identifier", "SID", "Globally Unique Identifier", "GUID",
+      "Security Principal", "Trustee", "Permission", "Right", "Privilege",
+      "Delegation", "Constrained Delegation", "Unconstrained Delegation"
+    ]
+  },
+  "ldap_directory": {
+    "core_concepts": [
+      "Lightweight Directory Access Protocol", "Directory Information Tree", "DIT",
+      "Distinguished Name", "DN", "Relative Distinguished Name", "RDN",
+      "Base DN", "Search Base", "Naming Context", "Directory Schema",
+      "Object Class", "Attribute", "Attribute Type", "Attribute Syntax",
+      "Matching Rule", "Directory Server", "Directory Client", "LDIF"
+    ],
+    "operations": [
+      "Bind", "Unbind", "Search", "Add", "Delete", "Modify", "ModifyDN",
+      "Compare", "Abandon", "Extended Operation", "StartTLS", "Anonymous Bind",
+      "Simple Bind", "SASL Bind", "Search Filter", "Search Scope", "Base Search",
+      "One Level Search", "Subtree Search", "Paged Results", "Sort Control"
+    ],
+    "security": [
+      "Transport Layer Security", "TLS", "Secure LDAP", "LDAPS", "Simple Authentication",
+      "SASL", "Digest-MD5", "GSSAPI", "EXTERNAL", "Access Control", "ACI",
+      "Proxy Authorization", "Password Policy", "Account Lockout", "Password Expiration",
+      "Strong Authentication", "Certificate Authentication", "Kerberos Authentication"
+    ],
+    "schema": [
+      "Schema Element", "Structural Object Class", "Auxiliary Object Class",
+      "Abstract Object Class", "Mandatory Attribute", "Optional Attribute",
+      "Single-Valued Attribute", "Multi-Valued Attribute", "Attribute Inheritance",
+      "Schema Extension", "Schema Replication", "Subschema Entry", "attributeTypes",
+      "objectClasses", "matchingRules", "ldapSyntaxes", "nameForms", "dITContentRules"
+    ],
+    "implementations": [
+      "Microsoft Active Directory", "OpenLDAP", "Oracle Internet Directory",
+      "IBM Security Directory Server", "Red Hat Directory Server", "Apache Directory Server",
+      "Novell eDirectory", "Sun Directory Server", "ForgeRock Directory Services",
+      "389 Directory Server", "FreeIPA", "Samba 4", "OpenDJ", "UnboundID Directory Server"
+    ]
+  },
+  "saml": {
+    "core_components": [
+      "Security Assertion Markup Language", "Identity Provider", "IdP", "Service Provider", "SP",
+      "Assertion", "Assertion Consumer Service", "ACS", "Single Sign-On Service", "SSO",
+      "Single Logout Service", "SLO", "Metadata", "Binding", "Profile", "Protocol",
+      "SAML Request", "SAML Response", "Artifact", "Artifact Resolution Service"
+    ],
+    "assertion_types": [
+      "Authentication Assertion", "Attribute Assertion", "Authorization Decision Assertion",
+      "Subject", "Conditions", "Audience Restriction", "OneTimeUse", "ProxyRestriction",
+      "NotBefore", "NotOnOrAfter", "AuthnStatement", "AttributeStatement", "AuthzDecisionStatement",
+      "NameID", "NameIDFormat", "SubjectConfirmation", "SubjectConfirmationData"
+    ],
+    "bindings": [
+      "HTTP POST Binding", "HTTP Redirect Binding", "HTTP Artifact Binding",
+      "SOAP Binding", "Reverse SOAP Binding", "URI Binding", "PAOS Binding",
+      "HTTP POST-SimpleSign Binding", "RelayState", "SAMLart", "SAMLRequest", "SAMLResponse"
+    ],
+    "profiles": [
+      "Web Browser SSO Profile", "Enhanced Client or Proxy Profile", "Identity Provider Discovery Profile",
+      "Single Logout Profile", "Name Identifier Management Profile", "Artifact Resolution Profile",
+      "Assertion Query/Request Profile", "Authentication Request Protocol", "Attribute Query Protocol"
+    ],
+    "security": [
+      "Digital Signature", "XML Signature", "XML Encryption", "Certificate", "Trust Relationship",
+      "Message Integrity", "Message Confidentiality", "Replay Attack Protection", "Man-in-the-Middle Protection",
+      "Assertion Encryption", "NameID Encryption", "Signing Certificate", "Encryption Certificate",
+      "Certificate Validation", "Trust Store", "Key Store", "PKCS#12", "X.509"
+    ],
+    "implementations": [
+      "ADFS", "Shibboleth", "SimpleSAMLphp", "OneLogin", "Okta", "Ping Identity",
+      "SailPoint", "Azure AD", "Google SAML", "Auth0", "SAML Tracer", "SAML Chrome Panel",
+      "OpenSAML", "ComponentSpace", "Kentor Authentication Services", "SAML2"
+    ]
+  },
+  "oauth": {
+    "core_concepts": [
+      "OAuth 2.0", "Authorization Framework", "Resource Owner", "Client", "Authorization Server",
+      "Resource Server", "Access Token", "Refresh Token", "Authorization Code", "Client Credentials",
+      "Scope", "State Parameter", "Redirect URI", "Client ID", "Client Secret",
+      "Bearer Token", "Token Endpoint", "Authorization Endpoint", "Grant Type"
+    ],
+    "grant_types": [
+      "Authorization Code Grant", "Implicit Grant", "Resource Owner Password Credentials Grant",
+      "Client Credentials Grant", "Refresh Token Grant", "Device Authorization Grant",
+      "SAML 2.0 Bearer Assertion", "JWT Bearer Assertion", "Token Exchange", "PKCE",
+      "Proof Key for Code Exchange", "Code Challenge", "Code Verifier", "S256", "Plain"
+    ],
+    "tokens": [
+      "Access Token", "Refresh Token", "ID Token", "Bearer Token", "MAC Token",
+      "Token Type", "Token Scope", "Token Expiration", "Token Introspection", "Token Revocation",
+      "Opaque Token", "Self-Contained Token", "Reference Token", "Structured Token"
+    ],
+    "openid_connect": [
+      "OpenID Connect", "OIDC", "ID Token", "UserInfo Endpoint", "Claims", "Standard Claims",
+      "Custom Claims", "Nonce", "Authentication Time", "Authorization Code Flow", "Implicit Flow",
+      "Hybrid Flow", "Discovery Document", "Well-Known Endpoint", "JWKS Endpoint",
+      "Issuer", "Audience", "Subject", "Issued At", "Expiration Time", "Not Before"
+    ],
+    "security": [
+      "HTTPS", "TLS", "State Parameter", "CSRF Protection", "PKCE", "Client Authentication",
+      "Token Binding", "Mutual TLS", "DPoP", "Demonstration of Proof-of-Possession",
+      "JWT Secured Authorization Request", "JAR", "Pushed Authorization Request", "PAR",
+      "Resource Indicators", "Rich Authorization Requests", "RAR"
+    ],
+    "implementations": [
+      "Auth0", "Okta", "Azure AD", "Google OAuth", "GitHub OAuth", "Facebook Login",
+      "Twitter OAuth", "LinkedIn OAuth", "Microsoft Identity Platform", "AWS Cognito",
+      "Keycloak", "IdentityServer", "Spring Security OAuth", "Passport.js", "OAuth.NET"
+    ]
+  },
+  "identity_providers": {
+    "enterprise_idp": [
+      "Microsoft Azure AD", "Okta", "Ping Identity", "OneLogin", "SailPoint",
+      "ForgeRock", "IBM Security Access Manager", "CA SiteMinder", "Oracle Identity Cloud",
+      "AWS SSO", "Google Cloud Identity", "JumpCloud", "Centrify", "CyberArk"
+    ],
+    "social_idp": [
+      "Google", "Facebook", "Twitter", "LinkedIn", "GitHub", "Microsoft Account",
+      "Apple ID", "Amazon", "Yahoo", "Discord", "Slack", "Salesforce", "Dropbox"
+    ],
+    "government_idp": [
+      "Login.gov", "ID.me", "DS Logon", "CAC", "PIV", "FIDO", "eIDAS", "Aadhaar",
+      "Digital Identity", "Government Gateway", "Verify", "Connect.Gov"
+    ],
+    "standards_protocols": [
+      "SAML 2.0", "OAuth 2.0", "OpenID Connect", "WS-Federation", "WS-Trust",
+      "Kerberos", "RADIUS", "TACACS+", "LDAP", "Active Directory", "SCIM"
+    ]
+  },
+  "federation": {
+    "concepts": [
+      "Identity Federation", "Federated Identity", "Trust Relationship", "Circle of Trust",
+      "Identity Broker", "Attribute Mapping", "Identity Translation", "Account Linking",
+      "Just-in-Time Provisioning", "Cross-Domain Authentication", "Federated SSO",
+      "Identity Bridge", "Protocol Translation", "Attribute Authority"
+    ],
+    "standards": [
+      "SAML 2.0", "WS-Federation", "WS-Trust", "Liberty Alliance", "Shibboleth",
+      "OpenID Connect Federation", "OAuth 2.0 Federation", "SCIM", "System for Cross-domain Identity Management",
+      "InCommon", "eduGAIN", "UK Access Management Federation", "AAF"
+    ],
+    "metadata": [
+      "Federation Metadata", "Entity Descriptor", "SP Metadata", "IdP Metadata",
+      "Metadata Exchange", "Metadata Signing", "Metadata Validation", "Entity ID",
+      "Metadata Repository", "Metadata Aggregator", "Metadata Refresh", "Trust Fabric"
+    ],
+    "trust_models": [
+      "Hub and Spoke", "Mesh", "Bilateral Trust", "Multilateral Trust", "Transitive Trust",
+      "Trust Anchor", "Root of Trust", "Certificate Authority", "Trust Chain",
+      "Cross Certification", "Bridge CA", "Policy Mapping"
+    ]
+  },
+  "multi_factor_authentication": {
+    "factors": [
+      "Something You Know", "Something You Have", "Something You Are", "Somewhere You Are",
+      "Password", "PIN", "Security Question", "Hardware Token", "Software Token",
+      "SMS", "Voice Call", "Email", "Push Notification", "Biometrics", "Geolocation"
+    ],
+    "biometrics": [
+      "Fingerprint", "Face Recognition", "Iris Recognition", "Voice Recognition",
+      "Behavioral Biometrics", "Keystroke Dynamics", "Gait Analysis", "Hand Geometry",
+      "Retina Scan", "Palm Print", "DNA", "Vein Pattern", "Signature Dynamics"
+    ],
+    "standards": [
+      "FIDO", "FIDO2", "WebAuthn", "CTAP", "UAF", "U2F", "TOTP", "HOTP",
+      "OATH", "RADIUS", "DIAMETER", "EAP", "PEAP", "EAP-TLS", "EAP-TTLS"
+    ],
+    "implementations": [
+      "RSA SecurID", "Google Authenticator", "Microsoft Authenticator", "Authy",
+      "YubiKey", "Duo Security", "Symantec VIP", "Gemalto", "Entrust", "SafeNet"
+    ]
+  },
+  "single_sign_on": {
+    "types": [
+      "Enterprise SSO", "Web SSO", "Desktop SSO", "Mobile SSO", "Cloud SSO",
+      "Cross-Domain SSO", "Federated SSO", "Kerberos SSO", "NTLM SSO", "Form-Based SSO"
+    ],
+    "protocols": [
+      "SAML", "OAuth", "OpenID Connect", "WS-Federation", "Kerberos", "NTLM",
+      "Form-Based Authentication", "Header-Based Authentication", "Certificate-Based Authentication"
+    ],
+    "implementations": [
+      "Active Directory Federation Services", "Shibboleth", "SimpleSAMLphp", "CAS",
+      "Jasig CAS", "Apereo CAS", "Ping Federate", "OneLogin", "Okta", "Azure AD"
+    ],
+    "challenges": [
+      "Session Management", "Logout Propagation", "Token Lifetime", "Clock Skew",
+      "Cross-Domain Cookies", "Same-Site Policy", "CSRF Protection", "Session Fixation",
+      "Session Hijacking", "Replay Attacks", "Man-in-the-Middle"
+    ]
+  },
+  "provisioning_governance": {
+    "user_provisioning": [
+      "Account Provisioning", "User Lifecycle Management", "Automated Provisioning",
+      "Just-in-Time Provisioning", "Self-Service Provisioning", "Bulk Provisioning",
+      "Account Creation", "Account Modification", "Account Deactivation", "Account Deletion",
+      "Role-Based Provisioning", "Attribute-Based Provisioning", "Group Membership"
+    ],
+    "governance": [
+      "Identity Governance", "Access Governance", "Role Mining", "Role Management",
+      "Segregation of Duties", "SOD", "Access Certification", "Access Review",
+      "Recertification", "Risk Assessment", "Compliance Reporting", "Audit Trail",
+      "Policy Enforcement", "Violation Detection", "Remediation Workflow"
+    ],
+    "standards": [
+      "SCIM", "SPML", "DSML", "LDAP", "Active Directory", "HR-XML", "SAML",
+      "OpenID Connect", "OAuth", "REST API", "SOAP", "JSON", "XML"
+    ],
+    "vendors": [
+      "SailPoint", "Okta", "Microsoft Identity Manager", "Oracle Identity Governance",
+      "IBM Security Identity Governance", "Ping Identity", "OneLogin", "CyberArk",
+      "Saviynt", "Omada", "Beta Systems", "Tools4ever", "Fischer Identity"
+    ]
+  },
+  "privileged_access": {
+    "concepts": [
+      "Privileged Access Management", "PAM", "Privileged Account", "Administrative Account",
+      "Service Account", "Shared Account", "Emergency Account", "Break-Glass Access",
+      "Just-in-Time Access", "JIT", "Just Enough Access", "JEA", "Zero Standing Privileges"
+    ],
+    "features": [
+      "Password Vaulting", "Session Management", "Session Recording", "Session Monitoring",
+      "Dual Control", "Approval Workflow", "Access Request", "Checkout/Checkin",
+      "Password Rotation", "SSH Key Management", "Certificate Management", "Discovery"
+    ],
+    "vendors": [
+      "CyberArk", "BeyondTrust", "Thycotic", "Centrify", "CA Privileged Access Manager",
+      "IBM Security Secret Server", "HashiCorp Vault", "Azure Key Vault", "AWS Secrets Manager",
+      "Google Secret Manager", "Ping Identity", "One Identity", "WALLIX"
+    ],
+    "protocols": [
+      "SSH", "RDP", "Telnet", "HTTP/HTTPS", "Database Protocols", "API Access",
+      "PowerShell", "WinRM", "SNMP", "LDAP", "Kerberos", "NTLM"
+    ]
+  },
+  "security_standards": {
+    "frameworks": [
+      "NIST Cybersecurity Framework", "ISO 27001", "SOC 2", "FedRAMP", "FISMA",
+      "GDPR", "HIPAA", "PCI DSS", "SOX", "COBIT", "COSO", "ITIL"
+    ],
+    "identity_standards": [
+      "NIST SP 800-63", "FIDO Alliance", "OpenID Foundation", "OASIS", "IETF",
+      "W3C", "IEEE", "ISO/IEC 29115", "ISO/IEC 24760", "Common Criteria"
+    ],
+    "compliance": [
+      "Access Control", "Authentication", "Authorization", "Accountability", "Audit",
+      "Non-Repudiation", "Confidentiality", "Integrity", "Availability", "Privacy",
+      "Data Protection", "Incident Response", "Risk Management", "Business Continuity"
+    ]
+  }
+}

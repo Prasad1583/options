@@ -1,0 +1,371 @@
+{
+  "erp_systems": {
+    "core_modules": [
+      "Financial Management", "General Ledger", "Accounts Payable", "Accounts Receivable",
+      "Fixed Assets", "Cash Management", "Cost Accounting", "Revenue Recognition",
+      "Budgeting", "Financial Reporting", "Consolidation", "Multi-Currency",
+      "Supply Chain Management", "Procurement", "Purchasing", "Inventory Management",
+      "Warehouse Management", "Order Management", "Demand Planning", "MRP",
+      "Manufacturing", "Production Planning", "Shop Floor Control", "Quality Management",
+      "Human Capital Management", "Payroll", "Benefits", "Time and Attendance",
+      "Talent Management", "Performance Management", "Learning Management"
+    ],
+    "vendors_platforms": [
+      "SAP ERP", "SAP S/4HANA", "Oracle ERP Cloud", "Oracle E-Business Suite",
+      "Microsoft Dynamics 365", "NetSuite", "Workday", "Infor", "Sage",
+      "Epicor", "IFS", "Unit4", "Acumatica", "Deltek", "SYSPRO"
+    ],
+    "technical_terms": [
+      "Master Data", "Transactional Data", "Chart of Accounts", "Cost Center",
+      "Profit Center", "Business Unit", "Legal Entity", "Intercompany",
+      "Three-Way Match", "Approval Workflow", "Document Flow", "Posting",
+      "Journal Entry", "Period Close", "Year-End Close", "Audit Trail",
+      "SOX Compliance", "Segregation of Duties", "User Access Control",
+      "Data Migration", "Go-Live", "Cutover", "Parallel Run", "UAT"
+    ]
+  },
+  "crm_systems": {
+    "core_functionality": [
+      "Contact Management", "Account Management", "Lead Management", "Opportunity Management",
+      "Sales Pipeline", "Sales Forecasting", "Quote Management", "Proposal Management",
+      "Contract Management", "Order Management", "Customer Service", "Case Management",
+      "Knowledge Management", "Call Center", "Field Service", "Service Scheduling",
+      "Marketing Automation", "Campaign Management", "Email Marketing", "Lead Scoring",
+      "Customer Segmentation", "Customer Journey", "Customer Analytics", "Dashboards"
+    ],
+    "vendors_platforms": [
+      "Salesforce", "Microsoft Dynamics 365", "HubSpot", "Oracle CX Cloud",
+      "SAP CRM", "Pipedrive", "Zoho CRM", "SugarCRM", "Freshworks",
+      "Insightly", "Copper", "ActiveCampaign", "Marketo", "Pardot",
+      "Eloqua", "Adobe Experience Cloud", "ServiceNow CSM"
+    ],
+    "technical_terms": [
+      "Custom Objects", "Custom Fields", "Validation Rules", "Workflow Rules",
+      "Process Builder", "Flow", "Apex", "Visualforce", "Lightning Components",
+      "API Integration", "Data Import", "Data Export", "Duplicate Management",
+      "Territory Management", "Role Hierarchy", "Sharing Rules", "Permission Sets",
+      "Profiles", "Single Sign-On", "SAML", "OAuth", "Mobile App", "Offline Access"
+    ]
+  },
+  "hcm_hris_systems": {
+    "core_modules": [
+      "Core HR", "Employee Master", "Organizational Management", "Position Management",
+      "Payroll", "Benefits Administration", "Time and Attendance", "Leave Management",
+      "Talent Acquisition", "Recruiting", "Onboarding", "Performance Management",
+      "Goal Management", "Succession Planning", "Learning Management", "Training",
+      "Compensation Management", "Merit Planning", "Equity Management", "Analytics"
+    ],
+    "vendors_platforms": [
+      "Workday", "SuccessFactors", "Oracle HCM Cloud", "BambooHR", "ADP",
+      "UltiPro", "Ceridian Dayforce", "Cornerstone OnDemand", "Greenhouse",
+      "Lever", "iCIMS", "Taleo", "SmartRecruiters", "Namely", "Zenefits",
+      "Gusto", "Paychex", "Kronos", "Deputy", "15Five", "Culture Amp"
+    ],
+    "technical_terms": [
+      "Employee ID", "Badge Number", "Cost Center Assignment", "Job Code",
+      "Position", "Grade", "Step", "Salary Band", "FTE", "Headcount",
+      "Hire Date", "Termination Date", "Employment Status", "Worker Type",
+      "Direct Reports", "Manager Hierarchy", "Matrix Reporting", "Approver",
+      "Delegate", "Proxy", "Security Group", "Data Access", "Field Level Security",
+      "Calculated Fields", "Business Process", "Approval Chain", "Notification"
+    ]
+  },
+  "scm_systems": {
+    "planning_modules": [
+      "Demand Planning", "Supply Planning", "Production Planning", "Capacity Planning",
+      "Material Requirements Planning", "Distribution Requirements Planning",
+      "Sales and Operations Planning", "Integrated Business Planning", "Forecasting",
+      "Collaborative Planning", "Consensus Forecasting", "Statistical Forecasting"
+    ],
+    "execution_modules": [
+      "Procurement", "Purchase Order Management", "Supplier Management", "Sourcing",
+      "Contract Management", "Catalog Management", "Requisition Management",
+      "Inventory Management", "Warehouse Management", "Transportation Management",
+      "Order Management", "Fulfillment", "Shipping", "Returns Management"
+    ],
+    "vendors_platforms": [
+      "Oracle SCM Cloud", "SAP Ariba", "SAP Integrated Business Planning",
+      "Blue Yonder", "Kinaxis RapidResponse", "o9 Solutions", "Anaplan",
+      "Manhattan Associates", "Infor WMS", "HighJump", "JDA", "Llamasoft",
+      "E2open", "GT Nexus", "Coupa", "Jaggaer", "Ivalua", "Zycus"
+    ],
+    "technical_terms": [
+      "Bill of Materials", "Routing", "Work Center", "Lead Time", "Safety Stock",
+      "Reorder Point", "Economic Order Quantity", "ABC Analysis", "Cycle Count",
+      "Physical Inventory", "Lot Tracking", "Serial Number Tracking", "Expiration Date",
+      "FIFO", "LIFO", "Pick List", "Packing Slip", "ASN", "EDI", "Drop Ship",
+      "Cross Dock", "Backorder", "Allocation", "Available to Promise", "Capable to Promise"
+    ]
+  },
+  "financial_systems": {
+    "core_applications": [
+      "General Ledger", "Accounts Payable", "Accounts Receivable", "Fixed Assets",
+      "Cash Management", "Bank Reconciliation", "Treasury Management", "Risk Management",
+      "Financial Planning and Analysis", "Budgeting", "Forecasting", "Consolidation",
+      "Financial Reporting", "Management Reporting", "Regulatory Reporting", "Tax Management"
+    ],
+    "specialized_systems": [
+      "Expense Management", "Travel Management", "Procurement", "Contract Management",
+      "Revenue Management", "Lease Accounting", "Intercompany", "Transfer Pricing",
+      "Credit Management", "Collections", "Billing", "Invoicing", "Payment Processing",
+      "Financial Close", "Record to Report", "Order to Cash", "Procure to Pay"
+    ],
+    "vendors_platforms": [
+      "Oracle Financials Cloud", "SAP S/4HANA Finance", "Workday Financial Management",
+      "NetSuite", "Sage Intacct", "Blackline", "Trintech", "Adaptive Insights",
+      "Anaplan", "Host Analytics", "IBM Planning Analytics", "OneStream",
+      "Concur", "Expensify", "Chrome River", "Coupa", "Ariba", "Basware"
+    ],
+    "technical_terms": [
+      "Chart of Accounts", "Account Code", "Cost Center", "Profit Center",
+      "Project Code", "Dimension", "Segment", "Hierarchy", "Rollup", "Elimination",
+      "Intercompany Matching", "Foreign Currency Translation", "Revaluation",
+      "Accrual", "Prepaid", "Deferred Revenue", "Revenue Recognition", "ASC 606",
+      "IFRS 15", "Lease Accounting", "ASC 842", "IFRS 16", "SOX Controls"
+    ]
+  },
+  "business_intelligence": {
+    "reporting_analytics": [
+      "Operational Reporting", "Financial Reporting", "Management Reporting",
+      "Executive Dashboard", "Scorecard", "KPI Dashboard", "Real-time Analytics",
+      "Self-Service Analytics", "Ad-hoc Reporting", "Scheduled Reports", "Alerts",
+      "Data Visualization", "Charts", "Graphs", "Heat Maps", "Drill-down", "Drill-through"
+    ],
+    "data_management": [
+      "Data Warehouse", "Data Lake", "Data Mart", "OLAP Cube", "Star Schema",
+      "Snowflake Schema", "Dimension Table", "Fact Table", "ETL", "ELT",
+      "Data Pipeline", "Data Integration", "Data Quality", "Data Governance",
+      "Master Data Management", "Data Catalog", "Metadata Management", "Data Lineage"
+    ],
+    "vendors_platforms": [
+      "Tableau", "Power BI", "QlikSense", "Looker", "Sisense", "Domo",
+      "ThoughtSpot", "Yellowfin", "MicroStrategy", "IBM Cognos", "SAP BusinessObjects",
+      "Oracle Analytics Cloud", "SAS", "Alteryx", "Palantir", "Snowflake",
+      "Databricks", "Amazon QuickSight", "Google Data Studio", "Grafana"
+    ],
+    "technical_terms": [
+      "OLAP", "OLTP", "Cube", "Measure", "Dimension", "Hierarchy", "Level",
+      "Member", "Calculated Field", "Parameter", "Filter", "Slicer", "Pivot Table",
+      "Cross-tab", "Matrix", "Gauge", "Sparkline", "Trending", "Forecasting",
+      "What-if Analysis", "Scenario Planning", "Data Mining", "Machine Learning",
+      "Predictive Analytics", "Statistical Analysis", "Regression", "Clustering"
+    ]
+  },
+  "collaboration_productivity": {
+    "communication": [
+      "Email", "Instant Messaging", "Video Conferencing", "Voice Calling",
+      "Screen Sharing", "File Sharing", "Presence", "Status", "Chat Rooms",
+      "Channels", "Direct Messages", "Group Messages", "Broadcast", "Announcements",
+      "Push Notifications", "Mobile App", "Desktop App", "Web App", "Integration"
+    ],
+    "document_management": [
+      "Document Storage", "Version Control", "Check-in", "Check-out", "Lock",
+      "Document Library", "Folder Structure", "Permissions", "Access Control",
+      "Workflow", "Approval Process", "Digital Signature", "Electronic Signature",
+      "Audit Trail", "Retention Policy", "Archive", "Search", "Metadata", "Tags"
+    ],
+    "vendors_platforms": [
+      "Microsoft 365", "Google Workspace", "Slack", "Microsoft Teams", "Zoom",
+      "WebEx", "GoToMeeting", "Box", "Dropbox", "OneDrive", "SharePoint",
+      "Confluence", "Notion", "Monday.com", "Asana", "Trello", "Jira",
+      "ServiceNow", "Smartsheet", "Airtable", "ClickUp", "Basecamp"
+    ],
+    "technical_terms": [
+      "Single Sign-On", "Multi-Factor Authentication", "Federation", "SAML",
+      "OAuth", "API", "Webhook", "Integration", "Sync", "Real-time Collaboration",
+      "Co-authoring", "Comments", "Track Changes", "Review", "Approval",
+      "Workflow", "Automation", "Bot", "Add-in", "Plugin", "Extension",
+      "Mobile Device Management", "Information Rights Management", "DLP"
+    ]
+  },
+  "project_management": {
+    "core_functionality": [
+      "Project Planning", "Task Management", "Resource Management", "Time Tracking",
+      "Budget Management", "Cost Tracking", "Milestone Tracking", "Gantt Chart",
+      "Critical Path", "Dependencies", "Work Breakdown Structure", "Baseline",
+      "Progress Tracking", "Status Reporting", "Dashboard", "Portfolio Management",
+      "Program Management", "Resource Planning", "Capacity Planning", "Forecasting"
+    ],
+    "methodologies": [
+      "Waterfall", "Agile", "Scrum", "Kanban", "Lean", "Prince2", "PMI",
+      "Critical Chain", "Critical Path Method", "Earned Value Management",
+      "Sprint Planning", "Daily Standup", "Sprint Review", "Retrospective",
+      "Backlog Management", "User Stories", "Epic", "Feature", "Bug Tracking"
+    ],
+    "vendors_platforms": [
+      "Microsoft Project", "Smartsheet", "Asana", "Monday.com", "Wrike",
+      "Basecamp", "Trello", "Jira", "Azure DevOps", "Clarity", "Planview",
+      "Workfront", "TeamGantt", "GanttProject", "OpenProject", "Redmine",
+      "ClickUp", "Notion", "Airtable", "Linear", "Height", "Shortcut"
+    ],
+    "technical_terms": [
+      "Work Package", "Deliverable", "Milestone", "Critical Path", "Float",
+      "Slack", "Lead Time", "Lag Time", "Resource Leveling", "Resource Smoothing",
+      "Baseline", "Variance", "Earned Value", "Planned Value", "Actual Cost",
+      "Cost Performance Index", "Schedule Performance Index", "Risk Register",
+      "Issue Log", "Change Request", "Scope Creep", "Project Charter", "Stakeholder"
+    ]
+  },
+  "content_management": {
+    "core_features": [
+      "Content Creation", "Content Editing", "Content Publishing", "Content Workflow",
+      "Content Approval", "Version Control", "Content Scheduling", "Content Archive",
+      "Asset Management", "Digital Asset Management", "Media Management", "Image Management",
+      "Video Management", "Document Management", "Template Management", "Brand Management",
+      "Metadata Management", "Taxonomy", "Tagging", "Search", "Content Analytics"
+    ],
+    "web_cms": [
+      "Website Management", "Page Builder", "Template Engine", "Theme Management",
+      "SEO Management", "Multi-site Management", "Responsive Design", "Mobile Optimization",
+      "E-commerce Integration", "Form Builder", "Comment Management", "User Management",
+      "Role-based Access", "Content Personalization", "A/B Testing", "Analytics Integration"
+    ],
+    "vendors_platforms": [
+      "Adobe Experience Manager", "Sitecore", "Drupal", "WordPress", "Joomla",
+      "Contentful", "Strapi", "Ghost", "Webflow", "Squarespace", "Wix",
+      "HubSpot CMS", "Kentico", "Umbraco", "Episerver", "Craft CMS",
+      "Sanity", "Prismic", "Forestry", "Netlify CMS", "Storyblok"
+    ],
+    "technical_terms": [
+      "WYSIWYG Editor", "Rich Text Editor", "Markdown", "HTML Editor",
+      "Content Type", "Field Type", "Content Model", "Schema", "API-first",
+      "Headless CMS", "JAMstack", "Static Site Generator", "CDN", "Caching",
+      "Multi-channel Publishing", "Omnichannel", "Content Syndication",
+      "RSS Feed", "XML Sitemap", "URL Rewriting", "301 Redirect", "Canonical URL"
+    ]
+  },
+  "e_commerce_platforms": {
+    "core_functionality": [
+      "Product Catalog", "Product Information Management", "Inventory Management",
+      "Order Management", "Shopping Cart", "Checkout Process", "Payment Processing",
+      "Shipping Management", "Tax Management", "Customer Management", "Customer Service",
+      "Marketing Tools", "Promotions", "Discounts", "Loyalty Programs", "Reviews"
+    ],
+    "b2b_features": [
+      "Quote Management", "Contract Pricing", "Volume Discounts", "Customer-specific Pricing",
+      "Approval Workflows", "Purchase Orders", "Requisition Lists", "Quick Order",
+      "Punch-out", "Catalog Management", "Multi-store", "Multi-language", "Multi-currency",
+      "Account Management", "Credit Management", "Terms and Conditions", "SLA Management"
+    ],
+    "vendors_platforms": [
+      "Shopify", "Magento", "WooCommerce", "BigCommerce", "Salesforce Commerce Cloud",
+      "SAP Commerce", "Oracle Commerce", "Adobe Commerce", "Drupal Commerce",
+      "PrestaShop", "OpenCart", "Zen Cart", "osCommerce", "Volusion",
+      "3dcart", "Square", "Wix eCommerce", "Squarespace Commerce", "Weebly"
+    ],
+    "technical_terms": [
+      "SKU", "Product Variant", "Attribute", "Category", "Faceted Search",
+      "Search Engine Optimization", "Conversion Rate", "Abandoned Cart", "Upsell",
+      "Cross-sell", "Recommendation Engine", "Personalization", "A/B Testing",
+      "Multivariate Testing", "Heat Map", "Funnel Analysis", "Cohort Analysis",
+      "Customer Lifetime Value", "Average Order Value", "Return on Ad Spend"
+    ]
+  },
+  "it_service_management": {
+    "core_processes": [
+      "Incident Management", "Problem Management", "Change Management", "Release Management",
+      "Configuration Management", "Service Level Management", "Capacity Management",
+      "Availability Management", "IT Asset Management", "Security Management",
+      "Knowledge Management", "Event Management", "Access Management", "Request Fulfillment"
+    ],
+    "service_desk": [
+      "Ticket Management", "Service Catalog", "Self-Service Portal", "Automated Routing",
+      "Escalation", "SLA Management", "Priority Matrix", "Categorization", "Assignment",
+      "Approval Workflow", "Knowledge Base", "FAQ", "Chat Support", "Remote Support",
+      "Asset Discovery", "Configuration Item", "CMDB", "Service Mapping", "Dependency Mapping"
+    ],
+    "vendors_platforms": [
+      "ServiceNow", "BMC Remedy", "Jira Service Management", "Freshworks",
+      "Zendesk", "ManageEngine ServiceDesk Plus", "Cherwell", "Ivanti",
+      "CA Service Management", "HP Service Manager", "IBM Control Desk",
+      "SysAid", "TeamDynamix", "TOPdesk", "Kayako", "Help Scout"
+    ],
+    "technical_terms": [
+      "ITIL", "ITSM", "SLA", "OLA", "UC", "KPI", "CSI", "CAB", "RFC",
+      "CI", "CMDB", "DML", "CMS", "SKMS", "PIR", "RCA", "Workaround",
+      "Known Error", "Major Incident", "P1", "P2", "P3", "P4", "Severity",
+      "Priority", "Impact", "Urgency", "MTTR", "MTBF", "Availability", "Uptime"
+    ]
+  },
+  "security_applications": {
+    "identity_access": [
+      "Identity and Access Management", "Single Sign-On", "Multi-Factor Authentication",
+      "Privileged Access Management", "Identity Governance", "Access Certification",
+      "Role-based Access Control", "Attribute-based Access Control", "Just-in-Time Access",
+      "Password Management", "Directory Services", "Federation", "Provisioning", "De-provisioning"
+    ],
+    "security_monitoring": [
+      "Security Information and Event Management", "Security Orchestration", "User Behavior Analytics",
+      "Endpoint Detection and Response", "Network Detection and Response", "Threat Intelligence",
+      "Vulnerability Management", "Compliance Management", "Risk Assessment", "Security Dashboard",
+      "Incident Response", "Forensics", "Threat Hunting", "Penetration Testing", "Security Audit"
+    ],
+    "vendors_platforms": [
+      "Okta", "Azure Active Directory", "Ping Identity", "SailPoint", "CyberArk",
+      "BeyondTrust", "Splunk", "IBM QRadar", "ArcSight", "LogRhythm",
+      "Phantom", "Demisto", "CrowdStrike", "Carbon Black", "SentinelOne",
+      "Palo Alto Networks", "FireEye", "Symantec", "McAfee", "Trend Micro"
+    ],
+    "technical_terms": [
+      "SAML", "OAuth", "OpenID Connect", "LDAP", "Active Directory", "Kerberos",
+      "Certificate Authority", "PKI", "SSL/TLS", "VPN", "Zero Trust", "Conditional Access",
+      "Risk-based Authentication", "Adaptive Authentication", "Device Trust", "Context-aware",
+      "Anomaly Detection", "Machine Learning", "Behavioral Analysis", "Threat Modeling",
+      "Attack Surface", "Vulnerability", "Exploit", "Malware", "Ransomware", "Phishing"
+    ]
+  },
+  "integration_middleware": {
+    "integration_patterns": [
+      "Point-to-Point", "Hub and Spoke", "Bus Architecture", "Microservices", "API Gateway",
+      "Event-Driven Architecture", "Publish-Subscribe", "Request-Response", "Batch Processing",
+      "Real-time Processing", "Stream Processing", "ETL", "ELT", "Data Replication",
+      "Data Synchronization", "Master Data Management", "Canonical Data Model"
+    ],
+    "middleware_types": [
+      "Enterprise Service Bus", "Message Queue", "Message Broker", "API Management",
+      "Data Integration", "Application Integration", "B2B Integration", "Cloud Integration",
+      "Hybrid Integration", "iPaaS", "Workflow Engine", "Business Process Management",
+      "Rules Engine", "Content-based Routing", "Protocol Translation", "Data Transformation"
+    ],
+    "vendors_platforms": [
+      "MuleSoft", "Dell Boomi", "Informatica", "Talend", "Microsoft BizTalk",
+      "IBM Integration Bus", "Oracle Integration Cloud", "SAP Process Integration",
+      "SnapLogic", "Jitterbit", "Celigo", "Workato", "Zapier", "Microsoft Logic Apps",
+      "Amazon AppFlow", "Google Cloud Data Fusion", "Apache Camel", "Red Hat Fuse"
+    ],
+    "technical_terms": [
+      "API", "REST", "SOAP", "GraphQL", "JSON", "XML", "EDI", "FTP", "SFTP",
+      "HTTP", "HTTPS", "WebSocket", "Webhook", "Message Format", "Schema",
+      "Mapping", "Transformation", "Routing", "Filtering", "Enrichment",
+      "Validation", "Error Handling", "Retry Logic", "Circuit Breaker", "Throttling",
+      "Rate Limiting", "Load Balancing", "Failover", "High Availability", "Scalability"
+    ]
+  },
+  "mobile_enterprise": {
+    "mobile_management": [
+      "Mobile Device Management", "Mobile Application Management", "Mobile Content Management",
+      "Enterprise Mobility Management", "Unified Endpoint Management", "BYOD", "COPE", "COBO",
+      "App Wrapping", "App Store", "Enterprise App Store", "Mobile Security", "Device Compliance",
+      "Remote Wipe", "Selective Wipe", "Containerization", "Dual Persona", "Work Profile"
+    ],
+    "mobile_development": [
+      "Native App", "Hybrid App", "Progressive Web App", "Cross-platform", "Mobile Backend as a Service",
+      "Push Notifications", "Offline Sync", "Device Features", "GPS", "Camera", "Biometrics",
+      "App Distribution", "App Deployment", "App Testing", "Mobile Analytics", "Crash Reporting",
+      "Performance Monitoring", "User Experience", "Mobile UI", "Responsive Design"
+    ],
+    "vendors_platforms": [
+      "Microsoft Intune", "VMware Workspace ONE", "Citrix Endpoint Management",
+      "IBM MaaS360", "BlackBerry UEM", "SOTI MobiControl", "42Gears SureMDM",
+      "Xamarin", "React Native", "Flutter", "Ionic", "PhoneGap", "Cordova",
+      "Firebase", "AWS Amplify", "Azure Mobile Apps", "Salesforce Mobile SDK"
+    ],
+    "technical_terms": [
+      "MDM", "MAM", "MCM", "EMM", "UEM", "VPN", "Certificate-based Authentication",
+      "App Store Connect", "Google Play Console", "Enterprise Distribution",
+      "Ad-hoc Distribution", "TestFlight", "Beta Testing", "Device Enrollment",
+      "Profile Management", "Configuration Profile", "Policy", "Compliance Rule",
+      "Jailbreak Detection", "Root Detection", "App Reputation", "Threat Detection"
+    ]
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "basic_communication": {
+    "fundamental_concepts": [
+      "Communication", "Message", "Sender", "Receiver", "Channel", "Medium", "Feedback",
+      "Noise", "Context", "Encoding", "Decoding", "Signal", "Response", "Interaction",
+      "Exchange", "Information", "Data", "Content", "Meaning", "Understanding", "Clarity",
+      "Purpose", "Intent", "Audience", "Target", "Source", "Destination", "Flow",
+      "Direction", "One-way", "Two-way", "Bidirectional", "Transmission", "Reception"
+    ],
+    "communication_models": [
+      "Shannon-Weaver Model", "Linear Model", "Interactive Model", "Transactional Model",
+      "Berlo's SMCR Model", "Aristotle's Model", "Lasswell's Model", "Circular Model",
+      "Helical Model", "Osgood-Schramm Model", "Westley-MacLean Model", "Newcomb's Model",
+      "Dance's Model", "Barnlund's Model", "Schramm's Model", "Communication Process",
+      "Field of Experience", "Semantic Noise", "Physical Noise", "Psychological Noise"
+    ],
+    "types_of_communication": [
+      "Verbal Communication", "Non-verbal Communication", "Written Communication", "Visual Communication",
+      "Oral Communication", "Digital Communication", "Electronic Communication", "Face-to-face Communication",
+      "Remote Communication", "Formal Communication", "Informal Communication", "Internal Communication",
+      "External Communication", "Upward Communication", "Downward Communication", "Horizontal Communication",
+      "Lateral Communication", "Diagonal Communication", "Grapevine Communication", "Mass Communication"
+    ]
+  },
+  "interpersonal_communication": {
+    "verbal_communication": [
+      "Speech", "Speaking", "Talking", "Conversation", "Dialogue", "Discussion", "Debate",
+      "Argument", "Negotiation", "Presentation", "Public Speaking", "Oratory", "Rhetoric",
+      "Eloquence", "Articulation", "Pronunciation", "Diction", "Enunciation", "Intonation",
+      "Tone", "Pitch", "Volume", "Pace", "Rhythm", "Accent", "Dialect", "Language",
+      "Vocabulary", "Grammar", "Syntax", "Semantics", "Pragmatics", "Linguistics"
+    ],
+    "non_verbal_communication": [
+      "Body Language", "Facial Expression", "Eye Contact", "Gesture", "Posture", "Stance",
+      "Movement", "Proximity", "Personal Space", "Touch", "Haptics", "Paralanguage",
+      "Vocal Cues", "Silence", "Pause", "Kinesics", "Proxemics", "Chronemics", "Oculesics",
+      "Appearance", "Clothing", "Grooming", "Artifacts", "Environmental Factors", "Lighting",
+      "Color", "Temperature", "Acoustics", "Ambiance", "Atmosphere", "Setting", "Context"
+    ],
+    "listening_skills": [
+      "Listening", "Active Listening", "Passive Listening", "Critical Listening", "Empathetic Listening",
+      "Appreciative Listening", "Comprehensive Listening", "Discriminative Listening", "Therapeutic Listening",
+      "Attention", "Concentration", "Focus", "Comprehension", "Retention", "Recall", "Memory",
+      "Note-taking", "Summarizing", "Paraphrasing", "Clarifying", "Questioning", "Probing",
+      "Reflecting", "Acknowledging", "Encouraging", "Supporting", "Validating", "Understanding"
+    ],
+    "barriers": [
+      "Communication Barrier", "Language Barrier", "Cultural Barrier", "Physical Barrier",
+      "Emotional Barrier", "Psychological Barrier", "Perceptual Barrier", "Semantic Barrier",
+      "Organizational Barrier", "Technological Barrier", "Noise", "Interference", "Distraction",
+      "Misunderstanding", "Misinterpretation", "Ambiguity", "Confusion", "Bias", "Prejudice",
+      "Stereotype", "Assumption", "Filter", "Selective Perception", "Defensive Communication"
+    ]
+  },
+  "organizational_communication": {
+    "internal_communication": [
+      "Internal Communication", "Employee Communication", "Organizational Communication", "Corporate Communication",
+      "Workplace Communication", "Team Communication", "Departmental Communication", "Cross-functional Communication",
+      "Management Communication", "Leadership Communication", "Executive Communication", "Board Communication",
+      "Staff Communication", "Peer Communication", "Colleague Communication", "Supervisor Communication",
+      "Subordinate Communication", "Chain of Command", "Hierarchy", "Reporting Structure", "Authority"
+    ],
+    "external_communication": [
+      "External Communication", "Public Relations", "PR", "Customer Communication", "Client Communication",
+      "Stakeholder Communication", "Investor Relations", "Media Relations", "Press Relations",
+      "Community Relations", "Government Relations", "Vendor Communication", "Supplier Communication",
+      "Partner Communication", "Alliance Communication", "Networking", "Outreach", "Engagement",
+      "Brand Communication", "Marketing Communication", "Advertising", "Promotion", "Publicity"
+    ],
+    "channels": [
+      "Communication Channel", "Formal Channel", "Informal Channel", "Official Channel", "Unofficial Channel",
+      "Vertical Channel", "Horizontal Channel", "Diagonal Channel", "Email", "Memo", "Letter",
+      "Report", "Meeting", "Conference", "Presentation", "Newsletter", "Bulletin", "Notice",
+      "Announcement", "Circular", "Policy", "Procedure", "Manual", "Handbook", "Intranet",
+      "Portal", "Dashboard", "Collaboration Tool", "Messaging Platform", "Social Network"
+    ],
+    "meetings": [
+      "Meeting", "Conference", "Assembly", "Gathering", "Session", "Workshop", "Seminar",
+      "Webinar", "Town Hall", "All-hands", "Stand-up", "Scrum", "Huddle", "Briefing",
+      "Debriefing", "Review", "Planning", "Strategy", "Board Meeting", "Committee Meeting",
+      "Team Meeting", "One-on-one", "Face-to-face", "Virtual Meeting", "Video Conference",
+      "Audio Conference", "Teleconference", "Agenda", "Minutes", "Action Items", "Follow-up"
+    ]
+  },
+  "digital_communication": {
+    "electronic_messaging": [
+      "Email", "Electronic Mail", "Instant Messaging", "IM", "Chat", "Text Messaging", "SMS",
+      "MMS", "Multimedia Messaging", "Push Notification", "Alert", "Reminder", "Message",
+      "Thread", "Conversation", "Reply", "Forward", "CC", "BCC", "Subject Line", "Attachment",
+      "Encryption", "Signature", "Auto-reply", "Out-of-office", "Spam", "Phishing", "Filtering"
+    ],
+    "social_media": [
+      "Social Media", "Social Network", "Social Platform", "Facebook", "Twitter", "LinkedIn",
+      "Instagram", "YouTube", "TikTok", "Snapchat", "WhatsApp", "Telegram", "Discord",
+      "Slack", "Microsoft Teams", "Post", "Tweet", "Share", "Like", "Comment", "Reply",
+      "Retweet", "Hashtag", "Mention", "Tag", "Follow", "Friend", "Connection", "Network",
+      "Feed", "Timeline", "Story", "Status", "Profile", "Bio", "Avatar", "Handle"
+    ],
+    "video_communication": [
+      "Video Call", "Video Conference", "Video Chat", "Webcam", "Live Stream", "Streaming",
+      "Broadcast", "Webcast", "Podcast", "Videocast", "Recording", "Playback", "Screen Share",
+      "Screen Recording", "Virtual Meeting", "Remote Meeting", "Online Meeting", "Digital Meeting",
+      "Telepresence", "Immersive", "Virtual Reality", "VR", "Augmented Reality", "AR",
+      "Zoom", "Skype", "Google Meet", "Microsoft Teams", "WebEx", "GoToMeeting", "FaceTime"
+    ],
+    "collaboration_tools": [
+      "Collaboration", "Teamwork", "Cooperation", "Coordination", "Synchronization", "Integration",
+      "Shared Workspace", "Virtual Workspace", "Cloud Collaboration", "Real-time Collaboration",
+      "Document Sharing", "File Sharing", "Version Control", "Co-authoring", "Co-editing",
+      "Simultaneous Editing", "Comments", "Annotations", "Reviews", "Approvals", "Workflow",
+      "Project Management", "Task Management", "Kanban", "Scrum Board", "Gantt Chart"
+    ]
+  },
+  "mass_communication": {
+    "traditional_media": [
+      "Mass Media", "Traditional Media", "Print Media", "Broadcast Media", "Television", "TV",
+      "Radio", "Newspaper", "Magazine", "Journal", "Periodical", "Publication", "Press",
+      "Journalism", "News", "Reporting", "Coverage", "Story", "Article", "Feature",
+      "Editorial", "Opinion", "Commentary", "Review", "Interview", "Documentary", "Program",
+      "Show", "Series", "Episode", "Channel", "Station", "Network", "Syndication"
+    ],
+    "digital_media": [
+      "Digital Media", "Online Media", "Internet Media", "Web Media", "New Media", "Interactive Media",
+      "Multimedia", "Website", "Blog", "Vlog", "Podcast", "Streaming", "On-demand", "Platform",
+      "Portal", "App", "Application", "Mobile Media", "Social Media", "User-generated Content",
+      "Citizen Journalism", "Influencer", "Content Creator", "Viral", "Trending", "Algorithm",
+      "Engagement", "Reach", "Impressions", "Views", "Clicks", "Analytics", "Metrics"
+    ],
+    "advertising": [
+      "Advertising", "Advertisement", "Ad", "Commercial", "Promotion", "Marketing", "Campaign",
+      "Brand", "Branding", "Identity", "Image", "Reputation", "Awareness", "Recognition",
+      "Recall", "Perception", "Positioning", "Targeting", "Audience", "Demographics", "Psychographics",
+      "Segmentation", "Message", "Creative", "Copy", "Slogan", "Tagline", "Logo", "Visual",
+      "Media Buying", "Placement", "Frequency", "Reach", "ROI", "Conversion", "Lead"
+    ],
+    "public_relations": [
+      "Public Relations", "PR", "Publicity", "Press Release", "Media Kit", "Press Kit",
+      "Press Conference", "Media Event", "Photo Op", "Interview", "Statement", "Response",
+      "Crisis Communication", "Damage Control", "Reputation Management", "Image Management",
+      "Stakeholder Relations", "Community Relations", "Government Relations", "Investor Relations",
+      "Employee Relations", "Customer Relations", "Media Relations", "Spokesperson", "Representative"
+    ]
+  },
+  "telecommunications": {
+    "telephony": [
+      "Telephone", "Phone", "Landline", "Mobile Phone", "Smartphone", "Cell Phone", "Cellular",
+      "Voice Call", "Phone Call", "Dial", "Ring", "Answer", "Hang up", "Hold", "Transfer",
+      "Conference Call", "Three-way Call", "Voicemail", "Voice Message", "Caller ID", "Call Waiting",
+      "Call Forwarding", "Speed Dial", "Redial", "Busy Signal", "Engaged Tone", "Dial Tone",
+      "PSTN", "Public Switched Telephone Network", "PBX", "Private Branch Exchange", "VoIP"
+    ],
+    "internet_communication": [
+      "Internet", "World Wide Web", "WWW", "Online", "Website", "Web Page", "URL", "Link",
+      "Hyperlink", "Browser", "Search Engine", "Email", "Webmail", "FTP", "File Transfer",
+      "Download", "Upload", "Streaming", "Video Streaming", "Audio Streaming", "Live Stream",
+      "Chat Room", "Forum", "Discussion Board", "Blog", "Social Network", "Messaging",
+      "Video Call", "Voice Call", "VoIP", "Internet Phone", "Skype", "WhatsApp", "Telegram"
+    ],
+    "wireless_communication": [
+      "Wireless", "Radio", "Cellular", "Mobile", "Wi-Fi", "Bluetooth", "NFC", "Infrared",
+      "Satellite", "GPS", "Antenna", "Signal", "Frequency", "Bandwidth", "Spectrum", "Modulation",
+      "Transmission", "Reception", "Base Station", "Cell Tower", "Repeater", "Amplifier",
+      "3G", "4G", "LTE", "5G", "GSM", "CDMA", "TDMA", "FDMA", "OFDMA", "Roaming",
+      "Handoff", "Coverage", "Dead Zone", "Signal Strength", "Interference", "Noise"
+    ],
+    "network_protocols": [
+      "Protocol", "TCP/IP", "HTTP", "HTTPS", "FTP", "SMTP", "POP3", "IMAP", "DNS", "DHCP",
+      "VPN", "SSL", "TLS", "Encryption", "Security", "Authentication", "Authorization",
+      "Firewall", "Router", "Switch", "Hub", "Gateway", "Modem", "ISP", "Internet Service Provider",
+      "Bandwidth", "Latency", "Throughput", "Packet", "Data Packet", "Header", "Payload",
+      "Routing", "Switching", "Network", "LAN", "WAN", "MAN", "Intranet", "Extranet"
+    ]
+  },
+  "multimedia_communication": {
+    "audio": [
+      "Audio", "Sound", "Voice", "Music", "Speech", "Recording", "Playback", "Microphone",
+      "Speaker", "Headphone", "Earphone", "Amplifier", "Mixer", "Audio Interface", "DAW",
+      "Digital Audio Workstation", "MP3", "WAV", "FLAC", "AAC", "OGG", "Podcast", "Audiobook",
+      "Voice-over", "Narration", "Commentary", "Interview", "Radio", "Streaming", "Hi-Fi",
+      "Stereo", "Mono", "Surround Sound", "Noise Cancellation", "Echo", "Reverb", "Distortion"
+    ],
+    "video": [
+      "Video", "Visual", "Image", "Picture", "Frame", "Resolution", "Quality", "HD", "4K",
+      "8K", "Pixel", "Aspect Ratio", "Frame Rate", "FPS", "Compression", "Codec", "Format",
+      "MP4", "AVI", "MOV", "WMV", "MKV", "Streaming", "Live Stream", "Recording", "Editing",
+      "Post-production", "Effects", "Animation", "Graphics", "Subtitle", "Caption", "Overlay",
+      "Transition", "Cut", "Fade", "Zoom", "Pan", "Tilt", "Focus", "Exposure", "Lighting"
+    ],
+    "interactive_media": [
+      "Interactive", "Multimedia", "Hypermedia", "User Interface", "UI", "User Experience", "UX",
+      "Navigation", "Menu", "Button", "Link", "Click", "Touch", "Gesture", "Input", "Output",
+      "Feedback", "Response", "Animation", "Transition", "Effect", "Game", "Simulation",
+      "Virtual Reality", "VR", "Augmented Reality", "AR", "Mixed Reality", "MR", "360-degree",
+      "Immersive", "Engagement", "Participation", "Collaboration", "Co-creation", "Personalization"
+    ]
+  },
+  "specialized_communication": {
+    "technical_communication": [
+      "Technical Communication", "Technical Writing", "Documentation", "Manual", "Guide",
+      "Instructions", "Procedure", "Process", "Specification", "Standard", "Protocol",
+      "Report", "Proposal", "Presentation", "Training Material", "Help", "Support",
+      "Troubleshooting", "FAQ", "Knowledge Base", "Wiki", "API Documentation", "Code Comments",
+      "User Manual", "Installation Guide", "Quick Start", "Tutorial", "Reference", "Glossary"
+    ],
+    "scientific_communication": [
+      "Scientific Communication", "Research Paper", "Journal Article", "Publication", "Peer Review",
+      "Conference Paper", "Abstract", "Introduction", "Literature Review", "Methodology", "Results",
+      "Discussion", "Conclusion", "References", "Citation", "Bibliography", "Academic Writing",
+      "Scholarly Communication", "Dissertation", "Thesis", "Poster", "Presentation", "Symposium",
+      "Conference", "Seminar", "Workshop", "Lecture", "Grant Proposal", "Research Proposal"
+    ],
+    "healthcare_communication": [
+      "Healthcare Communication", "Medical Communication", "Patient Communication", "Doctor-Patient",
+      "Physician-Patient", "Nurse-Patient", "Health Information", "Medical Record", "Chart",
+      "Diagnosis", "Treatment", "Prognosis", "Informed Consent", "Confidentiality", "Privacy",
+      "HIPAA", "Telemedicine", "Telehealth", "Remote Consultation", "Health Education", "Counseling",
+      "Support Group", "Medical Interpreter", "Health Literacy", "Patient Portal", "EHR"
+    ],
+    "legal_communication": [
+      "Legal Communication", "Legal Writing", "Legal Document", "Contract", "Agreement", "Brief",
+      "Pleading", "Motion", "Memorandum", "Opinion", "Judgment", "Order", "Statute", "Regulation",
+      "Case Law", "Precedent", "Legal Research", "Citation", "Legal Analysis", "Argumentation",
+      "Advocacy", "Negotiation", "Mediation", "Arbitration", "Court Proceeding", "Deposition",
+      "Testimony", "Cross-examination", "Legal Ethics", "Confidentiality", "Attorney-Client Privilege"
+    ]
+  },
+  "communication_skills": {
+    "speaking_skills": [
+      "Public Speaking", "Presentation Skills", "Oratory", "Eloquence", "Articulation", "Diction",
+      "Voice Projection", "Vocal Variety", "Pace", "Pause", "Emphasis", "Inflection", "Tone",
+      "Confidence", "Charisma", "Stage Presence", "Body Language", "Eye Contact", "Gestures",
+      "Storytelling", "Narrative", "Persuasion", "Influence", "Motivation", "Inspiration",
+      "Engagement", "Connection", "Rapport", "Credibility", "Authority", "Expertise", "Authenticity"
+    ],
+    "writing_skills": [
+      "Writing", "Composition", "Authoring", "Drafting", "Editing", "Proofreading", "Revision",
+      "Grammar", "Syntax", "Punctuation", "Spelling", "Vocabulary", "Style", "Tone", "Voice",
+      "Clarity", "Conciseness", "Coherence", "Flow", "Structure", "Organization", "Format",
+      "Genre", "Purpose", "Audience", "Context", "Research", "Source", "Citation", "Plagiarism",
+      "Creativity", "Originality", "Critical Thinking", "Analysis", "Synthesis", "Argumentation"
+    ],
+    "interpersonal_skills": [
+      "Interpersonal Skills", "Social Skills", "People Skills", "Relationship Building", "Networking",
+      "Empathy", "Emotional Intelligence", "EQ", "Compassion", "Understanding", "Sensitivity",
+      "Respect", "Trust", "Honesty", "Integrity", "Authenticity", "Openness", "Transparency",
+      "Conflict Resolution", "Problem Solving", "Negotiation", "Collaboration", "Teamwork",
+      "Leadership", "Influence", "Persuasion", "Motivation", "Support", "Encouragement", "Feedback"
+    ],
+    "digital_literacy": [
+      "Digital Literacy", "Technology Skills", "Computer Skills", "Internet Skills", "Media Literacy",
+      "Information Literacy", "Data Literacy", "Cybersecurity Awareness", "Privacy", "Digital Citizenship",
+      "Online Etiquette", "Netiquette", "Digital Footprint", "Social Media Skills", "Email Etiquette",
+      "Video Conferencing", "Remote Communication", "Virtual Collaboration", "Cloud Computing",
+      "Mobile Communication", "App Usage", "Search Skills", "Evaluation", "Critical Thinking",
+      "Fact-checking", "Source Verification", "Digital Creation", "Content Creation", "Multimedia"
+    ]
+  },
+  "communication_theory": {
+    "theories": [
+      "Communication Theory", "Information Theory", "Systems Theory", "Social Learning Theory",
+      "Cognitive Dissonance Theory", "Uses and Gratifications Theory", "Agenda Setting Theory",
+      "Spiral of Silence Theory", "Cultivation Theory", "Social Cognitive Theory", "Diffusion of Innovations",
+      "Media Ecology Theory", "Medium Theory", "Social Presence Theory", "Social Information Processing",
+      "Uncertainty Reduction Theory", "Social Exchange Theory", "Symbolic Interactionism",
+      "Coordinated Management of Meaning", "Expectancy Violations Theory", "Face-Negotiation Theory"
+    ],
+    "concepts": [
+      "Rhetoric", "Persuasion", "Argumentation", "Logic", "Reasoning", "Fallacy", "Bias",
+      "Credibility", "Ethos", "Pathos", "Logos", "Appeal", "Evidence", "Proof", "Claim",
+      "Warrant", "Backing", "Qualifier", "Rebuttal", "Toulmin Model", "Syllogism", "Enthymeme",
+      "Metaphor", "Analogy", "Narrative", "Framing", "Priming", "Anchoring", "Cognitive Load",
+      "Information Processing", "Attention", "Memory", "Comprehension", "Persuasion Knowledge"
+    ],
+    "research_methods": [
+      "Communication Research", "Quantitative Research", "Qualitative Research", "Mixed Methods",
+      "Survey", "Experiment", "Content Analysis", "Discourse Analysis", "Ethnography", "Case Study",
+      "Focus Group", "Interview", "Observation", "Participant Observation", "Grounded Theory",
+      "Phenomenology", "Narrative Analysis", "Rhetorical Analysis", "Critical Analysis", "Meta-analysis",
+      "Sampling", "Population", "Variable", "Hypothesis", "Validity", "Reliability", "Generalizability",
+      "Ethics", "Informed Consent", "Confidentiality", "Anonymity", "IRB", "Institutional Review Board"
+    ]
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "basic_financial_concepts": {
+    "fundamental_terms": [
+      "Finance", "Capital", "Asset", "Liability", "Equity", "Revenue", "Income", "Profit",
+      "Loss", "Cash Flow", "Net Worth", "Budget", "Interest", "Principal", "Dividend",
+      "Return", "Yield", "Risk", "Liquidity", "Solvency", "Credit", "Debt", "Investment",
+      "Savings", "Expense", "Cost", "Value", "Price", "Market", "Currency", "Exchange Rate"
+    ],
+    "time_value_of_money": [
+      "Present Value", "Future Value", "Time Value of Money", "Discount Rate", "Compound Interest",
+      "Simple Interest", "Compounding", "Discounting", "Annuity", "Perpetuity", "Net Present Value",
+      "Internal Rate of Return", "Hurdle Rate", "Cost of Capital", "Opportunity Cost",
+      "Real Rate", "Nominal Rate", "Inflation Rate", "Risk-Free Rate", "Term Structure"
+    ],
+    "financial_statements": [
+      "Income Statement", "Balance Sheet", "Cash Flow Statement", "Statement of Equity",
+      "Profit and Loss", "P&L", "Assets", "Current Assets", "Fixed Assets", "Intangible Assets",
+      "Current Liabilities", "Long-term Liabilities", "Shareholders' Equity", "Retained Earnings",
+      "Working Capital", "Book Value", "Market Value", "Fair Value", "Goodwill", "Depreciation"
+    ]
+  },
+  "personal_finance": {
+    "budgeting_planning": [
+      "Personal Budget", "Household Budget", "Income", "Expenses", "Fixed Expenses", "Variable Expenses",
+      "Emergency Fund", "Financial Goal", "Financial Planning", "Retirement Planning", "Estate Planning",
+      "Tax Planning", "Insurance Planning", "Education Planning", "Cash Flow Management",
+      "Debt Management", "Credit Management", "Net Worth", "Financial Statement", "Budget Variance"
+    ],
+    "banking_products": [
+      "Checking Account", "Savings Account", "Money Market Account", "Certificate of Deposit", "CD",
+      "Individual Retirement Account", "IRA", "Roth IRA", "Traditional IRA", "Credit Card",
+      "Debit Card", "Personal Loan", "Auto Loan", "Mortgage", "Home Equity Loan", "HELOC",
+      "Line of Credit", "Overdraft", "ATM", "Direct Deposit", "Online Banking", "Mobile Banking"
+    ],
+    "credit_debt": [
+      "Credit Score", "FICO Score", "Credit Report", "Credit History", "Credit Bureau",
+      "Credit Utilization", "Credit Limit", "Annual Percentage Rate", "APR", "Interest Rate",
+      "Minimum Payment", "Balance Transfer", "Cash Advance", "Late Fee", "Over-limit Fee",
+      "Debt Consolidation", "Debt Settlement", "Bankruptcy", "Default", "Charge-off", "Collection"
+    ],
+    "insurance": [
+      "Life Insurance", "Health Insurance", "Auto Insurance", "Homeowners Insurance", "Renters Insurance",
+      "Disability Insurance", "Umbrella Insurance", "Term Life", "Whole Life", "Universal Life",
+      "Premium", "Deductible", "Co-payment", "Co-insurance", "Out-of-pocket Maximum", "Beneficiary",
+      "Policy", "Coverage", "Claim", "Underwriting", "Risk Assessment", "Actuarial"
+    ]
+  },
+  "corporate_finance": {
+    "capital_structure": [
+      "Capital Structure", "Debt Financing", "Equity Financing", "Leverage", "Financial Leverage",
+      "Debt-to-Equity Ratio", "Debt-to-Assets Ratio", "Interest Coverage Ratio", "Times Interest Earned",
+      "Debt Service Coverage Ratio", "Capitalization", "Optimal Capital Structure", "Cost of Debt",
+      "Cost of Equity", "Weighted Average Cost of Capital", "WACC", "Tax Shield", "Financial Risk"
+    ],
+    "financial_analysis": [
+      "Financial Ratio Analysis", "Liquidity Ratios", "Solvency Ratios", "Profitability Ratios",
+      "Efficiency Ratios", "Market Ratios", "Current Ratio", "Quick Ratio", "Cash Ratio",
+      "Return on Assets", "ROA", "Return on Equity", "ROE", "Return on Investment", "ROI",
+      "Gross Profit Margin", "Operating Margin", "Net Profit Margin", "EBITDA", "EBIT"
+    ],
+    "valuation": [
+      "Business Valuation", "Company Valuation", "Discounted Cash Flow", "DCF", "Free Cash Flow",
+      "Terminal Value", "Comparable Company Analysis", "Precedent Transaction Analysis",
+      "Asset-Based Valuation", "Market Approach", "Income Approach", "Cost Approach",
+      "Enterprise Value", "Equity Value", "Book Value", "Liquidation Value", "Going Concern Value",
+      "Sum-of-the-Parts Valuation", "Monte Carlo Simulation", "Sensitivity Analysis"
+    ],
+    "mergers_acquisitions": [
+      "Merger", "Acquisition", "M&A", "Due Diligence", "Letter of Intent", "LOI",
+      "Definitive Agreement", "Purchase Price", "Enterprise Value", "Transaction Value",
+      "Synergies", "Cost Synergies", "Revenue Synergies", "Accretion", "Dilution",
+      "Earnout", "Escrow", "Representations and Warranties", "Indemnification", "Closing Conditions",
+      "Breakup Fee", "Go-Shop Period", "Fairness Opinion", "Proxy Statement"
+    ]
+  },
+  "investment_finance": {
+    "securities": [
+      "Security", "Stock", "Bond", "Option", "Future", "Derivative", "Common Stock", "Preferred Stock",
+      "Government Bond", "Corporate Bond", "Municipal Bond", "Treasury Bill", "Treasury Note",
+      "Treasury Bond", "Zero Coupon Bond", "Convertible Bond", "High Yield Bond", "Investment Grade",
+      "Junk Bond", "Mortgage-Backed Security", "Asset-Backed Security", "Exchange-Traded Fund", "ETF"
+    ],
+    "portfolio_management": [
+      "Portfolio", "Asset Allocation", "Diversification", "Risk Management", "Modern Portfolio Theory",
+      "Efficient Frontier", "Capital Asset Pricing Model", "CAPM", "Beta", "Alpha", "Sharpe Ratio",
+      "Information Ratio", "Treynor Ratio", "Jensen's Alpha", "Tracking Error", "Active Return",
+      "Passive Management", "Active Management", "Rebalancing", "Strategic Asset Allocation",
+      "Tactical Asset Allocation", "Core-Satellite Strategy", "Risk Parity", "Factor Investing"
+    ],
+    "market_analysis": [
+      "Fundamental Analysis", "Technical Analysis", "Quantitative Analysis", "Market Research",
+      "Industry Analysis", "Company Analysis", "Financial Modeling", "Discounted Cash Flow Model",
+      "Comparable Company Analysis", "Precedent Transaction Analysis", "Sum-of-the-Parts Model",
+      "Leveraged Buyout Model", "Monte Carlo Simulation", "Sensitivity Analysis", "Scenario Analysis",
+      "Stress Testing", "Back Testing", "Factor Model", "Risk Model", "Attribution Analysis"
+    ]
+  },
+  "banking_finance": {
+    "commercial_banking": [
+      "Commercial Bank", "Investment Bank", "Central Bank", "Federal Reserve", "Deposit", "Loan",
+      "Credit", "Interest", "Prime Rate", "Federal Funds Rate", "Discount Rate", "Reserve Requirement",
+      "Capital Adequacy", "Basel III", "Tier 1 Capital", "Risk-Weighted Assets", "Provision for Loan Losses",
+      "Net Interest Margin", "Return on Assets", "Return on Equity", "Efficiency Ratio", "Credit Risk"
+    ],
+    "lending": [
+      "Lending", "Credit Analysis", "Underwriting", "Loan Origination", "Credit Approval",
+      "Loan Committee", "Credit Policy", "Collateral", "Security", "Guarantee", "Covenant",
+      "Default", "Delinquency", "Non-Performing Loan", "Restructuring", "Workout", "Recovery",
+      "Charge-off", "Provision", "Allowance for Loan Losses", "Expected Credit Loss", "Probability of Default"
+    ],
+    "treasury_operations": [
+      "Treasury", "Liquidity Management", "Cash Management", "Asset Liability Management", "ALM",
+      "Interest Rate Risk", "Duration", "Convexity", "Gap Analysis", "Repricing", "Maturity Mismatch",
+      "Funding", "Wholesale Funding", "Retail Funding", "Deposits", "Borrowings", "Securities Portfolio",
+      "Investment Portfolio", "Trading Portfolio", "Available for Sale", "Held to Maturity", "Fair Value"
+    ]
+  },
+  "financial_markets": {
+    "market_structure": [
+      "Financial Market", "Capital Market", "Money Market", "Primary Market", "Secondary Market",
+      "Stock Exchange", "Bond Market", "Derivatives Market", "Foreign Exchange Market", "Commodity Market",
+      "Over-the-Counter", "OTC", "Market Maker", "Liquidity Provider", "Bid-Ask Spread", "Market Depth",
+      "Trading Volume", "Market Capitalization", "Float", "Volatility", "Beta", "Correlation"
+    ],
+    "trading": [
+      "Trading", "Buy", "Sell", "Long Position", "Short Position", "Market Order", "Limit Order",
+      "Stop Order", "Fill", "Execution", "Settlement", "Clearing", "Margin", "Leverage",
+      "Day Trading", "Swing Trading", "Position Trading", "Algorithmic Trading", "High Frequency Trading",
+      "Arbitrage", "Speculation", "Hedging", "Risk Management", "Portfolio Insurance"
+    ],
+    "market_participants": [
+      "Retail Investor", "Institutional Investor", "Mutual Fund", "Hedge Fund", "Private Equity",
+      "Pension Fund", "Insurance Company", "Sovereign Wealth Fund", "Central Bank", "Market Maker",
+      "Broker", "Dealer", "Investment Advisor", "Asset Manager", "Fund Manager", "Portfolio Manager",
+      "Research Analyst", "Sales Trader", "Proprietary Trader", "Quant", "Risk Manager"
+    ]
+  },
+  "risk_management": {
+    "types_of_risk": [
+      "Market Risk", "Credit Risk", "Operational Risk", "Liquidity Risk", "Interest Rate Risk",
+      "Currency Risk", "Inflation Risk", "Political Risk", "Regulatory Risk", "Reputational Risk",
+      "Systematic Risk", "Unsystematic Risk", "Specific Risk", "Concentration Risk", "Counterparty Risk",
+      "Settlement Risk", "Model Risk", "Legal Risk", "Compliance Risk", "Technology Risk"
+    ],
+    "risk_measurement": [
+      "Value at Risk", "VaR", "Expected Shortfall", "Conditional VaR", "CVaR", "Stress Testing",
+      "Scenario Analysis", "Monte Carlo Simulation", "Historical Simulation", "Parametric Method",
+      "Standard Deviation", "Variance", "Beta", "Duration", "Convexity", "Greeks", "Delta",
+      "Gamma", "Theta", "Vega", "Rho", "Correlation", "Covariance", "Tracking Error"
+    ],
+    "risk_management_tools": [
+      "Risk Management", "Risk Assessment", "Risk Monitoring", "Risk Reporting", "Risk Committee",
+      "Risk Policy", "Risk Appetite", "Risk Tolerance", "Risk Limit", "Risk Budget", "Hedging",
+      "Derivatives", "Insurance", "Diversification", "Netting", "Collateral", "Margin",
+      "Credit Enhancement", "Guarantee", "Covenant", "Early Warning System", "Stress Testing"
+    ]
+  },
+  "international_finance": {
+    "foreign_exchange": [
+      "Foreign Exchange", "FX", "Forex", "Exchange Rate", "Currency", "Base Currency", "Quote Currency",
+      "Cross Rate", "Spot Rate", "Forward Rate", "Swap Rate", "Currency Pair", "Major Currency",
+      "Minor Currency", "Exotic Currency", "Appreciation", "Depreciation", "Devaluation", "Revaluation",
+      "Purchasing Power Parity", "PPP", "Interest Rate Parity", "Covered Interest Arbitrage"
+    ],
+    "international_markets": [
+      "International Finance", "Global Finance", "Cross-Border Finance", "Eurodollar", "Eurobond",
+      "Global Bond", "Foreign Bond", "Brady Bond", "Sovereign Bond", "Emerging Market Debt",
+      "Country Risk", "Sovereign Risk", "Transfer Risk", "Convertibility Risk", "Political Risk",
+      "Capital Controls", "Exchange Controls", "Offshore Market", "International Banking", "Correspondent Banking"
+    ],
+    "multinational_finance": [
+      "Multinational Corporation", "MNC", "Foreign Direct Investment", "FDI", "International Trade",
+      "Export Finance", "Import Finance", "Trade Finance", "Letter of Credit", "Documentary Collection",
+      "Bill of Exchange", "Banker's Acceptance", "Forfaiting", "Factoring", "Export Credit Agency",
+      "Political Risk Insurance", "Currency Hedging", "Natural Hedge", "Financial Hedge", "Translation Exposure"
+    ]
+  },
+  "financial_regulation": {
+    "regulatory_framework": [
+      "Financial Regulation", "Banking Regulation", "Securities Regulation", "Insurance Regulation",
+      "Capital Requirements", "Liquidity Requirements", "Stress Testing", "Systemic Risk", "Too Big to Fail",
+      "Systemically Important Financial Institution", "SIFI", "Basel Accords", "Dodd-Frank Act",
+      "Sarbanes-Oxley Act", "MiFID", "GDPR", "Anti-Money Laundering", "AML", "Know Your Customer", "KYC"
+    ],
+    "regulatory_bodies": [
+      "Securities and Exchange Commission", "SEC", "Federal Reserve", "Fed", "Office of the Comptroller", "OCC",
+      "Federal Deposit Insurance Corporation", "FDIC", "Commodity Futures Trading Commission", "CFTC",
+      "Financial Industry Regulatory Authority", "FINRA", "Consumer Financial Protection Bureau", "CFPB",
+      "European Central Bank", "ECB", "Financial Conduct Authority", "FCA", "Bank for International Settlements", "BIS"
+    ],
+    "compliance": [
+      "Compliance", "Regulatory Compliance", "Fiduciary Duty", "Suitability", "Best Execution",
+      "Fair Dealing", "Market Abuse", "Insider Trading", "Market Manipulation", "Front Running",
+      "Churning", "Disclosure", "Transparency", "Reporting", "Audit", "Examination", "Enforcement",
+      "Fine", "Penalty", "Sanction", "Consent Order", "Settlement", "Remediation"
+    ]
+  },
+  "fintech_innovation": {
+    "digital_finance": [
+      "Financial Technology", "FinTech", "Digital Banking", "Online Banking", "Mobile Banking",
+      "Digital Payments", "Electronic Payments", "Mobile Payments", "Contactless Payments", "Digital Wallet",
+      "Cryptocurrency", "Bitcoin", "Blockchain", "Digital Currency", "Central Bank Digital Currency", "CBDC",
+      "Stablecoin", "DeFi", "Decentralized Finance", "Smart Contract", "Robo-Advisor", "Algorithmic Trading"
+    ],
+    "alternative_finance": [
+      "Peer-to-Peer Lending", "P2P Lending", "Crowdfunding", "Equity Crowdfunding", "Marketplace Lending",
+      "Alternative Lending", "Online Lending", "Digital Lending", "Neo Bank", "Challenger Bank",
+      "Open Banking", "API Banking", "Banking as a Service", "BaaS", "Embedded Finance",
+      "Buy Now Pay Later", "BNPL", "Micro-investing", "Fractional Shares", "Social Trading"
+    ],
+    "emerging_technologies": [
+      "Artificial Intelligence", "AI", "Machine Learning", "ML", "Big Data", "Data Analytics",
+      "Predictive Analytics", "Natural Language Processing", "NLP", "Robotic Process Automation", "RPA",
+      "Cloud Computing", "Internet of Things", "IoT", "5G", "Quantum Computing", "Biometric Authentication",
+      "RegTech", "Regulatory Technology", "InsurTech", "WealthTech", "PropTech", "LendTech"
+    ]
+  },
+  "specialized_finance": {
+    "real_estate_finance": [
+      "Real Estate Finance", "Mortgage", "Mortgage Loan", "Home Loan", "Residential Mortgage",
+      "Commercial Mortgage", "Refinancing", "Mortgage Rate", "Fixed Rate Mortgage", "Adjustable Rate Mortgage",
+      "ARM", "Interest-Only Mortgage", "Jumbo Loan", "Conforming Loan", "FHA Loan", "VA Loan",
+      "USDA Loan", "Down Payment", "Closing Costs", "Points", "Loan-to-Value", "LTV",
+      "Private Mortgage Insurance", "PMI", "Real Estate Investment Trust", "REIT"
+    ],
+    "project_finance": [
+      "Project Finance", "Infrastructure Finance", "Limited Recourse Financing", "Non-Recourse Financing",
+      "Special Purpose Vehicle", "SPV", "Build-Operate-Transfer", "BOT", "Public-Private Partnership", "PPP",
+      "Concession Agreement", "Off-take Agreement", "Power Purchase Agreement", "PPA", "Construction Risk",
+      "Operating Risk", "Revenue Risk", "Political Risk", "Force Majeure", "Step-in Rights"
+    ],
+    "structured_finance": [
+      "Structured Finance", "Asset-Backed Securities", "ABS", "Mortgage-Backed Securities", "MBS",
+      "Collateralized Debt Obligation", "CDO", "Collateralized Loan Obligation", "CLO",
+      "Securitization", "Special Purpose Entity", "SPE", "Credit Enhancement", "Over-collateralization",
+      "Subordination", "Reserve Fund", "Spread Account", "Waterfall", "Senior Tranche", "Mezzanine Tranche",
+      "Equity Tranche", "Credit Rating", "Rating Agency", "Prepayment Risk", "Extension Risk"
+    ]
+  },
+  "financial_planning": {
+    "wealth_management": [
+      "Wealth Management", "Private Banking", "Family Office", "High Net Worth", "Ultra High Net Worth",
+      "Investment Advisory", "Financial Advisory", "Portfolio Management", "Asset Management", "Trust Services",
+      "Estate Planning", "Tax Planning", "Philanthropic Planning", "Succession Planning", "Legacy Planning",
+      "Fiduciary", "Discretionary Management", "Non-Discretionary Management", "Fee-Based", "Commission-Based"
+    ],
+    "retirement_planning": [
+      "Retirement Planning", "Pension", "401(k)", "403(b)", "457 Plan", "Defined Benefit Plan",
+      "Defined Contribution Plan", "Individual Retirement Account", "IRA", "Roth IRA", "SEP-IRA",
+      "SIMPLE IRA", "Solo 401(k)", "Annuity", "Social Security", "Medicare", "Required Minimum Distribution",
+      "RMD", "Rollover", "Vesting", "Employer Match", "Catch-up Contribution", "Retirement Income"
+    ],
+    "insurance_planning": [
+      "Insurance Planning", "Risk Management", "Life Insurance", "Disability Insurance", "Long-Term Care Insurance",
+      "Health Insurance", "Property Insurance", "Casualty Insurance", "Umbrella Insurance", "Key Person Insurance",
+      "Buy-Sell Agreement", "Business Continuation", "Estate Liquidity", "Generation-Skipping Trust",
+      "Irrevocable Life Insurance Trust", "ILIT", "Split-Dollar Life Insurance", "Executive Compensation"
+    ]
+  }
+}

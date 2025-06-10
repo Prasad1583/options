@@ -1,0 +1,312 @@
+{
+  "basic_concepts": {
+    "fundamental_principles": [
+      "Electronics", "Electricity", "Electric Current", "Voltage", "Potential Difference", "Resistance",
+      "Power", "Energy", "Charge", "Electric Charge", "Electron", "Proton", "Ion", "Conductor",
+      "Insulator", "Semiconductor", "Electric Field", "Magnetic Field", "Electromagnetic Field",
+      "Ohm's Law", "Kirchhoff's Laws", "Faraday's Law", "Lenz's Law", "Coulomb's Law",
+      "Joule's Law", "AC", "Alternating Current", "DC", "Direct Current", "Frequency", "Amplitude"
+    ],
+    "units_measurements": [
+      "Ampere", "Amp", "Volt", "Ohm", "Watt", "Joule", "Coulomb", "Farad", "Henry", "Hertz",
+      "Decibel", "dB", "Milliampere", "mA", "Microampere", "μA", "Millivolt", "mV", "Microvolt", "μV",
+      "Kilohm", "kΩ", "Megohm", "MΩ", "Milliwatt", "mW", "Kilowatt", "kW", "Microfarad", "μF",
+      "Picofarad", "pF", "Millihenry", "mH", "Microhenry", "μH", "Kilohertz", "kHz", "Megahertz", "MHz"
+    ],
+    "circuit_basics": [
+      "Circuit", "Electric Circuit", "Electronic Circuit", "Open Circuit", "Closed Circuit",
+      "Short Circuit", "Series Circuit", "Parallel Circuit", "Series-Parallel Circuit", "Node",
+      "Branch", "Loop", "Mesh", "Ground", "Common", "Supply", "Load", "Input", "Output",
+      "Signal", "Noise", "Impedance", "Reactance", "Admittance", "Conductance", "Susceptance"
+    ]
+  },
+  "passive_components": {
+    "resistors": [
+      "Resistor", "Fixed Resistor", "Variable Resistor", "Potentiometer", "Rheostat", "Trimmer",
+      "Carbon Film Resistor", "Metal Film Resistor", "Wire-wound Resistor", "Surface Mount Resistor",
+      "SMD Resistor", "Through-hole Resistor", "Power Resistor", "Precision Resistor", "Thermistor",
+      "Varistor", "Photoresistor", "LDR", "Light Dependent Resistor", "Resistance", "Tolerance",
+      "Temperature Coefficient", "Power Rating", "Color Code", "Wattage", "Linear", "Non-linear"
+    ],
+    "capacitors": [
+      "Capacitor", "Electrolytic Capacitor", "Ceramic Capacitor", "Tantalum Capacitor", "Film Capacitor",
+      "Paper Capacitor", "Mica Capacitor", "Variable Capacitor", "Trimmer Capacitor", "Supercapacitor",
+      "Ultracapacitor", "Polarized Capacitor", "Non-polarized Capacitor", "Capacitance", "Farad",
+      "Dielectric", "Plate", "ESR", "Equivalent Series Resistance", "Ripple Current", "Voltage Rating",
+      "Temperature Coefficient", "Leakage Current", "Charge", "Discharge", "Time Constant"
+    ],
+    "inductors": [
+      "Inductor", "Coil", "Choke", "Solenoid", "Toroidal Inductor", "Air Core Inductor",
+      "Iron Core Inductor", "Ferrite Core Inductor", "Variable Inductor", "Mutual Inductance",
+      "Self-inductance", "Henry", "Inductance", "Magnetic Flux", "Permeability", "Core Material",
+      "Winding", "Turn", "Q Factor", "Quality Factor", "Saturation", "Hysteresis", "Back EMF",
+      "Lenz's Law", "Energy Storage", "Magnetic Field", "Coupling", "Transformer"
+    ],
+    "transformers": [
+      "Transformer", "Step-up Transformer", "Step-down Transformer", "Isolation Transformer",
+      "Auto-transformer", "Current Transformer", "Voltage Transformer", "Power Transformer",
+      "Audio Transformer", "RF Transformer", "Pulse Transformer", "Primary Winding", "Secondary Winding",
+      "Turns Ratio", "Coupling", "Magnetic Coupling", "Core", "Laminated Core", "Ferrite Core",
+      "Efficiency", "Regulation", "Leakage Inductance", "Magnetizing Current", "Core Loss"
+    ]
+  },
+  "active_components": {
+    "diodes": [
+      "Diode", "PN Junction", "Rectifier Diode", "Zener Diode", "Schottky Diode", "Tunnel Diode",
+      "Varactor Diode", "PIN Diode", "Avalanche Diode", "LED", "Light Emitting Diode", "Laser Diode",
+      "Photodiode", "Solar Cell", "Forward Bias", "Reverse Bias", "Forward Voltage", "Breakdown Voltage",
+      "Reverse Current", "Forward Current", "Knee Voltage", "Depletion Region", "Barrier Potential",
+      "Rectification", "Half-wave Rectifier", "Full-wave Rectifier", "Bridge Rectifier"
+    ],
+    "transistors": [
+      "Transistor", "BJT", "Bipolar Junction Transistor", "FET", "Field Effect Transistor",
+      "MOSFET", "JFET", "IGBT", "NPN Transistor", "PNP Transistor", "N-channel", "P-channel",
+      "Base", "Emitter", "Collector", "Gate", "Source", "Drain", "Amplification", "Switching",
+      "Beta", "Current Gain", "Transconductance", "Threshold Voltage", "Saturation", "Cutoff",
+      "Active Region", "Common Emitter", "Common Base", "Common Collector", "Enhancement Mode"
+    ],
+    "integrated_circuits": [
+      "Integrated Circuit", "IC", "Microchip", "Chip", "Monolithic IC", "Hybrid IC", "SSI",
+      "Small Scale Integration", "MSI", "Medium Scale Integration", "LSI", "Large Scale Integration",
+      "VLSI", "Very Large Scale Integration", "ULSI", "Ultra Large Scale Integration", "Die",
+      "Wafer", "Package", "DIP", "Dual In-line Package", "QFP", "Quad Flat Package", "BGA",
+      "Ball Grid Array", "SOP", "Small Outline Package", "Pin", "Lead", "Bonding Wire"
+    ],
+    "operational_amplifiers": [
+      "Operational Amplifier", "Op-Amp", "Differential Amplifier", "Voltage Follower", "Buffer",
+      "Inverting Amplifier", "Non-inverting Amplifier", "Summing Amplifier", "Difference Amplifier",
+      "Integrator", "Differentiator", "Comparator", "Schmitt Trigger", "Open Loop Gain",
+      "Closed Loop Gain", "Feedback", "Negative Feedback", "Positive Feedback", "Offset Voltage",
+      "Bias Current", "Slew Rate", "Bandwidth", "CMRR", "Common Mode Rejection Ratio"
+    ]
+  },
+  "digital_electronics": {
+    "logic_gates": [
+      "Logic Gate", "AND Gate", "OR Gate", "NOT Gate", "Inverter", "NAND Gate", "NOR Gate",
+      "XOR Gate", "Exclusive OR", "XNOR Gate", "Buffer Gate", "Tri-state Buffer", "Boolean Logic",
+      "Boolean Algebra", "Truth Table", "Logic Level", "High", "Low", "TTL", "Transistor-Transistor Logic",
+      "CMOS", "Complementary Metal-Oxide-Semiconductor", "Logic Family", "Fan-in", "Fan-out",
+      "Propagation Delay", "Rise Time", "Fall Time", "Noise Margin", "Power Dissipation"
+    ],
+    "digital_circuits": [
+      "Digital Circuit", "Combinational Logic", "Sequential Logic", "Flip-flop", "Latch",
+      "Counter", "Shift Register", "Multiplexer", "Demultiplexer", "Encoder", "Decoder",
+      "Adder", "Subtractor", "Comparator", "State Machine", "Finite State Machine", "FSM",
+      "Clock", "Clock Signal", "Synchronous", "Asynchronous", "Edge Triggered", "Level Triggered",
+      "Setup Time", "Hold Time", "Metastability", "Race Condition", "Glitch", "Hazard"
+    ],
+    "memory_devices": [
+      "Memory", "RAM", "Random Access Memory", "ROM", "Read Only Memory", "SRAM", "Static RAM",
+      "DRAM", "Dynamic RAM", "EPROM", "Erasable Programmable ROM", "EEPROM", "Electrically Erasable PROM",
+      "Flash Memory", "NVRAM", "Non-volatile RAM", "Cache Memory", "Buffer", "Address Bus",
+      "Data Bus", "Control Bus", "Memory Map", "Address Space", "Word", "Byte", "Bit",
+      "Access Time", "Cycle Time", "Refresh", "Volatile", "Non-volatile", "Storage"
+    ],
+    "microprocessors": [
+      "Microprocessor", "CPU", "Central Processing Unit", "Microcontroller", "MCU", "DSP",
+      "Digital Signal Processor", "ALU", "Arithmetic Logic Unit", "Control Unit", "Register",
+      "Program Counter", "Stack Pointer", "Instruction Set", "Machine Code", "Assembly Language",
+      "Clock Speed", "Bus Width", "Architecture", "Pipeline", "Cache", "Interrupt", "Polling",
+      "DMA", "Direct Memory Access", "I/O", "Input/Output", "Peripheral", "Interface"
+    ]
+  },
+  "analog_electronics": {
+    "amplifiers": [
+      "Amplifier", "Audio Amplifier", "RF Amplifier", "Power Amplifier", "Voltage Amplifier",
+      "Current Amplifier", "Transconductance Amplifier", "Transresistance Amplifier", "Class A",
+      "Class B", "Class AB", "Class C", "Class D", "Push-pull", "Single-ended", "Differential",
+      "Common Emitter", "Common Base", "Common Collector", "Emitter Follower", "Gain",
+      "Bandwidth", "Frequency Response", "Distortion", "THD", "Total Harmonic Distortion"
+    ],
+    "filters": [
+      "Filter", "Low-pass Filter", "High-pass Filter", "Band-pass Filter", "Band-stop Filter",
+      "Notch Filter", "Active Filter", "Passive Filter", "Butterworth Filter", "Chebyshev Filter",
+      "Bessel Filter", "Elliptic Filter", "Cutoff Frequency", "Roll-off", "Order", "Q Factor",
+      "Resonance", "Pole", "Zero", "Transfer Function", "Bode Plot", "Phase Response",
+      "Group Delay", "Ripple", "Stopband", "Passband", "Transition Band", "Attenuation"
+    ],
+    "oscillators": [
+      "Oscillator", "Sine Wave Oscillator", "Square Wave Oscillator", "Triangle Wave Oscillator",
+      "Sawtooth Oscillator", "RC Oscillator", "LC Oscillator", "Crystal Oscillator", "Relaxation Oscillator",
+      "Wien Bridge Oscillator", "Colpitts Oscillator", "Hartley Oscillator", "Clapp Oscillator",
+      "Pierce Oscillator", "Ring Oscillator", "VCO", "Voltage Controlled Oscillator", "PLL",
+      "Phase Locked Loop", "Frequency", "Period", "Duty Cycle", "Jitter", "Phase Noise"
+    ],
+    "signal_processing": [
+      "Signal Processing", "Analog Signal", "Digital Signal", "Sampling", "Quantization",
+      "ADC", "Analog-to-Digital Converter", "DAC", "Digital-to-Analog Converter", "Sample Rate",
+      "Nyquist Frequency", "Aliasing", "Anti-aliasing Filter", "Resolution", "SNR", "Signal-to-Noise Ratio",
+      "Dynamic Range", "SINAD", "ENOB", "Effective Number of Bits", "Modulation", "Demodulation",
+      "AM", "Amplitude Modulation", "FM", "Frequency Modulation", "PM", "Phase Modulation"
+    ]
+  },
+  "power_electronics": {
+    "power_supplies": [
+      "Power Supply", "Linear Power Supply", "Switching Power Supply", "SMPS", "Regulated Supply",
+      "Unregulated Supply", "Voltage Regulator", "Current Regulator", "Buck Converter", "Boost Converter",
+      "Buck-Boost Converter", "Flyback Converter", "Forward Converter", "Push-Pull Converter",
+      "Half-Bridge Converter", "Full-Bridge Converter", "Isolation", "Non-isolated", "Feedback",
+      "PWM", "Pulse Width Modulation", "Efficiency", "Regulation", "Line Regulation", "Load Regulation"
+    ],
+    "power_devices": [
+      "Power Device", "Power MOSFET", "Power BJT", "IGBT", "Insulated Gate Bipolar Transistor",
+      "Thyristor", "SCR", "Silicon Controlled Rectifier", "Triac", "Diac", "GTO", "Gate Turn-off Thyristor",
+      "SiC", "Silicon Carbide", "GaN", "Gallium Nitride", "Wide Bandgap", "Power Diode",
+      "Schottky Diode", "Fast Recovery Diode", "Ultra-fast Diode", "Heat Sink", "Thermal Management",
+      "Safe Operating Area", "SOA", "Switching Loss", "Conduction Loss", "dv/dt", "di/dt"
+    ],
+    "motor_control": [
+      "Motor Control", "DC Motor", "AC Motor", "Stepper Motor", "Servo Motor", "Brushless Motor",
+      "BLDC", "Brushless DC Motor", "Universal Motor", "Induction Motor", "Synchronous Motor",
+      "Motor Drive", "Variable Speed Drive", "VSD", "Inverter", "Frequency Converter", "H-Bridge",
+      "PWM Control", "Vector Control", "Field Oriented Control", "FOC", "Sensorless Control",
+      "Encoder", "Hall Sensor", "Resolver", "Tachometer", "Speed Control", "Torque Control"
+    ]
+  },
+  "communication_electronics": {
+    "rf_microwave": [
+      "RF", "Radio Frequency", "Microwave", "Antenna", "Transmission Line", "Waveguide",
+      "Coaxial Cable", "Impedance Matching", "VSWR", "Voltage Standing Wave Ratio", "Return Loss",
+      "Insertion Loss", "S-Parameters", "Smith Chart", "Reflection Coefficient", "Propagation",
+      "Free Space Path Loss", "Gain", "Directivity", "Beamwidth", "Polarization", "Frequency Band",
+      "Bandwidth", "Modulation", "Carrier", "Sideband", "Mixer", "LNA", "Low Noise Amplifier"
+    ],
+    "wireless_systems": [
+      "Wireless", "Cellular", "Wi-Fi", "Bluetooth", "Zigbee", "LoRa", "NFC", "Near Field Communication",
+      "RFID", "Radio Frequency Identification", "GPS", "Global Positioning System", "Satellite",
+      "Base Station", "Access Point", "Transceiver", "Transmitter", "Receiver", "Duplex",
+      "Half-duplex", "Full-duplex", "TDMA", "Time Division Multiple Access", "FDMA", "Frequency Division",
+      "CDMA", "Code Division Multiple Access", "OFDM", "Orthogonal Frequency Division Multiplexing"
+    ],
+    "fiber_optics": [
+      "Fiber Optics", "Optical Fiber", "Single Mode Fiber", "Multimode Fiber", "Core", "Cladding",
+      "Numerical Aperture", "Attenuation", "Dispersion", "Chromatic Dispersion", "Modal Dispersion",
+      "Laser Diode", "LED", "Photodiode", "APD", "Avalanche Photodiode", "Optical Amplifier",
+      "EDFA", "Erbium Doped Fiber Amplifier", "WDM", "Wavelength Division Multiplexing", "DWDM",
+      "Dense WDM", "Optical Connector", "Splice", "Fusion Splice", "Mechanical Splice", "OTDR"
+    ]
+  },
+  "measurement_testing": {
+    "test_equipment": [
+      "Multimeter", "DMM", "Digital Multimeter", "Oscilloscope", "Digital Oscilloscope", "Analog Oscilloscope",
+      "Function Generator", "Signal Generator", "Arbitrary Waveform Generator", "Spectrum Analyzer",
+      "Network Analyzer", "Logic Analyzer", "Protocol Analyzer", "Power Meter", "Frequency Counter",
+      "LCR Meter", "Curve Tracer", "Semiconductor Analyzer", "DC Power Supply", "Electronic Load",
+      "Probe", "Current Probe", "Voltage Probe", "Differential Probe", "High Voltage Probe"
+    ],
+    "measurements": [
+      "Voltage Measurement", "Current Measurement", "Resistance Measurement", "Power Measurement",
+      "Frequency Measurement", "Phase Measurement", "Impedance Measurement", "Capacitance Measurement",
+      "Inductance Measurement", "Time Domain", "Frequency Domain", "RMS", "Root Mean Square",
+      "Peak", "Peak-to-Peak", "Average", "Waveform", "Sine Wave", "Square Wave", "Triangle Wave",
+      "Sawtooth Wave", "Pulse", "Rise Time", "Fall Time", "Overshoot", "Undershoot", "Settling Time"
+    ],
+    "calibration": [
+      "Calibration", "Accuracy", "Precision", "Resolution", "Repeatability", "Reproducibility",
+      "Uncertainty", "Error", "Systematic Error", "Random Error", "Drift", "Linearity", "Hysteresis",
+      "Temperature Coefficient", "Aging", "Standards", "Reference Standard", "Working Standard",
+      "Traceability", "NIST", "National Institute of Standards", "Metrology", "Verification",
+      "Adjustment", "Compensation", "Correction Factor", "Calibration Certificate", "Interval"
+    ]
+  },
+  "circuit_design": {
+    "design_process": [
+      "Circuit Design", "Schematic", "Circuit Diagram", "Block Diagram", "Design Specification",
+      "Requirements", "Constraints", "Trade-offs", "Optimization", "Simulation", "SPICE",
+      "Circuit Simulation", "Monte Carlo Analysis", "Worst Case Analysis", "Design Review",
+      "Prototype", "Breadboard", "Evaluation Board", "Design Validation", "Testing", "Debug",
+      "Troubleshooting", "Design for Testability", "DFT", "Design for Manufacturing", "DFM"
+    ],
+    "pcb_design": [
+      "PCB", "Printed Circuit Board", "Layout", "Routing", "Trace", "Via", "Pad", "Footprint",
+      "Component Placement", "Layer Stack-up", "Ground Plane", "Power Plane", "Signal Integrity",
+      "EMI", "Electromagnetic Interference", "EMC", "Electromagnetic Compatibility", "Crosstalk",
+      "Impedance Control", "Differential Pair", "Length Matching", "Thermal Via", "Copper Pour",
+      "Solder Mask", "Silkscreen", "Drill", "Gerber Files", "Pick and Place", "Assembly"
+    ],
+    "components_selection": [
+      "Component Selection", "Datasheet", "Specifications", "Electrical Characteristics", "Absolute Maximum Ratings",
+      "Operating Conditions", "Package", "Footprint", "Thermal Characteristics", "Reliability",
+      "MTBF", "Mean Time Between Failures", "Derating", "Aging", "End of Life", "EOL",
+      "Obsolescence", "Second Source", "Cost", "Availability", "Lead Time", "Supply Chain",
+      "Qualification", "Automotive Qualified", "Military Spec", "Commercial Grade", "Industrial Grade"
+    ]
+  },
+  "emerging_technologies": {
+    "quantum_electronics": [
+      "Quantum Electronics", "Quantum Device", "Quantum Dot", "Quantum Well", "Quantum Wire",
+      "Single Electron Transistor", "SET", "Quantum Tunneling", "Josephson Junction", "SQUID",
+      "Superconducting Quantum Interference Device", "Quantum Computing", "Qubit", "Quantum Gate",
+      "Quantum Entanglement", "Quantum Superposition", "Quantum Coherence", "Decoherence",
+      "Quantum Error Correction", "Quantum Cryptography", "Quantum Communication", "Quantum Sensor"
+    ],
+    "flexible_electronics": [
+      "Flexible Electronics", "Flexible Circuit", "Flex PCB", "Bendable", "Stretchable", "Wearable Electronics",
+      "E-textile", "Smart Fabric", "Conductive Ink", "Printed Electronics", "Organic Electronics",
+      "Plastic Electronics", "Thin Film", "Substrate", "Polyimide", "PET", "Polyethylene Terephthalate",
+      "Roll-to-Roll Processing", "Inkjet Printing", "Screen Printing", "Gravure Printing", "Flexography"
+    ],
+    "bioelectronics": [
+      "Bioelectronics", "Biomedical Electronics", "Medical Device", "Implantable Device", "Pacemaker",
+      "Defibrillator", "Neural Implant", "Brain-Computer Interface", "BCI", "Biosensor", "Glucose Sensor",
+      "pH Sensor", "Oxygen Sensor", "Electrodes", "Biopotential", "ECG", "Electrocardiogram",
+      "EEG", "Electroencephalogram", "EMG", "Electromyogram", "Biocompatible", "Sterilization",
+      "FDA Approval", "Medical Grade", "Isolation", "Patient Safety", "Leakage Current"
+    ],
+    "energy_harvesting": [
+      "Energy Harvesting", "Energy Scavenging", "Ambient Energy", "Solar Cell", "Photovoltaic",
+      "Thermoelectric Generator", "TEG", "Peltier Effect", "Seebeck Effect", "Piezoelectric Generator",
+      "Electromagnetic Generator", "RF Energy Harvesting", "Vibration Energy", "Thermal Energy",
+      "Photon Energy", "Wind Energy", "Power Management IC", "PMIC", "Ultra-low Power",
+      "Energy Storage", "Supercapacitor", "Battery", "Rechargeable", "Energy Efficiency"
+    ]
+  },
+  "manufacturing_packaging": {
+    "semiconductor_fabrication": [
+      "Semiconductor Fabrication", "Wafer", "Silicon Wafer", "Fab", "Fabrication Facility", "Clean Room",
+      "Photolithography", "Etching", "Deposition", "Ion Implantation", "Diffusion", "Oxidation",
+      "Metallization", "CMP", "Chemical Mechanical Polishing", "Annealing", "Process Node",
+      "Feature Size", "Moore's Law", "Yield", "Defect Density", "Critical Dimension", "Mask",
+      "Reticle", "Stepper", "Scanner", "Resist", "Developer", "Plasma", "Reactive Ion Etching"
+    ],
+    "packaging": [
+      "IC Package", "Packaging", "Die Attach", "Wire Bonding", "Flip Chip", "Ball Grid Array", "BGA",
+      "Quad Flat Pack", "QFP", "Small Outline Package", "SOP", "Dual In-line Package", "DIP",
+      "Chip Scale Package", "CSP", "Wafer Level Package", "WLP", "System in Package", "SiP",
+      "Multi-Chip Module", "MCM", "Lead Frame", "Substrate", "Underfill", "Molding Compound",
+      "Thermal Interface Material", "TIM", "Heat Spreader", "Lid", "Hermetic Seal", "Cavity Package"
+    ],
+    "assembly_testing": [
+      "Assembly", "Surface Mount Technology", "SMT", "Through Hole Technology", "THT", "Pick and Place",
+      "Reflow Soldering", "Wave Soldering", "Selective Soldering", "Solder Paste", "Stencil",
+      "Flux", "Lead-free Solder", "RoHS", "Restriction of Hazardous Substances", "AOI",
+      "Automated Optical Inspection", "ICT", "In-Circuit Test", "Functional Test", "Boundary Scan",
+      "JTAG", "Burn-in", "Stress Test", "Accelerated Life Test", "Final Test", "Outgoing Quality"
+    ]
+  },
+  "safety_standards": {
+    "electrical_safety": [
+      "Electrical Safety", "Safety Standards", "IEC", "International Electrotechnical Commission",
+      "UL", "Underwriters Laboratories", "CSA", "Canadian Standards Association", "CE Marking",
+      "FCC", "Federal Communications Commission", "Safety Isolation", "Creepage Distance",
+      "Clearance Distance", "Insulation", "Basic Insulation", "Supplementary Insulation",
+      "Double Insulation", "Reinforced Insulation", "Safety Extra Low Voltage", "SELV",
+      "Ground Fault", "Leakage Current", "Touch Current", "Protective Earth", "Class I", "Class II"
+    ],
+    "emc_compliance": [
+      "EMC", "Electromagnetic Compatibility", "EMI", "Electromagnetic Interference", "RFI",
+      "Radio Frequency Interference", "Emission", "Susceptibility", "Immunity", "Conducted Emission",
+      "Radiated Emission", "Conducted Susceptibility", "Radiated Susceptibility", "ESD",
+      "Electrostatic Discharge", "Surge", "Burst", "Harmonics", "Flicker", "CISPR", "EN", "FCC Part 15",
+      "Anechoic Chamber", "GTEM Cell", "Faraday Cage", "Shielding", "Filtering", "Grounding"
+    ],
+    "environmental": [
+      "Environmental Standards", "Operating Temperature", "Storage Temperature", "Humidity",
+      "Altitude", "Vibration", "Shock", "Environmental Testing", "Temperature Cycling",
+      "Thermal Shock", "Salt Spray", "Corrosion", "UV Exposure", "Ozone", "IP Rating",
+      "Ingress Protection", "Dust Proof", "Water Proof", "Hermetic Seal", "Conformal Coating",
+      "Potting", "Encapsulation", "Harsh Environment", "Automotive Grade", "Military Spec",
+      "Space Qualified", "Radiation Hardened", "Rad Hard", "Total Ionizing Dose", "TID"
+    ]
+  }
+}

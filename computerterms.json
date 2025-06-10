@@ -1,0 +1,283 @@
+{
+  "hardware": {
+    "processors": [
+      "CPU", "Central Processing Unit", "Processor", "Microprocessor", "Core", "Multi-core",
+      "Dual-core", "Quad-core", "Octa-core", "Clock Speed", "GHz", "MHz", "Cache",
+      "L1 Cache", "L2 Cache", "L3 Cache", "Pipeline", "Instruction Set", "Architecture",
+      "x86", "x64", "ARM", "RISC", "CISC", "Hyper-threading", "Overclocking", "TDP",
+      "Thermal Design Power", "Die", "Transistor", "Nanometer", "Process Node"
+    ],
+    "memory": [
+      "RAM", "Random Access Memory", "ROM", "Read-Only Memory", "Memory", "Primary Memory",
+      "Secondary Memory", "Volatile Memory", "Non-volatile Memory", "DDR", "DDR3", "DDR4", "DDR5",
+      "SDRAM", "SRAM", "DRAM", "Flash Memory", "EEPROM", "BIOS", "UEFI", "Firmware",
+      "Memory Bandwidth", "Latency", "CAS Latency", "Dual Channel", "Quad Channel",
+      "Memory Controller", "Virtual Memory", "Swap File", "Page File", "Buffer"
+    ],
+    "storage": [
+      "Hard Drive", "HDD", "Hard Disk Drive", "SSD", "Solid State Drive", "NVMe",
+      "M.2", "SATA", "IDE", "PATA", "SCSI", "Storage", "Disk", "Platter", "Head",
+      "Sector", "Track", "Cylinder", "RPM", "Seek Time", "Access Time", "Transfer Rate",
+      "Cache", "RAID", "RAID 0", "RAID 1", "RAID 5", "RAID 10", "Hot Swap",
+      "Backup", "Archive", "Optical Drive", "CD", "DVD", "Blu-ray", "USB Drive"
+    ],
+    "motherboard": [
+      "Motherboard", "Mainboard", "System Board", "PCB", "Printed Circuit Board",
+      "Socket", "Chipset", "Northbridge", "Southbridge", "Bus", "System Bus", "Front Side Bus",
+      "Back Side Bus", "Expansion Slot", "PCIe", "PCI", "AGP", "ISA", "RAM Slot",
+      "DIMM", "SO-DIMM", "Power Connector", "SATA Connector", "USB Header", "Jumper",
+      "BIOS", "UEFI", "CMOS", "Battery", "Capacitor", "Resistor", "Traces"
+    ],
+    "graphics": [
+      "GPU", "Graphics Processing Unit", "Graphics Card", "Video Card", "Integrated Graphics",
+      "Discrete Graphics", "VRAM", "Video Memory", "Shader", "CUDA Core", "Stream Processor",
+      "Texture Unit", "ROP", "Render Output Unit", "Memory Bus", "Memory Bandwidth",
+      "Core Clock", "Memory Clock", "Boost Clock", "TDP", "Cooling", "Fan", "Heat Sink",
+      "Thermal Paste", "Ray Tracing", "DLSS", "FSR", "Anti-aliasing", "MSAA", "FXAA"
+    ],
+    "input_output": [
+      "I/O", "Input/Output", "Port", "USB", "USB-A", "USB-B", "USB-C", "Thunderbolt",
+      "HDMI", "DisplayPort", "VGA", "DVI", "Audio Jack", "Ethernet Port", "Serial Port",
+      "Parallel Port", "PS/2", "Keyboard", "Mouse", "Touchpad", "Trackball", "Joystick",
+      "Gamepad", "Monitor", "Display", "Screen", "LCD", "LED", "OLED", "CRT",
+      "Resolution", "Refresh Rate", "Response Time", "Pixel Density", "DPI", "PPI"
+    ]
+  },
+  "software": {
+    "operating_systems": [
+      "Operating System", "OS", "Windows", "macOS", "Linux", "Unix", "Android", "iOS",
+      "Kernel", "System Call", "Device Driver", "Boot Loader", "Shell", "Command Line",
+      "GUI", "Graphical User Interface", "Desktop", "Taskbar", "Start Menu", "Dock",
+      "File Manager", "Explorer", "Finder", "Terminal", "Console", "Registry", "Daemon",
+      "Service", "Process", "Thread", "Multitasking", "Multithreading", "Virtual Memory"
+    ],
+    "applications": [
+      "Application", "App", "Software", "Program", "Executable", "Binary", "Source Code",
+      "Compiler", "Interpreter", "Runtime", "Library", "Framework", "API", "SDK",
+      "Word Processor", "Spreadsheet", "Database", "Web Browser", "Media Player",
+      "Image Editor", "Video Editor", "Antivirus", "Firewall", "Backup Software",
+      "Compression", "Archive", "Installer", "Package Manager", "Update", "Patch"
+    ],
+    "programming": [
+      "Programming Language", "Code", "Syntax", "Semantics", "Variable", "Function",
+      "Method", "Class", "Object", "Algorithm", "Data Structure", "Array", "List",
+      "Stack", "Queue", "Tree", "Graph", "Hash Table", "Loop", "Conditional", "If Statement",
+      "Switch Statement", "Exception", "Error Handling", "Debugging", "IDE", "Editor",
+      "Version Control", "Git", "Repository", "Commit", "Branch", "Merge", "Pull Request"
+    ],
+    "development": [
+      "Software Development", "SDLC", "Software Development Life Cycle", "Agile", "Scrum",
+      "Waterfall", "DevOps", "CI/CD", "Continuous Integration", "Continuous Deployment",
+      "Testing", "Unit Test", "Integration Test", "System Test", "Acceptance Test",
+      "Bug", "Feature", "Requirement", "Specification", "Documentation", "Comment",
+      "Refactoring", "Code Review", "Quality Assurance", "QA", "Release", "Deployment"
+    ]
+  },
+  "networking": {
+    "protocols": [
+      "Network Protocol", "TCP/IP", "HTTP", "HTTPS", "FTP", "SFTP", "SSH", "Telnet",
+      "SMTP", "POP3", "IMAP", "DNS", "DHCP", "ARP", "ICMP", "UDP", "SNMP", "NTP",
+      "BGP", "OSPF", "RIP", "EIGRP", "VLAN", "VPN", "IPSec", "SSL/TLS", "WPA", "WEP",
+      "WPA2", "WPA3", "802.11", "Ethernet", "Token Ring", "Frame Relay", "ATM"
+    ],
+    "network_devices": [
+      "Router", "Switch", "Hub", "Bridge", "Gateway", "Modem", "Access Point", "Repeater",
+      "Firewall", "Load Balancer", "Network Interface Card", "NIC", "Wireless Adapter",
+      "Ethernet Cable", "Fiber Optic Cable", "Coaxial Cable", "RJ45", "RJ11", "Connector",
+      "Port", "MAC Address", "IP Address", "Subnet", "Subnet Mask", "Default Gateway",
+      "Network Topology", "Star", "Ring", "Bus", "Mesh", "Hybrid"
+    ],
+    "internet": [
+      "Internet", "World Wide Web", "WWW", "Website", "Web Page", "URL", "URI", "Domain",
+      "Domain Name", "Subdomain", "Top-Level Domain", "TLD", "DNS Server", "Web Server",
+      "Web Browser", "Search Engine", "Hyperlink", "HTML", "CSS", "JavaScript", "PHP",
+      "ASP", "JSP", "XML", "JSON", "AJAX", "REST", "SOAP", "Web Service", "API",
+      "Cookie", "Session", "Cache", "CDN", "Content Delivery Network", "Bandwidth"
+    ],
+    "wireless": [
+      "Wi-Fi", "Wireless", "Bluetooth", "NFC", "Near Field Communication", "RFID",
+      "Cellular", "3G", "4G", "LTE", "5G", "GSM", "CDMA", "Antenna", "Signal Strength",
+      "SSID", "Network Name", "Passphrase", "Encryption", "WPS", "Wi-Fi Direct",
+      "Hotspot", "Tethering", "Roaming", "Handoff", "Base Station", "Cell Tower",
+      "Frequency", "Channel", "Interference", "Range", "Coverage", "Dead Zone"
+    ]
+  },
+  "data_management": {
+    "databases": [
+      "Database", "DBMS", "Database Management System", "SQL", "NoSQL", "Relational Database",
+      "Table", "Row", "Column", "Field", "Record", "Primary Key", "Foreign Key", "Index",
+      "Query", "Select", "Insert", "Update", "Delete", "Join", "Normalization", "ACID",
+      "Transaction", "Commit", "Rollback", "Backup", "Restore", "Replication", "Sharding",
+      "MySQL", "PostgreSQL", "Oracle", "SQL Server", "MongoDB", "Redis", "Cassandra"
+    ],
+    "file_systems": [
+      "File System", "File", "Folder", "Directory", "Path", "Absolute Path", "Relative Path",
+      "Root Directory", "Subdirectory", "File Extension", "File Type", "File Size",
+      "File Attribute", "Permission", "Read", "Write", "Execute", "Owner", "Group",
+      "NTFS", "FAT32", "exFAT", "ext4", "HFS+", "APFS", "Allocation Unit", "Cluster",
+      "Sector", "Fragmentation", "Defragmentation", "Mount", "Unmount", "Symbolic Link"
+    ],
+    "data_formats": [
+      "Data Format", "Text File", "Binary File", "ASCII", "Unicode", "UTF-8", "UTF-16",
+      "CSV", "XML", "JSON", "YAML", "HTML", "PDF", "DOC", "DOCX", "XLS", "XLSX",
+      "PPT", "PPTX", "RTF", "TXT", "LOG", "CFG", "INI", "JPEG", "PNG", "GIF",
+      "BMP", "TIFF", "SVG", "MP3", "WAV", "FLAC", "MP4", "AVI", "MOV", "WMV"
+    ]
+  },
+  "security": {
+    "cybersecurity": [
+      "Cybersecurity", "Information Security", "Computer Security", "Network Security",
+      "Data Security", "Threat", "Vulnerability", "Risk", "Attack", "Breach", "Incident",
+      "Malware", "Virus", "Worm", "Trojan", "Ransomware", "Spyware", "Adware", "Rootkit",
+      "Phishing", "Social Engineering", "Man-in-the-Middle", "DDoS", "Brute Force",
+      "Zero-Day", "Exploit", "Payload", "Backdoor", "Botnet", "APT", "Advanced Persistent Threat"
+    ],
+    "authentication": [
+      "Authentication", "Authorization", "Access Control", "Password", "Passphrase",
+      "Multi-Factor Authentication", "MFA", "Two-Factor Authentication", "2FA", "Biometric",
+      "Fingerprint", "Face Recognition", "Voice Recognition", "Smart Card", "Token",
+      "Digital Certificate", "Public Key", "Private Key", "Encryption", "Decryption",
+      "Hash", "Digital Signature", "Certificate Authority", "PKI", "Single Sign-On", "SSO"
+    ],
+    "protection": [
+      "Antivirus", "Anti-malware", "Firewall", "IDS", "Intrusion Detection System",
+      "IPS", "Intrusion Prevention System", "VPN", "Virtual Private Network", "Proxy",
+      "Sandbox", "Quarantine", "Patch", "Update", "Security Policy", "Backup", "Recovery",
+      "Disaster Recovery", "Business Continuity", "Audit", "Compliance", "Forensics",
+      "Penetration Testing", "Vulnerability Assessment", "Risk Assessment", "Security Awareness"
+    ]
+  },
+  "cloud_computing": {
+    "service_models": [
+      "Cloud Computing", "SaaS", "Software as a Service", "PaaS", "Platform as a Service",
+      "IaaS", "Infrastructure as a Service", "Public Cloud", "Private Cloud", "Hybrid Cloud",
+      "Multi-Cloud", "Community Cloud", "Cloud Provider", "Cloud Service", "Cloud Storage",
+      "Cloud Backup", "Cloud Migration", "Cloud Native", "Serverless", "Function as a Service",
+      "FaaS", "Container as a Service", "CaaS", "Desktop as a Service", "DaaS"
+    ],
+    "technologies": [
+      "Virtualization", "Virtual Machine", "VM", "Hypervisor", "Container", "Docker",
+      "Kubernetes", "Microservices", "API Gateway", "Load Balancer", "Auto Scaling",
+      "Elastic Computing", "On-Demand", "Pay-as-you-Go", "Resource Pool", "Provisioning",
+      "Orchestration", "DevOps", "CI/CD", "Infrastructure as Code", "IaC", "Configuration Management",
+      "Monitoring", "Logging", "Alerting", "Performance Management", "Cost Optimization"
+    ],
+    "deployment": [
+      "Deployment", "Scaling", "Horizontal Scaling", "Vertical Scaling", "Elasticity",
+      "High Availability", "Fault Tolerance", "Disaster Recovery", "Backup", "Snapshot",
+      "Clone", "Template", "Image", "Instance", "Node", "Cluster", "Region", "Zone",
+      "Edge Computing", "Content Delivery Network", "CDN", "Latency", "Bandwidth",
+      "Throughput", "Performance", "SLA", "Service Level Agreement", "Uptime", "Downtime"
+    ]
+  },
+  "artificial_intelligence": {
+    "machine_learning": [
+      "Artificial Intelligence", "AI", "Machine Learning", "ML", "Deep Learning", "Neural Network",
+      "Artificial Neural Network", "ANN", "Algorithm", "Model", "Training", "Testing",
+      "Validation", "Dataset", "Feature", "Label", "Supervised Learning", "Unsupervised Learning",
+      "Reinforcement Learning", "Classification", "Regression", "Clustering", "Decision Tree",
+      "Random Forest", "Support Vector Machine", "SVM", "k-Means", "Linear Regression",
+      "Logistic Regression", "Gradient Descent", "Backpropagation", "Overfitting", "Underfitting"
+    ],
+    "deep_learning": [
+      "Deep Learning", "Convolutional Neural Network", "CNN", "Recurrent Neural Network", "RNN",
+      "Long Short-Term Memory", "LSTM", "Transformer", "Attention Mechanism", "Generative Adversarial Network",
+      "GAN", "Autoencoder", "Layer", "Neuron", "Weight", "Bias", "Activation Function",
+      "ReLU", "Sigmoid", "Tanh", "Softmax", "Loss Function", "Optimizer", "Adam", "SGD",
+      "Epoch", "Batch", "Mini-batch", "Learning Rate", "Dropout", "Regularization"
+    ],
+    "applications": [
+      "Natural Language Processing", "NLP", "Computer Vision", "Image Recognition",
+      "Object Detection", "Face Recognition", "Speech Recognition", "Text-to-Speech",
+      "Machine Translation", "Sentiment Analysis", "Chatbot", "Virtual Assistant",
+      "Recommendation System", "Autonomous Vehicle", "Robotics", "Expert System",
+      "Knowledge Base", "Inference Engine", "Fuzzy Logic", "Genetic Algorithm",
+      "Swarm Intelligence", "Predictive Analytics", "Pattern Recognition", "Data Mining"
+    ]
+  },
+  "web_development": {
+    "frontend": [
+      "Frontend", "Front-end", "Client-side", "User Interface", "UI", "User Experience", "UX",
+      "HTML", "CSS", "JavaScript", "DOM", "Document Object Model", "AJAX", "JSON", "XML",
+      "Framework", "Library", "React", "Angular", "Vue.js", "jQuery", "Bootstrap",
+      "Responsive Design", "Mobile-first", "Progressive Web App", "PWA", "Single Page Application",
+      "SPA", "Component", "State Management", "Event Handling", "Animation", "Transition"
+    ],
+    "backend": [
+      "Backend", "Back-end", "Server-side", "API", "Application Programming Interface",
+      "REST", "RESTful", "GraphQL", "SOAP", "Microservices", "Monolith", "Database",
+      "ORM", "Object-Relational Mapping", "Authentication", "Authorization", "Session",
+      "Cookie", "Cache", "CDN", "Load Balancer", "Middleware", "Framework", "Express.js",
+      "Django", "Flask", "Spring", "Laravel", "Ruby on Rails", "ASP.NET"
+    ],
+    "tools": [
+      "Web Server", "Apache", "Nginx", "IIS", "Node.js", "PHP", "Python", "Java",
+      "C#", "Ruby", "Go", "Rust", "Package Manager", "npm", "yarn", "pip", "Maven",
+      "Gradle", "Build Tool", "Webpack", "Gulp", "Grunt", "Version Control", "Git",
+      "GitHub", "GitLab", "Bitbucket", "IDE", "Code Editor", "VS Code", "Sublime Text",
+      "Atom", "WebStorm", "Debugger", "Browser DevTools", "Testing", "Unit Testing"
+    ]
+  },
+  "mobile_computing": {
+    "platforms": [
+      "Mobile Computing", "Smartphone", "Tablet", "Mobile Device", "Mobile OS",
+      "Android", "iOS", "Mobile App", "Native App", "Hybrid App", "Web App",
+      "Progressive Web App", "PWA", "App Store", "Google Play", "Mobile Development",
+      "SDK", "Software Development Kit", "IDE", "Emulator", "Simulator", "Testing",
+      "Mobile UI", "Touch Interface", "Gesture", "Responsive Design", "Adaptive Design"
+    ],
+    "technologies": [
+      "Mobile Network", "Cellular", "3G", "4G", "LTE", "5G", "Wi-Fi", "Bluetooth",
+      "NFC", "GPS", "Location Services", "Push Notification", "Background Processing",
+      "Battery Optimization", "Performance Optimization", "Memory Management", "Storage",
+      "Local Database", "SQLite", "Core Data", "Offline Sync", "Cloud Sync", "Camera",
+      "Microphone", "Accelerometer", "Gyroscope", "Compass", "Biometric", "Touch ID"
+    ]
+  },
+  "emerging_technologies": {
+    "blockchain": [
+      "Blockchain", "Distributed Ledger", "Cryptocurrency", "Bitcoin", "Ethereum",
+      "Smart Contract", "Decentralized", "Consensus", "Proof of Work", "Proof of Stake",
+      "Mining", "Hash", "Digital Wallet", "Public Key", "Private Key", "Transaction",
+      "Block", "Node", "Peer-to-Peer", "DeFi", "Decentralized Finance", "NFT",
+      "Non-Fungible Token", "DApp", "Decentralized Application", "Token", "Coin"
+    ],
+    "iot": [
+      "Internet of Things", "IoT", "Smart Device", "Connected Device", "Sensor",
+      "Actuator", "Edge Computing", "Fog Computing", "M2M", "Machine-to-Machine",
+      "MQTT", "CoAP", "LoRaWAN", "Zigbee", "Thread", "Smart Home", "Smart City",
+      "Industrial IoT", "IIoT", "Wearable", "Embedded System", "Microcontroller",
+      "Arduino", "Raspberry Pi", "Real-time", "Low Power", "Battery Life"
+    ],
+    "quantum": [
+      "Quantum Computing", "Quantum Computer", "Qubit", "Quantum Bit", "Superposition",
+      "Entanglement", "Quantum Gate", "Quantum Circuit", "Quantum Algorithm",
+      "Quantum Supremacy", "Quantum Advantage", "Quantum Cryptography", "Quantum Key Distribution",
+      "Decoherence", "Quantum Error Correction", "Quantum Simulator", "Quantum Annealing",
+      "Quantum Machine Learning", "Quantum Programming", "Qiskit", "Cirq", "Q#"
+    ],
+    "ar_vr": [
+      "Augmented Reality", "AR", "Virtual Reality", "VR", "Mixed Reality", "MR",
+      "Extended Reality", "XR", "Immersive", "Head-Mounted Display", "HMD", "Headset",
+      "360-degree Video", "Stereoscopic", "Tracking", "Motion Tracking", "Eye Tracking",
+      "Hand Tracking", "Haptic Feedback", "Spatial Computing", "Computer Vision",
+      "SLAM", "Simultaneous Localization and Mapping", "Unity", "Unreal Engine", "WebXR"
+    ]
+  },
+  "system_administration": {
+    "server_management": [
+      "System Administration", "Server", "Server Management", "Remote Access", "SSH",
+      "RDP", "Terminal Server", "Command Line", "Shell Script", "Batch File", "PowerShell",
+      "Bash", "Cron Job", "Task Scheduler", "Service", "Daemon", "Process", "Performance Monitoring",
+      "Resource Usage", "CPU Usage", "Memory Usage", "Disk Usage", "Network Usage",
+      "Log File", "Event Log", "System Log", "Error Log", "Troubleshooting", "Debugging"
+    ],
+    "infrastructure": [
+      "IT Infrastructure", "Data Center", "Rack", "Server Room", "Cooling", "Power Supply",
+      "UPS", "Uninterruptible Power Supply", "Backup Generator", "Network Infrastructure",
+      "Cabling", "Patch Panel", "Switch", "Router", "Firewall", "Load Balancer",
+      "Storage Area Network", "SAN", "Network Attached Storage", "NAS", "RAID",
+      "Redundancy", "High Availability", "Failover", "Disaster Recovery", "Business Continuity"
+    ]
+  }
+}

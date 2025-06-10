@@ -1,0 +1,311 @@
+{
+  "investment_fundamentals": {
+    "basic_concepts": [
+      "Investment", "Asset", "Security", "Capital", "Principal", "Return", "Yield",
+      "Income", "Capital Appreciation", "Capital Gains", "Capital Losses", "Total Return",
+      "Nominal Return", "Real Return", "Risk", "Reward", "Risk-Return Tradeoff",
+      "Time Value of Money", "Present Value", "Future Value", "Compound Interest",
+      "Simple Interest", "Opportunity Cost", "Liquidity", "Volatility"
+    ],
+    "investment_objectives": [
+      "Growth", "Income", "Capital Preservation", "Capital Appreciation", "Speculation",
+      "Conservative", "Moderate", "Aggressive", "Risk Tolerance", "Investment Horizon",
+      "Time Horizon", "Short-term", "Medium-term", "Long-term", "Investment Goals",
+      "Financial Goals", "Retirement Planning", "Education Funding", "Emergency Fund",
+      "Wealth Building", "Wealth Preservation", "Legacy Planning", "Estate Planning"
+    ],
+    "investor_types": [
+      "Individual Investor", "Retail Investor", "Institutional Investor", "Accredited Investor",
+      "Qualified Investor", "Professional Investor", "Sophisticated Investor", "Angel Investor",
+      "Venture Capitalist", "Private Equity Investor", "Hedge Fund Investor", "Family Office",
+      "Endowment", "Foundation", "Pension Fund", "Insurance Company", "Sovereign Wealth Fund",
+      "High Net Worth", "Ultra High Net Worth", "Mass Affluent"
+    ]
+  },
+  "asset_classes": {
+    "equity_investments": [
+      "Stock", "Share", "Equity", "Common Stock", "Preferred Stock", "Growth Stock",
+      "Value Stock", "Income Stock", "Dividend Stock", "Blue Chip", "Large Cap",
+      "Mid Cap", "Small Cap", "Micro Cap", "Penny Stock", "International Stock",
+      "Emerging Market Stock", "Developed Market Stock", "ADR", "GDR", "REIT"
+    ],
+    "fixed_income": [
+      "Bond", "Fixed Income", "Government Bond", "Corporate Bond", "Municipal Bond",
+      "Treasury Bill", "Treasury Note", "Treasury Bond", "TIPS", "I Bonds", "Zero Coupon Bond",
+      "High Yield Bond", "Investment Grade Bond", "Junk Bond", "Convertible Bond",
+      "Floating Rate Note", "Mortgage-Backed Security", "Asset-Backed Security",
+      "Commercial Paper", "Certificate of Deposit", "Money Market Instrument"
+    ],
+    "alternative_investments": [
+      "Real Estate", "Commodities", "Precious Metals", "Gold", "Silver", "Oil", "Natural Gas",
+      "Agricultural Commodities", "Hedge Funds", "Private Equity", "Venture Capital",
+      "Private REIT", "Private Debt", "Infrastructure", "Collectibles", "Art", "Wine",
+      "Cryptocurrency", "Digital Assets", "Bitcoin", "Ethereum", "Stablecoin",
+      "Timber", "Farmland", "Water Rights", "Intellectual Property"
+    ],
+    "cash_equivalents": [
+      "Cash", "Savings Account", "Money Market Account", "Money Market Fund",
+      "Treasury Bills", "Commercial Paper", "Banker's Acceptance", "Repurchase Agreement",
+      "Certificate of Deposit", "Short-term Government Securities", "Liquid Assets",
+      "Near Cash", "Cash Management", "Sweep Account", "High-Yield Savings"
+    ]
+  },
+  "investment_vehicles": {
+    "mutual_funds": [
+      "Mutual Fund", "Open-End Fund", "Closed-End Fund", "Net Asset Value", "NAV",
+      "Load Fund", "No-Load Fund", "Front-End Load", "Back-End Load", "Redemption Fee",
+      "Expense Ratio", "Management Fee", "12b-1 Fee", "Prospectus", "Statement of Additional Information",
+      "Fund Manager", "Portfolio Manager", "Investment Objective", "Investment Style",
+      "Active Management", "Passive Management", "Index Fund", "Sector Fund", "Balanced Fund"
+    ],
+    "exchange_traded_funds": [
+      "Exchange-Traded Fund", "ETF", "Index ETF", "Sector ETF", "Commodity ETF",
+      "Currency ETF", "Inverse ETF", "Leveraged ETF", "Smart Beta ETF", "Factor ETF",
+      "Actively Managed ETF", "Creation Unit", "Authorized Participant", "In-Kind Redemption",
+      "Premium", "Discount", "Tracking Error", "Expense Ratio", "Dividend Distribution",
+      "Tax Efficiency", "Liquidity", "Bid-Ask Spread", "Market Maker"
+    ],
+    "structured_products": [
+      "Structured Product", "Structured Note", "Market-Linked CD", "Equity-Linked Note",
+      "Principal Protected Note", "Barrier Note", "Autocallable Note", "Reverse Convertible Note",
+      "Credit-Linked Note", "Commodity-Linked Note", "Currency-Linked Note",
+      "Capital Protection", "Participation Rate", "Cap", "Floor", "Knock-In Barrier",
+      "Knock-Out Barrier", "Observation Date", "Valuation Date", "Maturity Date"
+    ],
+    "insurance_products": [
+      "Variable Annuity", "Fixed Annuity", "Indexed Annuity", "Immediate Annuity",
+      "Deferred Annuity", "Life Insurance", "Whole Life", "Term Life", "Universal Life",
+      "Variable Life", "Cash Value", "Death Benefit", "Surrender Charge",
+      "Guaranteed Minimum Income Benefit", "GMIB", "Guaranteed Minimum Withdrawal Benefit", "GMWB",
+      "Rider", "Annuitization", "Surrender Value", "Free Look Period"
+    ]
+  },
+  "portfolio_management": {
+    "construction": [
+      "Portfolio", "Asset Allocation", "Strategic Asset Allocation", "Tactical Asset Allocation",
+      "Diversification", "Correlation", "Modern Portfolio Theory", "Efficient Frontier",
+      "Optimal Portfolio", "Risk Budget", "Risk Parity", "Equal Weight", "Market Cap Weight",
+      "Core Holdings", "Satellite Holdings", "Core-Satellite Strategy", "Barbell Strategy",
+      "Rebalancing", "Drift", "Threshold Rebalancing", "Calendar Rebalancing"
+    ],
+    "risk_management": [
+      "Portfolio Risk", "Systematic Risk", "Unsystematic Risk", "Specific Risk", "Idiosyncratic Risk",
+      "Market Risk", "Credit Risk", "Interest Rate Risk", "Inflation Risk", "Liquidity Risk",
+      "Currency Risk", "Political Risk", "Regulatory Risk", "Concentration Risk",
+      "Beta", "Alpha", "Standard Deviation", "Variance", "Covariance", "Value at Risk", "VaR",
+      "Expected Shortfall", "Maximum Drawdown", "Downside Deviation", "Semi-Variance"
+    ],
+    "performance_measurement": [
+      "Performance", "Return", "Absolute Return", "Relative Return", "Benchmark",
+      "Excess Return", "Active Return", "Tracking Error", "Information Ratio",
+      "Sharpe Ratio", "Treynor Ratio", "Jensen's Alpha", "Sortino Ratio", "Calmar Ratio",
+      "Risk-Adjusted Return", "Attribution Analysis", "Style Analysis", "Factor Analysis",
+      "Performance Attribution", "Security Selection", "Asset Allocation Effect", "Timing Effect"
+    ],
+    "strategies": [
+      "Buy and Hold", "Dollar Cost Averaging", "Value Averaging", "Momentum Investing",
+      "Contrarian Investing", "Mean Reversion", "Trend Following", "Pairs Trading",
+      "Long/Short Strategy", "Market Neutral", "Arbitrage", "Event Driven",
+      "Merger Arbitrage", "Distressed Investing", "Growth at a Reasonable Price", "GARP",
+      "Quality Investing", "Dividend Growth Investing", "Factor Investing", "Smart Beta"
+    ]
+  },
+  "valuation_analysis": {
+    "equity_valuation": [
+      "Valuation", "Intrinsic Value", "Fair Value", "Book Value", "Market Value",
+      "Discounted Cash Flow", "DCF", "Net Present Value", "NPV", "Free Cash Flow",
+      "Terminal Value", "Discount Rate", "WACC", "Cost of Equity", "Cost of Debt",
+      "Price-to-Earnings", "P/E", "Price-to-Book", "P/B", "Price-to-Sales", "P/S",
+      "Enterprise Value", "EV/EBITDA", "EV/Sales", "PEG Ratio", "Dividend Discount Model"
+    ],
+    "fixed_income_valuation": [
+      "Yield to Maturity", "YTM", "Current Yield", "Yield to Call", "Yield to Worst",
+      "Duration", "Modified Duration", "Effective Duration", "Convexity", "Price Sensitivity",
+      "Interest Rate Risk", "Credit Spread", "Option-Adjusted Spread", "OAS",
+      "Z-Spread", "Nominal Spread", "Credit Rating", "Default Risk", "Recovery Rate",
+      "Accrued Interest", "Clean Price", "Dirty Price", "Pull to Par"
+    ],
+    "alternative_valuation": [
+      "Comparable Sales", "Capitalization Rate", "Cap Rate", "Net Operating Income", "NOI",
+      "Cash-on-Cash Return", "Internal Rate of Return", "IRR", "Multiple of Money", "MoM",
+      "Distributed to Paid-In", "DPI", "Total Value to Paid-In", "TVPI",
+      "Public Market Equivalent", "PME", "Vintage Year", "J-Curve Effect",
+      "Carry", "Carried Interest", "Hurdle Rate", "Preferred Return", "Waterfall"
+    ]
+  },
+  "investment_styles": {
+    "equity_styles": [
+      "Value Investing", "Growth Investing", "Blend Investing", "Income Investing",
+      "Dividend Investing", "Quality Investing", "Momentum Investing", "Contrarian Investing",
+      "Small Cap Investing", "Large Cap Investing", "International Investing", "Emerging Markets",
+      "Sector Rotation", "Thematic Investing", "ESG Investing", "Impact Investing",
+      "Socially Responsible Investing", "SRI", "Sustainable Investing", "Factor Investing"
+    ],
+    "fixed_income_styles": [
+      "Credit Investing", "Duration Management", "Yield Curve Positioning", "Sector Allocation",
+      "Quality Investing", "High Yield Investing", "Investment Grade", "Government Bonds",
+      "Municipal Bonds", "International Bonds", "Emerging Market Debt", "Inflation-Protected",
+      "Floating Rate", "Bank Loans", "Convertible Bonds", "Preferred Securities",
+      "Asset-Backed Securities", "Mortgage-Backed Securities", "Treasury Inflation-Protected Securities"
+    ],
+    "alternative_styles": [
+      "Long/Short Equity", "Market Neutral", "Event Driven", "Merger Arbitrage",
+      "Distressed Securities", "Global Macro", "Managed Futures", "Commodity Trading Advisor", "CTA",
+      "Relative Value", "Fixed Income Arbitrage", "Convertible Arbitrage", "Volatility Trading",
+      "Multi-Strategy", "Fund of Funds", "Private Equity", "Venture Capital",
+      "Real Estate", "Infrastructure", "Natural Resources", "Commodities"
+    ]
+  },
+  "market_analysis": {
+    "fundamental_analysis": [
+      "Fundamental Analysis", "Financial Statements", "Income Statement", "Balance Sheet",
+      "Cash Flow Statement", "Revenue", "Earnings", "Profit Margin", "ROE", "ROA", "ROIC",
+      "Debt-to-Equity", "Current Ratio", "Quick Ratio", "Working Capital", "Free Cash Flow",
+      "Earnings Per Share", "EPS", "Book Value Per Share", "Dividend Per Share",
+      "Payout Ratio", "Retention Ratio", "Growth Rate", "Sustainable Growth Rate"
+    ],
+    "technical_analysis": [
+      "Technical Analysis", "Chart Pattern", "Trend Analysis", "Support and Resistance",
+      "Moving Average", "Exponential Moving Average", "Bollinger Bands", "Relative Strength Index", "RSI",
+      "MACD", "Stochastic Oscillator", "Momentum", "Volume", "Breakout", "Reversal",
+      "Head and Shoulders", "Double Top", "Double Bottom", "Triangle", "Flag", "Pennant",
+      "Fibonacci Retracement", "Elliott Wave Theory", "Candlestick Patterns", "Japanese Candlesticks"
+    ],
+    "quantitative_analysis": [
+      "Quantitative Analysis", "Statistical Analysis", "Regression Analysis", "Factor Models",
+      "Multi-Factor Model", "Capital Asset Pricing Model", "CAPM", "Arbitrage Pricing Theory", "APT",
+      "Black-Scholes Model", "Monte Carlo Simulation", "Value at Risk", "Stress Testing",
+      "Backtesting", "Historical Simulation", "Parametric Models", "Non-Parametric Models",
+      "Machine Learning", "Artificial Intelligence", "Algorithm", "Systematic Trading"
+    ]
+  },
+  "derivatives_hedging": {
+    "options": [
+      "Option", "Call Option", "Put Option", "Strike Price", "Expiration Date", "Premium",
+      "Exercise", "Assignment", "American Option", "European Option", "In-the-Money", "Out-of-the-Money",
+      "At-the-Money", "Intrinsic Value", "Time Value", "Time Decay", "Greeks",
+      "Delta", "Gamma", "Theta", "Vega", "Rho", "Implied Volatility", "Historical Volatility"
+    ],
+    "options_strategies": [
+      "Covered Call", "Protective Put", "Married Put", "Collar", "Straddle", "Strangle",
+      "Bull Call Spread", "Bear Put Spread", "Iron Condor", "Iron Butterfly", "Butterfly Spread",
+      "Calendar Spread", "Diagonal Spread", "Ratio Spread", "Synthetic Position",
+      "Long Call", "Short Call", "Long Put", "Short Put", "Cash-Secured Put"
+    ],
+    "futures_forwards": [
+      "Futures Contract", "Forward Contract", "Commodity Futures", "Financial Futures",
+      "Index Futures", "Currency Futures", "Interest Rate Futures", "Bond Futures",
+      "Margin", "Initial Margin", "Maintenance Margin", "Variation Margin", "Mark-to-Market",
+      "Delivery", "Cash Settlement", "Contango", "Backwardation", "Basis", "Convergence",
+      "Roll", "Rollover", "Expiration", "First Notice Day", "Last Trading Day"
+    ],
+    "swaps_other": [
+      "Swap", "Interest Rate Swap", "Currency Swap", "Credit Default Swap", "Total Return Swap",
+      "Equity Swap", "Commodity Swap", "Inflation Swap", "Variance Swap", "Volatility Swap",
+      "Swaption", "Cap", "Floor", "Collar", "Forward Rate Agreement", "FRA",
+      "Credit Derivatives", "Weather Derivatives", "Catastrophe Bonds", "Structured Notes"
+    ]
+  },
+  "taxation": {
+    "tax_basics": [
+      "Tax Efficiency", "Tax-Advantaged Account", "Tax-Deferred", "Tax-Free", "Taxable Account",
+      "Capital Gains Tax", "Short-term Capital Gains", "Long-term Capital Gains", "Ordinary Income",
+      "Tax Loss Harvesting", "Wash Sale Rule", "Step-Up in Basis", "Cost Basis",
+      "Adjusted Basis", "Tax Lot", "FIFO", "LIFO", "Specific Identification", "Average Cost"
+    ],
+    "retirement_accounts": [
+      "401(k)", "403(b)", "457 Plan", "IRA", "Traditional IRA", "Roth IRA", "SEP-IRA",
+      "SIMPLE IRA", "Solo 401(k)", "Defined Benefit Plan", "Defined Contribution Plan",
+      "Pension", "Annuity", "Required Minimum Distribution", "RMD", "Early Withdrawal Penalty",
+      "Vesting", "Employer Match", "Contribution Limit", "Catch-Up Contribution", "Rollover"
+    ],
+    "tax_strategies": [
+      "Tax Planning", "Tax Optimization", "Asset Location", "Tax-Managed Fund",
+      "Municipal Bond", "Tax-Free Bond", "Tax Credit", "Tax Deduction", "Tax Shelter",
+      "Tax Deferral", "Income Shifting", "Charitable Giving", "Donor-Advised Fund",
+      "Charitable Remainder Trust", "Estate Planning", "Gift Tax", "Estate Tax",
+      "Generation-Skipping Tax", "Trust", "Family Limited Partnership"
+    ]
+  },
+  "international_investing": {
+    "global_markets": [
+      "International Investing", "Global Investing", "Foreign Investment", "Cross-Border Investment",
+      "Developed Markets", "Emerging Markets", "Frontier Markets", "Regional Funds",
+      "Country Funds", "Global Fund", "International Fund", "World Fund",
+      "EAFE", "Europe, Australasia, Far East", "ACWI", "All Country World Index",
+      "Home Bias", "Geographic Diversification", "Global Asset Allocation"
+    ],
+    "currency_considerations": [
+      "Currency Risk", "Exchange Rate Risk", "Foreign Exchange", "FX", "Currency Hedging",
+      "Hedged Fund", "Unhedged Fund", "Currency Forward", "Currency Future", "Currency Option",
+      "Currency Swap", "Base Currency", "Local Currency", "Functional Currency",
+      "Translation Risk", "Transaction Risk", "Economic Risk", "Purchasing Power Parity", "PPP"
+    ],
+    "international_structures": [
+      "ADR", "American Depositary Receipt", "GDR", "Global Depositary Receipt",
+      "Ordinary Shares", "UCITS", "Undertakings for Collective Investment in Transferable Securities",
+      "SICAV", "Société d'Investissement à Capital Variable", "Offshore Fund", "Onshore Fund",
+      "Tax Treaty", "Withholding Tax", "Foreign Tax Credit", "FATCA", "CRS"
+    ]
+  },
+  "behavioral_finance": {
+    "cognitive_biases": [
+      "Behavioral Finance", "Cognitive Bias", "Anchoring Bias", "Confirmation Bias",
+      "Overconfidence Bias", "Loss Aversion", "Mental Accounting", "Endowment Effect",
+      "Framing Effect", "Availability Heuristic", "Representativeness Heuristic",
+      "Recency Bias", "Hindsight Bias", "Survivorship Bias", "Herding Behavior",
+      "Momentum Effect", "Contrarian Effect", "Home Bias", "Familiarity Bias"
+    ],
+    "emotional_factors": [
+      "Fear", "Greed", "Panic Selling", "Euphoria", "Market Sentiment", "Investor Sentiment",
+      "Risk Perception", "Risk Tolerance", "Risk Capacity", "Emotional Intelligence",
+      "Discipline", "Patience", "Long-term Thinking", "Short-term Thinking",
+      "Impulse Control", "Decision Making", "Behavioral Coaching", "Investment Psychology"
+    ],
+    "market_anomalies": [
+      "Market Anomaly", "Calendar Effect", "January Effect", "Monday Effect", "Holiday Effect",
+      "Size Effect", "Value Effect", "Momentum Effect", "Reversal Effect", "Earnings Announcement Effect",
+      "Post-Earnings Announcement Drift", "Accruals Anomaly", "Book-to-Market Effect",
+      "Price-to-Earnings Effect", "Dividend Yield Effect", "Analyst Recommendation Effect"
+    ]
+  },
+  "investment_technology": {
+    "fintech": [
+      "Financial Technology", "FinTech", "Robo-Advisor", "Algorithmic Trading", "High-Frequency Trading",
+      "Artificial Intelligence", "Machine Learning", "Big Data", "Predictive Analytics",
+      "Natural Language Processing", "Blockchain", "Cryptocurrency", "Digital Assets",
+      "Smart Contracts", "Automated Portfolio Management", "Digital Wealth Management",
+      "Mobile Trading", "Online Brokerage", "Commission-Free Trading", "Fractional Shares"
+    ],
+    "data_analytics": [
+      "Alternative Data", "Satellite Data", "Social Media Sentiment", "News Analytics",
+      "Earnings Call Transcripts", "Patent Data", "Credit Card Data", "Web Scraping",
+      "Sentiment Analysis", "Text Mining", "Factor Mining", "Signal Processing",
+      "Pattern Recognition", "Anomaly Detection", "Risk Modeling", "Portfolio Optimization",
+      "Backtesting", "Paper Trading", "Live Trading", "Performance Analytics"
+    ]
+  },
+  "regulatory_environment": {
+    "investment_regulations": [
+      "Securities Act of 1933", "Securities Exchange Act of 1934", "Investment Company Act of 1940",
+      "Investment Advisers Act of 1940", "Employee Retirement Income Security Act", "ERISA",
+      "Sarbanes-Oxley Act", "Dodd-Frank Act", "Fiduciary Rule", "Best Interest Rule",
+      "Regulation T", "Regulation U", "Pattern Day Trader Rule", "Anti-Money Laundering", "AML",
+      "Know Your Customer", "KYC", "Beneficial Ownership Rule", "Volcker Rule"
+    ],
+    "regulatory_bodies": [
+      "Securities and Exchange Commission", "SEC", "Financial Industry Regulatory Authority", "FINRA",
+      "Commodity Futures Trading Commission", "CFTC", "Department of Labor", "DOL",
+      "Internal Revenue Service", "IRS", "Federal Reserve", "Office of the Comptroller", "OCC",
+      "Consumer Financial Protection Bureau", "CFPB", "Municipal Securities Rulemaking Board", "MSRB",
+      "National Association of Insurance Commissioners", "NAIC", "State Securities Regulators"
+    ],
+    "compliance": [
+      "Compliance", "Fiduciary Duty", "Suitability", "Best Interest", "Disclosure", "Prospectus",
+      "Form ADV", "Form 13F", "Insider Trading", "Material Information", "Chinese Wall",
+      "Conflict of Interest", "Code of Ethics", "Personal Trading Policy", "Gift and Entertainment Policy",
+      "Anti-Fraud Provisions", "Registration", "Licensing", "Continuing Education", "Audit",
+      "Examination", "Enforcement Action", "Fine", "Sanction", "Restitution"
+    ]
+  }
+}

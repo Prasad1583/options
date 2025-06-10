@@ -1,0 +1,322 @@
+{
+  "identity_management": {
+    "core_concepts": [
+      "Digital Identity", "Identity", "Subject", "Principal", "Entity", "Identifier",
+      "Identity Lifecycle", "Identity Proofing", "Identity Verification", "Identity Assurance",
+      "Identity Provider", "IdP", "Relying Party", "Trust Framework", "Identity Context",
+      "Pseudonym", "Anonymous Identity", "Persona", "Digital Persona", "Avatar"
+    ],
+    "identity_types": [
+      "Human Identity", "Device Identity", "Service Identity", "Application Identity",
+      "Machine Identity", "Digital Identity", "Federated Identity", "Local Identity",
+      "Global Identity", "Temporary Identity", "Persistent Identity", "Contextual Identity",
+      "Partial Identity", "Composite Identity", "Synthetic Identity", "Virtual Identity"
+    ],
+    "attributes": [
+      "Identity Attribute", "Claim", "Assertion", "Profile", "Personal Data",
+      "Personally Identifiable Information", "PII", "Sensitive Personal Information", "SPI",
+      "Attribute Authority", "Attribute Provider", "Attribute Consumer", "Attribute Mapping",
+      "Attribute Translation", "Attribute Aggregation", "Attribute Release Policy"
+    ],
+    "standards": [
+      "X.500", "X.509", "LDAP", "SCIM", "SAML", "OpenID Connect", "OAuth 2.0",
+      "WS-Identity", "WS-Trust", "WS-Federation", "Liberty Alliance", "Kantara Initiative",
+      "OpenID Foundation", "OASIS", "W3C WebID", "DID", "Verifiable Credentials"
+    ]
+  },
+  "authentication": {
+    "fundamentals": [
+      "Authentication", "Verification", "Proof of Identity", "Challenge-Response",
+      "Credential", "Authenticator", "Authentication Factor", "Authentication Method",
+      "Authentication Protocol", "Authentication Token", "Authentication Context",
+      "Authentication Assurance Level", "AAL", "Authentication Event", "Session"
+    ],
+    "factors": [
+      "Knowledge Factor", "Possession Factor", "Inherence Factor", "Location Factor",
+      "Time Factor", "Behavior Factor", "Something You Know", "Something You Have",
+      "Something You Are", "Somewhere You Are", "Something You Do", "Biometric Factor"
+    ],
+    "methods": [
+      "Password Authentication", "PIN", "Passphrase", "Security Questions",
+      "Token-Based Authentication", "Certificate-Based Authentication", "Biometric Authentication",
+      "Multi-Factor Authentication", "MFA", "Two-Factor Authentication", "2FA",
+      "Step-Up Authentication", "Adaptive Authentication", "Risk-Based Authentication",
+      "Continuous Authentication", "Zero-Knowledge Authentication"
+    ],
+    "protocols": [
+      "Kerberos", "NTLM", "RADIUS", "DIAMETER", "EAP", "PEAP", "EAP-TLS", "EAP-TTLS",
+      "CHAP", "PAP", "MSCHAPv2", "SASL", "GSSAPI", "SPNEGO", "Negotiate",
+      "Digest Authentication", "Basic Authentication", "Bearer Token", "API Key"
+    ],
+    "biometrics": [
+      "Fingerprint Recognition", "Face Recognition", "Iris Recognition", "Retina Scan",
+      "Voice Recognition", "Hand Geometry", "Palm Print", "Vein Pattern",
+      "Keystroke Dynamics", "Gait Analysis", "Signature Recognition", "DNA",
+      "Behavioral Biometrics", "Physiological Biometrics", "Multimodal Biometrics"
+    ],
+    "tokens": [
+      "Hardware Token", "Software Token", "SMS Token", "Voice Token", "Push Token",
+      "TOTP", "HOTP", "RSA SecurID", "YubiKey", "Smart Card", "PIV Card", "CAC",
+      "FIDO Security Key", "FIDO2", "WebAuthn", "CTAP", "UAF", "U2F"
+    ]
+  },
+  "authorization": {
+    "core_concepts": [
+      "Authorization", "Access Control", "Permission", "Privilege", "Right",
+      "Entitlement", "Grant", "Policy", "Rule", "Access Decision", "Access Control Decision",
+      "Policy Decision Point", "PDP", "Policy Enforcement Point", "PEP",
+      "Policy Administration Point", "PAP", "Policy Information Point", "PIP"
+    ],
+    "models": [
+      "Discretionary Access Control", "DAC", "Mandatory Access Control", "MAC",
+      "Role-Based Access Control", "RBAC", "Attribute-Based Access Control", "ABAC",
+      "Rule-Based Access Control", "Policy-Based Access Control", "PBAC",
+      "Relationship-Based Access Control", "ReBAC", "Capability-Based Access Control",
+      "Bell-LaPadula Model", "Biba Model", "Chinese Wall Model", "Clark-Wilson Model"
+    ],
+    "rbac_concepts": [
+      "Role", "Permission", "User-Role Assignment", "Role-Permission Assignment",
+      "Session", "Role Hierarchy", "Role Inheritance", "Separation of Duties", "SOD",
+      "Static Separation of Duties", "Dynamic Separation of Duties", "Least Privilege",
+      "Role Engineering", "Role Mining", "Role Explosion", "Role Governance"
+    ],
+    "abac_concepts": [
+      "Attribute", "Subject Attribute", "Resource Attribute", "Environment Attribute",
+      "Action Attribute", "Policy Rule", "Condition", "Obligation", "Advice",
+      "Attribute Authority", "XACML", "Policy Language", "Policy Engine",
+      "Dynamic Authorization", "Contextual Access Control", "Fine-Grained Access Control"
+    ],
+    "capabilities": [
+      "Capability", "Capability Token", "Access Matrix", "Protection Domain",
+      "Ambient Authority", "Confused Deputy", "Principle of Least Authority", "POLA",
+      "Object-Capability Model", "Capability Security", "Unforgeable Reference"
+    ]
+  },
+  "access_control": {
+    "mechanisms": [
+      "Access Control List", "ACL", "Capability List", "Access Matrix",
+      "Reference Monitor", "Security Kernel", "Trusted Computing Base", "TCB",
+      "Security Label", "Classification", "Clearance", "Need to Know",
+      "Compartmentalization", "Information Flow Control", "Covert Channel"
+    ],
+    "enforcement": [
+      "Access Control Enforcement", "Guard", "Firewall", "Proxy", "Gateway",
+      "Security Gateway", "Application Gateway", "Web Application Firewall", "WAF",
+      "API Gateway", "Zero Trust Network Access", "ZTNA", "Software-Defined Perimeter", "SDP"
+    ],
+    "administration": [
+      "Centralized Administration", "Decentralized Administration", "Delegated Administration",
+      "Self-Service", "Role-Based Administration", "Administrative Role", "Admin Role",
+      "Separation of Administrative Duties", "Administrative Workflow", "Approval Process"
+    ]
+  },
+  "federation": {
+    "concepts": [
+      "Identity Federation", "Federated Identity Management", "Cross-Domain Authentication",
+      "Trust Relationship", "Circle of Trust", "Federation Metadata", "Trust Anchor",
+      "Identity Broker", "Identity Bridge", "Protocol Translation", "Attribute Mapping",
+      "Account Linking", "Just-in-Time Provisioning", "JIT Provisioning"
+    ],
+    "models": [
+      "Hub and Spoke", "Mesh Federation", "Hierarchical Federation", "Bilateral Trust",
+      "Multilateral Trust", "Transitive Trust", "Federation Proxy", "Identity Provider Proxy",
+      "Service Provider Proxy", "Federation Gateway", "Cross-Protocol Federation"
+    ],
+    "standards": [
+      "SAML 2.0", "WS-Federation", "WS-Trust", "OpenID Connect Federation",
+      "OAuth 2.0 Federation", "Liberty Alliance", "Shibboleth", "InCommon",
+      "eduGAIN", "GÉANT", "UK Federation", "AAF", "IDEM", "CAF", "HAKA"
+    ]
+  },
+  "single_sign_on": {
+    "types": [
+      "Web SSO", "Enterprise SSO", "Desktop SSO", "Mobile SSO", "Cloud SSO",
+      "Cross-Domain SSO", "Federated SSO", "Same Sign-On", "Reduced Sign-On",
+      "True Single Sign-On", "Pseudo Single Sign-On", "Seamless Sign-On"
+    ],
+    "protocols": [
+      "SAML Web Browser SSO", "OpenID Connect", "OAuth 2.0", "WS-Federation",
+      "Kerberos", "NTLM", "Form-Based SSO", "Header-Based SSO", "Cookie-Based SSO",
+      "Certificate-Based SSO", "Integrated Windows Authentication", "IWA"
+    ],
+    "challenges": [
+      "Session Management", "Session Synchronization", "Global Logout", "Single Logout",
+      "SLO", "Session Timeout", "Idle Timeout", "Token Lifetime", "Clock Skew",
+      "Cross-Domain Cookies", "Third-Party Cookies", "SameSite Policy", "CSRF Protection"
+    ]
+  },
+  "privileged_access": {
+    "concepts": [
+      "Privileged Access Management", "PAM", "Privileged Account", "Administrative Account",
+      "Shared Account", "Service Account", "System Account", "Root Account",
+      "Emergency Account", "Break-Glass Access", "Privileged User", "Super User"
+    ],
+    "access_models": [
+      "Just-in-Time Access", "JIT", "Just Enough Access", "JEA", "Zero Standing Privileges",
+      "Least Privilege Access", "Time-Bound Access", "Ephemeral Access", "Temporary Access",
+      "On-Demand Access", "Request-Based Access", "Approval-Based Access"
+    ],
+    "features": [
+      "Password Vaulting", "Credential Management", "Session Management", "Session Recording",
+      "Session Monitoring", "Session Control", "Dual Control", "Four-Eyes Principle",
+      "Approval Workflow", "Access Request", "Checkout/Checkin", "Password Rotation",
+      "SSH Key Management", "Certificate Management", "Discovery", "Onboarding"
+    ],
+    "technologies": [
+      "Privileged Session Management", "PSM", "Remote Access", "Jump Server", "Bastion Host",
+      "Privileged Gateway", "Connection Broker", "Session Proxy", "Application Isolation",
+      "Browser Isolation", "Virtual Desktop Infrastructure", "VDI", "Zero Trust"
+    ]
+  },
+  "governance": {
+    "concepts": [
+      "Identity Governance", "Access Governance", "Identity Governance and Administration", "IGA",
+      "Governance Risk and Compliance", "GRC", "Access Governance", "Entitlement Management",
+      "Access Analytics", "Identity Analytics", "Access Intelligence", "Compliance Management"
+    ],
+    "processes": [
+      "Access Certification", "Access Review", "Recertification", "Attestation",
+      "Role Mining", "Role Management", "Role Lifecycle", "Entitlement Review",
+      "Segregation of Duties", "SOD", "Toxic Combinations", "Risk Assessment",
+      "Violation Detection", "Policy Violation", "Compliance Reporting"
+    ],
+    "lifecycle": [
+      "Joiner", "Mover", "Leaver", "JML", "Birthright Access", "Role-Based Access",
+      "Access Request", "Access Approval", "Access Provisioning", "Access Deprovisioning",
+      "Account Lifecycle", "Identity Lifecycle", "Orphaned Account", "Dormant Account"
+    ],
+    "analytics": [
+      "Access Analytics", "Identity Analytics", "Behavioral Analytics", "Risk Analytics",
+      "Anomaly Detection", "Outlier Detection", "Peer Group Analysis", "Role Analytics",
+      "Entitlement Analytics", "Usage Analytics", "Access Pattern", "Risk Score"
+    ]
+  },
+  "provisioning": {
+    "concepts": [
+      "Identity Provisioning", "Account Provisioning", "User Provisioning", "Automated Provisioning",
+      "Self-Service Provisioning", "Delegated Provisioning", "Bulk Provisioning",
+      "Just-in-Time Provisioning", "JIT", "Dynamic Provisioning", "Real-Time Provisioning"
+    ],
+    "operations": [
+      "Create", "Read", "Update", "Delete", "CRUD", "Account Creation", "Account Modification",
+      "Account Suspension", "Account Activation", "Account Deactivation", "Account Deletion",
+      "Group Membership", "Role Assignment", "Entitlement Assignment", "Attribute Update"
+    ],
+    "standards": [
+      "SCIM", "System for Cross-domain Identity Management", "SPML", "Service Provisioning Markup Language",
+      "DSML", "Directory Services Markup Language", "LDAP", "Active Directory",
+      "REST API", "SOAP", "JSON", "XML", "HR-XML", "CSV", "Flat File"
+    ],
+    "patterns": [
+      "Push Provisioning", "Pull Provisioning", "Event-Driven Provisioning", "Scheduled Provisioning",
+      "Workflow-Based Provisioning", "Rule-Based Provisioning", "Policy-Based Provisioning",
+      "Template-Based Provisioning", "Role-Based Provisioning", "Attribute-Based Provisioning"
+    ]
+  },
+  "directory_services": {
+    "protocols": [
+      "LDAP", "Lightweight Directory Access Protocol", "X.500", "DAP", "Directory Access Protocol",
+      "LDIF", "LDAP Data Interchange Format", "DSML", "Directory Services Markup Language",
+      "SPML", "Active Directory", "Kerberos", "DNS", "Domain Name System"
+    ],
+    "operations": [
+      "Bind", "Unbind", "Search", "Add", "Delete", "Modify", "ModifyDN", "Compare",
+      "Abandon", "Extended Operation", "StartTLS", "Anonymous Bind", "Simple Bind",
+      "SASL Bind", "Search Filter", "Search Scope", "Base Search", "One Level Search", "Subtree Search"
+    ],
+    "schema": [
+      "Schema", "Object Class", "Attribute Type", "Attribute Syntax", "Matching Rule",
+      "Structural Object Class", "Auxiliary Object Class", "Abstract Object Class",
+      "Mandatory Attribute", "Optional Attribute", "Single-Valued", "Multi-Valued",
+      "Distinguished Name", "DN", "Relative Distinguished Name", "RDN"
+    ],
+    "security": [
+      "Access Control", "ACI", "Access Control Information", "Simple Authentication",
+      "SASL", "TLS", "LDAPS", "Certificate Authentication", "Anonymous Access",
+      "Password Policy", "Account Lockout", "Strong Authentication"
+    ]
+  },
+  "standards_protocols": {
+    "authentication_standards": [
+      "FIDO", "FIDO2", "WebAuthn", "CTAP", "UAF", "U2F", "OATH", "TOTP", "HOTP",
+      "PKCS#11", "PIV", "CAC", "Smart Card", "TPM", "Trusted Platform Module",
+      "FIPS 140-2", "Common Criteria", "X.509", "PKI", "Public Key Infrastructure"
+    ],
+    "authorization_standards": [
+      "XACML", "eXtensible Access Control Markup Language", "ALFA", "AuthzForce",
+      "UMA", "User-Managed Access", "ACE", "Authentication and Authorization for Constrained Environments",
+      "GNAP", "Grant Negotiation and Authorization Protocol", "RAR", "Rich Authorization Requests"
+    ],
+    "federation_standards": [
+      "SAML 2.0", "Security Assertion Markup Language", "WS-Federation", "WS-Trust",
+      "WS-SecurityPolicy", "WS-Security", "Liberty Alliance", "ID-FF", "ID-WSF",
+      "OpenID Connect", "OpenID Connect Federation", "OIDC Federation"
+    ],
+    "provisioning_standards": [
+      "SCIM 2.0", "SPML", "DSML", "HR-XML", "HRXML", "LDAP", "Active Directory",
+      "Microsoft Graph API", "Google Directory API", "Okta API", "SailPoint API"
+    ]
+  },
+  "security_concepts": {
+    "cryptography": [
+      "Public Key Cryptography", "Digital Signature", "Digital Certificate", "X.509",
+      "Certificate Authority", "CA", "Root CA", "Intermediate CA", "Certificate Chain",
+      "Certificate Revocation List", "CRL", "Online Certificate Status Protocol", "OCSP",
+      "Public Key Infrastructure", "PKI", "Key Management", "Key Escrow", "Key Recovery"
+    ],
+    "security_properties": [
+      "Confidentiality", "Integrity", "Availability", "CIA Triad", "Non-Repudiation",
+      "Authentication", "Authorization", "Accountability", "Privacy", "Anonymity",
+      "Unlinkability", "Unobservability", "Pseudonymity", "Forward Secrecy", "Perfect Forward Secrecy"
+    ],
+    "threat_model": [
+      "Threat", "Vulnerability", "Risk", "Attack", "Exploit", "Threat Actor",
+      "Attack Vector", "Attack Surface", "Insider Threat", "Advanced Persistent Threat", "APT",
+      "Man-in-the-Middle", "MITM", "Phishing", "Social Engineering", "Credential Stuffing",
+      "Password Spraying", "Brute Force", "Dictionary Attack", "Rainbow Table"
+    ],
+    "security_controls": [
+      "Preventive Control", "Detective Control", "Corrective Control", "Compensating Control",
+      "Technical Control", "Administrative Control", "Physical Control", "Security Policy",
+      "Security Procedure", "Security Awareness", "Security Training", "Incident Response"
+    ]
+  },
+  "compliance_frameworks": {
+    "regulatory": [
+      "GDPR", "General Data Protection Regulation", "CCPA", "California Consumer Privacy Act",
+      "HIPAA", "Health Insurance Portability and Accountability Act", "SOX", "Sarbanes-Oxley Act",
+      "PCI DSS", "Payment Card Industry Data Security Standard", "FERPA", "COPPA"
+    ],
+    "standards": [
+      "ISO 27001", "ISO 27002", "NIST Cybersecurity Framework", "NIST SP 800-53",
+      "NIST SP 800-63", "CIS Controls", "COBIT", "COSO", "ITIL", "SOC 2", "FedRAMP", "FISMA"
+    ],
+    "identity_frameworks": [
+      "NIST Digital Identity Guidelines", "NIST SP 800-63A", "NIST SP 800-63B", "NIST SP 800-63C",
+      "eIDAS", "electronic IDentification, Authentication and trust Services", "STORK",
+      "Kantara Identity Assurance Framework", "IAF", "Liberty Alliance"
+    ]
+  },
+  "emerging_technologies": {
+    "zero_trust": [
+      "Zero Trust", "Zero Trust Architecture", "ZTA", "Zero Trust Network Access", "ZTNA",
+      "Never Trust, Always Verify", "Continuous Verification", "Micro-Segmentation",
+      "Software-Defined Perimeter", "SDP", "Secure Access Service Edge", "SASE"
+    ],
+    "decentralized_identity": [
+      "Self-Sovereign Identity", "SSI", "Decentralized Identity", "DID", "Decentralized Identifiers",
+      "Verifiable Credentials", "VC", "Verifiable Presentations", "VP", "Blockchain Identity",
+      "Distributed Ledger Technology", "DLT", "Identity Wallet", "Digital Wallet"
+    ],
+    "ai_ml": [
+      "Artificial Intelligence", "Machine Learning", "Behavioral Analytics", "User and Entity Behavior Analytics", "UEBA",
+      "Risk-Based Authentication", "Adaptive Authentication", "Continuous Authentication",
+      "Anomaly Detection", "Fraud Detection", "Identity Verification", "Biometric Liveness Detection"
+    ],
+    "passwordless": [
+      "Passwordless Authentication", "FIDO2", "WebAuthn", "Passkeys", "Platform Authenticators",
+      "Roaming Authenticators", "Biometric Authentication", "Hardware Security Keys",
+      "Magic Links", "Push Authentication", "QR Code Authentication"
+    ]
+  }
+}
