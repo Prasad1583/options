@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Journey Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #be185d 75%, #dc2626 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2d3748;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3), transparent 50%);
+            animation: gradientShift 15s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: slideUp 1s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #db2777 100%);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent),
+                radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 50px;
+            padding: 50px;
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981, #06b6d4);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1.0s; }
+        .timeline-item:nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px) translateY(20px); }
+            to { opacity: 1; transform: translateX(0) translateY(0); }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -48px;
+            top: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: white;
+            border: 5px solid;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(99, 102, 241, 0.2);
+            transition: all 0.4s ease;
+            z-index: 10;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            transform: scale(1.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), 0 0 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .onboarded .timeline-marker { border-color: #10b981; background: radial-gradient(circle, #10b981, #059669); }
+        .checking .timeline-marker { border-color: #f59e0b; background: radial-gradient(circle, #f59e0b, #d97706); }
+        .credit .timeline-marker { border-color: #3b82f6; background: radial-gradient(circle, #3b82f6, #2563eb); }
+        .loan .timeline-marker { border-color: #06b6d4; background: radial-gradient(circle, #06b6d4, #0891b2); }
+        .investment .timeline-marker { border-color: #8b5cf6; background: radial-gradient(circle, #8b5cf6, #7c3aed); }
+        .kyc .timeline-marker { border-color: #ec4899; background: radial-gradient(circle, #ec4899, #db2777); }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .timeline-content:hover::before {
+            transform: translateX(100%);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px) translateX(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .onboarded .timeline-content { border-left-color: #10b981; }
+        .checking .timeline-content { border-left-color: #f59e0b; }
+        .credit .timeline-content { border-left-color: #3b82f6; }
+        .loan .timeline-content { border-left-color: #06b6d4; }
+        .investment .timeline-content { border-left-color: #8b5cf6; }
+        .kyc .timeline-content { border-left-color: #ec4899; }
+
+        .date {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1f2937;
+        }
+
+        .description {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: auto;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .financial-analysis {
+            background: white;
+            border-radius: 24px;
+            padding: 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .analysis-header {
+            background: linear-gradient(135deg, #1e40af, #7c3aed);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .analysis-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+        }
+
+        .charts-container {
+            padding: 30px;
+        }
+
+        .chart-card {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .chart-card:hover::before {
+            left: 100%;
+        }
+
+        .chart-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .chart-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-title {
+            font-weight: 700;
+            color: #374151;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 220px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .chart-container.small {
+            height: 180px;
+        }
+
+        .chart-container.large {
+            height: 280px;
+        }
+
+        .chart-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 50px;
+            margin-top: 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .info-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .info-card:hover {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            transform: translateY(-4px);
+            color: #4338ca;
+        }
+
+        .link-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: 4px solid white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .link-container {
+            position: relative;
+            height: 80px;
+            margin: 0 -20px;
+        }
+
+        .chart-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(99, 102, 241, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .financial-analysis {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
+            .header {
+                padding: 40px 30px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                padding: 30px;
+            }
+            
+            .bottom-section {
+                grid-template-columns: 1fr;
+                margin: 30px;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .timeline-marker {
+                left: -43px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="header">
+                <h1>{{ pageTitle }}</h1>
+                <p>{{ pageSubtitle }}</p>
+            </div>
+
+            <div class="main-content">
+                <div class="timeline-section">
+                    <div class="timeline">
+                        <div 
+                            v-for="(item, index) in timelineItems" 
+                            :key="index" 
+                            :class="['timeline-item', item.type]"
+                        >
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content" @click="selectTimelineItem(item)">
+                                <div class="date">{{ item.date }}</div>
+                                <div class="title">
+                                    {{ item.icon }} {{ item.title }}
+                                    <button 
+                                        v-if="item.shareable" 
+                                        class="share-btn" 
+                                        @click.stop="shareItem(item)"
+                                    >
+                                        {{ item.shared ? '✅ Shared!' : '✨ Share' }}
+                                    </button>
+                                </div>
+                                <div class="description">{{ item.description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="financial-analysis">
+                    <div class="analysis-header">
+                        <h2>📊 Advanced Financial Analytics</h2>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <!-- Balance Trends Chart -->
+                        <div class="chart-card">
+                            <div class="chart-overlay">Live Data</div>
+                            <div class="chart-title">💹 Balance Growth Trends</div>
+                            <div class="chart-container" v-if="chartsLoaded">
+                                <canvas ref="balanceChart"></canvas>
+                            </div>
+                            <div class="loading" v-else>
+                                <div class="spinner"></div>
+                            </div>
+                            <div class="chart-stats" v-if="balanceStats">
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ balanceStats.growth }}</div>
+                                    <div class="stat-label">YTD Growth</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ balanceStats.current }}</div>
+                                    <div class="stat-label">Current Balance</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ balanceStats.average }}</div>
+                                    <div class="stat-label">Avg Monthly</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Transaction Patterns Chart -->
+                        <div class="chart-card">
+                            <div class="chart-overlay">Real-time</div>
+                            <div class="chart-title">🛍️ Spending Analysis</div>
+                            <div class="chart-container" v-if="chartsLoaded">
+                                <canvas ref="transactionChart"></canvas>
+                            </div>
+                            <div class="loading" v-else>
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Cash Flow Chart -->
+                        <div class="chart-card">
+                            <div class="chart-overlay">Monthly</div>
+                            <div class="chart-title">💰 Cash Flow Dynamics</div>
+                            <div class="chart-container" v-if="chartsLoaded">
+                                <canvas ref="cashFlowChart"></canvas>
+                            </div>
+                            <div class="loading" v-else>
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Credit Utilization Chart -->
+                        <div class="chart-card">
+                            <div class="chart-overlay">{{ creditUtilization }}% Used</div>
+                            <div class="chart-title">💳 Credit Health Score</div>
+                            <div class="chart-container small" v-if="chartsLoaded">
+                                <canvas ref="creditChart"></canvas>
+                            </div>
+                            <div class="loading" v-else>
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Investment Performance Chart -->
+                        <div class="chart-card">
+                            <div class="chart-overlay">Portfolio</div>
+                            <div class="chart-title">📈 Investment Performance</div>
+                            <div class="chart-container large" v-if="chartsLoaded">
+                                <canvas ref="investmentChart"></canvas>
+                            </div>
+                            <div class="loading" v-else>
+                                <div class="spinner"></div>
+                            </div>
+                            <div class="chart-stats" v-if="investmentStats">
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ investmentStats.totalReturn }}</div>
+                                    <div class="stat-label">Total Return</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ investmentStats.portfolioValue }}</div>
+                                    <div class="stat-label">Portfolio Value</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">{{ investmentStats.riskScore }}</div>
+                                    <div class="stat-label">Risk Score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="info-card" @click="viewCrossSell">
+                    🎯 Cross Sell Opportunities
+                    <br><small style="margin-top: 10px; display: block;">Personalized recommendations based on client journey</small>
+                </div>
+                <div class="info-card" @click="viewCompliance">
+                    📋 Key Details & Compliance
+                    <br><small style="margin-top: 10px; display: block;">KYC status, pending verifications, and regulatory updates</small>
+                </div>
+            </div>
+            
+            <div class="link-container">
+                <div class="link-icon" @click="generateReport">🔗</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    pageTitle: 'Client Journey Timeline',
+                    pageSubtitle: 'Comprehensive Financial Milestone Tracking & Analytics',
+                    chartsLoaded: false,
+                    creditUtilization: 35,
+                    
+                    timelineItems: [
+                        {
+                            type: 'onboarded',
+                            date: 'January 10',
+                            icon: '🎯',
+                            title: 'Client Onboarded',
+                            description: 'Great business ideas start with a problem that needs solving. Begin by identifying pain points that you or others are experiencing. This marks the beginning of a comprehensive financial journey.',
+                            shareable: false,
+                            shared: false
+                        },
+                        {
+                            type: 'checking',
+                            date: 'February 4',
+                            icon: '💳',
+                            title: 'Checking Account',
+                            description: 'Think outside the box to come up with creative solutions to the pain points you\'ve identified. Don\'t limit yourself. All ideas are good at this stage as we establish your primary banking relationship.',
+                            shareable: false,
+                            shared: false
+                        },
+                        {
+                            type: 'credit',
+                            date: 'March 14',
+                            icon: '💎',
+                            title: 'Credit Card',
+                            description: 'Use your constraints (e.g., financial or time limitations) to narrow down your list of solutions. Building credit history is essential for your financial future and opens doors to better opportunities.',
+                            shareable: true,
+                            shared: false
+                        },
+                        {
+                            type: 'loan',
+                            date: 'April 2',
+                            icon: '🏠',
+                            title: 'Home Loan',
+                            description: 'Create a video, drawing, model or mock up to demonstrate your solution. It doesn\'t have to be perfect. Think of it as your first draft. Home ownership represents a major milestone in wealth building.',
+                            shareable: false,
+                            shared: false
+                        },
+                        {
+                            type: 'investment',
+                            date: 'July 4',
+                            icon: '📈',
+                            title: 'Investment Account',
+                            description: 'Find out what people think about your prototype. Talk to people that will use your solution. Implement their feedback to improve your prototype. Investing is key to long-term wealth creation.',
+                            shareable: false,
+                            shared: false
+                        },
+                        {
+                            type: 'kyc',
+                            date: 'November 3',
+                            icon: '🔐',
+                            title: 'KYC Verification',
+                            description: 'Once you are confident in your solution, create a business model around the pain and solution you have. Complete verification ensures security and access to premium financial services.',
+                            shareable: false,
+                            shared: false
+                        }
+                    ],
+
+                    // Chart Data
+                    balanceData: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        values: [5000, 7500, 6200, 8900, 12400, 15600, 18200, 16800, 19500, 22100, 25300, 28700]
+                    },
+
+                    transactionData: {
+                        labels: ['🛍️ Shopping', '🍕 Food & Dining', '🚗 Transportation', '💡 Bills & Utilities', '🎬 Entertainment', '🏥 Healthcare'],
+                        values: [32, 18, 15, 20, 10, 5]
+                    },
+
+                    cashFlowData: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        income: [8500, 8500, 8500, 9200, 9200, 9200, 9500, 9500, 9500, 9800, 9800, 9800],
+                        expenses: [6200, 5800, 7100, 6500, 5900, 6800, 6200, 7300, 6100, 6900, 5700, 6400]
+                    },
+
+                    investmentData: {
+                        labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        stocks: [15000, 16200, 15800, 17400, 18900, 20100],
+                        bonds: [8000, 8300, 8600, 8800, 9100, 9400],
+                        mutualFunds: [5000, 5400, 5800, 6200, 6700, 7100]
+                    },
+
+                    // Computed Stats
+                    balanceStats: {
+                        growth: '+485%',
+                        current: '$28.7K',
+                        average: '$2.4K'
+                    },
+
+                    investmentStats: {
+                        totalReturn: '+12.4%',
+                        portfolioValue: '$36.6K',
+                        riskScore: '85%'
+                    }
+                }
+            },
+
+            mounted() {
+                // Wait for Chart.js to be fully loaded
+                this.waitForChartJS();
+            },
+
+            methods: {
+                waitForChartJS() {
+                    // Check if Chart.js is loaded
+                    const checkChart = () => {
+                        if (typeof Chart !== 'undefined') {
+                            // Chart.js is loaded, now initialize charts
+                            setTimeout(() => {
+                                this.chartsLoaded = true;
+                                this.$nextTick(() => {
+                                    this.initializeCharts();
+                                });
+                            }, 500);
+                        } else {
+                            // Chart.js not loaded yet, check again in 100ms
+                            setTimeout(checkChart, 100);
+                        }
+                    };
+                    checkChart();
+                },
+
+                selectTimelineItem(item) {
+                    console.log('Selected timeline item:', item.title);
+                    // Add your timeline item selection logic here
+                },
+
+                shareItem(item) {
+                    item.shared = true;
+                    setTimeout(() => {
+                        item.shared = false;
+                    }, 2500);
+                },
+
+                viewCrossSell() {
+                    console.log('Viewing cross-sell opportunities');
+                    // Add cross-sell logic here
+                },
+
+                viewCompliance() {
+                    console.log('Viewing compliance details');
+                    // Add compliance logic here
+                },
+
+                generateReport() {
+                    console.log('Generating comprehensive report');
+                    // Add report generation logic here
+                },
+
+                initializeCharts() {
+                    // Check if Chart is available
+                    if (typeof Chart === 'undefined') {
+                        console.error('Chart.js is not loaded yet');
+                        return;
+                    }
+
+                    try {
+                        // Enhanced Chart.js Configuration
+                        Chart.defaults.font.family = 'Inter, sans-serif';
+                        Chart.defaults.color = '#374151';
+                        Chart.defaults.elements.point.radius = 6;
+                        Chart.defaults.elements.point.hoverRadius = 8;
+                        Chart.defaults.elements.line.borderWidth = 3;
+                        Chart.defaults.elements.bar.borderRadius = 8;
+
+                        // Initialize all charts
+                        this.createBalanceChart();
+                        this.createTransactionChart();
+                        this.createCashFlowChart();
+                        this.createCreditChart();
+                        this.createInvestmentChart();
+                        
+                        console.log('All charts initialized successfully');
+                    } catch (error) {
+                        console.error('Error initializing charts:', error);
+                    }
+                },
+
+                createBalanceChart() {
+                    try {
+                        if (!this.$refs.balanceChart) {
+                            console.error('Balance chart canvas not found');
+                            return;
+                        }
+
+                        const ctx = this.$refs.balanceChart.getContext('2d');
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+                        gradient.addColorStop(0, 'rgba(99, 102, 241, 0.3)');
+                        gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.2)');
+                        gradient.addColorStop(1, 'rgba(236, 72, 153, 0.1)');
+
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: this.balanceData.labels,
+                                datasets: [{
+                                    label: 'Account Balance',
+                                    data: this.balanceData.values,
+                                    borderColor: '#6366f1',
+                                    backgroundColor: gradient,
+                                    borderWidth: 4,
+                                    fill: true,
+                                    tension: 0.5,
+                                    pointBackgroundColor: '#ffffff',
+                                    pointBorderColor: '#6366f1',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6,
+                                    pointHoverRadius: 10,
+                                    pointHoverBackgroundColor: '#ffffff',
+                                    pointHoverBorderColor: '#6366f1',
+                                    pointHoverBorderWidth: 4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 2000,
+                                    easing: 'easeInOutQuart'
+                                },
+                                interaction: {
+                                    intersect: false,
+                                    mode: 'index'
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(99, 102, 241, 0.95)',
+                                        titleColor: '#ffffff',
+                                        bodyColor: '#ffffff',
+                                        borderColor: '#6366f1',
+                                        borderWidth: 2,
+                                        cornerRadius: 12,
+                                        displayColors: false,
+                                        callbacks: {
+                                            label: (context) => 'Balance: $' + context.parsed.y.toLocaleString()
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(99, 102, 241, 0.1)',
+                                            drawBorder: false
+                                        },
+                                        ticks: {
+                                            callback: (value) => '$' + (value/1000) + 'K',
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    },
+                                    x: {
+                                        grid: { display: false },
+                                        ticks: {
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error creating balance chart:', error);
+                    }
+                },
+
+                createTransactionChart() {
+                    try {
+                        if (!this.$refs.transactionChart) {
+                            console.error('Transaction chart canvas not found');
+                            return;
+                        }
+
+                        const ctx = this.$refs.transactionChart.getContext('2d');
+                        
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: this.transactionData.labels,
+                                datasets: [{
+                                    data: this.transactionData.values,
+                                    backgroundColor: [
+                                        '#6366f1',
+                                        '#8b5cf6',
+                                        '#ec4899',
+                                        '#06b6d4',
+                                        '#10b981',
+                                        '#f59e0b'
+                                    ],
+                                    borderWidth: 0,
+                                    hoverOffset: 15,
+                                    borderRadius: 8,
+                                    spacing: 2
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    animateRotate: true,
+                                    animateScale: true,
+                                    duration: 2000,
+                                    easing: 'easeInOutQuart'
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 20,
+                                            usePointStyle: true,
+                                            pointStyle: 'circle',
+                                            font: { size: 12, weight: '600' },
+                                            generateLabels: (chart) => {
+                                                const data = chart.data;
+                                                if (data.labels.length && data.datasets.length) {
+                                                    return data.labels.map((label, i) => ({
+                                                        text: label + ' ' + data.datasets[0].data[i] + '%',
+                                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                                        hidden: false,
+                                                        index: i
+                                                    }));
+                                                }
+                                                return [];
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                                        titleColor: '#ffffff',
+                                        bodyColor: '#ffffff',
+                                        borderColor: '#6366f1',
+                                        borderWidth: 2,
+                                        cornerRadius: 12,
+                                        callbacks: {
+                                            label: (context) => context.label + ': ' + context.parsed + '%'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error creating transaction chart:', error);
+                    }
+                },
+
+                createCashFlowChart() {
+                    try {
+                        if (!this.$refs.cashFlowChart) {
+                            console.error('Cash flow chart canvas not found');
+                            return;
+                        }
+
+                        const ctx = this.$refs.cashFlowChart.getContext('2d');
+                        const incomeGradient = ctx.createLinearGradient(0, 0, 0, 200);
+                        incomeGradient.addColorStop(0, '#10b981');
+                        incomeGradient.addColorStop(1, '#059669');
+                        
+                        const expenseGradient = ctx.createLinearGradient(0, 0, 0, 200);
+                        expenseGradient.addColorStop(0, '#f59e0b');
+                        expenseGradient.addColorStop(1, '#d97706');
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: this.cashFlowData.labels,
+                                datasets: [{
+                                    label: '💰 Income',
+                                    data: this.cashFlowData.income,
+                                    backgroundColor: incomeGradient,
+                                    borderRadius: 8,
+                                    borderSkipped: false,
+                                    barThickness: 20
+                                }, {
+                                    label: '💸 Expenses',
+                                    data: this.cashFlowData.expenses,
+                                    backgroundColor: expenseGradient,
+                                    borderRadius: 8,
+                                    borderSkipped: false,
+                                    barThickness: 20
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 2000,
+                                    easing: 'easeInOutBounce'
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                        labels: {
+                                            usePointStyle: true,
+                                            pointStyle: 'rect',
+                                            padding: 20,
+                                            font: { size: 12, weight: '600' }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                                        titleColor: '#ffffff',
+                                        bodyColor: '#ffffff',
+                                        borderColor: '#6366f1',
+                                        borderWidth: 2,
+                                        cornerRadius: 12,
+                                        callbacks: {
+                                            label: (context) => context.dataset.label + ': $' + context.parsed.y.toLocaleString()
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(156, 163, 175, 0.2)',
+                                            drawBorder: false
+                                        },
+                                        ticks: {
+                                            callback: (value) => '$' + (value/1000) + 'K',
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    },
+                                    x: {
+                                        grid: { display: false },
+                                        ticks: {
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error creating cash flow chart:', error);
+                    }
+                },
+
+                createCreditChart() {
+                    try {
+                        if (!this.$refs.creditChart) {
+                            console.error('Credit chart canvas not found');
+                            return;
+                        }
+
+                        const ctx = this.$refs.creditChart.getContext('2d');
+                        
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Credit Used', 'Available Credit'],
+                                datasets: [{
+                                    data: [this.creditUtilization, 100 - this.creditUtilization],
+                                    backgroundColor: ['#ec4899', 'rgba(229, 231, 235, 0.5)'],
+                                    borderWidth: 0,
+                                    cutout: '75%',
+                                    rotation: -90,
+                                    circumference: 180
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    animateRotate: true,
+                                    duration: 2500,
+                                    easing: 'easeInOutQuart'
+                                },
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(236, 72, 153, 0.95)',
+                                        titleColor: '#ffffff',
+                                        bodyColor: '#ffffff',
+                                        borderColor: '#ec4899',
+                                        borderWidth: 2,
+                                        cornerRadius: 12,
+                                        callbacks: {
+                                            label: (context) => context.label + ': ' + context.parsed + '%'
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: [{
+                                afterDraw: (chart) => {
+                                    const ctx = chart.ctx;
+                                    const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+                                    const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2 + 20;
+                                    
+                                    // Main percentage
+                                    ctx.fillStyle = '#374151';
+                                    ctx.font = 'bold 28px Inter';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'middle';
+                                    ctx.fillText(this.creditUtilization + '%', centerX, centerY - 10);
+                                    
+                                    // Label
+                                    ctx.fillStyle = '#6b7280';
+                                    ctx.font = '600 14px Inter';
+                                    ctx.fillText('Credit Used', centerX, centerY + 15);
+                                    
+                                    // Status indicator
+                                    ctx.fillStyle = '#10b981';
+                                    ctx.font = '600 12px Inter';
+                                    ctx.fillText('Excellent', centerX, centerY + 35);
+                                }
+                            }]
+                        });
+                    } catch (error) {
+                        console.error('Error creating credit chart:', error);
+                    }
+                },
+
+                createInvestmentChart() {
+                    try {
+                        if (!this.$refs.investmentChart) {
+                            console.error('Investment chart canvas not found');
+                            return;
+                        }
+
+                        const ctx = this.$refs.investmentChart.getContext('2d');
+                        const stocksGradient = ctx.createLinearGradient(0, 0, 0, 250);
+                        stocksGradient.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+                        stocksGradient.addColorStop(1, 'rgba(139, 92, 246, 0.05)');
+                        
+                        const bondsGradient = ctx.createLinearGradient(0, 0, 0, 250);
+                        bondsGradient.addColorStop(0, 'rgba(6, 182, 212, 0.3)');
+                        bondsGradient.addColorStop(1, 'rgba(6, 182, 212, 0.05)');
+                        
+                        const fundsGradient = ctx.createLinearGradient(0, 0, 0, 250);
+                        fundsGradient.addColorStop(0, 'rgba(16, 185, 129, 0.3)');
+                        fundsGradient.addColorStop(1, 'rgba(16, 185, 129, 0.05)');
+
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: this.investmentData.labels,
+                                datasets: [{
+                                    label: '📈 Stocks',
+                                    data: this.investmentData.stocks,
+                                    borderColor: '#8b5cf6',
+                                    backgroundColor: stocksGradient,
+                                    borderWidth: 4,
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: '#ffffff',
+                                    pointBorderColor: '#8b5cf6',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6,
+                                    pointHoverRadius: 10
+                                }, {
+                                    label: '🏛️ Bonds',
+                                    data: this.investmentData.bonds,
+                                    borderColor: '#06b6d4',
+                                    backgroundColor: bondsGradient,
+                                    borderWidth: 4,
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: '#ffffff',
+                                    pointBorderColor: '#06b6d4',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6,
+                                    pointHoverRadius: 10
+                                }, {
+                                    label: '💼 Mutual Funds',
+                                    data: this.investmentData.mutualFunds,
+                                    borderColor: '#10b981',
+                                    backgroundColor: fundsGradient,
+                                    borderWidth: 4,
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: '#ffffff',
+                                    pointBorderColor: '#10b981',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6,
+                                    pointHoverRadius: 10
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 2500,
+                                    easing: 'easeInOutQuart'
+                                },
+                                interaction: {
+                                    intersect: false,
+                                    mode: 'index'
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            usePointStyle: true,
+                                            pointStyle: 'circle',
+                                            padding: 20,
+                                            font: { size: 12, weight: '600' }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                                        titleColor: '#ffffff',
+                                        bodyColor: '#ffffff',
+                                        borderColor: '#6366f1',
+                                        borderWidth: 2,
+                                        cornerRadius: 12,
+                                        callbacks: {
+                                            label: (context) => context.dataset.label + ': $' + context.parsed.y.toLocaleString()
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(156, 163, 175, 0.2)',
+                                            drawBorder: false
+                                        },
+                                        ticks: {
+                                            callback: (value) => '$' + (value/1000) + 'K',
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            color: 'rgba(156, 163, 175, 0.2)',
+                                            drawBorder: false
+                                        },
+                                        ticks: {
+                                            color: '#6b7280',
+                                            font: { weight: '600' }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error creating investment chart:', error);
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
