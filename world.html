@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 50px;
+            color: #7f8c8d;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category {
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-header {
+            font-size: 1.5em;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: -15px -15px 15px -15px;
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .subcategory {
+            margin-bottom: 15px;
+        }
+
+        .subcategory-header {
+            font-weight: bold;
+            color: #555;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .verbs-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .verb {
+            background-color: #e3f2fd;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .verb:hover {
+            background-color: #bbdefb;
+            transform: scale(1.05);
+        }
+
+        .verb.selected {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .game-area {
+            background-color: #fff8e1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .game-title {
+            color: #ff9800;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #currentVerb {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin: 20px 0;
+            min-height: 60px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .action-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        .score-display {
+            font-size: 1.2em;
+            margin-top: 15px;
+            color: #7f8c8d;
+        }
+
+        .correct {
+            animation: correct 0.5s;
+        }
+
+        .incorrect {
+            animation: incorrect 0.5s;
+        }
+
+        @keyframes correct {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes incorrect {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            75% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <header>
+            <h1>Noun Words Adventure!</h1>
+            <div class="subtitle">Discover all the -ing words that describe what people are doing</div>
+        </header> -->
+
+        <div v-if="loading" class="loading">
+            Loading noun words... <span class="emoji">⏳</span>
+        </div>
+
+        <div v-else>
+            <div class="category-container">
+                <div v-for="(category, catName) in verbsData" :key="catName" class="category">
+                    <div class="category-header" :style="{backgroundColor: getCategoryColor(catName)}">
+                        {{ formatCategoryName(catName) }}
+                    </div>
+                    <div v-for="(subcategory, subName) in category" :key="subName" class="subcategory">
+                        <div class="subcategory-header">{{ formatSubcategoryName(subName) }}</div>
+                        <div class="verbs-list">
+                            <div v-for="(verb, index) in subcategory" :key="index" class="verb"
+                                :class="{selected: selectedVerb === verb}" @click="selectVerb(verb)">
+                                {{ verb }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Have fun learning action words! Try to act out each word as you learn it!</p>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const verbsData = ref({});
+                const loading = ref(true);
+                const selectedVerb = ref(null);
+                const currentVerb = ref('');
+                const gameStarted = ref(false);
+                const gameEnded = ref(false);
+                const score = ref(0);
+                const totalQuestions = ref(10);
+                const questionsAnswered = ref(0);
+                const isCorrect = ref(false);
+                const isIncorrect = ref(false);
+                const allVerbs = ref([]);
+                const currentCorrectAnswer = ref('');
+
+                // Colors for different categories
+                const categoryColors = {
+                    motion_verbs: '#4fc3f7',
+                    communication_verbs: '#9575cd',
+                    cognitive_verbs: '#4db6ac',
+                    emotional_verbs: '#ff8a65',
+                    physiological_verbs: '#aed581',
+                    creative_verbs: '#ffb74d',
+                    work_and_productivity_verbs: '#90a4ae',
+                    social_verbs: '#f06292',
+                    change_verbs: '#7986cb',
+                    possession_verbs: '#81c784'
+                };
+
+                // Emojis for different verb categories
+                const categoryEmojis = {
+                    motion_verbs: '🏃‍♂️',
+                    communication_verbs: '🗣️',
+                    cognitive_verbs: '🧠',
+                    emotional_verbs: '❤️',
+                    physiological_verbs: '🧘‍♂️',
+                    creative_verbs: '🎨',
+                    work_and_productivity_verbs: '💼',
+                    social_verbs: '👥',
+                    change_verbs: '🔄',
+                    possession_verbs: '🛍️'
+                };
+
+                // Fetch the verbs data from a CDN
+                const fetchVerbsData = async () => {
+                    try {
+                        // Replace this URL with your actual CDN or server URL for the JSON file
+                        const res = await fetch("worldterms.json");
+
+                        if (!res.ok) {
+                            throw new Error(`Failed to fetch: ${res.status}`);
+                        }
+
+                        const response = await res.json();
+                        verbsData.value = response;
+                        flattenVerbs(); // Assuming this handles transforming the structure
+                        loading.value = false;
+                    } catch (error) {
+                        console.error("Error fetching verbs data:", error);
+                        loading.value = false;
+                    }
+                };
+
+
+                // Flatten all verbs into a single array for the game
+                const flattenVerbs = () => {
+                    const verbs = [];
+                    for (const category in verbsData.value) {
+                        for (const subcategory in verbsData.value[category]) {
+                            verbs.push(...verbsData.value[category][subcategory]);
+                        }
+                    }
+                    allVerbs.value = [...new Set(verbs)]; // Remove duplicates
+                };
+
+                // Format category name for display
+                const formatCategoryName = (name) => {
+                    return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                };
+
+                // Format subcategory name for display
+                const formatSubcategoryName = (name) => {
+                    return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                };
+
+                // Get color for a category
+                const getCategoryColor = (category) => {
+                    return categoryColors[category] || '#7f8c8d';
+                };
+
+                // Select a verb
+                const selectVerb = (verb) => {
+                    selectedVerb.value = verb;
+                };
+
+                // Start the game
+                const startGame = () => {
+                    gameStarted.value = true;
+                    gameEnded.value = false;
+                    score.value = 0;
+                    questionsAnswered.value = 0;
+                    nextQuestion();
+                };
+
+                // Show the answer
+                const showAnswer = () => {
+                    if (currentVerb.value && !gameEnded.value) {
+                        currentVerb.value = currentCorrectAnswer.value;
+                        questionsAnswered.value++;
+                        if (questionsAnswered.value >= totalQuestions.value) {
+                            endGame();
+                        } else {
+                            setTimeout(nextQuestion, 2000);
+                        }
+                    }
+                };
+
+                // Go to next question
+                const nextQuestion = () => {
+                    if (allVerbs.value.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * allVerbs.value.length);
+                        currentCorrectAnswer.value = allVerbs.value[randomIndex];
+                        currentVerb.value = "What's this action?";
+                        isCorrect.value = false;
+                        isIncorrect.value = false;
+                    }
+                };
+
+                // End the game
+                const endGame = () => {
+                    gameEnded.value = true;
+                    currentVerb.value = `Game Over! Final Score: ${score.value}/${totalQuestions.value}`;
+                };
+
+                // Get result message
+                const getResultMessage = () => {
+                    const percentage = (score.value / totalQuestions.value) * 100;
+                    if (percentage >= 80) return 'Awesome job!';
+                    if (percentage >= 60) return 'Good work!';
+                    if (percentage >= 40) return 'Nice try!';
+                    return 'Keep practicing!';
+                };
+
+                // Get result emoji
+                const getResultEmoji = () => {
+                    const percentage = (score.value / totalQuestions.value) * 100;
+                    if (percentage >= 80) return '🎉';
+                    if (percentage >= 60) return '👍';
+                    if (percentage >= 40) return '🙂';
+                    return '🤓';
+                };
+
+                // Check if the selected verb is correct
+                const checkAnswer = () => {
+                    if (selectedVerb.value === currentCorrectAnswer.value) {
+                        score.value++;
+                        isCorrect.value = true;
+                    } else {
+                        isIncorrect.value = true;
+                    }
+
+                    questionsAnswered.value++;
+                    selectedVerb.value = null;
+
+                    if (questionsAnswered.value >= totalQuestions.value) {
+                        endGame();
+                    } else {
+                        setTimeout(nextQuestion, 1000);
+                    }
+                };
+
+                // Keyboard event listener
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Enter' && gameStarted.value && !gameEnded.value && selectedVerb.value) {
+                        checkAnswer();
+                    }
+                };
+
+                // Initialize
+                onMounted(() => {
+                    fetchVerbsData();
+                    window.addEventListener('keydown', handleKeyDown);
+                });
+
+                return {
+                    verbsData,
+                    loading,
+                    selectedVerb,
+                    currentVerb,
+                    gameStarted,
+                    gameEnded,
+                    score,
+                    totalQuestions,
+                    isCorrect,
+                    isIncorrect,
+                    fetchVerbsData,
+                    formatCategoryName,
+                    formatSubcategoryName,
+                    getCategoryColor,
+                    selectVerb,
+                    startGame,
+                    showAnswer,
+                    nextQuestion,
+                    endGame,
+                    getResultMessage,
+                    getResultEmoji,
+                    checkAnswer
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
