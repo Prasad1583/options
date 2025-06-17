@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Nutrition Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .nav-tab {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .nav-tab:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-tab.active {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .nutrient-category {
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .nutrient-category h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nutrient-category h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .nutrient-item {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nutrient-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .nutrient-item h4 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .significance {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .significance h5 {
+            color: #2d8f2d;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .problems {
+            background: linear-gradient(135deg, #ffe8e8, #fff0f0);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .problems h5 {
+            color: #d32f2f;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .problems ul, .significance ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .problems li, .significance li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .significance li::before {
+            content: "✓";
+            color: #2d8f2d;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .problems li::before {
+            content: "⚠";
+            color: #d32f2f;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight {
+            background-color: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-tab {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥗 Complete Nutrition Guide</h1>
+            <p>Understanding the significance of nutrients and consequences of deficiencies</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('macronutrients')">🍞 Macronutrients</button>
+            <button class="nav-tab" onclick="showSection('vitamins')">💊 Vitamins</button>
+            <button class="nav-tab" onclick="showSection('minerals')">⚡ Minerals</button>
+            <button class="nav-tab" onclick="showSection('others')">💧 Other Essentials</button>
+            <button class="nav-tab" onclick="showSection('prevention')">🛡️ Prevention</button>
+        </div>
+
+        <input type="text" class="search-box" placeholder="🔍 Search for specific nutrients or conditions..." onkeyup="searchContent(this.value)">
+
+        <div id="macronutrients" class="content-section active">
+            <div class="nutrient-category">
+                <h2><span class="icon">🍞</span>Macronutrients</h2>
+                
+                <div class="nutrient-item">
+                    <h4><span class="icon">🌾</span>Carbohydrates</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Primary energy source for brain and central nervous system</li>
+                            <li>Fuel for high-intensity physical activity</li>
+                            <li>Spare protein from being used as energy</li>
+                            <li>Support proper fat metabolism</li>
+                            <li>Provide fiber for digestive health</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Ketosis and potential ketoacidosis</li>
+                            <li>Mental fatigue and difficulty concentrating</li>
+                            <li>Reduced athletic performance</li>
+                            <li>Muscle protein breakdown for energy</li>
+                            <li>Constipation (from lack of fiber)</li>
+                            <li>Hypoglycemia symptoms</li>
+                            <li>Bad breath and nausea</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🥩</span>Proteins</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Building and repairing tissues</li>
+                            <li>Making enzymes, hormones, and antibodies</li>
+                            <li>Maintaining fluid and acid-base balance</li>
+                            <li>Providing structure to cells and organs</li>
+                            <li>Supporting immune function</li>
+                            <li>Can serve as energy source when needed</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Muscle wasting and weakness</li>
+                            <li>Slow wound healing</li>
+                            <li>Increased susceptibility to infections</li>
+                            <li>Hair loss and brittle nails</li>
+                            <li>Edema (fluid retention)</li>
+                            <li>Growth retardation in children</li>
+                            <li>Kwashiorkor (severe protein deficiency)</li>
+                            <li>Compromised immune system</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🥑</span>Fats</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Energy storage and provision</li>
+                            <li>Absorption of fat-soluble vitamins (A, D, E, K)</li>
+                            <li>Cell membrane structure and function</li>
+                            <li>Hormone production</li>
+                            <li>Brain development and function</li>
+                            <li>Insulation and organ protection</li>
+                            <li>Essential fatty acid provision</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Essential fatty acid deficiency</li>
+                            <li>Poor absorption of fat-soluble vitamins</li>
+                            <li>Dry, scaly skin and hair</li>
+                            <li>Impaired wound healing</li>
+                            <li>Increased infection risk</li>
+                            <li>Poor growth in children</li>
+                            <li>Neurological problems</li>
+                            <li>Hormone imbalances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="vitamins" class="content-section">
+            <div class="nutrient-category">
+                <h2><span class="icon">💊</span>Vitamins</h2>
+                
+                <h3>Fat-Soluble Vitamins</h3>
+                
+                <div class="nutrient-item">
+                    <h4><span class="icon">👁️</span>Vitamin A</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Vision and eye health</li>
+                            <li>Immune system function</li>
+                            <li>Cell growth and differentiation</li>
+                            <li>Skin health</li>
+                            <li>Reproductive health</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Night blindness</li>
+                            <li>Xerophthalmia (dry eyes)</li>
+                            <li>Increased infection risk</li>
+                            <li>Poor wound healing</li>
+                            <li>Rough, dry skin</li>
+                            <li>Growth retardation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">☀️</span>Vitamin D</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Calcium absorption and bone health</li>
+                            <li>Immune system regulation</li>
+                            <li>Muscle function</li>
+                            <li>Cell growth regulation</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Rickets in children</li>
+                            <li>Osteomalacia in adults</li>
+                            <li>Increased fracture risk</li>
+                            <li>Muscle weakness</li>
+                            <li>Increased infection susceptibility</li>
+                            <li>Possible increased depression risk</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🛡️</span>Vitamin E</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Antioxidant protection</li>
+                            <li>Cell membrane stability</li>
+                            <li>Immune function</li>
+                            <li>Blood vessel health</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Hemolytic anemia</li>
+                            <li>Neurological problems</li>
+                            <li>Muscle weakness</li>
+                            <li>Vision problems</li>
+                            <li>Immune system impairment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🩸</span>Vitamin K</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Blood clotting</li>
+                            <li>Bone metabolism</li>
+                            <li>Cardiovascular health</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Excessive bleeding</li>
+                            <li>Easy bruising</li>
+                            <li>Osteoporosis risk</li>
+                            <li>Poor wound healing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Water-Soluble Vitamins</h3>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🍊</span>Vitamin C</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Collagen synthesis</li>
+                            <li>Antioxidant function</li>
+                            <li>Iron absorption enhancement</li>
+                            <li>Immune system support</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Scurvy</li>
+                            <li>Poor wound healing</li>
+                            <li>Bleeding gums</li>
+                            <li>Joint pain</li>
+                            <li>Fatigue</li>
+                            <li>Increased infection risk</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">⚡</span>B Vitamins</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Energy metabolism</li>
+                            <li>Nervous system function</li>
+                            <li>Red blood cell formation</li>
+                            <li>DNA synthesis</li>
+                            <li>Protein metabolism</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Beriberi (B1 deficiency)</li>
+                            <li>Pellagra (B3 deficiency)</li>
+                            <li>Pernicious anemia (B12 deficiency)</li>
+                            <li>Neural tube defects (folate deficiency)</li>
+                            <li>Fatigue and weakness</li>
+                            <li>Neurological problems</li>
+                            <li>Depression and mood changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="minerals" class="content-section">
+            <div class="nutrient-category">
+                <h2><span class="icon">⚡</span>Minerals</h2>
+                
+                <div class="nutrient-item">
+                    <h4><span class="icon">🦴</span>Calcium</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Bone and teeth health</li>
+                            <li>Muscle contraction</li>
+                            <li>Blood clotting</li>
+                            <li>Nerve function</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Osteoporosis</li>
+                            <li>Muscle cramps</li>
+                            <li>Tooth decay</li>
+                            <li>Increased fracture risk</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🩸</span>Iron</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Oxygen transport</li>
+                            <li>Energy metabolism</li>
+                            <li>Immune function</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Iron-deficiency anemia</li>
+                            <li>Fatigue</li>
+                            <li>Weakness</li>
+                            <li>Pale skin</li>
+                            <li>Cold hands and feet</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">💪</span>Magnesium</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Enzyme function</li>
+                            <li>Protein synthesis</li>
+                            <li>Blood glucose control</li>
+                            <li>Muscle and nerve function</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Muscle cramps</li>
+                            <li>Irregular heartbeat</li>
+                            <li>Personality changes</li>
+                            <li>Seizures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🧬</span>Zinc</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Immune function</li>
+                            <li>Wound healing</li>
+                            <li>Protein synthesis</li>
+                            <li>Taste and smell</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Impaired immune function</li>
+                            <li>Slow wound healing</li>
+                            <li>Hair loss</li>
+                            <li>Diarrhea</li>
+                            <li>Loss of appetite</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🦋</span>Iodine</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Thyroid hormone production</li>
+                            <li>Metabolism regulation</li>
+                            <li>Brain development</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Goiter</li>
+                            <li>Hypothyroidism</li>
+                            <li>Mental impairment</li>
+                            <li>Cretinism in infants</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="others" class="content-section">
+            <div class="nutrient-category">
+                <h2><span class="icon">💧</span>Other Essential Components</h2>
+                
+                <div class="nutrient-item">
+                    <h4><span class="icon">💧</span>Water</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Temperature regulation</li>
+                            <li>Joint lubrication</li>
+                            <li>Nutrient transport</li>
+                            <li>Waste elimination</li>
+                            <li>Chemical reactions</li>
+                            <li>Blood volume maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Dehydration</li>
+                            <li>Kidney stones</li>
+                            <li>Urinary tract infections</li>
+                            <li>Constipation</li>
+                            <li>Fatigue</li>
+                            <li>Dizziness</li>
+                            <li>Heat exhaustion</li>
+                            <li>Reduced cognitive function</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🌾</span>Fiber</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Digestive health</li>
+                            <li>Blood sugar regulation</li>
+                            <li>Cholesterol management</li>
+                            <li>Weight management</li>
+                            <li>Gut microbiome support</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Constipation</li>
+                            <li>Increased risk of colon cancer</li>
+                            <li>High cholesterol</li>
+                            <li>Blood sugar spikes</li>
+                            <li>Weight gain</li>
+                            <li>Poor gut health</li>
+                            <li>Increased risk of heart disease</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🛡️</span>Antioxidants</h4>
+                    <div class="significance">
+                        <h5>Significance:</h5>
+                        <ul>
+                            <li>Cellular protection from oxidative stress</li>
+                            <li>Reduced inflammation</li>
+                            <li>Immune system support</li>
+                            <li>Chronic disease prevention</li>
+                        </ul>
+                    </div>
+                    <div class="problems">
+                        <h5>Problems when lacking:</h5>
+                        <ul>
+                            <li>Increased oxidative stress</li>
+                            <li>Accelerated aging</li>
+                            <li>Higher risk of chronic diseases</li>
+                            <li>Compromised immune function</li>
+                            <li>Increased inflammation</li>
+                            <li>Higher cancer risk</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="prevention" class="content-section">
+            <div class="nutrient-category">
+                <h2><span class="icon">🛡️</span>Prevention Strategies</h2>
+                
+                <div class="nutrient-item">
+                    <h4><span class="icon">🥗</span>Dietary Recommendations</h4>
+                    <div class="significance">
+                        <h5>Best Practices:</h5>
+                        <ul>
+                            <li>Consume a varied, balanced diet</li>
+                            <li>Include all food groups</li>
+                            <li>Focus on whole, minimally processed foods</li>
+                            <li>Stay adequately hydrated</li>
+                            <li>Eat colorful fruits and vegetables</li>
+                            <li>Choose lean proteins and healthy fats</li>
+                            <li>Limit processed and ultra-processed foods</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">⚕️</span>Health Monitoring</h4>
+                    <div class="significance">
+                        <h5>Preventive Measures:</h5>
+                        <ul>
+                            <li>Regular health screenings</li>
+                            <li>Blood tests for nutrient levels</li>
+                            <li>Consult healthcare providers for personalized advice</li>
+                            <li>Consider supplementation when necessary</li>
+                            <li>Monitor for deficiency symptoms</li>
+                            <li>Maintain a food diary</li>
+                            <li>Work with registered dietitians</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nutrient-item">
+                    <h4><span class="icon">🏃</span>Lifestyle Factors</h4>
+                    <div class="significance">
+                        <h5>Supporting Habits:</h5>
+                        <ul>
+                            <li>Regular physical activity</li>
+                            <li>Adequate sleep</li>
+                            <li>Stress management</li>
+                            <li>Limit alcohol consumption</li>
+                            <li>Avoid smoking</li>
+                            <li>Safe food preparation and storage</li>
+                            <li>Gradual dietary changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Remember: A balanced diet is your best defense against nutritional deficiencies</p>
+            <p>Always consult healthcare professionals for personalized nutrition advice</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function searchContent(searchTerm) {
+            const sections = document.querySelectorAll('.content-section');
+            
+            sections.forEach(section => {
+                const items = section.querySelectorAll('.nutrient-item');
+                let sectionHasMatch = false;
+                
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    const matches = text.includes(searchTerm.toLowerCase());
+                    
+                    if (searchTerm === '') {
+                        item.style.display = 'block';
+                        // Remove any existing highlights
+                        const highlighted = item.querySelectorAll('.highlight');
+                        highlighted.forEach(span => {
+                            const parent = span.parentNode;
+                            parent.replaceChild(document.createTextNode(span.textContent), span);
+                            parent.normalize();
+                        });
+                        sectionHasMatch = true;
+                    } else if (matches) {
+                        item.style.display = 'block';
+                        sectionHasMatch = true;
+                        
+                        // Highlight search terms
+                        highlightText(item, searchTerm);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide section based on matches
+                if (searchTerm === '' || sectionHasMatch) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        function highlightText(element, searchTerm) {
+            // Remove existing highlights first
+            const highlighted = element.querySelectorAll('.highlight');
+            highlighted.forEach(span => {
+                const parent = span.parentNode;
+                parent.replaceChild(document.createTextNode(span.textContent), span);
+                parent.normalize();
+            });
+
+            if (searchTerm === '') return;
+
+            const walker = document.createTreeWalker(
+                element,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            const textNodes = [];
+            let node;
+            while (node = walker.nextNode()) {
+                textNodes.push(node);
+            }
+
+            textNodes.forEach(textNode => {
+                const text = textNode.textContent;
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                
+                if (regex.test(text)) {
+                    const highlightedHTML = text.replace(regex, '<span class="highlight">$1</span>');
+                    const wrapper = document.createElement('div');
+                    wrapper.innerHTML = highlightedHTML;
+                    
+                    while (wrapper.firstChild) {
+                        textNode.parentNode.insertBefore(wrapper.firstChild, textNode);
+                    }
+                    textNode.parentNode.removeChild(textNode);
+                }
+            });
+        }
+
+        // Add smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for nutrient items
+            const nutrientItems = document.querySelectorAll('.nutrient-item');
+            nutrientItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+
+            // Add loading animation
+            const elements = document.querySelectorAll('.nutrient-item');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.5s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case '1':
+                        e.preventDefault();
+                        showSectionByIndex(0);
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        showSectionByIndex(1);
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        showSectionByIndex(2);
+                        break;
+                    case '4':
+                        e.preventDefault();
+                        showSectionByIndex(3);
+                        break;
+                    case '5':
+                        e.preventDefault();
+                        showSectionByIndex(4);
+                        break;
+                }
+            }
+        });
+
+        function showSectionByIndex(index) {
+            const tabs = document.querySelectorAll('.nav-tab');
+            if (tabs[index]) {
+                tabs[index].click();
+            }
+        }
+    </script>
+</body>
+</html>
