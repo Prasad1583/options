@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Campaign Manager - Step by Step</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            background: #f1f5f9;
+            padding: 20px 40px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+
+        .step.completed:not(:last-child)::after {
+            background: #10b981;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .step.completed .step-circle {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .step.active .step-label {
+            color: #4f46e5;
+        }
+
+        .step.completed .step-label {
+            color: #10b981;
+        }
+
+        .main-content {
+            padding: 40px;
+            min-height: 500px;
+        }
+
+        .step-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-section {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: #4f46e5;
+            background: #f8fafc;
+        }
+
+        .file-upload.dragover {
+            border-color: #4f46e5;
+            background: #eff6ff;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .upload-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 15px;
+            opacity: 0.5;
+        }
+
+        .html-editor {
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .editor-toolbar {
+            background: #f8fafc;
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .editor-btn {
+            padding: 5px 10px;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .editor-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .editor-content {
+            min-height: 300px;
+            padding: 20px;
+            background: white;
+        }
+
+        .editor-content textarea {
+            min-height: 300px;
+            border: none;
+            padding: 0;
+        }
+
+        .visual-flow {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .flow-stage {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #4f46e5;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .stage-content {
+            flex: 1;
+        }
+
+        .stage-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .stage-delay {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .stage-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f1f5f9;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .status-success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .contacts-preview {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .contact-item {
+            padding: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .email-preview {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .preview-header {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .step:not(:last-child)::after {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .flow-stage {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stage-actions {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="header">
+                <h1>📧 Email Campaign Manager</h1>
+                <p>Step-by-step campaign creation with backend integration</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="steps">
+                    <div v-for="(step, index) in steps" :key="index" 
+                         :class="['step', { active: currentStep === index, completed: index < currentStep }]">
+                        <div class="step-circle">{{ index + 1 }}</div>
+                        <div class="step-label">{{ step.label }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Step 1: Campaign Details -->
+                <div v-if="currentStep === 0" class="step-content">
+                    <h2 class="step-title">Campaign Details</h2>
+                    
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Campaign Name *</label>
+                            <input v-model="campaign.name" type="text" placeholder="Enter campaign name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Campaign Description</label>
+                            <textarea v-model="campaign.description" placeholder="Brief description of your campaign" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Campaign Type</label>
+                            <select v-model="campaign.type">
+                                <option value="promotional">Promotional</option>
+                                <option value="nurturing">Lead Nurturing</option>
+                                <option value="onboarding">Onboarding</option>
+                                <option value="retention">Customer Retention</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div v-if="campaign.id" class="status-indicator status-success">
+                        <svg class="icon"><polyline points="9,11 12,14 22,4"></polyline><path d="m21,14v5a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-10a2,2 0 0,1 2,-2h11"></path></svg>
+                        Campaign saved successfully (ID: {{ campaign.id }})
+                    </div>
+                </div>
+
+                <!-- Step 2: Upload Contacts -->
+                <div v-if="currentStep === 1" class="step-content">
+                    <h2 class="step-title">Upload Contact List</h2>
+                    
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Upload CSV File *</label>
+                            <div class="file-upload" @click="$refs.csvFile.click()" 
+                                 @dragover.prevent="dragOver" @dragleave="dragLeave" @drop.prevent="dropFile($event)"
+                                 :class="{ 'dragover': isDragging }">
+                                <input ref="csvFile" type="file" accept=".csv" @change="handleFileUpload($event)">
+                                <svg class="upload-icon icon">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7,10 12,15 17,10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                <h3>{{ uploadedFile ? uploadedFile.name : 'Drop CSV file here or click to upload' }}</h3>
+                                <p>CSV should contain email, first_name, last_name columns</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="contacts.length > 0" class="contacts-preview">
+                        <h4>Contacts Preview ({{ contacts.length }} total)</h4>
+                        <div v-for="(contact, index) in contacts.slice(0, 10)" :key="index" class="contact-item">
+                            {{ contact.email }} - {{ contact.first_name }} {{ contact.last_name }}
+                        </div>
+                        <div v-if="contacts.length > 10" class="contact-item" style="font-style: italic;">
+                            ... and {{ contacts.length - 10 }} more contacts
+                        </div>
+                    </div>
+
+                    <div v-if="uploadStatus" class="status-indicator" :class="uploadStatus.type">
+                        <svg class="icon"><polyline points="9,11 12,14 22,4"></polyline><path d="m21,14v5a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-10a2,2 0 0,1 2,-2h11"></path></svg>
+                        {{ uploadStatus.message }}
+                    </div>
+                </div>
+
+                <!-- Step 3: Design Initial Email -->
+                <div v-if="currentStep === 2" class="step-content">
+                    <h2 class="step-title">Design Initial Email</h2>
+                    
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Email Subject *</label>
+                            <input v-model="initialEmail.subject" type="text" placeholder="Enter email subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Content (HTML) *</label>
+                            <div class="html-editor">
+                                <div class="editor-toolbar">
+                                    <button class="editor-btn" @click="insertHtml('<b>', '</b>')">Bold</button>
+                                    <button class="editor-btn" @click="insertHtml('<i>', '</i>')">Italic</button>
+                                    <button class="editor-btn" @click="insertHtml('<a href=&quot;&quot;>', '</a>')">Link</button>
+                                    <button class="editor-btn" @click="insertHtml('<h2>', '</h2>')">Header</button>
+                                    <button class="editor-btn" @click="insertHtml('<ul><li>', '</li></ul>')">List</button>
+                                    <button class="editor-btn" @click="insertHtml('<br>', '')">Line Break</button>
+                                </div>
+                                <div class="editor-content">
+                                    <textarea v-model="initialEmail.content" placeholder="Enter your HTML email content..." rows="12"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="email-preview">
+                        <div class="preview-header">
+                            <strong>Subject:</strong> {{ initialEmail.subject || 'No subject' }}
+                        </div>
+                        <div v-html="initialEmail.content || 'No content'"></div>
+                    </div>
+
+                    <div v-if="emailSaved" class="status-indicator status-success">
+                        <svg class="icon"><polyline points="9,11 12,14 22,4"></polyline><path d="m21,14v5a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-10a2,2 0 0,1 2,-2h11"></path></svg>
+                        Initial email saved successfully
+                    </div>
+                </div>
+
+                <!-- Step 4: Add Follow-ups -->
+                <div v-if="currentStep === 3" class="step-content">
+                    <h2 class="step-title">Add Follow-up Emails</h2>
+                    
+                    <div class="visual-flow">
+                        <div class="flow-stage">
+                            <div class="stage-number">1</div>
+                            <div class="stage-content">
+                                <div class="stage-title">Initial Email</div>
+                                <div class="stage-delay">Sends immediately on campaign start</div>
+                            </div>
+                        </div>
+
+                        <div v-for="(followUp, index) in followUps" :key="followUp.id" class="flow-stage">
+                            <div class="stage-number">{{ index + 2 }}</div>
+                            <div class="stage-content">
+                                <div class="stage-title">{{ followUp.subject || 'Follow-up ' + (index + 1) }}</div>
+                                <div class="stage-delay">Sends {{ followUp.delayDays }} days after previous email</div>
+                            </div>
+                            <div class="stage-actions">
+                                <button @click="editFollowUp(index)" class="btn btn-secondary">Edit</button>
+                                <button @click="removeFollowUp(index)" class="btn btn-danger">Remove</button>
+                            </div>
+                        </div>
+
+                        <button @click="addFollowUp" class="btn btn-primary">
+                            <svg class="icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            Add Follow-up Email
+                        </button>
+                    </div>
+
+                    <!-- Follow-up Editor (shown when editing) -->
+                    <div v-if="editingFollowUp !== null" class="form-section">
+                        <h3>Edit Follow-up #{{ editingFollowUp + 1 }}</h3>
+                        
+                        <div class="form-group">
+                            <label>Delay (days after previous email) *</label>
+                            <input v-model.number="followUps[editingFollowUp].delayDays" type="number" min="1" max="365" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input v-model="followUps[editingFollowUp].subject" type="text" placeholder="Follow-up subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Content (HTML) *</label>
+                            <textarea v-model="followUps[editingFollowUp].content" rows="8" placeholder="Follow-up content..." required></textarea>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button @click="saveFollowUp" class="btn btn-success">Save Follow-up</button>
+                            <button @click="cancelEdit" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Schedule & Launch -->
+                <div v-if="currentStep === 4" class="step-content">
+                    <h2 class="step-title">Schedule & Launch Campaign</h2>
+                    
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Start Date & Time *</label>
+                            <input v-model="schedule.startDate" type="datetime-local" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Time Zone</label>
+                            <select v-model="schedule.timezone">
+                                <option value="UTC">UTC</option>
+                                <option value="America/New_York">Eastern Time</option>
+                                <option value="America/Chicago">Central Time</option>
+                                <option value="America/Denver">Mountain Time</option>
+                                <option value="America/Los_Angeles">Pacific Time</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Campaign Summary -->
+                    <div class="visual-flow">
+                        <h3>Campaign Summary</h3>
+                        <p><strong>Campaign:</strong> {{ campaign.name }}</p>
+                        <p><strong>Recipients:</strong> {{ contacts.length }} contacts</p>
+                        <p><strong>Total Emails:</strong> {{ (followUps.length + 1) * contacts.length }}</p>
+                        <p><strong>Duration:</strong> {{ totalDuration }} days</p>
+                    </div>
+
+                    <div v-if="launchStatus" class="status-indicator" :class="launchStatus.type">
+                        <svg class="icon"><polyline points="9,11 12,14 22,4"></polyline><path d="m21,14v5a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-10a2,2 0 0,1 2,-2h11"></path></svg>
+                        {{ launchStatus.message }}
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <button v-if="currentStep > 0" @click="previousStep" class="btn btn-secondary">
+                        ← Previous Step
+                    </button>
+                    <div></div>
+                    <div style="display: flex; gap: 10px;">
+                        <button v-if="currentStep < 4" @click="nextStep" :disabled="!canProceed" class="btn btn-primary">
+                            Next Step →
+                        </button>
+                        <button v-if="currentStep === 4" @click="launchCampaign" :disabled="!canLaunch" class="btn btn-success">
+                            🚀 Launch Campaign
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    currentStep: 0,
+                    steps: [
+                        { label: 'Campaign Details' },
+                        { label: 'Upload Contacts' },
+                        { label: 'Design Email' },
+                        { label: 'Add Follow-ups' },
+                        { label: 'Schedule & Launch' }
+                    ],
+                    campaign: {
+                        id: null,
+                        name: '',
+                        description: '',
+                        type: 'promotional'
+                    },
+                    uploadedFile: null,
+                    contacts: [],
+                    uploadStatus: null,
+                    initialEmail: {
+                        subject: '',
+                        content: ''
+                    },
+                    emailSaved: false,
+                    followUps: [],
+                    editingFollowUp: null,
+                    schedule: {
+                        startDate: '',
+                        timezone: 'UTC'
+                    },
+                    launchStatus: null,
+                    isDragging: false
+                };
+            },
+            computed: {
+                canProceed() {
+                    switch(this.currentStep) {
+                        case 0: 
+                            return this.campaign.name.trim() !== '';
+                        case 1: 
+                            return this.contacts.length > 0;
+                        case 2: 
+                            return this.initialEmail.subject.trim() !== '' && 
+                                   this.initialEmail.content.trim() !== '';
+                        case 3: 
+                            return true;
+                        default: 
+                            return false;
+                    }
+                },
+                canLaunch() {
+                    const now = new Date();
+                    const selectedDate = new Date(this.schedule.startDate);
+                    return this.schedule.startDate && 
+                           this.contacts.length > 0 && 
+                           selectedDate > now;
+                },
+                totalDuration() {
+                    return this.followUps.reduce((total, f) => total + (f.delayDays || 0), 0);
+                }
+            },
+            methods: {
+                async nextStep() {
+                    if (!this.canProceed) return;
+                    
+                    // Save current step data
+                    try {
+                        switch(this.currentStep) {
+                            case 0:
+                                await this.saveCampaign();
+                                break;
+                            case 1:
+                                await this.saveContacts();
+                                break;
+                            case 2:
+                                await this.saveInitialEmail();
+                                break;
+                            case 3:
+                                await this.saveFollowUps();
+                                break;
+                        }
+                        
+                        this.currentStep++;
+                    } catch (error) {
+                        console.error('Error proceeding to next step:', error);
+                    }
+                },
+                
+                previousStep() {
+                    if (this.currentStep > 0) {
+                        this.currentStep--;
+                    }
+                },
+
+                async saveCampaign() {
+                    try {
+                        // Simulate API call: POST /campaigns
+                        console.log('API Call: POST /campaigns', this.campaign);
+                        
+                        // Simulate response
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        this.campaign.id = 'camp_' + Date.now();
+                        
+                        console.log('Campaign saved with ID:', this.campaign.id);
+                    } catch (error) {
+                        console.error('Error saving campaign:', error);
+                        throw error;
+                    }
+                },
+
+                handleFileUpload(event) {
+                    const file = event.target.files[0];
+                    if (file && file.name.endsWith('.csv')) {
+                        this.uploadedFile = file;
+                        this.parseCSV(file);
+                    } else {
+                        this.uploadStatus = {
+                            type: 'status-error',
+                            message: 'Please upload a valid CSV file'
+                        };
+                    }
+                },
+
+                dropFile(event) {
+                    this.isDragging = false;
+                    const file = event.dataTransfer.files[0];
+                    if (file && file.name.endsWith('.csv')) {
+                        this.uploadedFile = file;
+                        this.parseCSV(file);
+                    } else {
+                        this.uploadStatus = {
+                            type: 'status-error',
+                            message: 'Please drop a valid CSV file'
+                        };
+                    }
+                },
+
+                dragOver(event) {
+                    event.preventDefault();
+                    this.isDragging = true;
+                },
+
+                dragLeave(event) {
+                    event.preventDefault();
+                    this.isDragging = false;
+                },
+
+                parseCSV(file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const csv = e.target.result;
+                            const lines = csv.split('\n').filter(line => line.trim() !== '');
+                            if (lines.length < 2) {
+                                throw new Error('CSV file is empty or has no data rows');
+                            }
+                            
+                            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+                            if (!headers.includes('email')) {
+                                throw new Error('CSV must contain an "email" column');
+                            }
+                            
+                            this.contacts = [];
+                            for (let i = 1; i < lines.length; i++) {
+                                const values = lines[i].split(',');
+                                const contact = {};
+                                headers.forEach((header, index) => {
+                                    contact[header] = (values[index] || '').trim();
+                                });
+                                
+                                // Validate email
+                                if (contact.email && contact.email.includes('@')) {
+                                    this.contacts.push(contact);
+                                }
+                            }
+                            
+                            if (this.contacts.length === 0) {
+                                throw new Error('No valid contacts found in CSV');
+                            }
+                            
+                            this.uploadStatus = {
+                                type: 'status-success',
+                                message: `Successfully parsed ${this.contacts.length} contacts`
+                            };
+                        } catch (error) {
+                            console.error('Error parsing CSV:', error);
+                            this.uploadStatus = {
+                                type: 'status-error',
+                                message: error.message || 'Error parsing CSV file'
+                            };
+                            this.contacts = [];
+                        }
+                    };
+                    reader.onerror = () => {
+                        this.uploadStatus = {
+                            type: 'status-error',
+                            message: 'Error reading file'
+                        };
+                    };
+                    reader.readAsText(file);
+                },
+
+                async saveContacts() {
+                    try {
+                        // Simulate API call: Upload Blob + Parse → SQL
+                        console.log('API Call: Upload contacts blob and save to SQL');
+                        console.log('Contacts to save:', this.contacts);
+                        
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        console.log('Contacts saved to database');
+                    } catch (error) {
+                        console.error('Error saving contacts:', error);
+                        throw error;
+                    }
+                },
+
+                insertHtml(openTag, closeTag) {
+                    const textarea = this.$el.querySelector('.editor-content textarea');
+                    if (!textarea) return;
+                    
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const selectedText = this.initialEmail.content.substring(start, end);
+                    
+                    const newText = this.initialEmail.content.substring(0, start) + 
+                                   openTag + selectedText + closeTag + 
+                                   this.initialEmail.content.substring(end);
+                    
+                    this.initialEmail.content = newText;
+                    
+                    // Focus back on textarea and set cursor position
+                    setTimeout(() => {
+                        textarea.focus();
+                        const newCursorPos = start + openTag.length;
+                        textarea.setSelectionRange(newCursorPos, newCursorPos + selectedText.length);
+                    }, 0);
+                },
+
+                async saveInitialEmail() {
+                    try {
+                        // Validate HTML content
+                        if (!this.initialEmail.content.trim()) {
+                            throw new Error('Email content cannot be empty');
+                        }
+                        
+                        // Simulate API call: Upload HTML → Blob + Save ref
+                        console.log('API Call: Save initial email HTML to blob storage');
+                        console.log('Initial email data:', this.initialEmail);
+                        
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        this.emailSaved = true;
+                        console.log('Initial email saved successfully');
+                    } catch (error) {
+                        console.error('Error saving initial email:', error);
+                        throw error;
+                    }
+                },
+
+                addFollowUp() {
+                    const newFollowUp = {
+                        id: Date.now(),
+                        subject: '',
+                        content: '',
+                        delayDays: 3
+                    };
+                    this.followUps.push(newFollowUp);
+                    this.editingFollowUp = this.followUps.length - 1;
+                },
+
+                editFollowUp(index) {
+                    this.editingFollowUp = index;
+                },
+
+                removeFollowUp(index) {
+                    if (confirm('Are you sure you want to remove this follow-up?')) {
+                        this.followUps.splice(index, 1);
+                        if (this.editingFollowUp === index) {
+                            this.editingFollowUp = null;
+                        }
+                    }
+                },
+
+                saveFollowUp() {
+                    // Validate current follow-up
+                    const current = this.followUps[this.editingFollowUp];
+                    if (!current.subject.trim()) {
+                        alert('Please enter a subject for the follow-up email');
+                        return;
+                    }
+                    if (!current.content.trim()) {
+                        alert('Please enter content for the follow-up email');
+                        return;
+                    }
+                    if (!current.delayDays || current.delayDays < 1) {
+                        alert('Please enter a valid delay (at least 1 day)');
+                        return;
+                    }
+                    
+                    this.editingFollowUp = null;
+                },
+
+                cancelEdit() {
+                    this.editingFollowUp = null;
+                },
+
+                async saveFollowUps() {
+                    try {
+                        // Validate all follow-ups
+                        for (const followUp of this.followUps) {
+                            if (!followUp.subject.trim() || !followUp.content.trim() || !followUp.delayDays) {
+                                throw new Error('All follow-ups must have subject, content, and delay');
+                            }
+                        }
+                        
+                        // Simulate API call: Add stages to CampaignStages
+                        console.log('API Call: Save follow-up stages to CampaignStages table');
+                        console.log('Follow-up stages:', this.followUps);
+                        
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        console.log('Follow-up stages saved successfully');
+                    } catch (error) {
+                        console.error('Error saving follow-ups:', error);
+                        throw error;
+                    }
+                },
+
+                async launchCampaign() {
+                    try {
+                        if (!this.canLaunch) {
+                            throw new Error('Please select a valid future date and time');
+                        }
+                        
+                        this.launchStatus = {
+                            type: 'status-pending',
+                            message: 'Launching campaign workflow...'
+                        };
+
+                        // Simulate API call: Schedule time & start workflow
+                        console.log('API Call: Schedule campaign and start workflow');
+                        console.log('Campaign launch data:', {
+                            campaignId: this.campaign.id,
+                            schedule: this.schedule,
+                            totalEmails: (this.followUps.length + 1) * this.contacts.length,
+                            stages: [
+                                { type: 'initial', email: this.initialEmail, delay: 0 },
+                                ...this.followUps.map((f, i) => ({
+                                    type: 'followup',
+                                    email: f,
+                                    delay: f.delayDays,
+                                    stage: i + 1
+                                }))
+                            ]
+                        });
+                        
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        this.launchStatus = {
+                            type: 'status-success',
+                            message: 'Campaign launched successfully! Workflow is now active.'
+                        };
+                        
+                        console.log('Campaign workflow started successfully');
+                    } catch (error) {
+                        console.error('Error launching campaign:', error);
+                        this.launchStatus = {
+                            type: 'status-error',
+                            message: error.message || 'Error launching campaign. Please try again.'
+                        };
+                    }
+                }
+            },
+            mounted() {
+                // Set default start date to tomorrow
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                this.schedule.startDate = tomorrow.toISOString().slice(0, 16);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
