@@ -1,0 +1,278 @@
+{
+  "standup_basics": {
+    "meeting_names": [
+      "Daily standup", "Daily scrum", "Morning standup", "Team standup", "Squad standup",
+      "Sync", "Daily sync", "Morning sync", "Team sync", "Quick sync",
+      "Check-in", "Daily check-in", "Team check-in", "Status check-in",
+      "Huddle", "Daily huddle", "Team huddle", "Morning huddle",
+      "Roundtable", "Daily roundtable", "Status meeting", "Progress update"
+    ],
+    "standup_structure": [
+      "Three questions", "Yesterday, today, blockers", "What I did, what I'm doing, what's blocking me",
+      "Round robin", "Go around the room", "Take turns", "Who's first?", "Who's next?",
+      "Quick updates", "Keep it brief", "High-level overview", "Bullet points only",
+      "Time-boxed", "15-minute meeting", "Quick and focused", "Stand and deliver"
+    ],
+    "opening_phrases": [
+      "Let's get started", "Morning everyone", "Good morning team", "Let's kick off",
+      "Time for standup", "Daily standup time", "Quick sync everyone", "Let's go around",
+      "Who wants to start?", "Let's begin", "Standup time", "Morning check-in",
+      "Let's do our updates", "Time for our sync", "Ready for standup?", "Let's sync up"
+    ]
+  },
+  "status_updates": {
+    "yesterday_completed": [
+      "Yesterday I finished", "Yesterday I completed", "I wrapped up", "I delivered",
+      "I shipped", "I closed out", "I knocked out", "I got done",
+      "Finished yesterday", "Completed yesterday", "Delivered yesterday", "Shipped yesterday",
+      "Yesterday's accomplishments", "What I got done", "Crossed off my list", "Checked off",
+      "Pushed live", "Went live with", "Released", "Deployed",
+      "Finalized", "Signed off on", "Approved", "Reviewed and completed"
+    ],
+    "today_working_on": [
+      "Today I'm working on", "Today I plan to", "Today's focus is", "I'm tackling",
+      "Currently working on", "Focusing on today", "My priority today", "Main task today",
+      "Today I'll be", "Planning to work on", "Next on my list", "Moving on to",
+      "Diving into", "Starting work on", "Picking up", "Continuing with",
+      "Today's agenda", "On deck for today", "Up next", "This morning I'll",
+      "After this meeting", "Post-standup", "First thing today", "Top priority"
+    ],
+    "progress_indicators": [
+      "Making good progress", "On track", "Moving forward", "Progressing well",
+      "Ahead of schedule", "Behind schedule", "Catching up", "Making headway",
+      "Slow going", "Picking up speed", "Gaining momentum", "In good shape",
+      "Right on schedule", "As planned", "According to timeline", "Per estimate",
+      "Better than expected", "Taking longer than expected", "About halfway done", "Almost there",
+      "Just getting started", "Deep in the weeds", "Making steady progress", "Coming along nicely"
+    ],
+    "completion_status": [
+      "Done", "Complete", "Finished", "Delivered", "Shipped", "Live",
+      "Closed", "Resolved", "Fixed", "Completed", "Wrapped up", "All set",
+      "Good to go", "Ready", "Deployed", "Released", "Published", "Submitted",
+      "Approved", "Signed off", "Reviewed", "Tested", "Validated", "Verified",
+      "In production", "Customer-facing", "Available", "Active", "Operational"
+    ]
+  },
+  "blockers_impediments": {
+    "blocker_types": [
+      "Blocked by", "Waiting on", "Dependency", "Impediment", "Roadblock", "Bottleneck",
+      "Stuck on", "Held up by", "Can't proceed until", "Need approval from",
+      "Waiting for feedback", "Pending review", "Resource constraint", "Technical issue",
+      "External dependency", "Third-party delay", "System down", "Access issue",
+      "Knowledge gap", "Skill gap", "Unclear requirements", "Missing information"
+    ],
+    "blocker_descriptions": [
+      "I'm blocked by", "I'm waiting on", "I need", "I'm stuck on", "I can't move forward because",
+      "Waiting for approval on", "Need feedback on", "Blocked until", "Can't proceed without",
+      "Dependency on", "Held up by", "Waiting for", "Need help with", "Require assistance",
+      "Looking for clarification", "Need more information", "Unclear about", "Confused on",
+      "Missing access to", "Don't have permissions", "System is down", "Tool not working",
+      "Third-party issue", "External blocker", "Outside our control", "Escalation needed"
+    ],
+    "asking_for_help": [
+      "Need help with", "Could use assistance", "Looking for support", "Anyone available to help?",
+      "Who can help me with", "Need a hand with", "Stuck and need guidance", "Could use a second pair of eyes",
+      "Need someone to pair with", "Looking for a rubber duck", "Need to brainstorm with someone",
+      "Could use some input", "Need advice on", "Seeking guidance", "Looking for direction",
+      "Need a sanity check", "Could use feedback", "Want to run something by someone",
+      "Need a quick chat about", "Looking for a subject matter expert", "Need domain knowledge"
+    ],
+    "urgency_levels": [
+      "Critical blocker", "High priority", "Urgent", "ASAP", "Time-sensitive",
+      "Blocking others", "Stopping progress", "Major impediment", "Hard blocker",
+      "Soft blocker", "Nice to have", "When you get a chance", "Not urgent",
+      "Can work around", "Temporary workaround", "Minor issue", "Low priority",
+      "Future consideration", "Background task", "Keep in mind", "FYI"
+    ]
+  },
+  "collaboration_communication": {
+    "teamwork_phrases": [
+      "Working with", "Collaborating with", "Pairing with", "Teaming up with",
+      "Syncing with", "Coordinating with", "Partnering with", "Getting input from",
+      "Looping in", "Bringing in", "Consulting with", "Getting feedback from",
+      "Cross-functional work", "Cross-team collaboration", "Matrix working", "Joint effort",
+      "Shared responsibility", "Split ownership", "Tag team", "Handoff",
+      "Knowledge transfer", "Brain dump", "Bringing up to speed", "Getting aligned"
+    ],
+    "communication_updates": [
+      "Had a meeting with", "Spoke with", "Connected with", "Touched base with",
+      "Got feedback from", "Heard back from", "Waiting to hear from", "Following up with",
+      "Escalating to", "Looping in", "CC'ing", "Keeping informed", "Status update to",
+      "Demo to", "Walkthrough with", "Review session", "Sync meeting", "Check-in call",
+      "Standup with", "One-on-one", "Team meeting", "All-hands", "Skip-level",
+      "Stakeholder update", "Client call", "Customer meeting", "Vendor discussion"
+    ],
+    "knowledge_sharing": [
+      "Shared knowledge", "Documented process", "Created runbook", "Updated wiki",
+      "Knowledge transfer", "Onboarded", "Trained", "Mentored", "Guided",
+      "Showed how to", "Walked through", "Demonstrated", "Explained", "Clarified",
+      "Best practices", "Lessons learned", "Tips and tricks", "Pro tips",
+      "What worked", "What didn't work", "Gotchas", "Watch out for",
+      "Good to know", "Keep in mind", "Remember to", "Don't forget"
+    ]
+  },
+  "project_task_management": {
+    "task_states": [
+      "Not started", "In progress", "In development", "In review", "In testing",
+      "Ready for review", "Under review", "Pending approval", "Waiting for deploy",
+      "Deployed", "Live", "Complete", "Done", "Closed", "Resolved",
+      "On hold", "Blocked", "Canceled", "Deferred", "Backlogged",
+      "Todo", "Doing", "Done", "New", "Open", "Assigned", "Fixed", "Verified"
+    ],
+    "work_types": [
+      "Feature", "Bug fix", "Enhancement", "Improvement", "Refactor", "Technical debt",
+      "Research", "Spike", "Investigation", "Proof of concept", "Prototype", "MVP",
+      "Documentation", "Testing", "Code review", "Deployment", "Release", "Hotfix",
+      "User story", "Epic", "Task", "Subtask", "Ticket", "Issue", "Card",
+      "Requirement", "Specification", "Design", "Architecture", "Planning"
+    ],
+    "prioritization": [
+      "High priority", "Medium priority", "Low priority", "Critical", "Urgent",
+      "Nice to have", "Must have", "Should have", "Could have", "Won't have",
+      "P0", "P1", "P2", "P3", "P4", "Severity 1", "Severity 2", "Severity 3",
+      "Top priority", "Next priority", "Backlog", "Future", "Someday maybe",
+      "Quick win", "Low-hanging fruit", "Big rock", "Milestone", "MVP feature"
+    ],
+    "estimates_timing": [
+      "Should be done by", "ETA", "Estimated completion", "Timeline", "Due date",
+      "Targeting", "Aiming for", "Hoping to finish", "Planning to complete",
+      "Best case", "Worst case", "Realistic estimate", "Ballpark", "Rough estimate",
+      "Conservative estimate", "Aggressive timeline", "Stretch goal", "Buffer time",
+      "Contingency", "Padding", "Safety margin", "Risk factor", "Unknown unknowns",
+      "T-shirt sizing", "Story points", "Effort estimation", "Complexity points"
+    ]
+  },
+  "agile_scrum_terminology": {
+    "scrum_events": [
+      "Sprint", "Sprint planning", "Sprint review", "Sprint retrospective", "Sprint demo",
+      "Daily scrum", "Daily standup", "Backlog grooming", "Backlog refinement",
+      "Planning poker", "Estimation session", "Story mapping", "Release planning",
+      "Quarterly planning", "PI planning", "Big room planning", "Scrum of scrums"
+    ],
+    "scrum_artifacts": [
+      "Product backlog", "Sprint backlog", "User story", "Epic", "Feature", "Theme",
+      "Acceptance criteria", "Definition of done", "Story points", "Velocity",
+      "Burndown chart", "Burnup chart", "Sprint goal", "Product increment",
+      "Potentially shippable increment", "Working software", "MVP", "MMP"
+    ],
+    "scrum_roles": [
+      "Product owner", "Scrum master", "Development team", "Stakeholder", "Customer",
+      "End user", "Subject matter expert", "Business analyst", "Tech lead",
+      "Architect", "Designer", "Tester", "DevOps engineer", "Site reliability engineer"
+    ],
+    "agile_practices": [
+      "Pair programming", "Test-driven development", "Continuous integration", "Continuous deployment",
+      "Code review", "Refactoring", "Technical debt", "Definition of ready",
+      "Acceptance testing", "User acceptance testing", "Integration testing", "Regression testing",
+      "Automated testing", "Manual testing", "Performance testing", "Security testing"
+    ]
+  },
+  "time_estimates": {
+    "duration_phrases": [
+      "Should take about", "Roughly", "Approximately", "Around", "Give or take",
+      "Ballpark", "In the neighborhood of", "More or less", "Plus or minus",
+      "Best case scenario", "Worst case scenario", "Most likely", "Optimistic estimate",
+      "Pessimistic estimate", "Realistic estimate", "Conservative estimate", "Aggressive timeline"
+    ],
+    "time_units": [
+      "Minutes", "Hours", "Half day", "Full day", "Couple of days", "Few days",
+      "Week", "Couple of weeks", "Few weeks", "Month", "Quarter", "Sprint",
+      "This morning", "This afternoon", "End of day", "End of week", "End of sprint",
+      "Next sprint", "Following sprint", "Future sprint", "Backlog item"
+    ],
+    "completion_targets": [
+      "By end of day", "By EOD", "By close of business", "By COB", "Before lunch",
+      "After lunch", "This morning", "This afternoon", "Tonight", "Tomorrow",
+      "By Friday", "By end of week", "By end of sprint", "Next week",
+      "Following week", "End of month", "End of quarter", "When I get a chance",
+      "As soon as possible", "ASAP", "When time permits", "Lower priority"
+    ]
+  },
+  "technical_updates": {
+    "development_activities": [
+      "Coding", "Programming", "Developing", "Building", "Implementing", "Writing code",
+      "Debugging", "Troubleshooting", "Fixing bugs", "Investigating issues", "Root cause analysis",
+      "Refactoring", "Optimizing", "Performance tuning", "Code cleanup", "Technical debt",
+      "Testing", "Unit testing", "Integration testing", "End-to-end testing", "Manual testing",
+      "Code review", "Peer review", "Pull request", "Merge request", "Code inspection"
+    ],
+    "technical_tasks": [
+      "API development", "Database work", "Schema changes", "Migration", "Data modeling",
+      "Frontend work", "Backend work", "Full-stack development", "UI/UX work", "Design implementation",
+      "Infrastructure work", "DevOps tasks", "Deployment", "Release", "Monitoring setup",
+      "Configuration", "Environment setup", "Local development", "Staging deployment", "Production release",
+      "Security review", "Performance analysis", "Load testing", "Capacity planning", "Scalability"
+    ],
+    "tools_technologies": [
+      "IDE", "Text editor", "Version control", "Git", "GitHub", "GitLab", "Bitbucket",
+      "CI/CD pipeline", "Build system", "Deployment pipeline", "Monitoring tools", "Logging",
+      "Database", "API", "Framework", "Library", "SDK", "Third-party service",
+      "Cloud platform", "Container", "Microservice", "Serverless", "Function as a service",
+      "Development environment", "Staging environment", "Production environment", "Local setup"
+    ]
+  },
+  "meeting_management": {
+    "time_management": [
+      "Time check", "Running long", "Need to wrap up", "Over time", "Time's up",
+      "Let's keep it brief", "Quick update", "High-level only", "Save details for later",
+      "Take it offline", "Follow up separately", "Separate conversation", "Parking lot",
+      "Note for later", "Action item", "Continue after standup", "Deeper discussion needed"
+    ],
+    "facilitation": [
+      "Who's next?", "Moving on", "Next person", "Thanks", "Any blockers?",
+      "Questions?", "Anything else?", "Keep it high-level", "Save questions for after",
+      "Let's continue", "Next update", "Go ahead", "Your turn", "Floor is yours",
+      "What's your status?", "Any updates?", "How are things going?", "Progress report"
+    ],
+    "closing_standup": [
+      "That's everyone", "Good standup", "Thanks everyone", "Have a productive day",
+      "Let's get to work", "Back to work", "See you tomorrow", "Until next time",
+      "Any final thoughts?", "Anything urgent before we close?", "Emergency items?",
+      "Anything can't wait?", "Hot items?", "Burning issues?", "Last call",
+      "Alright, let's go", "Let's do this", "Make it happen", "Get after it"
+    ]
+  },
+  "emotional_expressions": {
+    "positive_energy": [
+      "Excited about", "Looking forward to", "Pumped about", "Stoked for",
+      "Can't wait to", "Eager to start", "Thrilled about", "Happy to work on",
+      "Loving this project", "This is fun", "Great progress", "Feeling good about",
+      "Confident about", "Optimistic", "Good momentum", "Things are clicking",
+      "In the zone", "Flow state", "Productive day", "Making great progress"
+    ],
+    "challenges_frustrations": [
+      "Struggling with", "Challenging", "Tricky", "Complex", "Difficult",
+      "Frustrating", "Stuck", "Confused", "Unclear", "Overwhelming",
+      "Behind schedule", "Running late", "Time crunch", "Pressure",
+      "Stressed about", "Concerned about", "Worried about", "Nervous about",
+      "Need to figure out", "Working through", "Dealing with", "Handling"
+    ],
+    "neutral_professional": [
+      "Making progress", "Moving forward", "Working on", "Continuing with",
+      "As expected", "On track", "According to plan", "Status quo",
+      "Business as usual", "Steady progress", "Keeping busy", "Staying focused",
+      "Plugging away", "Grinding through", "Step by step", "One thing at a time"
+    ]
+  },
+  "remote_virtual_standup": {
+    "technical_issues": [
+      "Can you hear me?", "Audio issues", "Video problems", "Connection problems",
+      "Frozen screen", "Lagging", "Choppy audio", "Can't see screen share",
+      "Muted", "Unmuted", "Microphone off", "Camera off", "Bandwidth issues",
+      "Internet problems", "Dropped call", "Reconnecting", "Technical difficulties"
+    ],
+    "virtual_etiquette": [
+      "You're on mute", "Mute when not speaking", "Turn on your camera",
+      "Can you share your screen?", "I'll share my screen", "Stop sharing",
+      "Who's talking?", "Go ahead", "Speak up", "Louder please",
+      "Background noise", "Echo", "Feedback", "Clear audio now",
+      "Better connection", "Can see you now", "Screen sharing works"
+    ],
+    "asynchronous_updates": [
+      "Posted in Slack", "Updated in channel", "See my message", "Check the thread",
+      "Responded async", "Will follow up", "Sent details", "Shared link",
+      "Posted status", "Updated ticket", "Left comment", "Tagged you",
+      "Mentioned in chat", "See documentation", "Check wiki", "Updated confluence"
+    ]
+  }
+}
