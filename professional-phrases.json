@@ -3,174 +3,251 @@
     "opening_starting": [
       "Let's get started", "Shall we begin?", "Let's kick off", "Let's dive right in", "First on the agenda", 
       "To start things off", "Let's open with", "I'd like to call this meeting to order", "Thank you all for joining", 
-      "Before we begin", "Let's take a moment to", "I'd like to welcome everyone", "Let's jump in", "Moving forward"
+      "Before we begin", "Let's take a moment to", "I'd like to welcome everyone", "Let's jump in", "Moving forward",
+      "Let's hit the ground running", "Time to get the ball rolling", "Let's launch into", "Shall we commence?",
+      "Right off the bat", "Without further ado", "Let's get down to business", "Time to start the show"
     ],
     "agenda_structure": [
       "First on the agenda", "Next item", "Moving on to", "Let's discuss", "The next point is", 
       "I'd like to address", "Let's tackle", "Our next topic", "Moving forward", "Let's shift gears", 
-      "Let's pivot to", "Now turning to", "On to the next item", "Let's cover", "We need to discuss"
+      "Let's pivot to", "Now turning to", "On to the next item", "Let's cover", "We need to discuss",
+      "Next order of business", "Following item", "Let's transition to", "Now addressing", "Our next focus area",
+      "Shifting our attention to", "Let's zero in on", "Now we'll deep dive into", "Let's unpack", "Time to explore"
     ],
     "asking_opinions": [
       "What's your take on this?", "What are your thoughts?", "How do you feel about", "What's your perspective?", 
       "Any thoughts on this?", "What do you think?", "How does this sound?", "Your input would be valuable", 
-      "I'd like to hear from", "What's your view?", "Any feedback?", "Thoughts?", "Reactions?"
+      "I'd like to hear from", "What's your view?", "Any feedback?", "Thoughts?", "Reactions?",
+      "What's your gut feeling?", "How does this resonate with you?", "Any pushback on this?", "What's your read?",
+      "How does this land with you?", "Any concerns?", "What's your initial reaction?", "How comfortable are you with this?",
+      "What's your POV?", "Any red flags?", "Does this make sense to you?", "What's your assessment?"
     ],
     "agreeing_disagreeing": [
       "I agree with that", "Absolutely", "That makes sense", "I'm on board with", "Exactly", "Good point", 
       "I see it differently", "I have to respectfully disagree", "That's an interesting perspective, however", 
-      "I'm not sure I agree", "Let me offer a different view", "I hear you, but", "On the flip side"
+      "I'm not sure I agree", "Let me offer a different view", "I hear you, but", "On the flip side",
+      "100% agree", "Spot on", "Couldn't agree more", "That's exactly right", "Bingo", "You nailed it",
+      "I'm not entirely convinced", "That's a valid point, but", "Playing devil's advocate here", "I'm torn on this",
+      "That's a fair point, however", "I see the merit, but", "That's one way to look at it", "I'm pushing back on this"
     ],
     "clarification_questions": [
       "Could you clarify?", "What do you mean by?", "Can you elaborate?", "I'm not following", 
       "Could you expand on that?", "Help me understand", "Can you break that down?", "What exactly are you saying?", 
-      "I'm not clear on", "Could you give an example?", "What does that look like?", "How so?"
+      "I'm not clear on", "Could you give an example?", "What does that look like?", "How so?",
+      "Can you walk me through that?", "What's the context here?", "Can you paint a picture?", "Help me connect the dots",
+      "Can you flesh that out?", "What's the backstory?", "Can you drill down on that?", "What am I missing?",
+      "Can you unpack that for me?", "What's the bottom line?", "Can you simplify that?", "What's the gist?"
     ],
     "interrupting_politely": [
       "Sorry to interrupt", "If I may", "Can I jump in here?", "Quick question", "Hold on", 
-      "Before we move on", "Can I add something?", "Just to clarify", "One moment", "If I could add"
+      "Before we move on", "Can I add something?", "Just to clarify", "One moment", "If I could add",
+      "Pardon the interruption", "Can I chime in?", "Sorry to cut in", "If I may interject", "Can I pause you there?",
+      "Let me stop you right there", "Can I piggyback on that?", "Before you continue", "If I could just say",
+      "Can I build on that?", "Sorry to break in", "If I may add to that", "Can I throw in my two cents?"
     ],
     "wrapping_up": [
       "Let's wrap this up", "To summarize", "So to recap", "In conclusion", "Before we close", 
       "Let's call it there", "That's a wrap", "I think we can end here", "To sum up", "Final thoughts?", 
-      "Any last comments?", "Shall we adjourn?", "Thanks everyone", "Great meeting everyone"
+      "Any last comments?", "Shall we adjourn?", "Thanks everyone", "Great meeting everyone",
+      "Let's bring this to a close", "Time to wrap up", "Let's call it a day", "Final takeaways?",
+      "Before we sign off", "Let's close the loop", "Time to land the plane", "Let's button this up",
+      "Any final words?", "Last call for comments", "Let's tie this up", "Time to conclude"
     ],
     "action_items": [
       "Action item", "Follow-up", "Next steps", "To-do", "Deliverable", "Who's going to own this?", 
       "Who can take this on?", "Let's assign this to", "I'll take the action to", "This needs to be done by", 
-      "Deadline is", "Timeline", "Due date", "Milestone", "Checkpoint"
+      "Deadline is", "Timeline", "Due date", "Milestone", "Checkpoint",
+      "Who's taking point on this?", "Who's driving this?", "What's the DRI?", "Who's accountable?",
+      "What's our timeline?", "When can we expect this?", "What's the drop-dead date?", "Who's the owner?",
+      "What are the dependencies?", "What's blocking us?", "What's the critical path?", "What's our runway?"
     ]
   },
   "email_vocabulary": {
     "opening_phrases": [
       "I hope this email finds you well", "I hope you're doing well", "I trust you're well", 
       "Hope you had a great weekend", "I hope all is well", "Greetings", "Good morning/afternoon", 
-      "I hope this message finds you in good health", "Trust this email finds you well"
+      "I hope this message finds you in good health", "Trust this email finds you well",
+      "Hope your week is off to a great start", "Hope you're having a productive day", "Trust you're well",
+      "Hope this finds you in good spirits", "Wishing you a great day", "Hope all is going well on your end"
     ],
     "purpose_statements": [
       "I'm writing to", "I wanted to reach out about", "The purpose of this email is", "I'm reaching out regarding", 
       "I wanted to follow up on", "I'm contacting you about", "This email is to", "I'm writing in regards to", 
-      "I wanted to touch base about", "I'm following up on", "I wanted to circle back on"
+      "I wanted to touch base about", "I'm following up on", "I wanted to circle back on",
+      "Just wanted to ping you about", "Quick note regarding", "Dropping you a line about", "Shooting you an email about",
+      "Wanted to loop you in on", "Just a heads up about", "FYI regarding", "Bringing to your attention"
     ],
     "requesting_information": [
       "Could you please provide", "I would appreciate if you could", "Would it be possible to", 
       "I'm wondering if you could", "Could you help me with", "I need some information about", 
-      "Please let me know", "I'd like to know", "Can you confirm", "Would you mind sharing"
+      "Please let me know", "I'd like to know", "Can you confirm", "Would you mind sharing",
+      "Could you shed some light on", "Any chance you could", "Would you be able to", "Can you walk me through",
+      "Could you break down", "Any insights on", "What's your take on", "Could you elaborate on"
     ],
     "providing_information": [
       "Please find attached", "I'm pleased to inform you", "I wanted to update you on", 
       "FYI", "For your information", "Just to keep you in the loop", "As requested", "Per our conversation", 
-      "Following up on our discussion", "As discussed", "Further to our meeting"
+      "Following up on our discussion", "As discussed", "Further to our meeting",
+      "Attached please find", "Here's the update on", "Quick update", "Status update", "Per your request",
+      "As promised", "Here's what I found out", "Latest on", "Update from my end"
     ],
     "closing_phrases": [
       "Best regards", "Kind regards", "Looking forward to hearing from you", "Thank you for your time", 
       "Please don't hesitate to contact me", "I look forward to your response", "Thanks in advance", 
-      "Best", "Regards", "Sincerely", "Many thanks", "Appreciate your help"
+      "Best", "Regards", "Sincerely", "Many thanks", "Appreciate your help",
+      "Thanks a bunch", "Much appreciated", "Talk soon", "Catch you later", "Have a great one",
+      "Let me know if you need anything else", "Happy to discuss further", "Always here to help"
     ],
     "urgency_priority": [
       "ASAP", "Urgent", "High priority", "Time-sensitive", "EOD", "COB", "Please prioritize", 
       "Rush", "Immediate attention required", "Critical", "At your earliest convenience", 
-      "When you get a chance", "No rush"
+      "When you get a chance", "No rush",
+      "Stat", "Hot item", "Fire drill", "All hands on deck", "Code red", "Drop everything",
+      "Top priority", "Mission critical", "Time is of the essence", "Yesterday would be great",
+      "Whenever you can", "In your own time", "Low priority", "Back burner item"
     ],
     "professional_expressions": [
       "Per my last email", "As per our discussion", "Moving forward", "Going forward", 
       "To reiterate", "To clarify", "Just to confirm", "For the record", "In summary", 
-      "Bottom line", "The key takeaway is", "In a nutshell"
+      "Bottom line", "The key takeaway is", "In a nutshell",
+      "To circle back", "To piggyback on that", "As a follow-up", "For context", "To elaborate",
+      "Long story short", "At the end of the day", "All things considered", "Net net"
     ]
   },
   "phone_call_vocabulary": {
     "answering_calls": [
       "Good morning, this is [Name]", "Thank you for calling", "How may I help you?", 
       "This is [Name] speaking", "How can I assist you today?", "[Company name], this is [Name]", 
-      "Good afternoon, [Name] here", "You've reached [Name]"
+      "Good afternoon, [Name] here", "You've reached [Name]",
+      "[Name] speaking", "This is [Name], how can I help?", "[Company], [Name] speaking",
+      "You've got [Name]", "Hi, this is [Name]", "[Name] at [Company]"
     ],
     "making_calls": [
       "Hello, this is [Name] from [Company]", "I'm calling regarding", "I wanted to follow up on", 
       "Is this a good time to talk?", "I hope I'm not catching you at a bad time", 
-      "The reason I'm calling is", "I wanted to discuss", "Could we schedule a time to talk?"
+      "The reason I'm calling is", "I wanted to discuss", "Could we schedule a time to talk?",
+      "Quick call about", "Touching base on", "Following up on our email thread", "Just wanted to connect on",
+      "Calling to check in on", "Wanted to sync up on", "Quick question for you", "Hope I'm not interrupting"
     ],
     "transferring_calls": [
       "Let me transfer you to", "I'll connect you with", "Hold on while I transfer you", 
       "I'm going to put you through to", "Let me get [Name] on the line", "One moment please", 
-      "I'll patch you through", "Let me route this call"
+      "I'll patch you through", "Let me route this call",
+      "I'll warm transfer you to", "Let me conference in", "I'll bridge you to", "Connecting you now",
+      "Let me hand you off to", "I'll get you to the right person", "Let me loop in"
     ],
     "taking_messages": [
       "Can I take a message?", "Would you like to leave a message?", "I'll make sure they get the message", 
       "Let me write that down", "Could you spell that for me?", "What's the best number to reach you?", 
-      "When would be a good time to call back?", "I'll have them call you back"
+      "When would be a good time to call back?", "I'll have them call you back",
+      "I'll pass along the message", "Let me get your contact info", "What's this regarding?",
+      "Any particular time that works best?", "Should they expect your call?", "I'll make sure they know you called"
     ],
     "ending_calls": [
       "Thank you for calling", "Have a great day", "Thanks for your time", "Speak soon", 
-      "Take care", "We'll be in touch", "I'll follow up with an email", "Thanks again", "Goodbye"
+      "Take care", "We'll be in touch", "I'll follow up with an email", "Thanks again", "Goodbye",
+      "Talk to you later", "Have a good one", "Until next time", "Catch you later",
+      "Thanks for the call", "Looking forward to our next chat", "Have a wonderful rest of your day"
     ],
     "clarification_phone": [
       "Could you repeat that?", "I didn't catch that", "Could you speak up?", "Sorry, the line is breaking up", 
-      "Can you spell that for me?", "Let me read that back to you", "Just to confirm", "Did you say?"
+      "Can you spell that for me?", "Let me read that back to you", "Just to confirm", "Did you say?",
+      "I'm having trouble hearing you", "Can you say that again?", "One more time?", "Could you slow down?",
+      "I want to make sure I got that right", "Let me repeat what I heard", "Can you clarify that?"
     ]
   },
   "standup_daily_meeting_vocabulary": {
     "status_updates": [
       "Yesterday I completed", "I'm currently working on", "Today I plan to", "I finished", 
       "I'm making progress on", "I wrapped up", "I'm continuing with", "Next up is", 
-      "I'm focusing on", "Priority today is", "Main task is", "I'm tackling"
+      "I'm focusing on", "Priority today is", "Main task is", "I'm tackling",
+      "Just shipped", "Delivered yesterday", "Working through", "Diving deep into", "Pushing forward on",
+      "Knocked out", "Cranking through", "Making headway on", "Powering through", "Closing out"
     ],
     "blockers_issues": [
       "I'm blocked by", "I'm waiting on", "I need help with", "I'm stuck on", "Roadblock", 
-      "Blocker", "Issue", "Challenge", "Obstacle", "Dependency", "Bottleneck", "Impediment"
+      "Blocker", "Issue", "Challenge", "Obstacle", "Dependency", "Bottleneck", "Impediment",
+      "Red flag", "Pain point", "Friction", "Hurdle", "Snag", "Hiccup", "Speed bump",
+      "Waiting for approval", "Pending review", "Need feedback", "Resource constraint", "Technical debt"
     ],
     "progress_indicators": [
       "On track", "Behind schedule", "Ahead of schedule", "In progress", "Completed", "Delivered", 
-      "In review", "Testing", "Ready for review", "Deployed", "Live", "Closed", "Resolved"
+      "In review", "Testing", "Ready for review", "Deployed", "Live", "Closed", "Resolved",
+      "Green", "Yellow", "Red", "At risk", "Smooth sailing", "Good to go", "All clear",
+      "In the pipeline", "On deck", "Backlogged", "Triaged", "Prioritized", "Scoped", "Estimated"
     ],
     "collaborative_language": [
       "I need support from", "Can someone help with", "Looking for input on", "Need clarification on", 
-      "Collaborating with", "Working with", "Coordinating with", "Syncing with", "Aligning with"
+      "Collaborating with", "Working with", "Coordinating with", "Syncing with", "Aligning with",
+      "Partnering with", "Teaming up with", "Joining forces with", "Pooling resources with",
+      "Cross-functional work", "Matrix collaboration", "Stakeholder alignment", "SME consultation"
     ],
     "time_estimates": [
       "Should be done by", "Estimated completion", "ETA", "Timeline", "Expected to finish", 
-      "Planning to complete", "Targeting", "Aiming for", "Hoping to wrap up", "Goal is to finish"
+      "Planning to complete", "Targeting", "Aiming for", "Hoping to wrap up", "Goal is to finish",
+      "Ballpark estimate", "Rough timeline", "Best case scenario", "Worst case scenario",
+      "Conservative estimate", "Aggressive timeline", "Stretch goal", "Buffer time included"
     ]
   },
   "corporate_jargon_buzzwords": {
     "strategy_planning": [
       "Strategic initiative", "Roadmap", "Vision", "Mission critical", "Core competency", 
       "Value proposition", "Competitive advantage", "Market positioning", "Go-to-market", "Scalable solution", 
-      "Low-hanging fruit", "Blue sky thinking", "Think outside the box", "Game changer", "Disruptive"
+      "Low-hanging fruit", "Blue sky thinking", "Think outside the box", "Game changer", "Disruptive",
+      "North star", "Big rocks", "Strategic pillars", "Moonshot", "Breakthrough thinking",
+      "Paradigm shift", "Inflection point", "Tipping point", "Sweet spot", "Secret sauce"
     ],
     "collaboration_teamwork": [
       "Synergy", "Cross-functional", "Stakeholder", "Buy-in", "Alignment", "Touch base", "Circle back", 
       "Loop in", "Sync up", "Connect offline", "Collaborate", "Partner with", "Leverage", 
-      "Best practice", "Knowledge sharing"
+      "Best practice", "Knowledge sharing",
+      "Cross-pollination", "Mind meld", "Brain trust", "Dream team", "Power couple",
+      "Force multiplier", "Two-way street", "Win-win", "Value-add", "Thought partnership"
     ],
     "project_management": [
       "Deliverable", "Milestone", "Timeline", "Scope", "Bandwidth", "Capacity", "Resource", 
       "Workstream", "Work package", "Sprint", "Agile", "Scrum", "Waterfall", "Iterate", 
-      "Pivot", "Pivot strategy", "Deep dive", "Drill down"
+      "Pivot", "Pivot strategy", "Deep dive", "Drill down",
+      "Critical path", "Runway", "Velocity", "Burndown", "Retrospective", "Post-mortem",
+      "Lessons learned", "Course correction", "Checkpoint", "Gate review", "Go/no-go decision"
     ],
     "business_operations": [
       "ROI", "KPI", "Metrics", "Dashboard", "Analytics", "Data-driven", "Optimize", "Streamline", 
-      "Automate", "Digitize", "Transform", "Innovate", "Disrupt", "Scale", "Growth hacking"
+      "Automate", "Digitize", "Transform", "Innovate", "Disrupt", "Scale", "Growth hacking",
+      "Operationalize", "Systematize", "Standardize", "Centralize", "Decentralize",
+      "Right-size", "Future-proof", "Bulletproof", "Turnkey", "Plug-and-play"
     ],
     "communication_style": [
       "Transparent", "Open communication", "Feedback loop", "Two-way communication", 
       "Active listening", "Constructive feedback", "Actionable insights", "Clear messaging", 
-      "Effective communication", "Stakeholder engagement"
+      "Effective communication", "Stakeholder engagement",
+      "Open door policy", "Safe space", "Psychological safety", "Radical candor", "Straight talk",
+      "No-filter feedback", "Direct communication", "Brutal honesty", "Call a spade a spade"
     ],
     "problem_solving": [
       "Pain point", "Challenge", "Obstacle", "Bottleneck", "Root cause", "Solution", 
-      "Workaround", "Fix", "Address", "Resolve", "Troubleshoot", "Debug", "Mitigate", "Prevent"
+      "Workaround", "Fix", "Address", "Resolve", "Troubleshoot", "Debug", "Mitigate", "Prevent",
+      "Band-aid solution", "Quick fix", "Silver bullet", "Magic bullet", "Smoking gun",
+      "Elephant in the room", "Low-hanging fruit", "Move the needle", "Game changer"
     ],
     "time_management": [
       "Prioritize", "Urgent", "Important", "Time-sensitive", "Deadline", "Time-bound", 
-      "Quick win", "Fast track", "Expedite", "Rush", "ASAP", "EOD", "COB", "Timeline"
+      "Quick win", "Fast track", "Expedite", "Rush", "ASAP", "EOD", "COB", "Timeline",
+      "Time-box", "Sprint", "Time crunch", "Crunch time", "Race against time",
+      "Drop-dead date", "Hard deadline", "Soft deadline", "Buffer time", "Padding"
     ],
     "finance_budget": [
       "Budget", "Cost-effective", "ROI", "Cost-benefit", "Investment", "Expenditure", 
       "Savings", "Revenue", "Profit margin", "Break-even", "Cash flow", "Burn rate", 
-      "Runway", "Funding", "Capital"
+      "Runway", "Funding", "Capital",
+      "OpEx", "CapEx", "P&L", "Bottom line", "Top line", "Cost center", "Profit center",
+      "Value engineering", "Cost optimization", "Lean operations", "Financial modeling"
     ],
     "modern_workplace": [
       "Remote work", "Hybrid", "Flexible", "Work-life balance", "Agile working", 
-      "Digital nomad", "Virtual team", "Online collaboration", "Cloud-based", "Digital transformation"
+      "Digital nomad", "Virtual team", "Online collaboration", "Cloud-based", "Digital transformation",
+      "Future of work", "New normal", "Distributed workforce", "Asynchronous work",
+      "Always-on culture", "Digital fatigue", "Zoom fatigue", "Screen time", "Digital wellness"
     ]
   },
   "acronyms_abbreviations": {
@@ -178,88 +255,297 @@
       "FYI - For Your Information", "EOD - End of Day", "COB - Close of Business", 
       "ASAP - As Soon As Possible", "ROI - Return on Investment", "KPI - Key Performance Indicator", 
       "P&L - Profit and Loss", "CEO - Chief Executive Officer", "CFO - Chief Financial Officer", 
-      "CTO - Chief Technology Officer", "HR - Human Resources", "IT - Information Technology"
+      "CTO - Chief Technology Officer", "HR - Human Resources", "IT - Information Technology",
+      "COO - Chief Operating Officer", "CMO - Chief Marketing Officer", "CPO - Chief Product Officer",
+      "CRO - Chief Revenue Officer", "CHRO - Chief Human Resources Officer", "VP - Vice President",
+      "SVP - Senior Vice President", "EVP - Executive Vice President", "GM - General Manager"
     ],
     "project_management": [
       "PMO - Project Management Office", "WBS - Work Breakdown Structure", "SOW - Statement of Work", 
       "POC - Point of Contact", "ETA - Estimated Time of Arrival", "MVP - Minimum Viable Product", 
-      "UAT - User Acceptance Testing", "QA - Quality Assurance", "SLA - Service Level Agreement"
+      "UAT - User Acceptance Testing", "QA - Quality Assurance", "SLA - Service Level Agreement",
+      "DRI - Directly Responsible Individual", "RACI - Responsible, Accountable, Consulted, Informed",
+      "SMART - Specific, Measurable, Achievable, Relevant, Time-bound", "OKR - Objectives and Key Results",
+      "KPI - Key Performance Indicator", "SOP - Standard Operating Procedure", "RFP - Request for Proposal"
     ],
     "meeting_related": [
       "AFK - Away From Keyboard", "BRB - Be Right Back", "TBD - To Be Determined", 
       "TBC - To Be Confirmed", "TBA - To Be Announced", "NDA - Non-Disclosure Agreement", 
-      "AI - Action Item", "MOM - Minutes of Meeting"
+      "AI - Action Item", "MOM - Minutes of Meeting",
+      "F2F - Face to Face", "IRL - In Real Life", "BTW - By The Way", "FWIW - For What It's Worth",
+      "IMO - In My Opinion", "IMHO - In My Humble Opinion", "FYR - For Your Reference"
     ],
     "communication": [
       "CC - Carbon Copy", "BCC - Blind Carbon Copy", "FWD - Forward", "RE - Reply", 
-      "OOO - Out of Office", "WFH - Work From Home", "DND - Do Not Disturb"
+      "OOO - Out of Office", "WFH - Work From Home", "DND - Do Not Disturb",
+      "PTO - Paid Time Off", "OOF - Out of Facility", "BRT - Be Right There",
+      "CYA - Cover Your Assets", "TLDR - Too Long Didn't Read", "EOM - End of Message"
+    ],
+    "technology": [
+      "API - Application Programming Interface", "UI/UX - User Interface/User Experience",
+      "CRM - Customer Relationship Management", "ERP - Enterprise Resource Planning",
+      "SaaS - Software as a Service", "IaaS - Infrastructure as a Service", "PaaS - Platform as a Service",
+      "AI - Artificial Intelligence", "ML - Machine Learning", "IoT - Internet of Things",
+      "VPN - Virtual Private Network", "SDK - Software Development Kit", "IDE - Integrated Development Environment"
     ]
   },
   "professional_expressions": {
     "positive_agreement": [
       "Absolutely", "Exactly", "Spot on", "Couldn't agree more", "That's right", "Perfect", 
       "Great point", "I'm on board", "That works for me", "Sounds good", "I'm all for it", 
-      "Let's do it", "I'm in", "Count me in"
+      "Let's do it", "I'm in", "Count me in",
+      "Bingo", "Nailed it", "You got it", "Roger that", "Copy that", "10-4", "Solid",
+      "Rock solid", "Bulletproof", "Gold", "Money", "Jackpot", "Home run", "Slam dunk"
     ],
     "diplomatic_disagreement": [
       "I see it differently", "That's an interesting perspective, however", "I respectfully disagree", 
       "I have a different view", "Let me offer an alternative", "I'm not convinced", 
-      "I'm not sure about that", "That might not work because", "Have we considered"
+      "I'm not sure about that", "That might not work because", "Have we considered",
+      "I'm pushing back on this", "I'm not buying it", "That doesn't pass the smell test",
+      "I'm having trouble with that", "That's a stretch", "I'm skeptical", "Red flag for me",
+      "That gives me pause", "I'm not comfortable with that", "That's a non-starter"
     ],
     "professional_transitions": [
       "Moving forward", "Going forward", "That said", "Having said that", "On the other hand", 
       "In addition", "Furthermore", "Moreover", "However", "Nevertheless", "Meanwhile", 
-      "In the meantime", "On a related note"
+      "In the meantime", "On a related note",
+      "That being said", "With that in mind", "Along those lines", "Building on that",
+      "To piggyback on that", "Speaking of which", "While we're on the topic", "On that note"
     ],
     "decision_making": [
       "Let's make a decision", "We need to decide", "What's the consensus?", "Are we all aligned?", 
       "Let's vote on it", "I propose", "I suggest", "My recommendation is", "The best option is", 
-      "Let's go with", "I think we should", "The way forward is"
+      "Let's go with", "I think we should", "The way forward is",
+      "What's the call?", "What's the verdict?", "Let's pull the trigger", "Time to fish or cut bait",
+      "Let's make the call", "Decision time", "Rubber meets the road", "Moment of truth"
     ],
     "time_management": [
       "We're running short on time", "Let's keep this brief", "In the interest of time", 
       "We should wrap up", "Time check", "We have 5 minutes left", "Let's move on", 
-      "We're over time", "Hard stop at", "Soft stop at"
+      "We're over time", "Hard stop at", "Soft stop at",
+      "Time's up", "Clock's ticking", "Burning daylight", "Time's a-wasting",
+      "Let's be mindful of time", "We're in overtime", "Running behind", "Time to land the plane"
+    ],
+    "urgency_escalation": [
+      "This is priority one", "All hands on deck", "Drop everything", "Code red",
+      "Fire drill", "Hair on fire", "Burning platform", "Mission critical",
+      "Do or die", "Make or break", "Now or never", "Crunch time",
+      "Under the gun", "Against the clock", "Time-sensitive", "Hot potato"
+    ],
+    "reassurance_calm": [
+      "No worries", "We've got this", "All good", "Everything's under control",
+      "Piece of cake", "Walk in the park", "We're golden", "Smooth sailing",
+      "Business as usual", "Status quo", "Par for the course", "Nothing to see here",
+      "Keep calm and carry on", "This too shall pass", "We'll figure it out"
     ]
   },
   "industry_specific": {
     "tech_software": [
       "API", "Backend", "Frontend", "Full-stack", "DevOps", "CI/CD", "Deployment", "Repository", 
       "Version control", "Bug", "Feature", "Enhancement", "Release", "Sprint", "Backlog", 
-      "User story", "Acceptance criteria", "Technical debt", "Code review", "Merge request"
+      "User story", "Acceptance criteria", "Technical debt", "Code review", "Merge request",
+      "Microservices", "Monolith", "Scalability", "Load balancing", "Database optimization",
+      "Machine learning", "Artificial intelligence", "Cloud migration", "Containerization", "Kubernetes"
     ],
     "marketing_sales": [
       "Lead generation", "Conversion rate", "Customer acquisition", "Retention", "Churn", 
       "Funnel", "Pipeline", "Prospect", "Qualified lead", "Cold outreach", "Warm lead", 
       "Account-based marketing", "Content marketing", "Inbound", "Outbound", "Campaign", 
-      "Brand awareness", "Market penetration"
+      "Brand awareness", "Market penetration",
+      "Attribution modeling", "Omnichannel", "Personalization", "Customer journey", "Touchpoints",
+      "Sales velocity", "Win rate", "Deal size", "Sales cycle", "Revenue operations"
     ],
     "finance_accounting": [
       "Accounts payable", "Accounts receivable", "Cash flow", "Working capital", "EBITDA", 
       "Gross margin", "Net profit", "Operating expenses", "Capital expenditure", "Depreciation", 
-      "Amortization", "Accruals", "Budget variance", "Forecast", "Actuals"
+      "Amortization", "Accruals", "Budget variance", "Forecast", "Actuals",
+      "Financial modeling", "Scenario planning", "Sensitivity analysis", "Risk assessment",
+      "Compliance", "Audit trail", "Internal controls", "Revenue recognition"
     ],
     "consulting": [
       "Framework", "Methodology", "Best practice", "Benchmark", "Gap analysis", "Root cause analysis", 
       "Process optimization", "Change management", "Stakeholder mapping", "Requirements gathering", 
-      "As-is state", "To-be state", "Implementation roadmap", "Quick wins"
+      "As-is state", "To-be state", "Implementation roadmap", "Quick wins",
+      "Value stream mapping", "Lean methodology", "Six Sigma", "Digital transformation",
+      "Operating model", "Target operating model", "Organizational design", "Culture change"
+    ],
+    "healthcare": [
+      "Patient-centered care", "Quality metrics", "Clinical outcomes", "Patient satisfaction",
+      "Electronic health records", "Telemedicine", "Population health", "Care coordination",
+      "Evidence-based practice", "Clinical protocols", "Regulatory compliance", "Risk management"
+    ],
+    "legal": [
+      "Due diligence", "Compliance", "Risk mitigation", "Contract negotiation", "IP protection",
+      "Litigation support", "Regulatory affairs", "Corporate governance", "Mergers and acquisitions",
+      "Data privacy", "GDPR compliance", "Terms of service", "Service level agreements"
     ]
   },
   "emotional_intelligence": {
     "empathy_understanding": [
       "I understand", "I hear you", "That makes sense", "I can see why", "I appreciate that", 
       "That must be frustrating", "I get it", "That's understandable", "I can relate", 
-      "That's a valid concern", "You're right to be concerned"
+      "That's a valid concern", "You're right to be concerned",
+      "I feel you", "I'm picking up what you're putting down", "That resonates with me",
+      "I can imagine how tough that must be", "That's got to be challenging", "I see where you're coming from"
     ],
     "encouragement_support": [
       "Great job", "Well done", "Excellent work", "That's impressive", "Keep it up", 
       "You're on the right track", "That's a great idea", "I'm impressed", "Nice work", 
-      "That's really helpful", "Good thinking", "Smart approach"
+      "That's really helpful", "Good thinking", "Smart approach",
+      "You knocked it out of the park", "Outstanding", "Phenomenal", "You're crushing it",
+      "Way to go", "Bravo", "Kudos", "Hat's off to you", "Top-notch", "First-rate",
+      "You're killing it", "Home run", "Ace work", "Gold star", "A+ effort"
     ],
     "constructive_feedback": [
       "One area for improvement", "Something to consider", "Have you thought about", 
       "What if we tried", "Another approach might be", "Building on that idea", 
-      "To make it even better", "One suggestion", "A different perspective"
+      "To make it even better", "One suggestion", "A different perspective",
+      "Room for growth", "Opportunity to enhance", "Consider this angle", "Food for thought",
+      "Devil's advocate here", "Playing devil's advocate", "Alternative viewpoint", "Counter-perspective"
+    ],
+    "conflict_resolution": [
+      "Let's find common ground", "I think we're both after the same thing", "Help me understand your concern",
+      "What would success look like for you?", "Let's take a step back", "Can we agree to disagree?",
+      "I think there's been a misunderstanding", "Let's clear the air", "Can we start fresh?",
+      "I want to make this right", "Let's work through this together", "What's really at stake here?"
+    ]
+  },
+  "advanced_business_concepts": {
+    "strategic_planning": [
+      "Blue ocean strategy", "Digital disruption", "Market segmentation", "Value creation",
+      "Competitive moat", "Network effects", "Platform strategy", "Ecosystem thinking",
+      "First-mover advantage", "Strategic inflection point", "Disruptive innovation", "Sustaining innovation",
+      "Core competencies", "Dynamic capabilities", "Resource-based view", "Strategic intent"
+    ],
+    "innovation_transformation": [
+      "Design thinking", "Agile methodology", "Lean startup", "Minimum viable product",
+      "Product-market fit", "Customer development", "Pivot strategy", "Fail fast",
+      "Innovation lab", "Skunkworks project", "Hackathon", "Innovation pipeline",
+      "Digital transformation", "Legacy system modernization", "API-first architecture", "Cloud-native"
+    ],
+    "data_analytics": [
+      "Big data", "Data science", "Machine learning", "Artificial intelligence",
+      "Predictive analytics", "Prescriptive analytics", "Data visualization", "Business intelligence",
+      "Data-driven decision making", "A/B testing", "Statistical significance", "Correlation vs causation",
+      "Real-time analytics", "Data governance", "Data quality", "Master data management"
+    ],
+    "customer_experience": [
+      "Customer journey mapping", "Touchpoint optimization", "Omnichannel experience", "Personalization",
+      "Customer lifetime value", "Net promoter score", "Customer satisfaction", "Customer effort score",
+      "Voice of customer", "User experience design", "Service design", "Customer success",
+      "Retention strategy", "Churn reduction", "Customer onboarding", "Customer advocacy"
+    ],
+    "organizational_development": [
+      "Change management", "Organizational design", "Culture transformation", "Leadership development",
+      "Talent management", "Succession planning", "Performance management", "Employee engagement",
+      "Diversity and inclusion", "Psychological safety", "Team dynamics", "Cross-functional collaboration",
+      "Matrix organization", "Flat organization", "Agile organization", "Network organization"
+    ]
+  },
+  "modern_workplace_trends": {
+    "remote_hybrid_work": [
+      "Distributed workforce", "Asynchronous communication", "Digital collaboration", "Virtual first",
+      "Hybrid meetings", "Remote onboarding", "Digital workspace", "Cloud collaboration",
+      "Work from anywhere", "Location independence", "Digital nomad", "Flexible schedules",
+      "Results-only work environment", "Output-based performance", "Trust-based management", "Autonomy"
+    ],
+    "digital_tools": [
+      "Collaboration platforms", "Project management tools", "Communication apps", "Video conferencing",
+      "Screen sharing", "Digital whiteboarding", "Document collaboration", "Cloud storage",
+      "Workflow automation", "No-code platforms", "Low-code development", "API integrations",
+      "Chatbots", "Virtual assistants", "AI-powered tools", "Machine learning algorithms"
+    ],
+    "workplace_culture": [
+      "Psychological safety", "Inclusive leadership", "Belonging", "Employee resource groups",
+      "Microaggressions", "Unconscious bias", "Allyship", "Cultural competency",
+      "Work-life integration", "Mental health support", "Wellness programs", "Burnout prevention",
+      "Flexible benefits", "Total rewards", "Employee value proposition", "Employer branding"
+    ],
+    "productivity_efficiency": [
+      "Time blocking", "Deep work", "Focus time", "Maker vs manager schedule",
+      "Context switching", "Attention management", "Energy management", "Flow state",
+      "Pomodoro technique", "Getting things done", "Inbox zero", "Single-tasking",
+      "Automation", "Process optimization", "Lean principles", "Continuous improvement"
+    ]
+  },
+  "crisis_management": {
+    "emergency_response": [
+      "Crisis communication", "Business continuity", "Disaster recovery", "Risk assessment",
+      "Incident response", "Emergency protocols", "Contingency planning", "Scenario planning",
+      "Command center", "War room", "All hands on deck", "Code red",
+      "Damage control", "Triage", "First responders", "Emergency contact tree"
+    ],
+    "problem_escalation": [
+      "Escalation matrix", "Chain of command", "Skip level", "Executive sponsor",
+      "Critical issue", "Severity levels", "Priority queue", "Hot potato",
+      "Fire drill", "Hair on fire", "Burning platform", "Mission critical",
+      "Show stopper", "Deal breaker", "Red alert", "DEFCON 1"
+    ],
+    "recovery_solutions": [
+      "Root cause analysis", "Corrective action", "Preventive measures", "Lessons learned",
+      "Post-mortem", "After action review", "Improvement plan", "Process enhancement",
+      "Risk mitigation", "Control measures", "Safeguards", "Circuit breakers",
+      "Fail-safe mechanisms", "Backup systems", "Redundancy", "Business resilience"
+    ]
+  },
+  "negotiation_influence": {
+    "persuasion_techniques": [
+      "Value proposition", "Win-win solution", "Mutual benefit", "Common ground",
+      "Compelling case", "Business case", "ROI justification", "Cost-benefit analysis",
+      "Risk-reward trade-off", "Opportunity cost", "Alternative options", "BATNA",
+      "Leverage", "Bargaining power", "Negotiation tactics", "Compromise"
+    ],
+    "stakeholder_management": [
+      "Stakeholder mapping", "Influence diagram", "Power-interest grid", "Coalition building",
+      "Buy-in", "Sponsorship", "Executive support", "Change champions",
+      "Resistance management", "Objection handling", "Feedback incorporation", "Consensus building",
+      "Alignment", "Commitment", "Accountability", "Follow-through"
+    ],
+    "presentation_skills": [
+      "Executive summary", "Key messages", "Call to action", "Next steps",
+      "Compelling narrative", "Storytelling", "Data visualization", "Infographics",
+      "Slide deck", "Presentation flow", "Q&A session", "Audience engagement",
+      "Persuasive speaking", "Executive presence", "Thought leadership", "Subject matter expertise"
+    ]
+  },
+  "financial_business_advanced": {
+    "investment_funding": [
+      "Series A", "Series B", "Seed funding", "Angel investors",
+      "Venture capital", "Private equity", "IPO", "Acquisition",
+      "Valuation", "Due diligence", "Term sheet", "Cap table",
+      "Equity dilution", "Liquidation preference", "Anti-dilution", "Drag-along rights"
+    ],
+    "financial_metrics": [
+      "Revenue run rate", "Annual recurring revenue", "Monthly recurring revenue", "Customer acquisition cost",
+      "Lifetime value", "Payback period", "Gross margin", "Unit economics",
+      "Burn rate", "Runway", "Break-even point", "Cash flow positive",
+      "EBITDA margin", "Operating leverage", "Working capital", "Free cash flow"
+    ],
+    "market_analysis": [
+      "Total addressable market", "Serviceable addressable market", "Market penetration", "Market share",
+      "Competitive landscape", "Porter's five forces", "SWOT analysis", "Market positioning",
+      "Value chain analysis", "Industry dynamics", "Market trends", "Disruption factors",
+      "Barriers to entry", "Switching costs", "Network effects", "Economies of scale"
+    ]
+  },
+  "performance_management_advanced": {
+    "goal_setting": [
+      "OKRs", "KPIs", "SMART goals", "Stretch goals",
+      "Performance indicators", "Success metrics", "Milestone tracking", "Progress reviews",
+      "Goal alignment", "Cascading objectives", "Performance dashboards", "Scorecard",
+      "Target setting", "Benchmark comparison", "Performance gaps", "Improvement plans"
+    ],
+    "feedback_coaching": [
+      "360-degree feedback", "Peer review", "Upward feedback", "Skip-level feedback",
+      "Performance calibration", "Coaching conversations", "Development planning", "Skill assessment",
+      "Competency mapping", "Career pathing", "Succession planning", "High-potential identification",
+      "Performance improvement plan", "Recognition programs", "Rewards and incentives", "Career development"
+    ],
+    "team_dynamics": [
+      "Team formation", "Storming phase", "Norming stage", "Performing team",
+      "Team charter", "Operating principles", "Role clarity", "Accountability matrix",
+      "Conflict resolution", "Team building", "Trust building", "Communication norms",
+      "Decision-making process", "Meeting cadence", "Collaboration tools", "Team metrics"
     ]
   }
 }
