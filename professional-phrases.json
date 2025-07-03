@@ -1,0 +1,265 @@
+{
+  "meetings_vocabulary": {
+    "opening_starting": [
+      "Let's get started", "Shall we begin?", "Let's kick off", "Let's dive right in", "First on the agenda", 
+      "To start things off", "Let's open with", "I'd like to call this meeting to order", "Thank you all for joining", 
+      "Before we begin", "Let's take a moment to", "I'd like to welcome everyone", "Let's jump in", "Moving forward"
+    ],
+    "agenda_structure": [
+      "First on the agenda", "Next item", "Moving on to", "Let's discuss", "The next point is", 
+      "I'd like to address", "Let's tackle", "Our next topic", "Moving forward", "Let's shift gears", 
+      "Let's pivot to", "Now turning to", "On to the next item", "Let's cover", "We need to discuss"
+    ],
+    "asking_opinions": [
+      "What's your take on this?", "What are your thoughts?", "How do you feel about", "What's your perspective?", 
+      "Any thoughts on this?", "What do you think?", "How does this sound?", "Your input would be valuable", 
+      "I'd like to hear from", "What's your view?", "Any feedback?", "Thoughts?", "Reactions?"
+    ],
+    "agreeing_disagreeing": [
+      "I agree with that", "Absolutely", "That makes sense", "I'm on board with", "Exactly", "Good point", 
+      "I see it differently", "I have to respectfully disagree", "That's an interesting perspective, however", 
+      "I'm not sure I agree", "Let me offer a different view", "I hear you, but", "On the flip side"
+    ],
+    "clarification_questions": [
+      "Could you clarify?", "What do you mean by?", "Can you elaborate?", "I'm not following", 
+      "Could you expand on that?", "Help me understand", "Can you break that down?", "What exactly are you saying?", 
+      "I'm not clear on", "Could you give an example?", "What does that look like?", "How so?"
+    ],
+    "interrupting_politely": [
+      "Sorry to interrupt", "If I may", "Can I jump in here?", "Quick question", "Hold on", 
+      "Before we move on", "Can I add something?", "Just to clarify", "One moment", "If I could add"
+    ],
+    "wrapping_up": [
+      "Let's wrap this up", "To summarize", "So to recap", "In conclusion", "Before we close", 
+      "Let's call it there", "That's a wrap", "I think we can end here", "To sum up", "Final thoughts?", 
+      "Any last comments?", "Shall we adjourn?", "Thanks everyone", "Great meeting everyone"
+    ],
+    "action_items": [
+      "Action item", "Follow-up", "Next steps", "To-do", "Deliverable", "Who's going to own this?", 
+      "Who can take this on?", "Let's assign this to", "I'll take the action to", "This needs to be done by", 
+      "Deadline is", "Timeline", "Due date", "Milestone", "Checkpoint"
+    ]
+  },
+  "email_vocabulary": {
+    "opening_phrases": [
+      "I hope this email finds you well", "I hope you're doing well", "I trust you're well", 
+      "Hope you had a great weekend", "I hope all is well", "Greetings", "Good morning/afternoon", 
+      "I hope this message finds you in good health", "Trust this email finds you well"
+    ],
+    "purpose_statements": [
+      "I'm writing to", "I wanted to reach out about", "The purpose of this email is", "I'm reaching out regarding", 
+      "I wanted to follow up on", "I'm contacting you about", "This email is to", "I'm writing in regards to", 
+      "I wanted to touch base about", "I'm following up on", "I wanted to circle back on"
+    ],
+    "requesting_information": [
+      "Could you please provide", "I would appreciate if you could", "Would it be possible to", 
+      "I'm wondering if you could", "Could you help me with", "I need some information about", 
+      "Please let me know", "I'd like to know", "Can you confirm", "Would you mind sharing"
+    ],
+    "providing_information": [
+      "Please find attached", "I'm pleased to inform you", "I wanted to update you on", 
+      "FYI", "For your information", "Just to keep you in the loop", "As requested", "Per our conversation", 
+      "Following up on our discussion", "As discussed", "Further to our meeting"
+    ],
+    "closing_phrases": [
+      "Best regards", "Kind regards", "Looking forward to hearing from you", "Thank you for your time", 
+      "Please don't hesitate to contact me", "I look forward to your response", "Thanks in advance", 
+      "Best", "Regards", "Sincerely", "Many thanks", "Appreciate your help"
+    ],
+    "urgency_priority": [
+      "ASAP", "Urgent", "High priority", "Time-sensitive", "EOD", "COB", "Please prioritize", 
+      "Rush", "Immediate attention required", "Critical", "At your earliest convenience", 
+      "When you get a chance", "No rush"
+    ],
+    "professional_expressions": [
+      "Per my last email", "As per our discussion", "Moving forward", "Going forward", 
+      "To reiterate", "To clarify", "Just to confirm", "For the record", "In summary", 
+      "Bottom line", "The key takeaway is", "In a nutshell"
+    ]
+  },
+  "phone_call_vocabulary": {
+    "answering_calls": [
+      "Good morning, this is [Name]", "Thank you for calling", "How may I help you?", 
+      "This is [Name] speaking", "How can I assist you today?", "[Company name], this is [Name]", 
+      "Good afternoon, [Name] here", "You've reached [Name]"
+    ],
+    "making_calls": [
+      "Hello, this is [Name] from [Company]", "I'm calling regarding", "I wanted to follow up on", 
+      "Is this a good time to talk?", "I hope I'm not catching you at a bad time", 
+      "The reason I'm calling is", "I wanted to discuss", "Could we schedule a time to talk?"
+    ],
+    "transferring_calls": [
+      "Let me transfer you to", "I'll connect you with", "Hold on while I transfer you", 
+      "I'm going to put you through to", "Let me get [Name] on the line", "One moment please", 
+      "I'll patch you through", "Let me route this call"
+    ],
+    "taking_messages": [
+      "Can I take a message?", "Would you like to leave a message?", "I'll make sure they get the message", 
+      "Let me write that down", "Could you spell that for me?", "What's the best number to reach you?", 
+      "When would be a good time to call back?", "I'll have them call you back"
+    ],
+    "ending_calls": [
+      "Thank you for calling", "Have a great day", "Thanks for your time", "Speak soon", 
+      "Take care", "We'll be in touch", "I'll follow up with an email", "Thanks again", "Goodbye"
+    ],
+    "clarification_phone": [
+      "Could you repeat that?", "I didn't catch that", "Could you speak up?", "Sorry, the line is breaking up", 
+      "Can you spell that for me?", "Let me read that back to you", "Just to confirm", "Did you say?"
+    ]
+  },
+  "standup_daily_meeting_vocabulary": {
+    "status_updates": [
+      "Yesterday I completed", "I'm currently working on", "Today I plan to", "I finished", 
+      "I'm making progress on", "I wrapped up", "I'm continuing with", "Next up is", 
+      "I'm focusing on", "Priority today is", "Main task is", "I'm tackling"
+    ],
+    "blockers_issues": [
+      "I'm blocked by", "I'm waiting on", "I need help with", "I'm stuck on", "Roadblock", 
+      "Blocker", "Issue", "Challenge", "Obstacle", "Dependency", "Bottleneck", "Impediment"
+    ],
+    "progress_indicators": [
+      "On track", "Behind schedule", "Ahead of schedule", "In progress", "Completed", "Delivered", 
+      "In review", "Testing", "Ready for review", "Deployed", "Live", "Closed", "Resolved"
+    ],
+    "collaborative_language": [
+      "I need support from", "Can someone help with", "Looking for input on", "Need clarification on", 
+      "Collaborating with", "Working with", "Coordinating with", "Syncing with", "Aligning with"
+    ],
+    "time_estimates": [
+      "Should be done by", "Estimated completion", "ETA", "Timeline", "Expected to finish", 
+      "Planning to complete", "Targeting", "Aiming for", "Hoping to wrap up", "Goal is to finish"
+    ]
+  },
+  "corporate_jargon_buzzwords": {
+    "strategy_planning": [
+      "Strategic initiative", "Roadmap", "Vision", "Mission critical", "Core competency", 
+      "Value proposition", "Competitive advantage", "Market positioning", "Go-to-market", "Scalable solution", 
+      "Low-hanging fruit", "Blue sky thinking", "Think outside the box", "Game changer", "Disruptive"
+    ],
+    "collaboration_teamwork": [
+      "Synergy", "Cross-functional", "Stakeholder", "Buy-in", "Alignment", "Touch base", "Circle back", 
+      "Loop in", "Sync up", "Connect offline", "Collaborate", "Partner with", "Leverage", 
+      "Best practice", "Knowledge sharing"
+    ],
+    "project_management": [
+      "Deliverable", "Milestone", "Timeline", "Scope", "Bandwidth", "Capacity", "Resource", 
+      "Workstream", "Work package", "Sprint", "Agile", "Scrum", "Waterfall", "Iterate", 
+      "Pivot", "Pivot strategy", "Deep dive", "Drill down"
+    ],
+    "business_operations": [
+      "ROI", "KPI", "Metrics", "Dashboard", "Analytics", "Data-driven", "Optimize", "Streamline", 
+      "Automate", "Digitize", "Transform", "Innovate", "Disrupt", "Scale", "Growth hacking"
+    ],
+    "communication_style": [
+      "Transparent", "Open communication", "Feedback loop", "Two-way communication", 
+      "Active listening", "Constructive feedback", "Actionable insights", "Clear messaging", 
+      "Effective communication", "Stakeholder engagement"
+    ],
+    "problem_solving": [
+      "Pain point", "Challenge", "Obstacle", "Bottleneck", "Root cause", "Solution", 
+      "Workaround", "Fix", "Address", "Resolve", "Troubleshoot", "Debug", "Mitigate", "Prevent"
+    ],
+    "time_management": [
+      "Prioritize", "Urgent", "Important", "Time-sensitive", "Deadline", "Time-bound", 
+      "Quick win", "Fast track", "Expedite", "Rush", "ASAP", "EOD", "COB", "Timeline"
+    ],
+    "finance_budget": [
+      "Budget", "Cost-effective", "ROI", "Cost-benefit", "Investment", "Expenditure", 
+      "Savings", "Revenue", "Profit margin", "Break-even", "Cash flow", "Burn rate", 
+      "Runway", "Funding", "Capital"
+    ],
+    "modern_workplace": [
+      "Remote work", "Hybrid", "Flexible", "Work-life balance", "Agile working", 
+      "Digital nomad", "Virtual team", "Online collaboration", "Cloud-based", "Digital transformation"
+    ]
+  },
+  "acronyms_abbreviations": {
+    "common_business": [
+      "FYI - For Your Information", "EOD - End of Day", "COB - Close of Business", 
+      "ASAP - As Soon As Possible", "ROI - Return on Investment", "KPI - Key Performance Indicator", 
+      "P&L - Profit and Loss", "CEO - Chief Executive Officer", "CFO - Chief Financial Officer", 
+      "CTO - Chief Technology Officer", "HR - Human Resources", "IT - Information Technology"
+    ],
+    "project_management": [
+      "PMO - Project Management Office", "WBS - Work Breakdown Structure", "SOW - Statement of Work", 
+      "POC - Point of Contact", "ETA - Estimated Time of Arrival", "MVP - Minimum Viable Product", 
+      "UAT - User Acceptance Testing", "QA - Quality Assurance", "SLA - Service Level Agreement"
+    ],
+    "meeting_related": [
+      "AFK - Away From Keyboard", "BRB - Be Right Back", "TBD - To Be Determined", 
+      "TBC - To Be Confirmed", "TBA - To Be Announced", "NDA - Non-Disclosure Agreement", 
+      "AI - Action Item", "MOM - Minutes of Meeting"
+    ],
+    "communication": [
+      "CC - Carbon Copy", "BCC - Blind Carbon Copy", "FWD - Forward", "RE - Reply", 
+      "OOO - Out of Office", "WFH - Work From Home", "DND - Do Not Disturb"
+    ]
+  },
+  "professional_expressions": {
+    "positive_agreement": [
+      "Absolutely", "Exactly", "Spot on", "Couldn't agree more", "That's right", "Perfect", 
+      "Great point", "I'm on board", "That works for me", "Sounds good", "I'm all for it", 
+      "Let's do it", "I'm in", "Count me in"
+    ],
+    "diplomatic_disagreement": [
+      "I see it differently", "That's an interesting perspective, however", "I respectfully disagree", 
+      "I have a different view", "Let me offer an alternative", "I'm not convinced", 
+      "I'm not sure about that", "That might not work because", "Have we considered"
+    ],
+    "professional_transitions": [
+      "Moving forward", "Going forward", "That said", "Having said that", "On the other hand", 
+      "In addition", "Furthermore", "Moreover", "However", "Nevertheless", "Meanwhile", 
+      "In the meantime", "On a related note"
+    ],
+    "decision_making": [
+      "Let's make a decision", "We need to decide", "What's the consensus?", "Are we all aligned?", 
+      "Let's vote on it", "I propose", "I suggest", "My recommendation is", "The best option is", 
+      "Let's go with", "I think we should", "The way forward is"
+    ],
+    "time_management": [
+      "We're running short on time", "Let's keep this brief", "In the interest of time", 
+      "We should wrap up", "Time check", "We have 5 minutes left", "Let's move on", 
+      "We're over time", "Hard stop at", "Soft stop at"
+    ]
+  },
+  "industry_specific": {
+    "tech_software": [
+      "API", "Backend", "Frontend", "Full-stack", "DevOps", "CI/CD", "Deployment", "Repository", 
+      "Version control", "Bug", "Feature", "Enhancement", "Release", "Sprint", "Backlog", 
+      "User story", "Acceptance criteria", "Technical debt", "Code review", "Merge request"
+    ],
+    "marketing_sales": [
+      "Lead generation", "Conversion rate", "Customer acquisition", "Retention", "Churn", 
+      "Funnel", "Pipeline", "Prospect", "Qualified lead", "Cold outreach", "Warm lead", 
+      "Account-based marketing", "Content marketing", "Inbound", "Outbound", "Campaign", 
+      "Brand awareness", "Market penetration"
+    ],
+    "finance_accounting": [
+      "Accounts payable", "Accounts receivable", "Cash flow", "Working capital", "EBITDA", 
+      "Gross margin", "Net profit", "Operating expenses", "Capital expenditure", "Depreciation", 
+      "Amortization", "Accruals", "Budget variance", "Forecast", "Actuals"
+    ],
+    "consulting": [
+      "Framework", "Methodology", "Best practice", "Benchmark", "Gap analysis", "Root cause analysis", 
+      "Process optimization", "Change management", "Stakeholder mapping", "Requirements gathering", 
+      "As-is state", "To-be state", "Implementation roadmap", "Quick wins"
+    ]
+  },
+  "emotional_intelligence": {
+    "empathy_understanding": [
+      "I understand", "I hear you", "That makes sense", "I can see why", "I appreciate that", 
+      "That must be frustrating", "I get it", "That's understandable", "I can relate", 
+      "That's a valid concern", "You're right to be concerned"
+    ],
+    "encouragement_support": [
+      "Great job", "Well done", "Excellent work", "That's impressive", "Keep it up", 
+      "You're on the right track", "That's a great idea", "I'm impressed", "Nice work", 
+      "That's really helpful", "Good thinking", "Smart approach"
+    ],
+    "constructive_feedback": [
+      "One area for improvement", "Something to consider", "Have you thought about", 
+      "What if we tried", "Another approach might be", "Building on that idea", 
+      "To make it even better", "One suggestion", "A different perspective"
+    ]
+  }
+}
