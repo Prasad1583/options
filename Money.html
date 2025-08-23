@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How People Make Money by Class — Interactive</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a33;
+      --muted:#a9b2c7;
+      --fg:#e8edf7;
+      --accent:#7aa2ff;
+      --grid:#1f2949;
+      --success:#47d1a6;
+      --warn:#ffb86b;
+      --danger:#ff6b88;
+
+      /* Class colors */
+      --c-lower:#7cc6fe;
+      --c-lowmid:#6df2c1;
+      --c-mid:#ffd166;
+      --c-upmid:#f6a4ff;
+      --c-upper:#ff8c69;
+      --c-elite:#a1a0ff;
+
+      /* Income colors */
+      --i-labor:#7cc6fe;
+      --i-skills:#ffd166;
+      --i-ownership:#6df2c1;
+      --i-control:#a1a0ff;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8fe; --panel:#ffffff; --fg:#0d1224; --muted:#5b678a; --grid:#e7ecfa;
+      }
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:linear-gradient(180deg, var(--bg), #070a16 40%);
+      color:var(--fg);
+    }
+
+    header{
+      padding:28px 20px 10px; text-align:center;
+    }
+    h1{margin:0; font-size:clamp(22px, 3vw, 34px); letter-spacing:0.2px}
+    .sub{color:var(--muted); margin-top:8px; font-size:clamp(13px, 1.8vw, 16px)}
+
+    .container{max-width:1050px; margin:18px auto 64px; padding:0 18px}
+
+    .card{background:var(--panel); border:1px solid #101731; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.18); overflow:hidden}
+
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--grid)}
+    .btns{display:flex; gap:8px; flex-wrap:wrap}
+    button.toggle{
+      appearance:none; border:1px solid var(--grid); background:transparent; color:var(--fg); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600; transition:all .18s ease;
+    }
+    button.toggle[aria-pressed="true"]{background:var(--accent); border-color:transparent; color:#0b1020;}
+
+    .legend{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--grid); background:rgba(255,255,255,.02)}
+    .dot{width:10px; height:10px; border-radius:50%}
+
+    .viz{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:14px; padding:16px}
+    @media (max-width: 920px){ .viz{grid-template-columns:1fr; } }
+
+    .panel{border-left:1px solid var(--grid); padding:16px}
+    @media (max-width: 920px){ .panel{border-top:1px solid var(--grid); border-left:none} }
+
+    .panel h3{margin:.4rem 0 .6rem; font-size:18px}
+    .panel p{color:var(--muted); line-height:1.4}
+    .panel ul{margin:.3rem 0 .6rem 1rem}
+
+    svg{width:100%; height:auto; display:block; background:radial-gradient(1200px 800px at 50% -20%, #1a2350 0%, transparent 60%);}
+    .grid line{stroke:var(--grid); stroke-width:1}
+
+    /* Pyramid */
+    .pyramid text{font-size:12px; fill:var(--fg)}
+    .pyr-layer{cursor:pointer; filter: drop-shadow(0 1px 0 rgba(255,255,255,.03))}
+    .pyr-layer:hover{opacity:.92}
+    .pyr-layer[aria-current="true"]{stroke:#fff; stroke-width:1.5}
+
+    /* Flows */
+    .node rect{rx:10; ry:10}
+    .node text{font-size:12px; fill:var(--fg)}
+    .flow{fill:none; opacity:.85; transition:opacity .15s ease}
+    .flow.hidden{opacity:.08}
+    .flow:hover{opacity:1}
+
+    .footnote{margin:18px 0 0; color:var(--muted); font-size:12px}
+    .disclaimer{margin-top:14px; color:var(--muted); font-size:12px}
+
+    /* Details card */
+    .detail{background:rgba(255,255,255,.03); border:1px solid var(--grid); border-radius:14px; padding:12px;}
+    .detail h4{margin:.2rem 0 .3rem}
+    .badge{display:inline-block; border:1px solid var(--grid); padding:4px 8px; border-radius:999px; font-size:12px; margin:2px 6px 2px 0}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How People Make Money — by Class</h1>
+    <div class="sub">An interactive, conceptual map of income sources across social/economic classes. Hover or tap to explore.</div>
+  </header>
+
+  <main class="container card" id="app">
+    <div class="toolbar">
+      <div class="btns" role="tablist" aria-label="Views">
+        <button class="toggle" data-view="pyramid" aria-pressed="true">Wealth Pyramid</button>
+        <button class="toggle" data-view="flows" aria-pressed="false">Income Flows</button>
+      </div>
+
+      <div class="legend" aria-label="Legend">
+        <span class="chip"><span class="dot" style="background:var(--i-labor)"></span> Labor/Wages</span>
+        <span class="chip"><span class="dot" style="background:var(--i-skills)"></span> Skills/Salaries</span>
+        <span class="chip"><span class="dot" style="background:var(--i-ownership)"></span> Ownership/Returns</span>
+        <span class="chip"><span class="dot" style="background:var(--i-control)"></span> Control/Capital Gains</span>
+      </div>
+    </div>
+
+    <div class="viz">
+      <div class="canvas">
+        <!-- Pyramid View -->
+        <svg id="pyramid" viewBox="0 0 900 560" class="pyramid" role="img" aria-label="Wealth pyramid by class" data-active="true">
+          <defs>
+            <linearGradient id="gradLower" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-lower)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-lower)" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="gradLowMid" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-lowmid)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-lowmid)" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="gradMid" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-mid)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-mid)" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="gradUpMid" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-upmid)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-upmid)" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="gradUpper" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-upper)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-upper)" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="gradElite" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-elite)" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="var(--c-elite)" stop-opacity="0.7"/>
+            </linearGradient>
+          </defs>
+
+          <!-- background grid -->
+          <g class="grid">
+            <line x1="60" x2="840" y1="80" y2="80"/>
+            <line x1="60" x2="840" y1="160" y2="160"/>
+            <line x1="60" x2="840" y1="240" y2="240"/>
+            <line x1="60" x2="840" y1="320" y2="320"/>
+            <line x1="60" x2="840" y1="400" y2="400"/>
+            <line x1="60" x2="840" y1="480" y2="480"/>
+          </g>
+
+          <!-- layers (largest at bottom) -->
+          <!-- Lower Class -->
+          <polygon class="pyr-layer" data-key="lower" fill="url(#gradLower)" points="140,480 760,480 820,540 80,540"/>
+          <text x="450" y="515" text-anchor="middle">Lower Class — wages & informal work</text>
+
+          <!-- Lower Middle -->
+          <polygon class="pyr-layer" data-key="lowmid" fill="url(#gradLowMid)" points="180,420 720,420 760,480 140,480"/>
+          <text x="450" y="455" text-anchor="middle">Lower Middle — stable jobs & small services</text>
+
+          <!-- Middle -->
+          <polygon class="pyr-layer" data-key="mid" fill="url(#gradMid)" points="220,360 680,360 720,420 180,420"/>
+          <text x="450" y="395" text-anchor="middle">Middle — skilled salaries + side income</text>
+
+          <!-- Upper Middle -->
+          <polygon class="pyr-layer" data-key="upmid" fill="url(#gradUpMid)" points="260,300 640,300 680,360 220,360"/>
+          <text x="450" y="335" text-anchor="middle">Upper Middle — high-skill, diversified streams</text>
+
+          <!-- Upper -->
+          <polygon class="pyr-layer" data-key="upper" fill="url(#gradUpper)" points="300,240 600,240 640,300 260,300"/>
+          <text x="450" y="275" text-anchor="middle">Upper — ownership & large business profits</text>
+
+          <!-- Elite -->
+          <polygon class="pyr-layer" data-key="elite" fill="url(#gradElite)" points="360,160 540,160 600,240 300,240"/>
+          <text x="450" y="205" text-anchor="middle">Elite — control, capital gains, global assets</text>
+        </svg>
+
+        <!-- Flows View -->
+        <svg id="flows" viewBox="0 0 960 560" role="img" aria-label="Income flows across classes" style="display:none" data-active="false">
+          <!-- Left nodes: income types -->
+          <g class="node" transform="translate(40,60)">
+            <rect width="160" height="60" fill="var(--i-labor)" fill-opacity="0.25" stroke="var(--i-labor)"/>
+            <text x="80" y="35" text-anchor="middle">Labor / Wages</text>
+          </g>
+          <g class="node" transform="translate(40,170)">
+            <rect width="160" height="60" fill="var(--i-skills)" fill-opacity="0.25" stroke="var(--i-skills)"/>
+            <text x="80" y="35" text-anchor="middle">Skills / Salary</text>
+          </g>
+          <g class="node" transform="translate(40,280)">
+            <rect width="160" height="60" fill="var(--i-ownership)" fill-opacity="0.25" stroke="var(--i-ownership)"/>
+            <text x="80" y="35" text-anchor="middle">Ownership / Returns</text>
+          </g>
+          <g class="node" transform="translate(40,390)">
+            <rect width="160" height="60" fill="var(--i-control)" fill-opacity="0.25" stroke="var(--i-control)"/>
+            <text x="80" y="35" text-anchor="middle">Control / Capital Gains</text>
+          </g>
+
+          <!-- Right nodes: classes -->
+          <g class="node" transform="translate(760,60)" data-key="elite">
+            <rect width="160" height="60" fill="var(--c-elite)" fill-opacity="0.25" stroke="var(--c-elite)"/>
+            <text x="80" y="35" text-anchor="middle">Elite</text>
+          </g>
+          <g class="node" transform="translate(760,130)" data-key="upper">
+            <rect width="160" height="60" fill="var(--c-upper)" fill-opacity="0.25" stroke="var(--c-upper)"/>
+            <text x="80" y="35" text-anchor="middle">Upper</text>
+          </g>
+          <g class="node" transform="translate(760,200)" data-key="upmid">
+            <rect width="160" height="60" fill="var(--c-upmid)" fill-opacity="0.25" stroke="var(--c-upmid)"/>
+            <text x="80" y="35" text-anchor="middle">Upper Middle</text>
+          </g>
+          <g class="node" transform="translate(760,270)" data-key="mid">
+            <rect width="160" height="60" fill="var(--c-mid)" fill-opacity="0.25" stroke="var(--c-mid)"/>
+            <text x="80" y="35" text-anchor="middle">Middle</text>
+          </g>
+          <g class="node" transform="translate(760,340)" data-key="lowmid">
+            <rect width="160" height="60" fill="var(--c-lowmid)" fill-opacity="0.25" stroke="var(--c-lowmid)"/>
+            <text x="80" y="35" text-anchor="middle">Lower Middle</text>
+          </g>
+          <g class="node" transform="translate(760,410)" data-key="lower">
+            <rect width="160" height="60" fill="var(--c-lower)" fill-opacity="0.25" stroke="var(--c-lower)"/>
+            <text x="80" y="35" text-anchor="middle">Lower</text>
+          </g>
+
+          <!-- Flows (conceptual widths; hover toggles) -->
+          <g id="flowGroup"></g>
+        </svg>
+      </div>
+
+      <aside class="panel" id="info">
+        <h3 id="panelTitle">Explore the diagram</h3>
+        <p id="panelText">Select a layer or node to see typical income sources, examples of work, and common money patterns for that class.</p>
+
+        <div class="detail" id="detail" hidden>
+          <h4 id="detailTitle">Title</h4>
+          <div id="detailBadges" style="margin:6px 0 8px"></div>
+          <ul id="detailList"></ul>
+        </div>
+
+        <div class="footnote">This is a <em>conceptual</em> visualization: it summarizes patterns (labor → wages, skills → salary, ownership → returns, control → capital gains) without claiming exact numbers. Use it to teach, plan careers, or discuss policy.</div>
+        <div class="disclaimer">Tip: switch views with the buttons above. On mobile, tap layers or nodes to update details.</div>
+      </aside>
+    </div>
+  </main>
+
+  <noscript>
+    <div class="container">
+      <p>JavaScript is disabled. You’ll still see the static diagrams, but interactions (hover/click to view details) require JavaScript.</p>
+    </div>
+  </noscript>
+
+  <script>
+    const CLASSES = {
+      lower: {
+        label: 'Lower Class', color: 'var(--c-lower)',
+        incomes: ['Labor / Wages', 'Informal micro-business'],
+        highlights: ['Manual work, daily wages, informal sector', 'Examples: farm labor, delivery, cleaning, helpers', 'Money cycle: work → paid → spend; limited savings']
+      },
+      lowmid: {
+        label: 'Lower Middle', color: 'var(--c-lowmid)',
+        incomes: ['Stable jobs (services)', 'Small trade/shop'],
+        highlights: ['Examples: clerks, drivers, nursing assistants, shopkeepers', 'Monthly salary; some savings (FDs, small insurance)', 'Goal: stability, education for children']
+      },
+      mid: {
+        label: 'Middle Class', color: 'var(--c-mid)',
+        incomes: ['Skilled salary', 'Side income (rent, freelance)'],
+        highlights: ['Examples: IT, accounting, teachers, small factory owners', 'Saves & invests (mutual funds, real estate)', 'Focus on upskilling & diversification']
+      },
+      upmid: {
+        label: 'Upper Middle', color: 'var(--c-upmid)',
+        incomes: ['High-skill salary', 'Business profits', 'Investments'],
+        highlights: ['Examples: senior managers, surgeons, partners, founders', 'Multiple income streams; tax planning', 'Invests in assets that appreciate']
+      },
+      upper: {
+        label: 'Upper Class', color: 'var(--c-upper)',
+        incomes: ['Ownership returns', 'Business profits', 'Rent & dividends'],
+        highlights: ['Owns meaningful assets: companies, real estate', 'Income mostly from capital, not time', 'Uses leverage & networks to scale']
+      },
+      elite: {
+        label: 'Elite', color: 'var(--c-elite)',
+        incomes: ['Control & capital gains', 'Global investments'],
+        highlights: ['Control industries or platforms; influence capital flows', 'Income dominated by capital gains, equity, carried interest', 'Focus on long-term compounding and governance']
+      }
+    };
+
+    // Detail panel helpers
+    const detail = document.getElementById('detail');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailList = document.getElementById('detailList');
+    const detailBadges = document.getElementById('detailBadges');
+    const panelTitle = document.getElementById('panelTitle');
+    const panelText = document.getElementById('panelText');
+
+    function showDetail(key){
+      const d = CLASSES[key];
+      if(!d) return;
+      detail.hidden = false;
+      detailTitle.textContent = d.label;
+      detailBadges.innerHTML = d.incomes.map((x)=>`<span class="badge">${x}</span>`).join('');
+      detailList.innerHTML = d.highlights.map((h)=>`<li>${h}</li>`).join('');
+      panelTitle.textContent = d.label;
+      panelText.textContent = `Typical income mix and patterns for ${d.label.toLowerCase()}.`;
+      // highlight selected pyramid layer
+      document.querySelectorAll('.pyr-layer').forEach(el=>{
+        el.setAttribute('aria-current', el.getAttribute('data-key')===key);
+      });
+      // highlight flows heading
+      document.querySelectorAll('[data-flow-target]').forEach(p=>{
+        const on = p.getAttribute('data-flow-target')===key;
+        p.classList.toggle('hidden', !on);
+      });
+    }
+
+    // Pyramid interactions
+    document.querySelectorAll('.pyr-layer').forEach(el=>{
+      el.addEventListener('mouseenter', ()=> showDetail(el.getAttribute('data-key')));
+      el.addEventListener('click', ()=> showDetail(el.getAttribute('data-key')));
+    });
+
+    // View toggle
+    const btns = document.querySelectorAll('button.toggle');
+    const svgPyr = document.getElementById('pyramid');
+    const svgFlows = document.getElementById('flows');
+    btns.forEach(btn=>btn.addEventListener('click', ()=>{
+      btns.forEach(b=>b.setAttribute('aria-pressed', String(b===btn)));
+      const view = btn.getAttribute('data-view');
+      const isPyr = view==='pyramid';
+      svgPyr.style.display = isPyr? 'block':'none';
+      svgFlows.style.display = isPyr? 'none':'block';
+      svgPyr.dataset.active = isPyr; svgFlows.dataset.active = !isPyr;
+    }));
+
+    // Build conceptual flows SVG (no external libs)
+    (function buildFlows(){
+      const g = document.getElementById('flowGroup');
+      const leftX = 200, rightX = 760;
+      const sources = [
+        {key:'labor', y: 60+30, color:'var(--i-labor)'},
+        {key:'skills', y: 170+30, color:'var(--i-skills)'},
+        {key:'ownership', y: 280+30, color:'var(--i-ownership)'},
+        {key:'control', y: 390+30, color:'var(--i-control)'}
+      ];
+      const targets = {
+        elite:   {y: 60+30, color:'var(--c-elite)'},
+        upper:   {y:130+30, color:'var(--c-upper)'},
+        upmid:   {y:200+30, color:'var(--c-upmid)'},
+        mid:     {y:270+30, color:'var(--c-mid)'},
+        lowmid:  {y:340+30, color:'var(--c-lowmid)'},
+        lower:   {y:410+30, color:'var(--c-lower)'}
+      };
+      // Conceptual weights (thicker = stronger reliance)
+      const flows = [
+        {from:'labor', to:'lower', w: 14},
+        {from:'labor', to:'lowmid', w: 8},
+        {from:'labor', to:'mid', w: 3},
+        {from:'skills', to:'lowmid', w: 9},
+        {from:'skills', to:'mid', w: 12},
+        {from:'skills', to:'upmid', w: 7},
+        {from:'ownership', to:'upmid', w: 6},
+        {from:'ownership', to:'upper', w: 12},
+        {from:'ownership', to:'elite', w: 5},
+        {from:'control', to:'elite', w: 12},
+        {from:'control', to:'upper', w: 4}
+      ];
+
+      function path(x1,y1,x2,y2){
+        const c1x = x1 + 200, c2x = x2 - 200; // smooth bezier
+        return `M ${x1} ${y1} C ${c1x} ${y1}, ${c2x} ${y2}, ${x2} ${y2}`;
+      }
+
+      flows.forEach(f=>{
+        const s = sources.find(s=>s.key===f.from);
+        const t = targets[f.to];
+        const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+        p.setAttribute('d', path(leftX, s.y, rightX, t.y));
+        p.setAttribute('class','flow');
+        p.setAttribute('stroke', s.color);
+        p.setAttribute('stroke-width', f.w);
+        p.setAttribute('data-flow-target', f.to);
+        p.setAttribute('data-flow-source', f.from);
+        g.appendChild(p);
+      });
+
+      // Click targets to show detail
+      document.querySelectorAll('#flows .node').forEach(node=>{
+        node.addEventListener('click', ()=>{
+          const key = node.getAttribute('data-key');
+          if(key) showDetail(key);
+        })
+      });
+
+      // Hover/click on flows highlights target class
+      g.querySelectorAll('.flow').forEach(p=>{
+        p.addEventListener('mouseenter', ()=> showDetail(p.getAttribute('data-flow-target')));
+        p.addEventListener('click', ()=> showDetail(p.getAttribute('data-flow-target')));
+      });
+    })();
+
+    // Default selection
+    showDetail('mid');
+  </script>
+</body>
+</html>
