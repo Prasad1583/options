@@ -492,11 +492,11 @@ class IndexPanel {
 
     const ce=this.selectedKs.map((k,i)=>this.datasetFor('CE',k,CE_COLORS[i%CE_COLORS.length],false));
     const pe=this.selectedKs.map((k,i)=>this.datasetFor('PE',k,PE_COLORS[i%PE_COLORS.length],true));
-    this.oiChart.data.datasets   = [...ce,...pe].map(d=>({...d,data:d._ref.OI}));
+    //this.oiChart.data.datasets   = [...ce,...pe].map(d=>({...d,data:d._ref.OI}));
     this.oichChart.data.datasets = [...ce,...pe].map(d=>({...d,data:d._ref.OICH}));
-    this.volChart.data.datasets  = [...ce,...pe].map(d=>({...d,data:d._ref.VOL}));
+    //this.volChart.data.datasets  = [...ce,...pe].map(d=>({...d,data:d._ref.VOL}));
 
-    [this.pcrChart,this.oiChart,this.oichChart,this.volChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
+    [this.pcrChart,this.oichChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
     this.buildLegend();
   }
 
