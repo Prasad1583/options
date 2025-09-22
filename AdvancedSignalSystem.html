@@ -50,7 +50,7 @@ const INDEX_META = {
 };
 
 const API = 'https://api-t1.fyers.in/data/options-chain-v3';
-const WINDOW_STRIKES  = 5;                 // 3 ITM + ATM + 3 OTM
+const WINDOW_STRIKES  = 3;                 // 3 ITM + ATM + 3 OTM
 const STRIKECOUNT_API = WINDOW_STRIKES * 10; // fetch wider, then slice to 7 around ATM
 const REFRESH_MS      = 60_000;
 const OI_TO_LAKHS     = (x)=> Number(x||0)/100_000;
@@ -339,11 +339,11 @@ class IndexPanel {
     this.pcrChart.options.scales.y.beginAtZero = true;
 
     //this.oiChart  = new Chart(this.el('oiChart'),  { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
-    // this.oiChart.options.scales.y.title.text  = 'OI (Lakhs)';
+    //this.oiChart.options.scales.y.title.text  = 'OI (Lakhs)';
     this.oichChart= new Chart(this.el('oichChart'),{ type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
     this.oichChart.options.scales.y.title.text= 'ΔOI (Lakhs)';
-   // this.volChart = new Chart(this.el('volChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
-   // this.volChart.options.scales.y.title.text = 'Volume (Lakhs)';
+    //this.volChart = new Chart(this.el('volChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    //this.volChart.options.scales.y.title.text = 'Volume (Lakhs)';
 
     // --- CVD gap sticks plugin (5th chart) ---
     const cvdGapSticks = {
@@ -416,16 +416,16 @@ class IndexPanel {
     Chart.register(cltpGapSticks);
 
     // CLTP chart (6th)
-    this.cltpChart = new Chart(this.el('cltpChart'), {
-      type:'line',
-      data:{ labels:this.labels, datasets:[
-        { label:'Cum ΔLTP CE (Pts)', borderColor:'green', backgroundColor:'green', tension:0.25, fill:false, data:this.cltpCE },
-        { label:'Cum ΔLTP PE (Pts)', borderColor:'red', backgroundColor:'red', tension:0.25, fill:false, data:this.cltpPE }
-      ]},
-      options: JSON.parse(JSON.stringify(common))
-    });
-    this.cltpChart.options.scales.y.title.text = 'Cum ΔLTP (Pts)';
-    this.cltpChart.options.plugins.legend.display = true;
+    //this.cltpChart = new Chart(this.el('cltpChart'), {
+    //  type:'line',
+    //  data:{ labels:this.labels, datasets:[
+    //    { label:'Cum ΔLTP CE (Pts)', borderColor:'green', backgroundColor:'green', tension:0.25, fill:false, data:this.cltpCE },
+     //   { label:'Cum ΔLTP PE (Pts)', borderColor:'red', backgroundColor:'red', tension:0.25, fill:false, data:this.cltpPE }
+     // ]},
+    //  options: JSON.parse(JSON.stringify(common))
+  //  });
+   // this.cltpChart.options.scales.y.title.text = 'Cum ΔLTP (Pts)';
+   // this.cltpChart.options.plugins.legend.display = true;
 
     // NEW: Premium & Volume Divergence chart (ATM)
     const divOpts = JSON.parse(JSON.stringify(common));
@@ -496,7 +496,7 @@ class IndexPanel {
     this.oichChart.data.datasets = [...ce,...pe].map(d=>({...d,data:d._ref.OICH}));
     //this.volChart.data.datasets  = [...ce,...pe].map(d=>({...d,data:d._ref.VOL}));
 
-    [this.pcrChart,this.oichChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
+    [this.pcrChart,this.oichChart,this.cvdChart,this.divChart].forEach(c=>c.update('none'));
     this.buildLegend();
   }
 
@@ -771,7 +771,7 @@ class IndexPanel {
       for (const key of Object.keys(this.seriesPCR)) trim(this.seriesPCR[key].PCR);
 
       if (this.firstPaint || this.pcrChart.data.datasets.length === 0){ this.rebuildDatasets(); this.firstPaint=false; }
-      else [this.pcrChart,this.oiChart,this.oichChart,this.volChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
+      else [this.pcrChart,this.oichChart,this.cvdChart,this.divChart].forEach(c=>c.update('none'));
 
       const emaTag = (()=>{ const s3=ema(this.spotSeries,3), s8=ema(this.spotSeries,8); if(s3.at(-1)!=null && s8.at(-1)!=null) return s3.at(-1)>s8.at(-1)?'UP':(s3.at(-1)<s8.at(-1)?'DOWN':'FLAT'); return '--'; })();
       this.renderKeyBar({ spot, atm, pcrW:(this._pcrPrev ?? pcrW), pcr30:isFinite(pcr30)?pcr30:null, maxPainK, vix, nearBuildL, nearImbPct, liqScore, emaTag });
