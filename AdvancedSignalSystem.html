@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pro Options Dashboard – NIFTY (7 strikes) + Divergence, CVD & Premiums</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<style>
+  :root { --panel-h: 720px; }
+  html, body { height:100%; }
+  body { margin:0; }
+  .card { display:flex; flex-direction:column; }
+  .card canvas { width:100% !important; height:100% !important; }
+  .pill { padding:2px 8px; border-radius:9999px; font-weight:600; }
+  .mini { font-size:11px; }
+  .legend-chip { display:inline-flex; align-items:center; gap:6px; margin:2px 8px 2px 0; font-size:12px; }
+  .legend-dot { width:10px; height:10px; border-radius:9999px; display:inline-block; }
+  .ok { color:#065f46 } .warn { color:#92400e } .bad { color:#991b1b }
+</style>
+</head>
+<body class="h-screen bg-gray-100">
+<div class="h-full max-w-[2300px] mx-auto px-4 py-3 flex flex-col gap-3">
+
+  <!-- Global Header -->
+  <header class="bg-white rounded-lg shadow p-3">
+    <div class="flex items-center gap-3">
+      <div class="text-sm font-semibold">Pro Options Dashboard (NIFTY • 7 strikes)</div>
+      <div class="text-[11px] text-gray-500">FYERS options-chain v3 (fetch ~21 strikes → chart nearest 7)</div>
+      <div class="ml-auto flex items-center gap-2 text-xs">
+        <button id="fsBtn" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200">⛶ Fullscreen</button>
+        <button id="btnCSV" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200">Export Journal CSV</button>
+      </div>
+    </div>
+    <div id="globalStatus" class="mt-1 text-[11px] text-gray-500">Init…</div>
+  </header>
+
+  <!-- Panels -->
+  <main id="panels" class="grid grid-cols-1 xl:grid-cols-1 gap-3 auto-rows-fr"></main>
+</div>
+
+<script>
+/* =========================
+   CONFIG
+   ========================= */
+const INDEX_META = {
+  "NSE:NIFTY50-INDEX":  { label: "NIFTY50",   step: 50 }
+};
+
+const API = 'https://api-t1.fyers.in/data/options-chain-v3';
+const WINDOW_STRIKES  = 3;                 // 3 ITM + ATM + 3 OTM
+const STRIKECOUNT_API = WINDOW_STRIKES * 10; // fetch wider, then slice to 7 around ATM
+const REFRESH_MS      = 60_000;
+const OI_TO_LAKHS     = (x)=> Number(x||0)/100_000;
+const VOL_TO_LAKHS    = OI_TO_LAKHS;
+const PREM_TO_LAKHS   = (x)=> Number(x||0)/100_000; // normalized premium value (LTP×OI) in Lakhs (lot size not applied)
+
+const STRIKE_LABEL = `${WINDOW_STRIKES}×`;
+const PCR_LABEL    = `PCR(${WINDOW_STRIKES})`;
+
+// ⚠️ SECURITY: do NOT hardcode prod tokens. Inject via env/localStorage for dev only.
+const AUTH_TOKEN = 'Bearer ABGPQPW96J-100:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZDoxIiwiZDoyIiwieDowIiwieDoxIiwieDoyIl0sImF0X2hhc2giOiJnQUFBQUFCbzBXQlNIcnI1N0ZSRmdhNVlSSlhhRW1sWlNJWFpTN3pkNzRfRnItV3FZLWJzOU1xWEpqZkJUUC1GVkZieFhKdDZBbHNZT1gzRWdLRjViNHhjNHVJNThlSnZBcGVGQlk3TzQ4MmtlazdERWFhZFlrND0iLCJkaXNwbGF5X25hbWUiOiIiLCJvbXMiOiJLMSIsImhzbV9rZXkiOiI3OTk3ZmQwYWRiYjAwYjI2NTY1MDY3NmMzNTQ3MWExMDEwNTk5MjU4M2ZmNDljZGJkOWE4ZDc3MSIsImlzRGRwaUVuYWJsZWQiOiJOIiwiaXNNdGZFbmFibGVkIjoiTiIsImZ5X2lkIjoiWVYwNzAzNCIsImFwcFR5cGUiOjEwMCwiZXhwIjoxNzU4NTg3NDAwLCJpYXQiOjE3NTg1NTIxNDYsImlzcyI6ImFwaS5meWVycy5pbiIsIm5iZiI6MTc1ODU1MjE0Niwic3ViIjoiYWNjZXNzX3Rva2VuIn0.KgHotJkNXePowfJtkXIN3zQz8fZGtZXSIjtERpZoVjU';
+
+// Signal thresholds
+const PCR_BULL = 1.05, PCR_BEAR = 0.95;
+const OICHP_DIFF = 3;
+const VOL_RATIO   = 1.2;
+const SPREAD_MAX_PCT = 0.6;
+const CONFIRM_TICKS = 3;
+const MIN_HEAT        = 0.40;
+const MIN_COOLDOWN_MS = 180000;
+
+// Exits
+const WALL_TOL_FRAC = 0.50;
+const MP_TOL_FRAC   = 1.00;
+
+// Markers
+const MARKER_RADIUS = 6;
+
+/* =========================
+   COLORS
+   ========================= */
+const CE_COLORS = ['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e'];
+const PE_COLORS = ['#0f7b5f','#ad4b01','#5a59a0','#b81f6d','#518016'];
+
+/* =========================
+   UTILS
+   ========================= */
+const fmtTime = () => new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'});
+const sum = arr => arr.reduce((a,b)=>a+Number(b||0),0);
+function ema(arr, len){ const k=2/(len+1); let prev=null; const out=[]; for(let i=0;i<arr.length;i++){ const v=Number(arr[i]); if(!isFinite(v)){ out.push(prev); continue; } prev=(prev==null)?v:(v*k+prev*(1-k)); out.push(prev); } return out; }
+function pctSpread(bid, ask){ bid=Number(bid); ask=Number(ask); if(!ask||!bid||ask<=0) return null; return ((ask-bid)/ask)*100; }
+function uniqSortedStrikes(rows){ return [...new Set(rows.map(r=>r.strike_price))].sort((a,b)=>a-b); }
+function nearestATM(strikes, spot){ let best=strikes[0], bd=Math.abs(best-spot); for(const k of strikes){ const d=Math.abs(k-spot); if(d<bd){bd=d; best=k;} } return best; }
+function chooseWindow(strikes, atm){
+  const half = Math.floor(WINDOW_STRIKES/2);
+  const pos = strikes.indexOf(atm);
+  let start = pos===-1 ? Math.max(0, strikes.findIndex(k=>k>=atm)-half) : Math.max(0, pos-half);
+  if (start + WINDOW_STRIKES > strikes.length) start = Math.max(0, strikes.length - WINDOW_STRIKES);
+  return strikes.slice(start, start + WINDOW_STRIKES);
+}
+function topWalls(rows, side, n=2){
+  const filtered = rows.filter(r=>r.option_type===side).map(r=>({k:r.strike_price, oi:Number(r.oi||0)}));
+  filtered.sort((a,b)=>b.oi-a.oi); return filtered.slice(0,n);
+}
+function nearestCallWallAbove(rows, spot){
+  const walls = topWalls(rows, 'CE', 4).map(w=>w.k).filter(k=>k>=spot).sort((a,b)=>a-b);
+  return walls[0] ?? null;
+}
+function nearestPutWallBelow(rows, spot){
+  const walls = topWalls(rows, 'PE', 4).map(w=>w.k).filter(k=>k<=spot).sort((a,b)=>b-a);
+  return walls[0] ?? null;
+}
+function maxPain(strikes, rows){
+  const by = new Map();
+  rows.forEach(r=>by.set(`${r.option_type}-${r.strike_price}`, r));
+  const payoffAt = (spot)=>{
+    let total=0;
+    for(const k of strikes){
+      const ce=by.get(`CE-${k}`), pe=by.get(`PE-${k}`);
+      total += (ce?.oi||0)*Math.max(0, spot-k);
+      total += (pe?.oi||0)*Math.max(0, k-spot);
+    }
+    return total;
+  };
+  let bestK = strikes[0], bestPay = payoffAt(strikes[0]);
+  for(const k of strikes){ const p=payoffAt(k); if(p<bestPay){bestPay=p; bestK=k;} }
+  return bestK;
+}
+
+/* =========================
+   SIGNAL ENGINE (patched volHeat typo)
+   ========================= */
+function signalFrom(ctx){
+  let {
+    spotSeries, spot, atm, vix,
+    ceATM, peATM,
+    ceRowsWin, peRowsWin,
+    lastBias, biasStreak,
+    _pcrOverride = null
+  } = ctx;
+
+  const ceOIw = sum(ceRowsWin.map(r=>r?.oi));
+  const peOIw = sum(peRowsWin.map(r=>r?.oi));
+  const pcrWraw  = ceOIw ? peOIw/ceOIw : null;
+  const pcrW = (_pcrOverride ?? pcrWraw);
+
+  const ceOIchp = Number(ceATM?.oichp ?? 0);
+  const peOIchp = Number(peATM?.oichp ?? 0);
+  const volCEw = sum(ceRowsWin.map(r=>r?.volume));
+  const volPEw = sum(peRowsWin.map(r=>r?.volume));
+
+  const s3 = ema(spotSeries,3), s8 = ema(spotSeries,8);
+  const fast = s3.at(-1), slow = s8.at(-1);
+  const trendUp = fast!=null && slow!=null && fast>slow;
+  const trendDown = fast!=null && slow!=null && fast<slow;
+
+  const liqSpreads=[];
+  if (ceATM){ const v=pctSpread(ceATM.bid, ceATM.ask); if(v!=null) liqSpreads.push(v); }
+  if (peATM){ const v=pctSpread(peATM.bid, peATM.ask); if(v!=null) liqSpreads.push(v); }
+  const avgSpread = liqSpreads.length? liqSpreads.reduce((a,b)=>a+b,0)/liqSpreads.length : null;
+  const liqOK = (avgSpread!=null && avgSpread <= SPREAD_MAX_PCT);
+
+  let bull=0, bear=0;
+  if (pcrW!=null){ if (pcrW>PCR_BULL) bull+=2; if (pcrW<PCR_BEAR) bear+=2; }
+  if (peOIchp > ceOIchp + OICHP_DIFF) bull+=1; if (ceOIchp > peOIchp + OICHP_DIFF) bear+=1;
+  if (volPEw > volCEw*VOL_RATIO) bull+=1; if (volCEw > volPEw*VOL_RATIO) bear+=1;
+  if (trendUp) bull+=1; if (trendDown) bear+=1;
+
+  const pcrHeat   = (pcrW==null) ? 0 : Math.min(1, Math.abs(pcrW - 1.0));
+  const oichHeat  = Math.min(1, Math.max(0, (Math.abs(peOIchp - ceOIchp) - OICHP_DIFF/2) / (OICHP_DIFF)));
+  // FIXED: previously used (volPEw + volPEw)
+  const volHeat   = (volCEw+volPEw) ? Math.min(1, Math.abs(volPEw - volCEw) / (volCEw + volPEw)) : 0;
+  const trendHeat = (trendUp || trendDown) ? 0.25 : 0;
+  const liqHeat   = (avgSpread!=null && avgSpread <= SPREAD_MAX_PCT) ? 0.15 : 0;
+  const HEAT = pcrHeat + oichHeat + volHeat + trendHeat + liqHeat;
+
+  let side='NEUTRAL';
+  if (HEAT >= MIN_HEAT) {
+    if (bull >= bear+2) side='BULL';
+    else if (bear >= bull+2) side='BEAR';
+  }
+
+  if (side===lastBias && side!=='NEUTRAL') biasStreak++;
+  else if (side!=='NEUTRAL'){ lastBias=side; biasStreak=1; }
+  else { lastBias='NEUTRAL'; biasStreak=0; }
+  const confirmed = (biasStreak >= CONFIRM_TICKS);
+
+  const reasons=[];
+  if (pcrW!=null) reasons.push(`${PCR_LABEL} ${pcrW.toFixed(2)}`);
+  reasons.push(`ΔOI% CE ${ceOIchp.toFixed(1)} / PE ${peOIchp.toFixed(1)}`);
+  reasons.push(`Vol CE/PE ${(VOL_TO_LAKHS(volCEw)).toFixed(1)}L / ${(VOL_TO_LAKHS(volPEw)).toFixed(1)}L`);
+  reasons.push(`Trend ${trendUp?'UP':(trendDown?'DOWN':'FLAT')}`);
+  if (avgSpread!=null) reasons.push(`Spread≈${avgSpread.toFixed(2)}%`);
+  if (vix!=null) reasons.push(`VIX ${vix.toFixed(2)}`);
+  reasons.push(`Heat ${HEAT.toFixed(2)}`);
+
+  const missing=[];
+  if (!liqOK) missing.push('Tight spread');
+  if (!confirmed && side!=='NEUTRAL') missing.push(`${(CONFIRM_TICKS-biasStreak+1)}× confirm`);
+  if (side==='BULL' && !trendUp)  missing.push('Trend up');
+  if (side==='BEAR' && !trendDown) missing.push('Trend down');
+
+  return { side, reasons, missing, confirmed, pcrW, trendUp, trendDown, avgSpread, lastBias, biasStreak, HEAT };
+}
+
+/* =========================
+   PANEL CLASS
+   ========================= */
+class IndexPanel {
+  constructor(symbol, step, label){
+    this.symbol = symbol;
+    this.step   = step;
+    this.label  = label;
+
+    this.currentExpiry = null;
+    this.selectedKs = [];
+    this.firstPaint = true;
+
+    this.labels = [];
+    this.spotSeries = [];
+    this.series = { CE:{}, PE:{} };
+    this.seriesPCR = {};
+    this.lastBias = 'NEUTRAL';
+    this.biasStreak = 0;
+    this.lastFlipMs = 0;
+    this._pcrPrev = null;
+
+    this.position = null;
+    this.markersEntry = [];
+    this.markersExit  = [];
+
+    // Extra series
+    this.cvdCE = [];
+    this.cvdPE = [];
+    // Premium trend series (fixed to true cumulative Δ)
+    this.cltpCE = [];
+    this.cltpPE = [];
+    this._prevSumLTP_CE = null; // for minute Δ
+    this._prevSumLTP_PE = null; // for minute Δ
+
+    // Divergence (ATM): CE & PE premium lines + volume divergence bars
+    this.divLabels = [];
+    this.atmCePrem = [];
+    this.atmPePrem = [];
+    this.volDiv    = []; // CEvol - PEvol
+
+    this.buildUI();
+    this.buildCharts();
+  }
+
+  id(suffix){ return `${this.symbol.replace(/[:.-]/g,'_')}__${suffix}`; }
+  el(id){ return document.getElementById(this.id(id)); }
+
+  buildUI(){
+    const root = document.createElement('section');
+    root.className = 'bg-white rounded-lg shadow p-3 card min-h-0';
+
+    root.innerHTML = `
+      <div class="flex items-center gap-3 mb-1">
+        <div class="text-sm font-semibold">${this.label}</div>
+        <div class="ml-auto text-xs text-gray-500" id="${this.id('status')}">Init…</div>
+      </div>
+
+      <div id="${this.id('kbar')}" class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2 text-xs mb-2">
+        <div class="px-2 py-1 bg-slate-50 rounded">Spot <span id="${this.id('m_spot')}" class="font-semibold text-slate-700">--</span></div>
+        <div class="px-2 py-1 bg-amber-50 rounded">ATM <span id="${this.id('m_atm')}" class="font-semibold text-amber-700">--</span></div>
+        <div class="px-2 py-1 bg-blue-50 rounded">${PCR_LABEL} <span id="${this.id('m_pcr10')}" class="font-semibold">--</span></div>
+        <div class="px-2 py-1 bg-blue-50 rounded">PCR(30) <span id="${this.id('m_pcr30')}" class="font-semibold">--</span></div>
+        <div class="px-2 py-1 bg-emerald-50 rounded">MaxPain <span id="${this.id('m_maxpain')}" class="font-semibold text-emerald-700">--</span></div>
+        <div class="px-2 py-1 bg-emerald-50 rounded">Δ to MP <span id="${this.id('m_dmp')}" class="font-semibold text-emerald-700">--</span></div>
+        <div class="px-2 py-1 bg-cyan-50 rounded">Window OI (L) <span id="${this.id('m_oi_buildup')}" class="font-semibold text-cyan-700">--</span></div>
+        <div class="px-2 py-1 bg-cyan-50 rounded">Window ΔOI Imb(%) <span id="${this.id('m_oich_imb')}" class="font-semibold text-cyan-700">--</span></div>
+        <div class="px-2 py-1 bg-fuchsia-50 rounded">Liquidity Score <span id="${this.id('m_liq')}" class="font-semibold text-fuchsia-700">--</span></div>
+        <div class="px-2 py-1 bg-violet-50 rounded">Trend EMA 3/8 <span id="${this.id('m_trend')}" class="font-semibold text-violet-700">--</span></div>
+        <div class="px-2 py-1 bg-rose-50 rounded">VIX <span id="${this.id('m_vix')}" class="font-semibold text-rose-700">--</span></div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 text-xs mb-2">
+        <div class="px-2 py-1 bg-white rounded border">
+          <div class="font-semibold">Call Walls</div>
+          <div id="${this.id('callWalls')}">--</div>
+        </div>
+        <div class="px-2 py-1 bg-white rounded border">
+          <div class="font-semibold">Put Walls</div>
+          <div id="${this.id('putWalls')}">--</div>
+        </div>
+        <div class="px-2 py-1 bg-white rounded border">
+          <div class="font-semibold">Magnet Note</div>
+          <div id="${this.id('magnetNote')}" class="text-[11px] text-gray-700">--</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 mb-2">
+        <div id="${this.id('sigPill')}" class="pill bg-gray-100 text-gray-800">Signal: —</div>
+        <div id="${this.id('sigText')}" class="text-xs font-medium">Waiting for data…</div>
+      </div>
+
+      <div id="${this.id('legend')}" class="text-xs mb-2"></div>
+
+      <!-- Charts: 7 (3×2 + 1 full-width) -->
+      <div class="grid grid-cols-3 grid-rows-2 gap-2 min-h-0" style="height: 780px;">
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">PCR by Strike — ${STRIKE_LABEL} (PE OI / CE OI) <span class="text-[10px] text-gray-500">▲/◆ Entry • ✚ Exit</span></h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('pcrChart')}"></canvas></div>
+        </section>
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">OI (Lakhs) — ${STRIKE_LABEL} CE/PE</h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('oiChart')}"></canvas></div>
+        </section>
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">ΔOI (Lakhs) — ${STRIKE_LABEL} CE/PE</h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('oichChart')}"></canvas></div>
+        </section>
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">Volume (Lakhs) — ${STRIKE_LABEL} CE/PE</h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('volChart')}"></canvas></div>
+        </section>
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">CVD — Cumulative ΔOI (Lakhs) — ${STRIKE_LABEL} CE vs PE</h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('cvdChart')}"></canvas></div>
+        </section>
+        <section class="card bg-white rounded border p-2 min-h-0">
+          <h3 class="text-xs font-semibold mb-1">CLTP — Cumulative ΔLTP (Pts) — ${STRIKE_LABEL} CE vs PE</h3>
+          <div class="flex-1 min-h-0"><canvas id="${this.id('cltpChart')}"></canvas></div>
+        </section>
+      </div>
+
+      <!-- NEW: Full-width CE/PE Premium & Volume Divergence (ATM) -->
+      <section class="card bg-white rounded border p-2 min-h-0 mt-2" style="height: 320px;">
+        <h3 class="text-xs font-semibold mb-1">ATM Premium & Volume Divergence — CE/PE (Lines + Bars)</h3>
+        <div class="flex-1 min-h-0"><canvas id="${this.id('divChart')}"></canvas></div>
+      </section>
+    `;
+    document.getElementById('panels').appendChild(root);
+    this.root = root;
+  }
+
+  buildCharts(){
+    const common = {
+      responsive:true, maintainAspectRatio:false, animation:false,
+      plugins:{ legend:{display:false}, title:{display:false}, tooltip:{mode:'nearest', intersect:false} },
+      scales:{ x:{ title:{display:true,text:'Time (IST)',font:{size:10}}, ticks:{maxRotation:0, autoSkip:true} }, y:{ beginAtZero:false, title:{display:true,text:''} } }
+    };
+    this.pcrChart = new Chart(this.el('pcrChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    this.pcrChart.options.scales.y.title.text = 'PCR (PE OI / CE OI)';
+    this.pcrChart.options.scales.y.beginAtZero = true;
+
+    this.oiChart  = new Chart(this.el('oiChart'),  { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    this.oiChart.options.scales.y.title.text  = 'OI (Lakhs)';
+    this.oichChart= new Chart(this.el('oichChart'),{ type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    this.oichChart.options.scales.y.title.text= 'ΔOI (Lakhs)';
+    this.volChart = new Chart(this.el('volChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    this.volChart.options.scales.y.title.text = 'Volume (Lakhs)';
+
+    // --- CVD gap sticks plugin (5th chart) ---
+    const cvdGapSticks = {
+      id: 'cvdGapSticks',
+      beforeDatasetsDraw(chart){
+        const {ctx, scales:{x, y}} = chart;
+        const dsCE = chart.data.datasets.find(d => /CVD CE/i.test(d.label));
+        const dsPE = chart.data.datasets.find(d => /CVD PE/i.test(d.label));
+        if(!dsCE || !dsPE) return;
+        let prevGap = null;
+        ctx.save();
+        for (let i = 0; i < chart.data.labels.length; i++){
+          const vCE = dsCE.data[i];
+          const vPE = dsPE.data[i];
+          if (vCE == null || vPE == null) continue;
+          const xi   = x.getPixelForValue(i);
+          const yCE  = y.getPixelForValue(vCE);
+          const yPE  = y.getPixelForValue(vPE);
+          const gap = vPE - vCE;
+          let stroke = '#f59e0b';
+          if (prevGap != null){
+            if (gap > prevGap + 5)  stroke = 'green';
+            else if (gap < prevGap - 5) stroke = 'red';
+          }
+          prevGap = gap;
+          ctx.beginPath(); ctx.moveTo(xi, yCE); ctx.lineTo(xi, yPE); ctx.lineWidth = 2; ctx.strokeStyle = stroke; ctx.lineCap = 'round'; ctx.stroke();
+        }
+        ctx.restore();
+      }
+    };
+    Chart.register(cvdGapSticks);
+
+    // CVD chart (5th)
+    this.cvdChart = new Chart(this.el('cvdChart'), { type:'line', data:{labels:this.labels, datasets:[
+      { label:'CVD CE', borderColor: 'red', backgroundColor: 'red', tension:0.25, fill:false, data: this.cvdCE },
+      { label:'CVD PE', borderColor: 'green', backgroundColor: 'green', tension:0.25, fill:false, data: this.cvdPE }
+    ]}, options:JSON.parse(JSON.stringify(common))});
+    this.cvdChart.options.scales.y.title.text = 'Cum ΔOI (Lakhs)';
+    this.cvdChart.options.plugins.legend.display = true;
+
+    // --- CLTP gap sticks plugin ---
+    const cltpGapSticks = {
+      id: 'cltpGapSticks',
+      beforeDatasetsDraw(chart){
+        const {ctx, scales:{x, y}} = chart;
+        const dsCE = chart.data.datasets.find(d => /Cum ΔLTP CE/i.test(d.label));
+        const dsPE = chart.data.datasets.find(d => /Cum ΔLTP PE/i.test(d.label));
+        if(!dsCE || !dsPE) return;
+        let prevGap = null;
+        ctx.save();
+        for (let i = 0; i < chart.data.labels.length; i++){
+          const vCE = dsCE.data[i];
+          const vPE = dsPE.data[i];
+          if (vCE == null || vPE == null) continue;
+          const xi   = x.getPixelForValue(i);
+          const yCE  = y.getPixelForValue(vCE);
+          const yPE  = y.getPixelForValue(vPE);
+          const gap = vPE - vCE;
+          let stroke = '#f59e0b'; // neutral
+          if (prevGap != null){
+            if (gap > prevGap + 5)  stroke = '#b91c1c'; // bearish widening
+            else if (gap < prevGap - 5) stroke = '#065f46'; // bullish widening
+          }
+          prevGap = gap;
+          ctx.beginPath(); ctx.moveTo(xi, yCE); ctx.lineTo(xi, yPE); ctx.lineWidth = 2; ctx.strokeStyle = stroke; ctx.lineCap = 'round'; ctx.stroke();
+        }
+        ctx.restore();
+      }
+    };
+    Chart.register(cltpGapSticks);
+
+    // CLTP chart (6th)
+    this.cltpChart = new Chart(this.el('cltpChart'), {
+      type:'line',
+      data:{ labels:this.labels, datasets:[
+        { label:'Cum ΔLTP CE (Pts)', borderColor:'green', backgroundColor:'green', tension:0.25, fill:false, data:this.cltpCE },
+        { label:'Cum ΔLTP PE (Pts)', borderColor:'red', backgroundColor:'red', tension:0.25, fill:false, data:this.cltpPE }
+      ]},
+      options: JSON.parse(JSON.stringify(common))
+    });
+    this.cltpChart.options.scales.y.title.text = 'Cum ΔLTP (Pts)';
+    this.cltpChart.options.plugins.legend.display = true;
+
+    // NEW: Premium & Volume Divergence chart (ATM)
+    const divOpts = JSON.parse(JSON.stringify(common));
+    divOpts.plugins.legend.display = true;
+    divOpts.scales.y.title.text = 'Premium (Pts)';
+    divOpts.scales.y2 = { position:'right', title:{display:true,text:'Vol Div (CE−PE, Lakhs)'}, grid:{drawOnChartArea:false} };
+    this.divChart = new Chart(this.el('divChart'), {
+      type:'line',
+      data:{ labels:this.labels, datasets:[
+        { label:'ATM CE Premium', borderColor:'#2563eb', backgroundColor:'#2563eb', tension:0.25, fill:false, yAxisID:'y', data:this.atmCePrem },
+        { label:'ATM PE Premium', borderColor:'#ef4444', backgroundColor:'#ef4444', tension:0.25, fill:false, yAxisID:'y', data:this.atmPePrem },
+        { label:'Volume Divergence (CE−PE)', type:'bar', backgroundColor:'#6b7280', borderWidth:0, yAxisID:'y2', data:this.volDiv }
+      ]},
+      options: divOpts
+    });
+  }
+
+  datasetFor(side, strike, color, dashed=false){
+    const key=`K${strike}`; if(!this.series[side][key]) this.series[side][key] = {LTP:[],OI:[],OICH:[],VOL:[]};
+    const ref=this.series[side][key];
+    return { label:`${this.label} ${side} ${strike}`, borderColor:color, backgroundColor:color+'33', tension:0.25, fill:false, borderDash:dashed?[6,4]:[], _ref:ref, data:ref.LTP };
+  }
+  datasetForPCR(strike, color){
+    const key = `K${strike}`;
+    if (!this.seriesPCR[key]) this.seriesPCR[key] = { PCR: [] };
+    const ref = this.seriesPCR[key];
+    return {
+      label: `${this.label} K${strike}`,
+      borderColor: color,
+      backgroundColor: color + '33',
+      tension: 0.25,
+      fill: false,
+      _ref: ref,
+      data: ref.PCR
+    };
+  }
+
+  rebuildDatasets(){
+    const pcr = this.selectedKs.map((k,i)=>this.datasetForPCR(k, CE_COLORS[i%CE_COLORS.length]));
+    const datasetsPCR = pcr.map(d => ({ ...d, data: d._ref.PCR }));
+
+    const bullPts = this.markersEntry.filter(m=>m.side==='BULL').map(m=>({x:this.labels[m.i], y:m.pcr ?? 1}));
+    const bearPts = this.markersEntry.filter(m=>m.side==='BEAR').map(m=>({x:this.labels[m.i], y:m.pcr ?? 1}));
+    const exitPts = this.markersExit.map(m=>({x:this.labels[m.i], y:m.pcr ?? 1, r:m.reason}));
+
+    const markerBull = {
+      type:'scatter', label:'BULL entries', data:bullPts,
+      pointBackgroundColor:'#10b981', pointBorderColor:'#065f46',
+      pointRadius: MARKER_RADIUS, pointStyle:'triangle', borderWidth:0
+    };
+    const markerBear = {
+      type:'scatter', label:'BEAR entries', data:bearPts,
+      pointBackgroundColor:'#ef4444', pointBorderColor:'#7f1d1d',
+      pointRadius: MARKER_RADIUS, pointStyle:'rectRot', borderWidth:0
+    };
+    const markerExit = {
+      type:'scatter', label:'Exit', data:exitPts,
+      parsing:false,
+      pointBackgroundColor:'#f59e0b', pointBorderColor:'#7c2d12',
+      pointRadius: MARKER_RADIUS, pointStyle:'crossRot', borderWidth:1,
+      tooltip: { callbacks: { label: ctx => `Exit: ${ctx.raw.r || 'rule'}` } }
+    };
+    this.pcrChart.data.datasets = [...datasetsPCR, markerBull, markerBear, markerExit];
+
+    const ce=this.selectedKs.map((k,i)=>this.datasetFor('CE',k,CE_COLORS[i%CE_COLORS.length],false));
+    const pe=this.selectedKs.map((k,i)=>this.datasetFor('PE',k,PE_COLORS[i%PE_COLORS.length],true));
+    this.oiChart.data.datasets   = [...ce,...pe].map(d=>({...d,data:d._ref.OI}));
+    this.oichChart.data.datasets = [...ce,...pe].map(d=>({...d,data:d._ref.OICH}));
+    this.volChart.data.datasets  = [...ce,...pe].map(d=>({...d,data:d._ref.VOL}));
+
+    [this.pcrChart,this.oiChart,this.oichChart,this.volChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
+    this.buildLegend();
+  }
+
+  buildLegend(){
+    const el=this.el('legend'); const parts=[];
+    this.selectedKs.forEach((k,i)=>{
+      parts.push(`<span class="legend-chip"><span class="legend-dot" style="background:${CE_COLORS[i%CE_COLORS.length]}"></span>K ${k} (PCR)</span>`);
+    });
+    parts.push(`<span class="legend-chip"><span class="legend-dot" style="background:#10b981"></span>▲ Entry</span>`);
+    parts.push(`<span class="legend-chip"><span class="legend-dot" style="background:#ef4444"></span>◆ Entry</span>`);
+    parts.push(`<span class="legend-chip"><span class="legend-dot" style="background:#f59e0b"></span>✚ Exit</span>`);
+    el.innerHTML=parts.join('');
+  }
+
+  buildUrl(){
+    const p = new URLSearchParams({ symbol: this.symbol, strikecount: String(STRIKECOUNT_API) });
+    if (this.currentExpiry) p.set('timestamp', String(this.currentExpiry));
+    return `${API}?${p.toString()}`;
+  }
+
+  renderWalls(spot, rows){
+    const cw = topWalls(rows, 'CE', 2);
+    const pw = topWalls(rows, 'PE', 2);
+    const fmtWL = (w)=> w.map(x=>`${x.k} (${OI_TO_LAKHS(x.oi).toFixed(1)}L, Δ ${x.k-spot>0?'+':''}${(x.k-spot).toFixed(0)})`).join(' • ');
+    this.el('callWalls').textContent = cw.length? fmtWL(cw) : '--';
+    this.el('putWalls').textContent  = pw.length? fmtWL(pw) : '--';
+    const note = [];
+    if (cw[0]) note.push(`Top call wall @ ${cw[0].k}, ${Math.round(cw[0].k-spot)} pts ${cw[0].k>spot?'above':'below'} spot`);
+    if (pw[0]) note.push(`Top put wall @ ${pw[0].k}, ${Math.round(spot-pw[0].k)} pts ${pw[0].k<spot?'below':'above'} spot`);
+    this.el('magnetNote').textContent = note.join(' • ') || '--';
+  }
+
+  renderKeyBar({ spot, atm, pcrW, pcr30, maxPainK, vix, nearBuildL, nearImbPct, liqScore, emaTag }){
+    const m = (x)=>this.el(x);
+    m('m_spot').textContent   = spot?.toFixed ? spot.toFixed(2) : '--';
+    m('m_atm').textContent    = atm ?? '--';
+    m('m_pcr10').textContent  = pcrW==null?'--':pcrW.toFixed(2);
+    m('m_pcr30').textContent  = pcr30==null?'--':pcr30.toFixed(2);
+    m('m_maxpain').textContent= maxPainK ?? '--';
+    m('m_dmp').textContent    = (spot!=null && maxPainK!=null) ? Math.round(maxPainK-spot) : '--';
+    m('m_oi_buildup').textContent = nearBuildL==null?'--':nearBuildL.toFixed(2)+'L';
+    m('m_oich_imb').textContent   = nearImbPct==null?'--':nearImbPct.toFixed(1)+'%';
+    m('m_liq').textContent    = liqScore==null?'--':liqScore.toFixed(1);
+    m('m_trend').textContent  = emaTag;
+    m('m_vix').textContent    = vix==null?'--':vix.toFixed(2);
+
+    const clsPCR = (p)=> p==null ? 'text-gray-700' : (p>PCR_BULL?'text-emerald-700':(p<PCR_BEAR?'text-rose-700':'text-amber-700'));
+    m('m_pcr10').className = `font-semibold ${clsPCR(pcrW)}`;
+    m('m_pcr30').className = `font-semibold ${clsPCR(pcr30)}`;
+  }
+
+  maybeEnter(sig, spot, currentPCR){
+    if (this.position || !sig.confirmed || (sig.side!=='BULL' && sig.side!=='BEAR')) return;
+    if (sig.side !== this.lastBias && Date.now() - this.lastFlipMs < MIN_COOLDOWN_MS) return;
+
+    this.position = { side: sig.side, entryIdx: this.labels.length-1, entryPCR: currentPCR ?? null, entrySpot: spot ?? null };
+    this.markersEntry.push({ i:this.position.entryIdx, side:sig.side, pcr: currentPCR ?? null });
+
+    globalJournal.push({ type:'entry', index:this.label, time:new Date().toLocaleString('en-GB',{timeZone:'Asia/Kolkata'}), side:sig.side, spot:(spot??'').toFixed?.call(spot,2)??spot });
+    if (sig.side !== this.lastBias) this.lastFlipMs = Date.now();
+  }
+
+  maybeExit({trendUp, trendDown, spot, maxPainK, rows}) {
+    if (!this.position) return;
+
+    const tolWall = Math.max(this.step*WALL_TOL_FRAC, 20);
+    const tolMP   = Math.max(this.step*MP_TOL_FRAC,   30);
+
+    let reason = null;
+
+    if (this.position.side === 'BULL') {
+      if (trendDown) reason = 'EMA flip down';
+      const cw = nearestCallWallAbove(rows, spot);
+      if (!reason && cw!=null && (cw - spot) <= tolWall) reason = `Hit Call Wall ${cw}`;
+      if (!reason && maxPainK!=null && Math.abs(maxPainK - spot) <= tolMP) reason = `Near Max Pain ${maxPainK}`;
+    } else if (this.position.side === 'BEAR') {
+      if (trendUp) reason = 'EMA flip up';
+      const pw = nearestPutWallBelow(rows, spot);
+      if (!reason && pw!=null && (spot - pw) <= tolWall) reason = `Hit Put Wall ${pw}`;
+      if (!reason && maxPainK!=null && Math.abs(maxPainK - spot) <= tolMP) reason = `Near Max Pain ${maxPainK}`;
+    }
+
+    if (reason) {
+      const idx = Math.max(0, this.labels.length - 1);
+      const pcrVal = this._pcrPrev ?? null;
+      this.markersExit.push({ i:idx, reason, side:this.position.side, pcr:pcrVal });
+
+      globalJournal.push({ type:'exit', index:this.label, time:new Date().toLocaleString('en-GB',{timeZone:'Asia/Kolkata'}), side:this.position.side, spot:(spot??'').toFixed?.call(spot,2)??spot, reason });
+      this.position = null;
+      this.rebuildDatasets();
+    }
+  }
+
+  renderSignal(sig, spot){
+    const nowMs = Date.now();
+    let displaySide = sig.side;
+    if (displaySide !== 'NEUTRAL' && displaySide !== this.lastBias) {
+      if (nowMs - this.lastFlipMs < MIN_COOLDOWN_MS) {
+        displaySide = this.lastBias;
+      }
+    }
+
+    const pill=this.el('sigPill');
+    const txt=this.el('sigText');
+    let cls='bg-gray-100 text-gray-800', label='Signal: Neutral';
+    if (displaySide==='BULL'){ label=`Signal: BULL ${sig.confirmed?'• Actionable':'• Hold'}`; cls = sig.confirmed?'bg-emerald-200 text-emerald-900':'bg-emerald-100 text-emerald-800'; }
+    if (displaySide==='BEAR'){ label=`Signal: BEAR ${sig.confirmed?'• Actionable':'• Hold'}`; cls = sig.confirmed?'bg-rose-200 text-rose-900':'bg-rose-100 text-rose-800'; }
+    pill.textContent = label; pill.className = `pill ${cls}`;
+
+    const parts = [...sig.reasons];
+    if (sig.missing.length){ parts.push('Wait: '+sig.missing.join(', ')); }
+    if (displaySide!=='NEUTRAL' && sig.confirmed){
+      parts.push('Playbook: enter on micro-pullback; stop=EMA flip/opposite bias; partial @ wall/MP; exit on momentum fade.');
+    }
+    txt.textContent = parts.join('  •  ');
+
+    this.lastBias = displaySide;
+    this.biasStreak = sig.biasStreak;
+  }
+
+  async fetchOnce(){
+    const t0 = performance.now();
+    try{
+      const res = await fetch(this.buildUrl(), { headers:{ Authorization: AUTH_TOKEN }});
+      const json = await res.json();
+      if (json.s!=='ok'){ this.el('status').textContent = `API error: ${json.message||json.s}`; return; }
+
+      const data = json.data || {}
+
+      if (!this.currentExpiry && Array.isArray(data.expiryData) && data.expiryData.length){
+        const now = Math.floor(Date.now()/1000);
+        const future = data.expiryData.map(e=>Number(e.expiry)).filter(ts=>ts>=now).sort((a,b)=>a-b);
+        this.currentExpiry = future[0] || Number(data.expiryData[0].expiry);
+      }
+
+      const chain = data.optionsChain || [];
+      const spotRow = chain.find(r => !r.option_type && r.strike_price===-1);
+      const spot = spotRow?.ltp ?? null;
+      const rows = chain.filter(r => r.option_type==='CE' || r.option_type==='PE');
+      if (!rows?.length || spot==null){ this.el('status').textContent='No rows/spot'; return; }
+
+      const strikes = uniqSortedStrikes(rows);
+      const atmNearest = nearestATM(strikes, spot);
+      const stepRounded = Math.round(spot / this.step) * this.step;
+      const atm = strikes.includes(stepRounded) ? stepRounded : atmNearest;
+
+      const ksWin = chooseWindow(strikes, atm);
+      this.selectedKs = ksWin;
+
+      const byKS = new Map();
+      for (const r of rows) byKS.set(`${r.option_type}-${r.strike_price}`, r);
+
+      const ceRowsWin = ksWin.map(k=>byKS.get(`CE-${k}`)||{});
+      const peRowsWin = ksWin.map(k=>byKS.get(`PE-${k}`)||{});
+      const ceAll = rows.filter(x=>x.option_type==='CE');
+      const peAll = rows.filter(x=>x.option_type==='PE');
+
+      const ceOIw = sum(ceRowsWin.map(r=>r?.oi));
+      const peOIw = sum(peRowsWin.map(r=>r?.oi));
+      const pcrW  = ceOIw ? peOIw/ceOIw : null;
+      const pcr30 = (sum(peAll.map(r=>r.oi))) / (sum(ceAll.map(r=>r.oi)) || NaN);
+
+      if (pcrW != null){
+        const k = 2 / (3 + 1);
+        this._pcrPrev = (this._pcrPrev == null) ? pcrW : (pcrW * k + this._pcrPrev * (1 - k));
+      }
+
+      const nearIdx = strikes.indexOf(atm);
+      const win = strikes.slice(Math.max(0, nearIdx-1), Math.min(strikes.length, nearIdx+2));
+      const nearRows = win.flatMap(k=> [byKS.get(`CE-${k}`), byKS.get(`PE-${k}`)] ).filter(Boolean);
+      const nearBuildL = OI_TO_LAKHS(sum(nearRows.map(r=>r.oi)));
+      const nearOICHPE = sum(nearRows.filter(r=>r.option_type==='PE').map(r=>r.oich||0));
+      const nearOICHCE = sum(nearRows.filter(r=>r.option_type==='CE').map(r=>r.oich||0));
+      const nearImbPct = (nearOICHPE+nearOICHCE) ? ((nearOICHPE - nearOICHCE) / Math.abs(nearOICHPE+nearOICHCE)) * 100 : 0;
+
+      const maxPainK = maxPain(strikes, rows);
+
+      const ceATM = byKS.get(`CE-${atm}`), peATM = byKS.get(`PE-${atm}`);
+      const sCE = pctSpread(ceATM?.bid, ceATM?.ask), sPE = pctSpread(peATM?.bid, peATM?.ask);
+      const spread = [sCE,sPE].filter(v=>v!=null);
+      const avgSpread = spread.length? spread.reduce((a,b)=>a+b,0)/spread.length : null;
+      const volNear = sum(nearRows.map(r=>r.volume||0));
+      const liqScore = (avgSpread==null) ? null : Math.max(0, 10 - avgSpread) + Math.min(10, VOL_TO_LAKHS(volNear)/5);
+
+      const vix = data?.indiavixData?.ltp ?? null;
+
+      const t = fmtTime();
+      const addNew = (this.labels.length===0 || this.labels[this.labels.length-1]!==t);
+      if (addNew) { this.labels.push(t); this.spotSeries.push(spot); } else { this.labels[this.labels.length-1]=t; this.spotSeries[this.spotSeries.length-1]=spot; }
+
+      const addOrUpd = (ref, vals) => { if (addNew){ ref.push(vals); } else { ref[ref.length-1]=vals; } };
+      for (const k of ksWin){
+        if (!this.series.CE[`K${k}`]) this.series.CE[`K${k}`] = {LTP:[],OI:[],OICH:[],VOL:[]};
+        if (!this.series.PE[`K${k}`]) this.series.PE[`K${k}`] = {LTP:[],OI:[],OICH:[],VOL:[]};
+        const ce = byKS.get(`CE-${k}`)||{}, pe = byKS.get(`PE-${k}`)||{};
+        const CEref = this.series.CE[`K${k}`], PEref = this.series.PE[`K${k}`];
+
+        const valsCE = { LTP:Number(ce.ltp??null), OI:ce.oi==null?null:OI_TO_LAKHS(ce.oi), OICH:ce.oich==null?null:OI_TO_LAKHS(ce.oich), VOL:ce.volume==null?null:VOL_TO_LAKHS(ce.volume) };
+        const valsPE = { LTP:Number(pe.ltp??null), OI:pe.oi==null?null:OI_TO_LAKHS(pe.oi), OICH:pe.oich==null?null:OI_TO_LAKHS(pe.oich), VOL:pe.volume==null?null:VOL_TO_LAKHS(pe.volume) };
+
+        const keyPCR = `K${k}`;
+        if (!this.seriesPCR[keyPCR]) this.seriesPCR[keyPCR] = { PCR: [] };
+        const PCRref = this.seriesPCR[keyPCR].PCR;
+
+        const ceOIraw = Number(ce.oi ?? NaN);
+        const peOIraw = Number(pe.oi ?? NaN);
+        const pcrVal  = (isFinite(ceOIraw) && ceOIraw > 0 && isFinite(peOIraw)) ? (peOIraw / ceOIraw) : null;
+
+        addOrUpd(CEref.LTP, valsCE.LTP); addOrUpd(CEref.OI, valsCE.OI); addOrUpd(CEref.OICH, valsCE.OICH); addOrUpd(CEref.VOL, valsCE.VOL);
+        addOrUpd(PEref.LTP, valsPE.LTP); addOrUpd(PEref.OI, valsPE.OI); addOrUpd(PEref.OICH, valsPE.OICH); addOrUpd(PEref.VOL, valsPE.VOL);
+        addOrUpd(PCRref, pcrVal);
+      }
+
+      // ====== CVD (window) ======
+      const sumOICH_CE_L = OI_TO_LAKHS(sum(ceRowsWin.map(r=>r?.oich||0)));
+      const sumOICH_PE_L = OI_TO_LAKHS(sum(peRowsWin.map(r=>r?.oich||0)));
+      if (addNew) {
+        const lastCE = this.cvdCE.length ? this.cvdCE[this.cvdCE.length-1] : 0;
+        const lastPE = this.cvdPE.length ? this.cvdPE[this.cvdPE.length-1] : 0;
+        this.cvdCE.push(lastCE + sumOICH_CE_L);
+        this.cvdPE.push(lastPE + sumOICH_PE_L);
+      } else {
+        const baseCE = (this.cvdCE.length>1 ? this.cvdCE[this.cvdCE.length-2] : 0);
+        const basePE = (this.cvdPE.length>1 ? this.cvdPE[this.cvdPE.length-2] : 0);
+        this.cvdCE[this.cvdCE.length-1] = baseCE + sumOICH_CE_L;
+        this.cvdPE[this.cvdPE.length-1] = basePE + sumOICH_PE_L;
+      }
+
+      // ====== CLTP (window): TRUE cumulative ΔLTP across strikes ======
+      const sumLTP_CE = sum(ceRowsWin.map(r => Number(r.ltp || 0)));
+      const sumLTP_PE = sum(peRowsWin.map(r => Number(r.ltp || 0)));
+      const dCE = (this._prevSumLTP_CE==null) ? 0 : (sumLTP_CE - this._prevSumLTP_CE);
+      const dPE = (this._prevSumLTP_PE==null) ? 0 : (sumLTP_PE - this._prevSumLTP_PE);
+      this._prevSumLTP_CE = sumLTP_CE; this._prevSumLTP_PE = sumLTP_PE;
+      if (addNew) {
+        const lastCE = this.cltpCE.length ? this.cltpCE[this.cltpCE.length-1] : 0;
+        const lastPE = this.cltpPE.length ? this.cltpPE[this.cltpPE.length-1] : 0;
+        this.cltpCE.push(lastCE + dCE);
+        this.cltpPE.push(lastPE + dPE);
+      } else {
+        const baseCE = (this.cltpCE.length>1 ? this.cltpCE[this.cltpCE.length-2] : 0);
+        const basePE = (this.cltpPE.length>1 ? this.cltpPE[this.cltpPE.length-2] : 0);
+        this.cltpCE[this.cltpCE.length-1] = baseCE + dCE;
+        this.cltpPE[this.cltpPE.length-1] = basePE + dPE;
+      }
+
+      // ====== NEW: ATM Premium & Volume Divergence ======
+      const atmCE = byKS.get(`CE-${atm}`) || {};
+      const atmPE = byKS.get(`PE-${atm}`) || {};
+      const volDivNow = VOL_TO_LAKHS((atmCE.volume||0) - (atmPE.volume||0));
+      if (addNew){
+        this.atmCePrem.push(Number(atmCE.ltp||null));
+        this.atmPePrem.push(Number(atmPE.ltp||null));
+        this.volDiv.push(volDivNow);
+      } else {
+        this.atmCePrem[this.atmCePrem.length-1] = Number(atmCE.ltp||null);
+        this.atmPePrem[this.atmPePrem.length-1] = Number(atmPE.ltp||null);
+        this.volDiv[this.volDiv.length-1] = volDivNow;
+      }
+
+      // ====== Trim ======
+      const trim=(arr)=>{ if (arr.length>380) arr.splice(0, arr.length-380); };
+      if (this.labels.length>380) this.labels.splice(0, this.labels.length-380);
+      [this.spotSeries,this.cvdCE,this.cvdPE,this.cltpCE,this.cltpPE,this.atmCePrem,this.atmPePrem,this.volDiv].forEach(trim);
+      for (const side of ['CE','PE']) for (const key of Object.keys(this.series[side]))
+        ['LTP','OI','OICH','VOL'].forEach(k=>trim(this.series[side][key][k]));
+      for (const key of Object.keys(this.seriesPCR)) trim(this.seriesPCR[key].PCR);
+
+      if (this.firstPaint || this.pcrChart.data.datasets.length === 0){ this.rebuildDatasets(); this.firstPaint=false; }
+      else [this.pcrChart,this.oiChart,this.oichChart,this.volChart,this.cvdChart,this.cltpChart,this.divChart].forEach(c=>c.update('none'));
+
+      const emaTag = (()=>{ const s3=ema(this.spotSeries,3), s8=ema(this.spotSeries,8); if(s3.at(-1)!=null && s8.at(-1)!=null) return s3.at(-1)>s8.at(-1)?'UP':(s3.at(-1)<s8.at(-1)?'DOWN':'FLAT'); return '--'; })();
+      this.renderKeyBar({ spot, atm, pcrW:(this._pcrPrev ?? pcrW), pcr30:isFinite(pcr30)?pcr30:null, maxPainK, vix, nearBuildL, nearImbPct, liqScore, emaTag });
+      this.renderWalls(spot, rows);
+
+      const sig = signalFrom({
+        spotSeries:this.spotSeries, spot, atm, vix,
+        ceATM: byKS.get(`CE-${atm}`), peATM: byKS.get(`PE-${atm}`),
+        ceRowsWin, peRowsWin,
+        lastBias:this.lastBias, biasStreak:this.biasStreak,
+        _pcrOverride: this._pcrPrev
+      });
+
+      this.renderSignal(sig, spot);
+      this.maybeEnter(sig, spot, (this._pcrPrev ?? pcrW));
+      this.maybeExit({trendUp:sig.trendUp, trendDown:sig.trendDown, spot, maxPainK, rows});
+
+      this.el('status').textContent = `Updated ${fmtTime()} • ATM ${atm} • ${(performance.now()-t0|0)} ms`;
+
+    } catch (e){
+      this.el('status').textContent = 'Fetch error (console)';
+      console.error(this.label, e);
+    }
+  }
+}
+
+/* =========================
+   BOOTSTRAP
+   ========================= */
+const panels = [
+  new IndexPanel("NSE:NIFTY50-INDEX",   INDEX_META["NSE:NIFTY50-INDEX"].step,   INDEX_META["NSE:NIFTY50-INDEX"].label),
+];
+
+let tickTimer=null;
+async function tickAll(){
+  const t0 = performance.now();
+  await Promise.all(panels.map(p => p.fetchOnce()));
+  document.getElementById('globalStatus').textContent = `Synced ${fmtTime()} • ${(performance.now()-t0|0)} ms`;
+}
+function start(){ if(tickTimer) clearInterval(tickTimer); tickTimer=setInterval(tickAll, REFRESH_MS); tickAll(); }
+start();
+
+/* =========================
+   JOURNAL EXPORT
+   ========================= */
+const globalJournal = [];
+document.getElementById('btnCSV').onclick = ()=>{
+  if (!globalJournal.length) return;
+  const cols=['type','index','time','side','spot','reason'];
+  const rows = globalJournal.map(r => cols.map(c=>r[c]??'').join(','));
+  const csv = cols.join(',')+'\n'+rows.join('\n');
+  const blob = new Blob([csv], {type:'text/csv'}); const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='signals_journal_all_indices.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+};
+
+/* =========================
+   FULLSCREEN
+   ========================= */
+const fsBtn=document.getElementById('fsBtn');
+function inFS(){ return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement); }
+function reqFS(el){ (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || Function.prototype).call(el); }
+function exitFS(){ (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen || Function.prototype).call(document); }
+fsBtn.onclick = ()=> inFS()? exitFS(): reqFS(document.documentElement);
+document.addEventListener('fullscreenchange', ()=> fsBtn.textContent = inFS()? 'Exit Fullscreen' : '⛶ Fullscreen');
+</script>
+</body>
+</html>
