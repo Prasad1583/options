@@ -240,6 +240,8 @@ class IndexPanel {
     this.cltpPE = [];
     this._prevSumLTP_CE = null; // for minute Δ
     this._prevSumLTP_PE = null; // for minute Δ
+    this._prevVolCE = null;
+    this._prevVolPE = null;
 
     // Divergence (ATM): CE & PE premium lines + volume divergence bars
     this.divLabels = [];
@@ -756,7 +758,12 @@ class IndexPanel {
       // ====== NEW: ATM Premium & Volume Divergence ======
       const atmCE = byKS.get(`CE-${atm}`) || {};
       const atmPE = byKS.get(`PE-${atm}`) || {};
-      const volDivNow = VOL_TO_LAKHS((atmCE.volume||0) - (atmPE.volume||0));
+      const dVolCE = (this._prevVolCE==null) ? 0 : Math.max(0, (atmCE.volume||0) - this._prevVolCE);
+      const dVolPE = (this._prevVolPE==null) ? 0 : Math.max(0, (atmPE.volume||0) - this._prevVolPE);
+      this._prevVolCE = (atmCE.volume||0);
+      this._prevVolPE = (atmPE.volume||0);
+
+      const volDivNow = VOL_TO_LAKHS(dVolCE - dVolPE); // CE−PE flow this tick
       if (addNew){
         this.atmCePrem.push(Number(atmCE.ltp||null));
         this.atmPePrem.push(Number(atmPE.ltp||null));
