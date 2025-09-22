@@ -338,12 +338,12 @@ class IndexPanel {
     this.pcrChart.options.scales.y.title.text = 'PCR (PE OI / CE OI)';
     this.pcrChart.options.scales.y.beginAtZero = true;
 
-    this.oiChart  = new Chart(this.el('oiChart'),  { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
-    this.oiChart.options.scales.y.title.text  = 'OI (Lakhs)';
+    //this.oiChart  = new Chart(this.el('oiChart'),  { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+    // this.oiChart.options.scales.y.title.text  = 'OI (Lakhs)';
     this.oichChart= new Chart(this.el('oichChart'),{ type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
     this.oichChart.options.scales.y.title.text= 'ΔOI (Lakhs)';
-    this.volChart = new Chart(this.el('volChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
-    this.volChart.options.scales.y.title.text = 'Volume (Lakhs)';
+   // this.volChart = new Chart(this.el('volChart'), { type:'line', data:{labels:this.labels, datasets:[]}, options:JSON.parse(JSON.stringify(common))});
+   // this.volChart.options.scales.y.title.text = 'Volume (Lakhs)';
 
     // --- CVD gap sticks plugin (5th chart) ---
     const cvdGapSticks = {
