@@ -50,7 +50,7 @@ const INDEX_META = {
 };
 
 const API = 'https://api-t1.fyers.in/data/options-chain-v3';
-const WINDOW_STRIKES  = 3;                 // 3 ITM + ATM + 3 OTM
+const WINDOW_STRIKES  = 5;                 // 3 ITM + ATM + 3 OTM
 const STRIKECOUNT_API = WINDOW_STRIKES * 10; // fetch wider, then slice to 7 around ATM
 const REFRESH_MS      = 60_000;
 const OI_TO_LAKHS     = (x)=> Number(x||0)/100_000;
