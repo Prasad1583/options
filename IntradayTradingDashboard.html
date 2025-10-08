@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ΔOI + 11-Strike Consolidated Premium & Vol Div — NIFTY & BANKNIFTY (4 charts)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    html, body { height:100%; }
+    body { margin:0; }
+    .card { display:flex; flex-direction:column; }
+    .card canvas { width:100% !important; height:100% !important; }
+  </style>
+</head>
+<body class="h-screen overflow-hidden bg-gray-100">
+  <div class="h-screen w-screen p-3">
+    <header class="mb-3 flex items-center gap-3 h-5">
+      <div id="globalStatus" class="ml-auto text-[11px] text-gray-500">Init…</div>
+    </header>
+
+    <!-- 4 CHARTS GRID -->
+    <main class="h-[calc(100vh-56px)] grid grid-cols-1 2xl:grid-cols-2 grid-rows-2 gap-3 auto-rows-fr">
+      <!-- NIFTY ΔOI (Aggregated) -->
+      <section class="card bg-white rounded-lg border p-2 h-full min-h-0">
+        <h3 class="text-xs font-semibold mb-1">NIFTY — ΔOI (Lakhs) — 11× Σ(CE/PE)</h3>
+        <canvas id="nifty_oich"></canvas>
+      </section>
+      <!-- BANKNIFTY ΔOI (Aggregated) -->
+      <section class="card bg-white rounded-lg border p-2 h-full min-h-0">
+        <h3 class="text-xs font-semibold mb-1">BANKNIFTY — ΔOI (Lakhs) — 11× Σ(CE/PE)</h3>
+        <canvas id="bank_oich"></canvas>
+      </section>
+      <!-- NIFTY 11-Strike Consolidated Premium & Vol Divergence -->
+      <section class="card bg-white rounded-lg border p-2 h-full min-h-0">
+        <h3 class="text-xs font-semibold mb-1">NIFTY — 11-Strike Avg Premium (CE/PE) & Volume Divergence Σ(ΔVol CE−PE, Lakhs)</h3>
+        <canvas id="nifty_div"></canvas>
+      </section>
+      <!-- BANKNIFTY 11-Strike Consolidated Premium & Vol Divergence -->
+      <section class="card bg-white rounded-lg border p-2 h-full min-h-0">
+        <h3 class="text-xs font-semibold mb-1">BANKNIFTY — 11-Strike Avg Premium (CE/PE) & Volume Divergence Σ(ΔVol CE−PE, Lakhs)</h3>
+        <canvas id="bank_div"></canvas>
+      </section>
+    </main>
+  </div>
+
+<script>
+/*************************
+ * CONFIG
+ *************************/
+const API = 'https://api-t1.fyers.in/data/options-chain-v3';
+const WINDOW_STRIKES = 11;
+const STRIKECOUNT_API = WINDOW_STRIKES * 10;
+const REFRESH_MS = 60_000;
+const OI_TO_LAKHS = x => Number(x||0)/100_000;
+const VOL_TO_LAKHS = OI_TO_LAKHS;
+const SPOT_EPS = 0; // set >0 to ignore tiny jitters
+
+const INDEX_META = {
+  'NSE:NIFTY50-INDEX':   { label:'NIFTY',     step:50,  ids:{ oich:'nifty_oich', div:'nifty_div' } },
+  'NSE:NIFTYBANK-INDEX': { label:'BANKNIFTY', step:100, ids:{ oich:'bank_oich',  div:'bank_div' } },
+};
+
+// ⚠️ Replace with your own valid token
+const AUTH_TOKEN = 'Bearer ABGPQPW96J-100:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZDoxIiwiZDoyIiwieDowIiwieDoxIiwieDoyIl0sImF0X2hhc2giOiJnQUFBQUFCbzViWEpGYzFKRDRHdjhVdkZBMkhMSGpWV3k1ZE9QWkRPR3VaSWpncUZLdXZKU2VhLTU1dXpYUE15ZVQ0aUk2TmZ4YTFUWTlIUmlZOFlBdWVweUxuTExwSndMS3dQQVVPNGtNMmpSRWhuWnlTblg0OD0iLCJkaXNwbGF5X25hbWUiOiIiLCJvbXMiOiJLMSIsImhzbV9rZXkiOiI3OTk3ZmQwYWRiYjAwYjI2NTY1MDY3NmMzNTQ3MWExMDEwNTk5MjU4M2ZmNDljZGJkOWE4ZDc3MSIsImlzRGRwaUVuYWJsZWQiOiJOIiwiaXNNdGZFbmFibGVkIjoiTiIsImZ5X2lkIjoiWVYwNzAzNCIsImFwcFR5cGUiOjEwMCwiZXhwIjoxNzU5OTY5ODAwLCJpYXQiOjE3NTk4ODQ3NDUsImlzcyI6ImFwaS5meWVycy5pbiIsIm5iZiI6MTc1OTg4NDc0NSwic3ViIjoiYWNjZXNzX3Rva2VuIn0.4Q4g7znZ0vX9LYUA3_zV1b7tjB46HKKb3oyZfIkIfjc';
+
+/*************************
+ * UTILS
+ *************************/
+const fmtTime = () => new Date().toLocaleTimeString('en-GB',{ timeZone:'Asia/Kolkata', hour:'2-digit', minute:'2-digit' });
+const mean = arr => {
+  const nums = arr.map(Number).filter(Number.isFinite);
+  return nums.length ? nums.reduce((a,b)=>a+b,0) / nums.length : null;
+};
+function uniqSortedStrikes(rows){ return [...new Set(rows.map(r=>r.strike_price))].sort((a,b)=>a-b); }
+function nearestATM(strikes, spot){ let best=strikes[0], bd=Math.abs(best-spot); for(const k of strikes){ const d=Math.abs(k-spot); if(d<bd){bd=d; best=k;} } return best; }
+function chooseWindow(strikes, atm){
+  const half=Math.floor(WINDOW_STRIKES/2);
+  const pos=strikes.indexOf(atm);
+  let start = pos===-1 ? Math.max(0, strikes.findIndex(k=>k>=atm)-half) : Math.max(0, pos-half);
+  if (start + WINDOW_STRIKES > strikes.length) start = Math.max(0, strikes.length - WINDOW_STRIKES);
+  return strikes.slice(start, start + WINDOW_STRIKES);
+}
+
+/*************************
+ * PANEL CLASS
+ *************************/
+class PairCharts {
+  constructor(symbol, meta){
+    this.symbol = symbol;
+    this.meta = meta;
+    this.step = meta.step;
+
+    // labels shared by both charts in this panel
+    this.labels = [];
+    this.currentExpiry = null;
+    this.selectedKs = [];
+
+    // ΔOI aggregated (Lakhs) across 11 strikes
+    this.ceOICHagg = [];
+    this.peOICHagg = [];
+
+    // Consolidated premium (avg) + volume div (sum) across 11 strikes
+    this.cePremAvg = [];
+    this.pePremAvg = [];
+    this.volDivSum = []; // Lakhs
+
+    // Keep previous volumes per strike to compute ΔVolume
+    this._prevVolCE_byK = new Map();
+    this._prevVolPE_byK = new Map();
+
+    // Per-index spot gate
+    this._lastSpot = null;
+
+    this.buildCharts();
+  }
+
+  id(kind){ return this.meta.ids[kind]; }
+
+  buildCharts(){
+    const common = {
+      responsive:true, maintainAspectRatio:false, animation:false,
+      plugins:{ legend:{display:true}, title:{display:false}, tooltip:{mode:'nearest',intersect:false} },
+      scales:{ x:{ ticks:{maxRotation:0, autoSkip:true}, title:{display:true,text:'Time (IST)',font:{size:10}} }, y:{ beginAtZero:false, title:{display:true,text:''} } }
+    };
+
+    // ΔOI aggregated chart (two lines)
+    const oichEl = document.getElementById(this.id('oich'));
+    const oOpts = JSON.parse(JSON.stringify(common));
+    oOpts.scales.y.title.text = 'ΔOI (Lakhs) — 11-Strike Σ';
+    this.oichChart = new Chart(oichEl, {
+      type:'line',
+      data:{ labels:this.labels, datasets:[
+        { label:`Σ ΔOI CE (11)`, borderColor:'#ef4444', backgroundColor:'#ef4444', tension:0.25, fill:false, data:this.ceOICHagg },
+        { label:`Σ ΔOI PE (11)`, borderColor:'#16a34a', backgroundColor:'#16a34a', tension:0.25, fill:false, data:this.peOICHagg },
+      ]},
+      options: oOpts
+    });
+
+    // 11-strike premium avg + vol divergence sum (with right axis)
+    const divEl = document.getElementById(this.id('div'));
+    const dOpts = JSON.parse(JSON.stringify(common));
+    dOpts.scales.y.title.text = 'Premium (Pts) — 11-Strike Avg';
+    dOpts.scales.y2 = { position:'right', title:{display:true,text:'Vol Div Σ(ΔVol CE−PE), Lakhs'}, grid:{drawOnChartArea:false} };
+    this.divChart = new Chart(divEl, {
+      type:'line',
+      data:{ labels:this.labels, datasets:[
+        { label:`CE Premium — Avg(11)`, borderColor:'#ef4444', backgroundColor:'#ef4444', tension:0.25, fill:false, yAxisID:'y', data:this.cePremAvg },
+        { label:`PE Premium — Avg(11)`, borderColor:'#16a34a', backgroundColor:'#16a34a', tension:0.25, fill:false, yAxisID:'y', data:this.pePremAvg },
+        {
+          label:'Vol Divergence — Σ(ΔVol CE−PE)',
+          type:'bar',
+          backgroundColor:(ctx)=> (ctx.raw>0 ? '#16a34a' : (ctx.raw<0 ? '#ef4444' : '#6b7280')),
+          borderWidth:0, yAxisID:'y2', data:this.volDivSum
+        }
+      ]},
+      options: dOpts
+    });
+  }
+
+  buildUrl(){
+    const p = new URLSearchParams({ symbol:this.symbol, strikecount:String(STRIKECOUNT_API) });
+    if (this.currentExpiry) p.set('timestamp', String(this.currentExpiry));
+    return `${API}?${p.toString()}`;
+  }
+
+  async fetchOnce(){
+    const t0 = performance.now();
+    try{
+      const res = await fetch(this.buildUrl(), { headers:{ Authorization: AUTH_TOKEN } });
+      const json = await res.json();
+      if (json.s !== 'ok'){ document.getElementById('globalStatus').textContent = `${this.meta.label} API error`; return; }
+      const data = json.data || {};
+
+      // First future expiry
+      if (!this.currentExpiry && Array.isArray(data.expiryData) && data.expiryData.length){
+        const now = Math.floor(Date.now()/1000);
+        const future = data.expiryData.map(e=>Number(e.expiry)).filter(ts=>ts>=now).sort((a,b)=>a-b);
+        this.currentExpiry = future[0] || Number(data.expiryData[0].expiry);
+      }
+
+      const chain = data.optionsChain || [];
+      const spotRow = chain.find(r => (r.option_type ?? '') === '' && r.strike_price === -1 && r.symbol === this.symbol);
+      const spot = spotRow?.ltp ?? null;
+      const rows = chain.filter(r => r.option_type==='CE' || r.option_type==='PE');
+
+      if (!rows?.length || spot==null){
+        document.getElementById('globalStatus').textContent = `${this.meta.label} no rows/spot`;
+        return;
+      }
+
+      // Gate: update only when spot changes
+      const prev = this._lastSpot;
+      const curr = Number(spot);
+      if (prev !== null && Math.abs(curr - prev) <= SPOT_EPS) {
+        document.getElementById('globalStatus').textContent = `${this.meta.label} unchanged • ${fmtTime()}`;
+        return;
+      }
+      this._lastSpot = curr;
+
+      // Build 11-strike window around ATM
+      const strikes = uniqSortedStrikes(rows);
+      const stepRounded = Math.round(curr / this.step) * this.step;
+      const atm = strikes.includes(stepRounded) ? stepRounded : nearestATM(strikes, curr);
+      const ksWin = chooseWindow(strikes, atm);
+      this.selectedKs = ksWin;
+
+      // Index by (side,strike)
+      const byKS = new Map();
+      for (const r of rows) byKS.set(`${r.option_type}-${r.strike_price}`, r);
+
+      // Label handling (only on updates)
+      const t = fmtTime();
+      const addNew = (this.labels.length===0 || this.labels[this.labels.length-1]!==t);
+      if (addNew) this.labels.push(t); else this.labels[this.labels.length-1] = t;
+      const addOrUpd = (ref, val) => { if (addNew) ref.push(val); else ref[ref.length-1] = val; };
+
+      /* ---------- ΔOI Aggregated over 11 strikes ---------- */
+      let ceOICH_sum = 0;
+      let peOICH_sum = 0;
+
+      ksWin.forEach(k=>{
+        const ce = byKS.get(`CE-${k}`)||{};
+        const pe = byKS.get(`PE-${k}`)||{};
+        if (Number.isFinite(Number(ce.oich))) ceOICH_sum += Number(ce.oich);
+        if (Number.isFinite(Number(pe.oich))) peOICH_sum += Number(pe.oich);
+      });
+
+      addOrUpd(this.ceOICHagg, OI_TO_LAKHS(ceOICH_sum));
+      addOrUpd(this.peOICHagg, OI_TO_LAKHS(peOICH_sum));
+
+      this.oichChart.data.labels = this.labels;
+      this.oichChart.data.datasets[0].data = this.ceOICHagg;
+      this.oichChart.data.datasets[1].data = this.peOICHagg;
+
+      /* ---------- 11-Strike Consolidated Premium & Vol Divergence ---------- */
+      const ceLtps = [];
+      const peLtps = [];
+      let dVolCE_sum = 0;
+      let dVolPE_sum = 0;
+
+      ksWin.forEach(k=>{
+        const ce = byKS.get(`CE-${k}`)||{};
+        const pe = byKS.get(`PE-${k}`)||{};
+
+        if (Number.isFinite(Number(ce.ltp))) ceLtps.push(Number(ce.ltp));
+        if (Number.isFinite(Number(pe.ltp))) peLtps.push(Number(pe.ltp));
+
+        const prevCE = this._prevVolCE_byK.get(k) ?? null;
+        const prevPE = this._prevVolPE_byK.get(k) ?? null;
+
+        const curCE = Number(ce.volume||0);
+        const curPE = Number(pe.volume||0);
+
+        const dCE = (prevCE==null) ? 0 : Math.max(0, curCE - prevCE);
+        const dPE = (prevPE==null) ? 0 : Math.max(0, curPE - prevPE);
+
+        dVolCE_sum += dCE;
+        dVolPE_sum += dPE;
+
+        this._prevVolCE_byK.set(k, curCE);
+        this._prevVolPE_byK.set(k, curPE);
+      });
+
+      addOrUpd(this.cePremAvg, mean(ceLtps));
+      addOrUpd(this.pePremAvg, mean(peLtps));
+      addOrUpd(this.volDivSum, VOL_TO_LAKHS(dVolCE_sum - dVolPE_sum));
+
+      // Trim buffers
+      const TRIM=380, trim=a=>{ if(a.length>TRIM) a.splice(0, a.length-TRIM); };
+      [this.labels,this.ceOICHagg,this.peOICHagg,this.cePremAvg,this.pePremAvg,this.volDivSum].forEach(trim);
+
+      // Update charts
+      this.oichChart.update('none');
+      this.divChart.update('none');
+
+      document.getElementById('globalStatus').textContent =
+        `Synced ${this.meta.label} ${fmtTime()} • ${(performance.now()-t0|0)} ms • Ks ${ksWin[0]}…${ksWin[ksWin.length-1]}`;
+    } catch(err){
+      console.error(this.meta.label, err);
+      document.getElementById('globalStatus').textContent = `${this.meta.label} fetch error`;
+    }
+  }
+}
+
+/*************************
+ * BOOT
+ *************************/
+const panels = Object.entries(INDEX_META).map(([sym, meta]) => new PairCharts(sym, meta));
+async function tickAll(){ await Promise.all(panels.map(p=>p.fetchOnce())); }
+setInterval(tickAll, REFRESH_MS);
+tickAll();
+</script>
+</body>
+</html>
