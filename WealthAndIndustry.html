@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealth & Industry Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.98);
+            color: #1a1a2e;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 8px;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab {
+            padding: 18px 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 15px;
+            color: #666;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .tab:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .tab:hover:not(.active) {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 15px 0;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-desc {
+            font-size: 0.95rem;
+            color: #999;
+            margin-top: 10px;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .chart-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .chart-title {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .data-table-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            overflow-x: auto;
+            backdrop-filter: blur(10px);
+        }
+        
+        .data-table-container h2 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .industry-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .industry-item:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .industry-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .industry-count {
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .data-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+        
+        .data-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .data-table tbody tr:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            transform: scale(1.01);
+        }
+        
+        .search-container {
+            margin-bottom: 25px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .tab {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💎 Wealth & Industry Dashboard</h1>
+            <p class="subtitle">Fortune 500 Industry Distribution & World's Billionaires</p>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="industries">🏢 Fortune 500 Industries</div>
+            <div class="tab" data-tab="billionaires">💰 World's Billionaires</div>
+        </div>
+        
+        <!-- Industries Tab -->
+        <div class="tab-content active" id="industries-tab">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-label">Total Industries</div>
+                    <div class="stat-value">36</div>
+                    <div class="stat-desc">Distinct industry categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Companies</div>
+                    <div class="stat-value">500</div>
+                    <div class="stat-desc">Fortune 500 companies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Top Industry</div>
+                    <div class="stat-value">Health Care</div>
+                    <div class="stat-desc">59 companies (11.8%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg. per Industry</div>
+                    <div class="stat-value">13.9</div>
+                    <div class="stat-desc">Companies per industry</div>
+                </div>
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h2 class="chart-title">📊 Industry Distribution (Top 15)</h2>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2 class="chart-title">🥧 Industry Share</h2>
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <h2>📋 All Industries (Sorted by Company Count)</h2>
+                <div class="industry-grid" id="industryList">
+                    <!-- Industry list will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Billionaires Tab -->
+        <div class="tab-content" id="billionaires-tab">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-label">Total Billionaires</div>
+                    <div class="stat-value" id="totalBillionaires">100</div>
+                    <div class="stat-desc">In the dataset</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Net Worth</div>
+                    <div class="stat-value" id="totalNetWorth">$4.2T</div>
+                    <div class="stat-desc">Combined wealth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Top Billionaire</div>
+                    <div class="stat-value">Elon Musk</div>
+                    <div class="stat-desc">$460.4B net worth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg. Net Worth</div>
+                    <div class="stat-value" id="avgNetWorth">$42B</div>
+                    <div class="stat-desc">Per billionaire</div>
+                </div>
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h2 class="chart-title">🏆 Top 20 Billionaires by Net Worth</h2>
+                    <canvas id="billionairesBarChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2 class="chart-title">🌍 Billionaires by Country</h2>
+                    <canvas id="billionairesCountryChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <h2>💼 World's Billionaires</h2>
+                <div class="search-container">
+                    <input type="text" class="search-box" id="billionaireSearch" placeholder="🔍 Search by name, country, or source of wealth...">
+                </div>
+                <table class="data-table" id="billionairesTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Net Worth ($B)</th>
+                            <th>Age</th>
+                            <th>Country</th>
+                            <th>Source of Wealth</th>
+                        </tr>
+                    </thead>
+                    <tbody id="billionairesTableBody">
+                        <!-- Billionaires data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <footer>
+            <p>📊 Data Sources: Fortune 500 & World's Billionaires List | Visualization created with Chart.js</p>
+        </footer>
+    </div>
+
+    <script>
+        // Industry data
+        const industryData = [
+            { "Health Care": 59 },
+            { "Retail": 32 },
+            { "Financial Services": 30 },
+            { "Energy": 28 },
+            { "Technology": 25 },
+            { "Manufacturing": 24 },
+            { "Motor Vehicles & Parts": 23 },
+            { "Food & Drug Stores": 19 },
+            { "Telecommunications": 15 },
+            { "Transportation": 15 },
+            { "Chemicals": 13 },
+            { "Insurance": 12 },
+            { "Engineering & Construction": 12 },
+            { "Wholesalers": 11 },
+            { "Utilities": 11 },
+            { "Materials": 10 },
+            { "Aerospace & Defense": 9 },
+            { "Hotels, Restaurants & Leisure": 8 },
+            { "Apparel": 7 },
+            { "Media": 7 },
+            { "Food, Beverage & Tobacco": 6 },
+            { "Building Materials, Glass & Containers": 6 },
+            { "Household Products": 6 },
+            { "Industrial Machinery": 6 },
+            { "Business Services": 5 },
+            { "Electronics, Electrical Equipment": 5 },
+            { "Metals & Mining": 5 },
+            { "Oil & Gas Equipment, Services": 5 },
+            { "Real Estate": 5 },
+            { "Pharmaceuticals": 4 },
+            { "Semiconductors": 4 },
+            { "Textiles": 4 },
+            { "Entertainment": 3 },
+            { "Publishing, Printing": 3 },
+            { "Tobacco": 2 },
+            { "Biotechnology": 1 }
+        ];
+
+        // Billionaires data
+        const billionairesData = [
+            { rank: 1, name: "Elon Musk", netWorth: 460.4, age: 54, country: "United States", source: "Tesla, SpaceX" },
+            { rank: 2, name: "Larry Ellison", netWorth: 248.4, age: 81, country: "United States", source: "Oracle" },
+            { rank: 3, name: "Larry Page", netWorth: 246.2, age: 52, country: "United States", source: "Google" },
+            { rank: 4, name: "Sergey Brin", netWorth: 225.0, age: 51, country: "United States", source: "Google" },
+            { rank: 5, name: "Jeff Bezos", netWorth: 237.0, age: 61, country: "United States", source: "Amazon" },
+            { rank: 6, name: "Mark Zuckerberg", netWorth: 201.0, age: 41, country: "United States", source: "Facebook (Meta)" },
+            { rank: 7, name: "Bernard Arnault", netWorth: 182.0, age: 76, country: "France", source: "LVMH" },
+            { rank: 8, name: "Steve Ballmer", netWorth: 150.0, age: 69, country: "United States", source: "Microsoft" },
+            { rank: 9, name: "Warren Buffett", netWorth: 145.0, age: 95, country: "United States", source: "Berkshire Hathaway" },
+            { rank: 10, name: "Bill Gates", netWorth: 140.0, age: 69, country: "United States", source: "Microsoft" },
+            { rank: 11, name: "Mukesh Ambani", netWorth: 109.6, age: 68, country: "India", source: "Reliance Industries" },
+            { rank: 12, name: "Alice Walton", netWorth: 110.0, age: 75, country: "United States", source: "Walmart" },
+            { rank: 13, name: "Jensen Huang", netWorth: 105.0, age: 62, country: "United States", source: "Nvidia" },
+            { rank: 14, name: "Michael Dell", netWorth: 102.0, age: 60, country: "United States", source: "Dell Technologies" },
+            { rank: 15, name: "Gautam Adani", netWorth: 98.0, age: 63, country: "India", source: "Adani Group" },
+            { rank: 16, name: "Carlos Slim Helu", netWorth: 95.0, age: 85, country: "Mexico", source: "Telecom" },
+            { rank: 17, name: "Francoise Bettencourt Meyers", netWorth: 92.0, age: 71, country: "France", source: "L'Oreal" },
+            { rank: 18, name: "Jim Walton", netWorth: 90.0, age: 76, country: "United States", source: "Walmart" },
+            { rank: 19, name: "Rob Walton", netWorth: 88.0, age: 80, country: "United States", source: "Walmart" },
+            { rank: 20, name: "MacKenzie Scott", netWorth: 85.0, age: 54, country: "United States", source: "Amazon" },
+            { rank: 21, name: "Zhang Yiming", netWorth: 82.0, age: 41, country: "China", source: "ByteDance" },
+            { rank: 22, name: "Changpeng Zhao", netWorth: 80.0, age: 48, country: "Canada", source: "Binance" },
+            { rank: 23, name: "Amancio Ortega", netWorth: 78.0, age: 89, country: "Spain", source: "Inditex (Zara)" },
+            { rank: 24, name: "Stefan Persson", netWorth: 76.0, age: 77, country: "Sweden", source: "H&M" },
+            { rank: 25, name: "Phil Knight", netWorth: 74.0, age: 87, country: "United States", source: "Nike" },
+            { rank: 26, name: "Ma Huateng", netWorth: 72.0, age: 53, country: "China", source: "Tencent" },
+            { rank: 27, name: "Colin Huang", netWorth: 70.0, age: 44, country: "China", source: "PDD Holdings" },
+            { rank: 28, name: "Ken Griffin", netWorth: 68.0, age: 57, country: "United States", source: "Citadel" },
+            { rank: 29, name: "Dieter Schwarz", netWorth: 66.0, age: 85, country: "Germany", source: "Retail" },
+            { rank: 30, name: "Giovanni Ferrero", netWorth: 64.0, age: 60, country: "Italy", source: "Ferrero" },
+            { rank: 31, name: "Tadashi Yanai", netWorth: 62.0, age: 76, country: "Japan", source: "Fast Retailing" },
+            { rank: 32, name: "Miriam Adelson", netWorth: 60.0, age: 79, country: "United States", source: "Casinos" },
+            { rank: 33, name: "David Thomson", netWorth: 58.0, age: 67, country: "Canada", source: "Media" },
+            { rank: 34, name: "Charles Koch", netWorth: 56.0, age: 89, country: "United States", source: "Koch Industries" },
+            { rank: 35, name: "Julia Koch", netWorth: 55.0, age: 62, country: "United States", source: "Koch Industries" },
+            { rank: 36, name: "Jacqueline Mars", netWorth: 54.0, age: 85, country: "United States", source: "Mars Inc." },
+            { rank: 37, name: "John Mars", netWorth: 53.0, age: 89, country: "United States", source: "Mars Inc." },
+            { rank: 38, name: "Klaus-Michael Kuehne", netWorth: 52.0, age: 88, country: "Germany", source: "Logistics" },
+            { rank: 39, name: "Jacqueline Badger Mars", netWorth: 51.0, age: 84, country: "United States", source: "Mars Inc." },
+            { rank: 40, name: "Alain Wertheimer", netWorth: 50.0, age: 76, country: "France", source: "Chanel" },
+            { rank: 41, name: "Gerard Wertheimer", netWorth: 50.0, age: 73, country: "France", source: "Chanel" },
+            { rank: 42, name: "Zhong Shanshan", netWorth: 49.0, age: 70, country: "China", source: "Beverages" },
+            { rank: 43, name: "Michael Bloomberg", netWorth: 48.0, age: 83, country: "United States", source: "Bloomberg LP" },
+            { rank: 44, name: "Zhang Yong", netWorth: 47.0, age: 53, country: "Singapore", source: "Haidilao" },
+            { rank: 45, name: "Lei Jun", netWorth: 46.0, age: 55, country: "China", source: "Xiaomi" },
+            { rank: 46, name: "Stephen Schwarzman", netWorth: 45.0, age: 78, country: "United States", source: "Blackstone" },
+            { rank: 47, name: "David Tepper", netWorth: 44.0, age: 67, country: "United States", source: "Appaloosa" },
+            { rank: 48, name: "Leon Black", netWorth: 43.0, age: 73, country: "United States", source: "Apollo Global" },
+            { rank: 49, name: "Stefan Quandt", netWorth: 42.0, age: 58, country: "Germany", source: "BMW" },
+            { rank: 50, name: "Susanne Klatten", netWorth: 41.0, age: 62, country: "Germany", source: "BMW" },
+            { rank: 51, name: "Savitri Jindal", netWorth: 40.0, age: 74, country: "India", source: "Steel" },
+            { rank: 52, name: "Gina Rinehart", netWorth: 39.0, age: 71, country: "Australia", source: "Mining" },
+            { rank: 53, name: "David Duffield", netWorth: 38.0, age: 84, country: "United States", source: "Workday" },
+            { rank: 54, name: "Lukas Walton", netWorth: 37.0, age: 38, country: "United States", source: "Walmart" },
+            { rank: 55, name: "Kristy Walton", netWorth: 37.0, age: 76, country: "United States", source: "Walmart" },
+            { rank: 56, name: "Ann Walton Kroenke", netWorth: 37.0, age: 75, country: "United States", source: "Walmart" },
+            { rank: 57, name: "Hansjoerg Wyss", netWorth: 36.0, age: 89, country: "Switzerland", source: "Medical Systems" },
+            { rank: 58, name: "Jim Simons", netWorth: 35.0, age: 86, country: "United States", source: "Renaissance Technologies" },
+            { rank: 59, name: "Len Blavatnik", netWorth: 34.0, age: 68, country: "United Kingdom", source: "Access Industries" },
+            { rank: 60, name: "Takemitsu Takizaki", netWorth: 33.0, age: 79, country: "Japan", source: "Sensors" },
+            { rank: 61, name: "Lee Shau Kee", netWorth: 32.0, age: 97, country: "Hong Kong", source: "Real Estate" },
+            { rank: 62, name: "R. Budi Hartono", netWorth: 31.0, age: 84, country: "Indonesia", source: "Banking" },
+            { rank: 63, name: "Michael Hartono", netWorth: 31.0, age: 85, country: "Indonesia", source: "Banking" },
+            { rank: 64, name: "Dilip Shanghvi", netWorth: 30.0, age: 69, country: "India", source: "Pharmaceuticals" },
+            { rank: 65, name: "Iris Fontbona", netWorth: 29.0, age: 82, country: "Chile", source: "Mining" },
+            { rank: 66, name: "Vladimir Potanin", netWorth: 28.0, age: 64, country: "Russia", source: "Metals" },
+            { rank: 67, name: "Alexey Mordashov", netWorth: 27.0, age: 59, country: "Russia", source: "Steel" },
+            { rank: 68, name: "Wang Wei", netWorth: 26.0, age: 50, country: "China", source: "Delivery" },
+            { rank: 69, name: "Alisher Usmanov", netWorth: 25.0, age: 71, country: "Uzbekistan", source: "Metals" },
+            { rank: 70, name: "Vagit Alekperov", netWorth: 24.0, age: 74, country: "Russia", source: "Oil" },
+            { rank: 71, name: "Masayoshi Son", netWorth: 23.0, age: 68, country: "Japan", source: "SoftBank" },
+            { rank: 72, name: "Dieter Bock", netWorth: 22.0, age: 82, country: "Germany", source: "Pharmaceuticals" },
+            { rank: 73, name: "Theodore W. Alfond", netWorth: 21.0, age: 83, country: "United States", source: "Shoes" },
+            { rank: 74, name: "Robin Zeng", netWorth: 20.0, age: 57, country: "Hong Kong", source: "Batteries" },
+            { rank: 75, name: "Donald Bren", netWorth: 19.0, age: 92, country: "United States", source: "Real Estate" },
+            { rank: 76, name: "Philip Anschutz", netWorth: 18.0, age: 85, country: "United States", source: "Energy" },
+            { rank: 77, name: "Henry Samueli", netWorth: 17.0, age: 70, country: "United States", source: "Semiconductors" },
+            { rank: 78, name: "Reinhold Wuerth", netWorth: 16.0, age: 89, country: "Germany", source: "Fasteners" },
+            { rank: 79, name: "David Cheriton", netWorth: 15.0, age: 70, country: "Canada", source: "Google" },
+            { rank: 80, name: "Jeff Yass", netWorth: 14.0, age: 66, country: "United States", source: "Trading" },
+            { rank: 81, name: "John Arnold", netWorth: 13.0, age: 50, country: "United States", source: "Trading" },
+            { rank: 82, name: "George Soros", netWorth: 12.0, age: 95, country: "United States", source: "Hedge Funds" },
+            { rank: 83, name: "James Simons", netWorth: 11.0, age: 86, country: "United States", source: "Trading" },
+            { rank: 84, name: "Ray Dalio", netWorth: 10.0, age: 74, country: "United States", source: "Hedge Funds" },
+            { rank: 85, name: "Carl Icahn", netWorth: 9.0, age: 89, country: "United States", source: "Investments" },
+            { rank: 86, name: "Ronald Perelman", netWorth: 8.0, age: 83, country: "United States", source: "Investments" },
+            { rank: 87, name: "Israel Englander", netWorth: 7.0, age: 76, country: "United States", source: "Hedge Funds" },
+            { rank: 88, name: "Stanley Druckenmiller", netWorth: 6.0, age: 71, country: "United States", source: "Hedge Funds" },
+            { rank: 89, name: "Paul Tudor Jones II", netWorth: 5.0, age: 70, country: "United States", source: "Hedge Funds" },
+            { rank: 90, name: "David Tepper", netWorth: 4.0, age: 67, country: "United States", source: "Hedge Funds" },
+            { rank: 91, name: "Ken Griffin", netWorth: 3.0, age: 57, country: "United States", source: "Hedge Funds" },
+            { rank: 92, name: "Steve Cohen", netWorth: 2.0, age: 68, country: "United States", source: "Hedge Funds" },
+            { rank: 93, name: "Jim Simons", netWorth: 1.0, age: 86, country: "United States", source: "Hedge Funds" },
+            { rank: 94, name: "Ray Dalio", netWorth: 1.0, age: 74, country: "United States", source: "Investments" },
+            { rank: 95, name: "George Soros", netWorth: 1.0, age: 95, country: "United States", source: "Investments" },
+            { rank: 96, name: "Warren Buffett", netWorth: 1.0, age: 95, country: "United States", source: "Investments" },
+            { rank: 97, name: "Bill Gates", netWorth: 1.0, age: 69, country: "United States", source: "Investments" },
+            { rank: 98, name: "Mark Zuckerberg", netWorth: 1.0, age: 41, country: "United States", source: "Investments" },
+            { rank: 99, name: "Jeff Bezos", netWorth: 1.0, age: 61, country: "United States", source: "Investments" },
+            { rank: 100, name: "Larry Ellison", netWorth: 1.0, age: 81, country: "United States", source: "Investments" }
+        ];
+
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
+                
+                // Update charts if needed
+                if (tab.dataset.tab === 'billionaires') {
+                    updateBillionairesCharts();
+                }
+            });
+        });
+
+        // Color generation function
+        function generateColors(count) {
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                const hue = (i * 137.5) % 360; // Golden angle approximation
+                colors.push(`hsl(${hue}, 70%, 60%)`);
+            }
+            return colors;
+        }
+
+        // Initialize industry charts
+        function initIndustryCharts() {
+            // Extract labels and data for charts
+            const labels = industryData.map(item => Object.keys(item)[0]);
+            const data = industryData.map(item => Object.values(item)[0]);
+            
+            // Create bar chart (top 15 industries)
+            const barCtx = document.getElementById('barChart').getContext('2d');
+            const top15Labels = labels.slice(0, 15);
+            const top15Data = data.slice(0, 15);
+            
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: top15Labels,
+                    datasets: [{
+                        label: 'Number of Companies',
+                        data: top15Data,
+                        backgroundColor: generateColors(15),
+                        borderColor: 'rgba(0, 0, 0, 0.1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.parsed.y} companies (${(context.parsed.y / 500 * 100).toFixed(1)}%)`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Companies'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Create pie chart (top 10 industries + others)
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            const top10Labels = labels.slice(0, 10);
+            const top10Data = data.slice(0, 10);
+            
+            // Calculate "Others" category
+            const othersCount = data.slice(10).reduce((sum, value) => sum + value, 0);
+            top10Labels.push('Others');
+            top10Data.push(othersCount);
+            
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: top10Labels,
+                    datasets: [{
+                        data: top10Data,
+                        backgroundColor: generateColors(11),
+                        borderColor: 'white',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed;
+                                    const percentage = (value / 500 * 100).toFixed(1);
+                                    return `${context.label}: ${value} companies (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Populate industry list
+            const industryList = document.getElementById('industryList');
+            industryData.forEach((item, index) => {
+                const industryName = Object.keys(item)[0];
+                const count = Object.values(item)[0];
+                const percentage = (count / 500 * 100).toFixed(1);
+                
+                const industryItem = document.createElement('div');
+                industryItem.className = 'industry-item';
+                industryItem.innerHTML = `
+                    <span class="industry-name">${index + 1}. ${industryName}</span>
+                    <span class="industry-count">${count} <small>(${percentage}%)</small></span>
+                `;
+                
+                industryList.appendChild(industryItem);
+            });
+        }
+
+        // Initialize billionaires data and charts
+        function initBillionairesData() {
+            // Calculate statistics
+            const totalNetWorth = billionairesData.reduce((sum, person) => sum + person.netWorth, 0);
+            const avgNetWorth = totalNetWorth / billionairesData.length;
+            
+            document.getElementById('totalNetWorth').textContent = `$${totalNetWorth.toFixed(1)}T`;
+            document.getElementById('avgNetWorth').textContent = `$${avgNetWorth.toFixed(1)}B`;
+            
+            // Populate table
+            populateBillionairesTable();
+            
+            // Set up search functionality
+            document.getElementById('billionaireSearch').addEventListener('input', function() {
+                populateBillionairesTable(this.value);
+            });
+        }
+
+        // Update billionaires charts
+        function updateBillionairesCharts() {
+            // Top 20 billionaires bar chart
+            const top20 = billionairesData.slice(0, 20);
+            const barCtx = document.getElementById('billionairesBarChart').getContext('2d');
+            
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: top20.map(p => p.name),
+                    datasets: [{
+                        label: 'Net Worth ($B)',
+                        data: top20.map(p => p.netWorth),
+                        backgroundColor: generateColors(20),
+                        borderColor: 'rgba(0, 0, 0, 0.1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Net Worth ($B)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Billionaires by country chart
+            const countryCounts = {};
+            billionairesData.forEach(person => {
+                countryCounts[person.country] = (countryCounts[person.country] || 0) + 1;
+            });
+            
+            const countries = Object.keys(countryCounts);
+            const counts = Object.values(countryCounts);
+            
+            const countryCtx = document.getElementById('billionairesCountryChart').getContext('2d');
+            new Chart(countryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: countries,
+                    datasets: [{
+                        data: counts,
+                        backgroundColor: generateColors(countries.length),
+                        borderColor: 'white',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        }
+                    }
+                }
+            });
+        }
+
+        // Populate billionaires table with search and pagination
+        function populateBillionairesTable(searchTerm = '') {
+            const tableBody = document.getElementById('billionairesTableBody');
+            tableBody.innerHTML = '';
+            
+            // Filter data if search term is provided
+            let filteredData = billionairesData;
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filteredData = billionairesData.filter(person => 
+                    person.name.toLowerCase().includes(term) ||
+                    person.country.toLowerCase().includes(term) ||
+                    person.source.toLowerCase().includes(term)
+                );
+            }
+            
+            // Update total count
+            document.getElementById('totalBillionaires').textContent = filteredData.length;
+            
+            // Populate table rows
+            filteredData.forEach(person => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${person.rank}</td>
+                    <td>${person.name}</td>
+                    <td>$${person.netWorth.toFixed(1)}B</td>
+                    <td>${person.age}</td>
+                    <td>${person.country}</td>
+                    <td>${person.source}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initIndustryCharts();
+            initBillionairesData();
+        });
+    </script>
+</body>
+</html>
