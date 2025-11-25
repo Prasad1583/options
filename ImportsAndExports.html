@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Trade Dashboard 2023</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #28a745;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 10px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: gradient 4s ease infinite;
+            background-size: 200%;
+        }
+        @keyframes gradient { 0%,100% { background-position: 0%; } 50% { background-position: 100%; } }
+        h1 {
+            font-size: clamp(2rem, 7vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.97);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-8px); }
+        .stat-value {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .stat-label {
+            color: #777;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        @media (min-width: 900px) {
+            .charts-container { grid-template-columns: 1fr 1fr; }
+        }
+        .chart-card {
+            background: rgba(255,255,255,0.97);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        .search-sort {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        @media (min-width: 600px) {
+            .search-sort { flex-direction: row; }
+        }
+        .search-box {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(102,126,234,0.2);
+        }
+        select {
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #ddd;
+            font-size: 1rem;
+        }
+        .table-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            margin: 25px 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+            font-size: 0.95rem;
+        }
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background: rgba(102,126,234,0.05);
+        }
+        .surplus { color: var(--success); font-weight: 600; }
+        .deficit { color: var(--danger); font-weight: 600; }
+        .country { font-weight: 600; }
+        .flag { font-size: 1.4rem; margin-right: 8px; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        canvas { max-width: 100%; height: auto !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Global Trade Dashboard 2023</h1>
+            <p class="subtitle">Total Imports & Exports by Country • Values in Billions USD</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Largest Exporter</div>
+                <div class="stat-value">$3,020B</div>
+                <div>China</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Largest Importer</div>
+                <div class="stat-value">$3,380B</div>
+                <div>United States</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Global Trade</div>
+                <div class="stat-value">$32T</div>
+                <div>Imports + Exports</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Biggest Surplus</div>
+                <div class="stat-value">+$630B</div>
+                <div>China</div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3 class="chart-title">Top 10 Exporters</h3>
+                <canvas id="exportsChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">Top 10 Importers</h3>
+                <canvas id="importsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="search-sort">
+            <input type="text" class="search-box" id="search" placeholder="Search country...">
+            <select id="sort">
+                <option value="balance">Sort by Trade Balance</option>
+                <option value="exports">Sort by Exports ↓</option>
+                <option value="imports">Sort by Imports ↓</option>
+                <option value="country">Sort by Country A-Z</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table id="tradeTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Country</th>
+                        <th>Exports ($B)</th>
+                        <th>Imports ($B)</th>
+                        <th>Balance ($B)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <footer>
+            Data Source: 2023 International Trade Statistics • Values in Billions USD • Mobile Optimized
+        </footer>
+    </div>
+
+    <script>
+        const tradeData = [
+  {
+    "country": "China",
+    "year": 2023,
+    "total_imports_usd": 2390000000000,
+    "total_exports_usd": 3020000000000
+  },
+  {
+    "country": "United States",
+    "year": 2023,
+    "total_imports_usd": 3380000000000,
+    "total_exports_usd": 2560000000000
+  },
+  {
+    "country": "Germany",
+    "year": 2023,
+    "total_imports_usd": 1500000000000,
+    "total_exports_usd": 1670000000000
+  },
+  {
+    "country": "Netherlands",
+    "year": 2023,
+    "total_imports_usd": 760000000000,
+    "total_exports_usd": 820000000000
+  },
+  {
+    "country": "Japan",
+    "year": 2023,
+    "total_imports_usd": 830000000000,
+    "total_exports_usd": 830000000000
+  },
+  {
+    "country": "France",
+    "year": 2023,
+    "total_imports_usd": 830000000000,
+    "total_exports_usd": 790000000000
+  },
+  {
+    "country": "South Korea",
+    "year": 2023,
+    "total_imports_usd": 680000000000,
+    "total_exports_usd": 690000000000
+  },
+  {
+    "country": "Italy",
+    "year": 2023,
+    "total_imports_usd": 700000000000,
+    "total_exports_usd": 660000000000
+  },
+  {
+    "country": "Belgium",
+    "year": 2023,
+    "total_imports_usd": 610000000000,
+    "total_exports_usd": 590000000000
+  },
+  {
+    "country": "Canada",
+    "year": 2023,
+    "total_imports_usd": 540000000000,
+    "total_exports_usd": 590000000000
+  },
+  {
+    "country": "Mexico",
+    "year": 2023,
+    "total_imports_usd": 530000000000,
+    "total_exports_usd": 593000000000
+  },
+  {
+    "country": "United Arab Emirates",
+    "year": 2023,
+    "total_imports_usd": 320000000000,
+    "total_exports_usd": 430000000000
+  },
+  {
+    "country": "Singapore",
+    "year": 2023,
+    "total_imports_usd": 410000000000,
+    "total_exports_usd": 430000000000
+  },
+  {
+    "country": "United Kingdom",
+    "year": 2023,
+    "total_imports_usd": 820000000000,
+    "total_exports_usd": 550000000000
+  },
+  {
+    "country": "Australia",
+    "year": 2023,
+    "total_imports_usd": 260000000000,
+    "total_exports_usd": 410000000000
+  },
+  {
+    "country": "Vietnam",
+    "year": 2023,
+    "total_imports_usd": 330000000000,
+    "total_exports_usd": 410000000000
+  },
+  {
+    "country": "Russia",
+    "year": 2023,
+    "total_imports_usd": 240000000000,
+    "total_exports_usd": 420000000000
+  },
+  {
+    "country": "India",
+    "year": 2023,
+    "total_imports_usd": 714000000000,
+    "total_exports_usd": 411000000000
+  },
+  {
+    "country": "Brazil",
+    "year": 2023,
+    "total_imports_usd": 260000000000,
+    "total_exports_usd": 340000000000
+  },
+  {
+    "country": "Switzerland",
+    "year": 2023,
+    "total_imports_usd": 300000000000,
+    "total_exports_usd": 400000000000
+  },
+  {
+    "country": "Saudi Arabia",
+    "year": 2023,
+    "total_imports_usd": 190000000000,
+    "total_exports_usd": 315000000000
+  },
+  {
+    "country": "Ireland",
+    "year": 2023,
+    "total_imports_usd": 150000000000,
+    "total_exports_usd": 210000000000
+  },
+  {
+    "country": "Spain",
+    "year": 2023,
+    "total_imports_usd": 470000000000,
+    "total_exports_usd": 420000000000
+  },
+  {
+    "country": "Thailand",
+    "year": 2023,
+    "total_imports_usd": 290000000000,
+    "total_exports_usd": 305000000000
+  },
+  {
+    "country": "Poland",
+    "year": 2023,
+    "total_imports_usd": 330000000000,
+    "total_exports_usd": 340000000000
+  },
+  {
+    "country": "Indonesia",
+    "year": 2023,
+    "total_imports_usd": 240000000000,
+    "total_exports_usd": 255000000000
+  },
+  {
+    "country": "Turkey",
+    "year": 2023,
+    "total_imports_usd": 360000000000,
+    "total_exports_usd": 255000000000
+  },
+  {
+    "country": "Austria",
+    "year": 2023,
+    "total_imports_usd": 240000000000,
+    "total_exports_usd": 210000000000
+  },
+  {
+    "country": "Malaysia",
+    "year": 2023,
+    "total_imports_usd": 260000000000,
+    "total_exports_usd": 290000000000
+  },
+  {
+    "country": "Norway",
+    "year": 2023,
+    "total_imports_usd": 120000000000,
+    "total_exports_usd": 185000000000
+  },
+  {
+    "country": "Czech Republic",
+    "year": 2023,
+    "total_imports_usd": 210000000000,
+    "total_exports_usd": 230000000000
+  },
+  {
+    "country": "Sweden",
+    "year": 2023,
+    "total_imports_usd": 180000000000,
+    "total_exports_usd": 190000000000
+  },
+  {
+    "country": "Qatar",
+    "year": 2023,
+    "total_imports_usd": 31000000000,
+    "total_exports_usd": 115000000000
+  },
+  {
+    "country": "Denmark",
+    "year": 2023,
+    "total_imports_usd": 140000000000,
+    "total_exports_usd": 160000000000
+  },
+  {
+    "country": "Hungary",
+    "year": 2023,
+    "total_imports_usd": 150000000000,
+    "total_exports_usd": 155000000000
+  },
+  {
+    "country": "South Africa",
+    "year": 2023,
+    "total_imports_usd": 112000000000,
+    "total_exports_usd": 120000000000
+  },
+  {
+    "country": "Israel",
+    "year": 2023,
+    "total_imports_usd": 110000000000,
+    "total_exports_usd": 140000000000
+  },
+  {
+    "country": "Finland",
+    "year": 2023,
+    "total_imports_usd": 85000000000,
+    "total_exports_usd": 82000000000
+  },
+  {
+    "country": "Chile",
+    "year": 2023,
+    "total_imports_usd": 79000000000,
+    "total_exports_usd": 94000000000
+  },
+  {
+    "country": "Romania",
+    "year": 2023,
+    "total_imports_usd": 120000000000,
+    "total_exports_usd": 100000000000
+  },
+  {
+    "country": "Portugal",
+    "year": 2023,
+    "total_imports_usd": 90000000000,
+    "total_exports_usd": 78000000000
+  },
+  {
+    "country": "Philippines",
+    "year": 2023,
+    "total_imports_usd": 135000000000,
+    "total_exports_usd": 79000000000
+  },
+  {
+    "country": "Iraq",
+    "year": 2023,
+    "total_imports_usd": 44000000000,
+    "total_exports_usd": 85000000000
+  },
+  {
+    "country": "Nigeria",
+    "year": 2023,
+    "total_imports_usd": 50000000000,
+    "total_exports_usd": 59000000000
+  },
+  {
+    "country": "Bangladesh",
+    "year": 2023,
+    "total_imports_usd": 69000000000,
+    "total_exports_usd": 52000000000
+  },
+  {
+    "country": "Greece",
+    "year": 2023,
+    "total_imports_usd": 90000000000,
+    "total_exports_usd": 55000000000
+  },
+  {
+    "country": "New Zealand",
+    "year": 2023,
+    "total_imports_usd": 63000000000,
+    "total_exports_usd": 68000000000
+  },
+  {
+    "country": "Algeria",
+    "year": 2023,
+    "total_imports_usd": 51000000000,
+    "total_exports_usd": 62000000000
+  },
+  {
+    "country": "Kazakhstan",
+    "year": 2023,
+    "total_imports_usd": 45000000000,
+    "total_exports_usd": 67000000000
+  },
+  {
+    "country": "Argentina",
+    "year": 2023,
+    "total_imports_usd": 68000000000,
+    "total_exports_usd": 67000000000
+  },
+  {
+    "country": "Ukraine",
+    "year": 2023,
+    "total_imports_usd": 35000000000,
+    "total_exports_usd": 28000000000
+  },
+  {
+    "country": "Bulgaria",
+    "year": 2023,
+    "total_imports_usd": 51000000000,
+    "total_exports_usd": 45000000000
+  },
+  {
+    "country": "Belarus",
+    "year": 2023,
+    "total_imports_usd": 34000000000,
+    "total_exports_usd": 39000000000
+  },
+  {
+    "country": "Peru",
+    "year": 2023,
+    "total_imports_usd": 55000000000,
+    "total_exports_usd": 65000000000
+  },
+  {
+    "country": "Pakistan",
+    "year": 2023,
+    "total_imports_usd": 55000000000,
+    "total_exports_usd": 33000000000
+  },
+  {
+    "country": "Croatia",
+    "year": 2023,
+    "total_imports_usd": 42000000000,
+    "total_exports_usd": 33000000000
+  },
+  {
+    "country": "Serbia",
+    "year": 2023,
+    "total_imports_usd": 38000000000,
+    "total_exports_usd": 32000000000
+  },
+  {
+    "country": "Angola",
+    "year": 2023,
+    "total_imports_usd": 15000000000,
+    "total_exports_usd": 33000000000
+  },
+  {
+    "country": "Azerbaijan",
+    "year": 2023,
+    "total_imports_usd": 16000000000,
+    "total_exports_usd": 28000000000
+  },
+  {
+    "country": "Slovakia",
+    "year": 2023,
+    "total_imports_usd": 95000000000,
+    "total_exports_usd": 105000000000
+  },
+  {
+    "country": "Morocco",
+    "year": 2023,
+    "total_imports_usd": 47000000000,
+    "total_exports_usd": 38000000000
+  },
+  {
+    "country": "Ecuador",
+    "year": 2023,
+    "total_imports_usd": 31000000000,
+    "total_exports_usd": 36000000000
+  },
+  {
+    "country": "Oman",
+    "year": 2023,
+    "total_imports_usd": 35000000000,
+    "total_exports_usd": 65000000000
+  },
+  {
+    "country": "Libya",
+    "year": 2023,
+    "total_imports_usd": 20000000000,
+    "total_exports_usd": 30000000000
+  },
+  {
+    "country": "Tunisia",
+    "year": 2023,
+    "total_imports_usd": 23000000000,
+    "total_exports_usd": 19000000000
+  },
+  {
+    "country": "Uzbekistan",
+    "year": 2023,
+    "total_imports_usd": 32000000000,
+    "total_exports_usd": 17000000000
+  },
+  {
+    "country": "Dominican Republic",
+    "year": 2023,
+    "total_imports_usd": 28000000000,
+    "total_exports_usd": 14000000000
+  },
+  {
+    "country": "Guatemala",
+    "year": 2023,
+    "total_imports_usd": 24000000000,
+    "total_exports_usd": 15000000000
+  },
+  {
+    "country": "Sri Lanka",
+    "year": 2023,
+    "total_imports_usd": 18000000000,
+    "total_exports_usd": 13000000000
+  },
+  {
+    "country": "Sudan",
+    "year": 2023,
+    "total_imports_usd": 11000000000,
+    "total_exports_usd": 4000000000
+  },
+  {
+    "country": "Uruguay",
+    "year": 2023,
+    "total_imports_usd": 13000000000,
+    "total_exports_usd": 14000000000
+  },
+  {
+    "country": "Costa Rica",
+    "year": 2023,
+    "total_imports_usd": 25000000000,
+    "total_exports_usd": 17000000000
+  },
+  {
+    "country": "Kenya",
+    "year": 2023,
+    "total_imports_usd": 21000000000,
+    "total_exports_usd": 8000000000
+  },
+  {
+    "country": "Myanmar",
+    "year": 2023,
+    "total_imports_usd": 19000000000,
+    "total_exports_usd": 16000000000
+  },
+  {
+    "country": "Panama",
+    "year": 2023,
+    "total_imports_usd": 35000000000,
+    "total_exports_usd": 25000000000
+  },
+  {
+    "country": "Jordan",
+    "year": 2023,
+    "total_imports_usd": 27000000000,
+    "total_exports_usd": 15000000000
+  },
+  {
+    "country": "Tanzania",
+    "year": 2023,
+    "total_imports_usd": 13000000000,
+    "total_exports_usd": 11000000000
+  },
+  {
+    "country": "Bolivia",
+    "year": 2023,
+    "total_imports_usd": 13000000000,
+    "total_exports_usd": 11000000000
+  },
+  {
+    "country": "Paraguay",
+    "year": 2023,
+    "total_imports_usd": 15000000000,
+    "total_exports_usd": 10000000000
+  },
+  {
+    "country": "El Salvador",
+    "year": 2023,
+    "total_imports_usd": 16000000000,
+    "total_exports_usd": 7000000000
+  },
+  {
+    "country": "Honduras",
+    "year": 2023,
+    "total_imports_usd": 15000000000,
+    "total_exports_usd": 9000000000
+  },
+  {
+    "country": "Papua New Guinea",
+    "year": 2023,
+    "total_imports_usd": 5000000000,
+    "total_exports_usd": 11000000000
+  },
+  {
+    "country": "Zambia",
+    "year": 2023,
+    "total_imports_usd": 11000000000,
+    "total_exports_usd": 13000000000
+  },
+  {
+    "country": "Nepal",
+    "year": 2023,
+    "total_imports_usd": 15000000000,
+    "total_exports_usd": 2000000000
+  },
+  {
+    "country": "Mongolia",
+    "year": 2023,
+    "total_imports_usd": 8000000000,
+    "total_exports_usd": 13000000000
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "year": 2023,
+    "total_imports_usd": 12000000000,
+    "total_exports_usd": 8000000000
+  },
+  {
+    "country": "Albania",
+    "year": 2023,
+    "total_imports_usd": 8200000000,
+    "total_exports_usd": 4600000000
+  },
+  {
+    "country": "Georgia",
+    "year": 2023,
+    "total_imports_usd": 12000000000,
+    "total_exports_usd": 6500000000
+  },
+  {
+    "country": "Moldova",
+    "year": 2023,
+    "total_imports_usd": 8000000000,
+    "total_exports_usd": 4000000000
+  },
+  {
+    "country": "North Macedonia",
+    "year": 2023,
+    "total_imports_usd": 11000000000,
+    "total_exports_usd": 8500000000
+  },
+  {
+    "country": "Armenia",
+    "year": 2023,
+    "total_imports_usd": 11200000000,
+    "total_exports_usd": 7200000000
+  },
+  {
+    "country": "Jamaica",
+    "year": 2023,
+    "total_imports_usd": 7000000000,
+    "total_exports_usd": 2000000000
+  },
+  {
+    "country": "Namibia",
+    "year": 2023,
+    "total_imports_usd": 8000000000,
+    "total_exports_usd": 5000000000
+  },
+  {
+    "country": "Botswana",
+    "year": 2023,
+    "total_imports_usd": 8000000000,
+    "total_exports_usd": 6500000000
+  },
+  {
+    "country": "Mauritius",
+    "year": 2023,
+    "total_imports_usd": 6000000000,
+    "total_exports_usd": 3000000000
+  },
+  {
+    "country": "Malta",
+    "year": 2023,
+    "total_imports_usd": 11000000000,
+    "total_exports_usd": 5000000000
+  },
+  {
+    "country": "Brunei",
+    "year": 2023,
+    "total_imports_usd": 3000000000,
+    "total_exports_usd": 8000000000
+  },
+  {
+    "country": "The Gambia",
+    "year": 2023,
+    "total_imports_usd": 600000000,
+    "total_exports_usd": 100000000
+  },
+  {
+    "country": "Seychelles",
+    "year": 2023,
+    "total_imports_usd": 1300000000,
+    "total_exports_usd": 600000000
+  },
+  {
+    "country": "Comoros",
+    "year": 2023,
+    "total_imports_usd": 300000000,
+    "total_exports_usd": 50000000
+  }
+];
+
+        // Convert to billions
+        const data = tradeData.map(item => ({
+            country: item.country,
+            exports: item.total_exports_usd / 1e9,
+            imports: item.total_imports_usd / 1e9,
+            balance: (item.total_exports_usd - item.total_imports_usd) / 1e9
+        }));
+
+        // Sort and render table
+        function renderTable(sortBy = 'balance', search = '') {
+            let filtered = data.filter(d => 
+                d.country.toLowerCase().includes(search.toLowerCase())
+            );
+
+            filtered.sort((a, b) => {
+                if (sortBy === 'balance') return b.balance - a.balance;
+                if (sortBy === 'exports') return b.exports - a.exports;
+                if (sortBy === 'imports') return b.imports - a.imports;
+                if (sortBy === 'country') return a.country.localeCompare(b.country);
+                return 0;
+            });
+
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            filtered.forEach((item, i) => {
+                const row = document.createElement('tr');
+                const isSurplus = item.balance > 0;
+                row.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td class="country">${item.country}</td>
+                    <td>$${item.exports.toFixed(0)}B</td>
+                    <td>$${item.imports.toFixed(0)}B</td>
+                    <td class="${isSurplus ? 'surplus' : 'deficit'}">
+                        ${isSurplus ? '+' : ''}$${item.balance.toFixed(0)}B
+                    </td>
+                    <td>${isSurplus ? 'Surplus' : 'Deficit'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Charts
+        function createCharts() {
+            const top10exp = [...data].sort((a,b) => b.exports - a.exports).slice(0,10);
+            const top10imp = [...data].sort((a,b) => b.imports - a.imports).slice(0,10);
+
+            new Chart(document.getElementById('exportsChart'), {
+                type: 'bar',
+                data: {
+                    labels: top10exp.map(d => d.country),
+                    datasets: [{
+                        label: 'Exports (Billions USD)',
+                        data: top10exp.map(d => d.exports),
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: '#667eea',
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+
+            new Chart(document.getElementById('importsChart'), {
+                type: 'bar',
+                data: {
+                    labels: top10imp.map(d => d.country),
+                    datasets: [{
+                        label: 'Imports (Billions USD)',
+                        data: top10imp.map(d => d.imports),
+                        backgroundColor: 'rgba(118, 75, 162, 0.8)',
+                        borderColor: '#764ba2',
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+        }
+
+        // Search & Sort
+        document.getElementById('search').addEventListener('input', (e) => {
+            renderTable(document.getElementById('sort').value, e.target.value);
+        });
+
+        document.getElementById('sort').addEventListener('change', (e) => {
+            renderTable(e.target.value, document.getElementById('search').value);
+        });
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            createCharts();
+            renderTable();
+        });
+    </script>
+</body>
+</html>
