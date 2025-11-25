@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Wealth & Industry Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -19,37 +19,36 @@
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
+            padding: 10px;
+            font-size: 16px; /* Base font size for accessibility */
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 60px 40px;
+            margin-bottom: 30px;
+            padding: 40px 20px;
             background: rgba(255, 255, 255, 0.98);
             color: #1a1a2e;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
         }
         
         header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
+            top: 0; left: 0; right: 0;
+            height: 5px;
             background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
             background-size: 200% 100%;
             animation: gradientShift 3s ease infinite;
+            border-radius: 16px 16px 0 0;
         }
         
         @keyframes gradientShift {
@@ -58,8 +57,8 @@
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 12px;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
@@ -68,315 +67,266 @@
         }
         
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #666;
             font-weight: 500;
         }
         
+        /* Tabs - Fully Responsive */
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin-bottom: 30px;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            padding: 8px;
-            gap: 10px;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(10px);
         }
         
         .tab {
-            padding: 18px 40px;
+            flex: 1;
+            min-width: 140px;
+            padding: 16px 20px;
+            text-align: center;
             cursor: pointer;
             font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 15px;
-            color: #666;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tab::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(102, 126, 234, 0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .tab:hover::before {
-            width: 300px;
-            height: 300px;
+            font-size: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: #555;
+            white-space: nowrap;
         }
         
         .tab.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
         
         .tab:hover:not(.active) {
-            background: #f5f5f5;
-            transform: translateY(-3px);
+            background: #f0f0f0;
+            transform: translateY(-2px);
         }
         
+        /* Content */
         .tab-content {
             display: none;
-            animation: fadeIn 0.6s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            animation: fadeIn 0.5s ease;
         }
         
         .tab-content.active {
             display: block;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Stats Grid */
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 35px;
         }
         
         .stat-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 35px 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.97);
+            padding: 28px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .stat-card:hover::before {
-            transform: scaleX(1);
+            transition: transform 0.3s ease;
         }
         
         .stat-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            transform: translateY(-8px) scale(1.03);
         }
         
         .stat-value {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
-            background-clip: text;
             color: transparent;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         
         .stat-label {
-            font-size: 1.1rem;
-            color: #888;
+            font-size: 1rem;
+            color: #777;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 10px;
         }
         
         .stat-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #999;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
+        /* Charts */
         .charts-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 35px;
         }
         
-        @media (max-width: 900px) {
+        @media (min-width: 768px) {
             .charts-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
         
         .chart-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(10px);
         }
         
-        .chart-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
-        }
-        
         .chart-title {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
-            background-clip: text;
             color: transparent;
-            text-align: center;
             font-weight: 700;
         }
         
+        /* Industry List */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        @media (min-width: 600px) {
+            .industry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        .industry-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .industry-item:hover {
+            transform: translateX(6px);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+        }
+        
+        /* Table */
         .data-table-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             overflow-x: auto;
+            margin-bottom: 30px;
             backdrop-filter: blur(10px);
         }
         
         .data-table-container h2 {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
-            background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .industry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        
-        .industry-item {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            padding: 15px 20px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .industry-item:hover {
-            transform: translateX(5px);
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-        
-        .industry-name {
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .industry-count {
-            font-weight: 700;
-            color: #667eea;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .data-table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 18px 20px;
-            text-align: left;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        
-        .data-table td {
-            padding: 16px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-        }
-        
-        .data-table tbody tr {
-            transition: all 0.3s ease;
-        }
-        
-        .data-table tbody tr:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            transform: scale(1.01);
-        }
-        
-        .search-container {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
         
         .search-box {
             width: 100%;
-            padding: 16px 20px;
+            padding: 14px 18px;
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
+            margin-bottom: 20px;
         }
         
         .search-box:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Enables horizontal scroll on mobile */
+            font-size: 0.9rem;
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #eee;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+        
+        .data-table tbody tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        /* Scroll hint for mobile tables */
+        .data-table-container::after {
+            content: "← Scroll horizontally →";
+            display: block;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+        
+        @media (min-width: 768px) {
+            .data-table-container::after {
+                display: none;
+            }
         }
         
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
+            margin-top: 20px;
         }
         
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .stat-value {
-                font-size: 2rem;
-            }
-            
-            .tabs {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .tab {
-                width: 100%;
-            }
+        /* Fix Chart.js canvas on mobile */
+        canvas {
+            max-width: 100% !important;
+            height: auto !important;
         }
     </style>
 </head>
@@ -388,8 +338,8 @@
         </header>
         
         <div class="tabs">
-            <div class="tab active" data-tab="industries">🏢 Fortune 500 Industries</div>
-            <div class="tab" data-tab="billionaires">💰 World's Billionaires</div>
+            <div class="tab active" data-tab="industries">🏢 Fortune 500</div>
+            <div class="tab" data-tab="billionaires">💰 Billionaires</div>
         </div>
         
         <!-- Industries Tab -->
@@ -398,28 +348,28 @@
                 <div class="stat-card">
                     <div class="stat-label">Total Industries</div>
                     <div class="stat-value">36</div>
-                    <div class="stat-desc">Distinct industry categories</div>
+                    <div class="stat-desc">Distinct sectors</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Total Companies</div>
                     <div class="stat-value">500</div>
-                    <div class="stat-desc">Fortune 500 companies</div>
+                    <div class="stat-desc">Fortune 500</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Top Industry</div>
                     <div class="stat-value">Health Care</div>
-                    <div class="stat-desc">59 companies (11.8%)</div>
+                    <div class="stat-desc">59 companies</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Avg. per Industry</div>
                     <div class="stat-value">13.9</div>
-                    <div class="stat-desc">Companies per industry</div>
+                    <div class="stat-desc">Companies</div>
                 </div>
             </div>
             
             <div class="charts-container">
                 <div class="chart-card">
-                    <h2 class="chart-title">📊 Industry Distribution (Top 15)</h2>
+                    <h2 class="chart-title">📊 Top 15 Industries</h2>
                     <canvas id="barChart"></canvas>
                 </div>
                 <div class="chart-card">
@@ -429,10 +379,8 @@
             </div>
             
             <div class="data-table-container">
-                <h2>📋 All Industries (Sorted by Company Count)</h2>
-                <div class="industry-grid" id="industryList">
-                    <!-- Industry list will be populated by JavaScript -->
-                </div>
+                <h2>📋 All Industries</h2>
+                <div class="industry-grid" id="industryList"></div>
             </div>
         </div>
         
@@ -442,55 +390,53 @@
                 <div class="stat-card">
                     <div class="stat-label">Total Billionaires</div>
                     <div class="stat-value" id="totalBillionaires">100</div>
-                    <div class="stat-desc">In the dataset</div>
+                    <div class="stat-desc">In dataset</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Total Net Worth</div>
                     <div class="stat-value" id="totalNetWorth">$4.2T</div>
-                    <div class="stat-desc">Combined wealth</div>
+                    <div class="stat-desc">Combined</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Top Billionaire</div>
+                    <div class="stat-label">Richest</div>
                     <div class="stat-value">Elon Musk</div>
-                    <div class="stat-desc">$460.4B net worth</div>
+                    <div class="stat-desc">$460.4B</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Avg. Net Worth</div>
+                    <div class="stat-label">Average Worth</div>
                     <div class="stat-value" id="avgNetWorth">$42B</div>
-                    <div class="stat-desc">Per billionaire</div>
+                    <div class="stat-desc">Per person</div>
                 </div>
             </div>
             
             <div class="charts-container">
                 <div class="chart-card">
-                    <h2 class="chart-title">🏆 Top 20 Billionaires by Net Worth</h2>
+                    <h2 class="chart-title">🏆 Top 20 Billionaires</h2>
                     <canvas id="billionairesBarChart"></canvas>
                 </div>
                 <div class="chart-card">
-                    <h2 class="chart-title">🌍 Billionaires by Country</h2>
+                    <h2 class="chart-title">🌍 By Country</h2>
                     <canvas id="billionairesCountryChart"></canvas>
                 </div>
             </div>
             
             <div class="data-table-container">
-                <h2>💼 World's Billionaires</h2>
+                <h2>💼 Top 100 Billionaires</h2>
                 <div class="search-container">
-                    <input type="text" class="search-box" id="billionaireSearch" placeholder="🔍 Search by name, country, or source of wealth...">
+                    <input type="text" class="search-box" id="billionaireSearch" placeholder="🔍 Search name, country, source...">
                 </div>
                 <table class="data-table" id="billionairesTable">
                     <thead>
                         <tr>
                             <th>Rank</th>
                             <th>Name</th>
-                            <th>Net Worth ($B)</th>
+                            <th>Worth</th>
                             <th>Age</th>
                             <th>Country</th>
-                            <th>Source of Wealth</th>
+                            <th>Source</th>
                         </tr>
                     </thead>
-                    <tbody id="billionairesTableBody">
-                        <!-- Billionaires data will be populated by JavaScript -->
-                    </tbody>
+                    <tbody id="billionairesTableBody"></tbody>
                 </table>
             </div>
         </div>
